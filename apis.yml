@@ -1,0 +1,49 @@
+name: Google Sheets API
+description: API for reading, writing, and formatting data in Google Sheets
+image: https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png
+url: https://developers.google.com/sheets/api
+created: '2024-01-01'
+modified: '2024-01-01'
+apis:
+- name: Google Sheets API v4
+  description: The Google Sheets API lets you read, write, and format Google Sheets data
+  image: https://www.gstatic.com/images/branding/product/2x/sheets_2020q4_48dp.png
+  humanURL: https://developers.google.com/sheets/api
+  baseURL: https://sheets.googleapis.com/v4
+  properties:
+  - type: Documentation
+    url: https://developers.google.com/sheets/api/reference/rest
+  - type: OpenAPI
+    url: https://sheets.googleapis.com/$discovery/rest?version=v4
+  - type: Authentication
+    url: https://developers.google.com/sheets/api/guides/authorizing
+  - type: Quickstart
+    url: https://developers.google.com/sheets/api/quickstart/python
+  - type: Guides
+    url: https://developers.google.com/sheets/api/guides/concepts
+  - type: Pricing
+    url: https://developers.google.com/sheets/api/limits
+  - type: Terms of Service
+    url: https://developers.google.com/terms
+  - type: Support
+    url: https://developers.google.com/sheets/api/support
+  contact:
+  - type: Support
+    url: https://support.google.com/developers/
+  - type: Stack Overflow
+    url: https://stackoverflow.com/questions/tagged/google-sheets-api
+  tags:
+  - spreadsheets
+  - data
+  - google
+  - productivity
+  - collaboration
+maintainers:
+- name: Google
+  email: google-sheets-api-team@google.com
+  url: https://developers.google.com
+tags:
+- spreadsheets
+- productivity
+- google workspace
+- api
