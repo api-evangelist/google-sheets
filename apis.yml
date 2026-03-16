@@ -1,5 +1,5 @@
 aid: google-sheets
-name: Google Sheets API
+name: Google Sheets
 description: API for reading, writing, and formatting data in Google Sheets
 image: https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png
 url: https://developers.google.com/sheets/api
