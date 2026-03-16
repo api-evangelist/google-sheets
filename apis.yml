@@ -1,9 +1,12 @@
+aid: google-sheets
 name: Google Sheets API
 description: API for reading, writing, and formatting data in Google Sheets
 image: https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png
 url: https://developers.google.com/sheets/api
 created: '2024-01-01'
-modified: '2026-03-03'
+modified: '2026-03-16'
+specificationVersion: '0.19'
+type: Index
 apis:
 - name: Google Sheets API v4
   description: The Google Sheets API lets you read, write, and format Google Sheets data
