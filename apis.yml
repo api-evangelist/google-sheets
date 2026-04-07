@@ -2,8 +2,7 @@ aid: google-sheets
 name: Google Sheets
 description: >-
   API for reading, writing, and formatting data in Google Sheets.
-image: 
-  https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png
+image: https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png
 url: https://developers.google.com/sheets/api
 created: '2024-01-01'
 modified: '2026-03-16'
@@ -13,8 +12,7 @@ apis:
   - name: Google Sheets API v4
     description: >-
       The Google Sheets API lets you read, write, and format Google Sheets data.
-    image: 
-      https://www.gstatic.com/images/branding/product/2x/sheets_2020q4_48dp.png
+    image: https://www.gstatic.com/images/branding/product/2x/sheets_2020q4_48dp.png
     humanURL: https://developers.google.com/sheets/api
     baseURL: https://sheets.googleapis.com/v4
     properties:
@@ -55,16 +53,13 @@ apis:
       - type: Scopes
         url: https://developers.google.com/workspace/sheets/api/scopes
       - type: Errors
-        url: 
-          https://developers.google.com/workspace/sheets/api/troubleshoot-api-errors
+        url: https://developers.google.com/workspace/sheets/api/troubleshoot-api-errors
       - type: Videos
         url: https://developers.google.com/workspace/sheets/api/videos
       - type: Postman Collection
-        url: 
-          https://www.postman.com/postman/google-api-workspace/collection/aj4bdj1/google-sheets-api
+        url: https://www.postman.com/postman/google-api-workspace/collection/aj4bdj1/google-sheets-api
       - type: Quickstart - Node.js
-        url: 
-          https://developers.google.com/workspace/sheets/api/quickstart/nodejs
+        url: https://developers.google.com/workspace/sheets/api/quickstart/nodejs
       - type: Quickstart - Java
         url: https://developers.google.com/workspace/sheets/api/quickstart/java
       - type: Quickstart - Go
@@ -72,27 +67,25 @@ apis:
       - type: Quickstart - JavaScript
         url: https://developers.google.com/workspace/sheets/api/quickstart/js
       - type: Quickstart - Apps Script
-        url: 
-          https://developers.google.com/workspace/sheets/api/quickstart/apps-script
+        url: https://developers.google.com/workspace/sheets/api/quickstart/apps-script
     contact:
       - type: Support
         url: https://support.google.com/developers/
       - type: Stack Overflow
         url: https://stackoverflow.com/questions/tagged/google-sheets-api
     tags:
-      - spreadsheets
-      - data
-      - google
-      - productivity
-      - collaboration
+      - Collaboration
+      - Data
+      - Google
+      - Productivity
+      - Spreadsheets
   - name: Google Apps Script Spreadsheet Service
     description: >-
       The built-in Google Apps Script Spreadsheet Service allows creation, access,
       and modification of Google Sheets files directly from Apps Script with
       performance bundling and numerous classes for formatting, data sources,
       structure, and content.
-    image: 
-      https://www.gstatic.com/images/branding/product/2x/apps_script_48dp.png
+    image: https://www.gstatic.com/images/branding/product/2x/apps_script_48dp.png
     humanURL: https://developers.google.com/apps-script/reference/spreadsheet
     properties:
       - type: Documentation
@@ -109,11 +102,11 @@ apis:
       - type: Stack Overflow
         url: https://stackoverflow.com/questions/tagged/google-apps-script
     tags:
-      - spreadsheets
-      - apps-script
-      - google
-      - automation
-      - scripting
+      - Apps-Script
+      - Automation
+      - Google
+      - Scripting
+      - Spreadsheets
 maintainers:
   - name: Kin Lane
     email: kin@apievangelist.com
@@ -166,7 +159,6 @@ common:
   - type: Developer Guide
     url: https://developers.google.com/workspace/guides/create-project
 tags:
-  - spreadsheets
-  - productivity
-  - google workspace
-  - api
+  - Google Workspace
+  - Productivity
+  - Spreadsheets

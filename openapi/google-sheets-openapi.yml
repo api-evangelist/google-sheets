@@ -24,14 +24,14 @@ security:
   - oauth2: []
   - apiKey: []
 tags:
-  - name: spreadsheets
-    description: Operations on spreadsheet resources
-  - name: values
-    description: Operations on spreadsheet cell values
-  - name: sheets
-    description: Operations on individual sheets within a spreadsheet
   - name: developerMetadata
     description: Operations on developer metadata
+  - name: Sheets
+    description: Operations on individual sheets within a spreadsheet
+  - name: Spreadsheets
+    description: Operations on spreadsheet resources
+  - name: Values
+    description: Operations on spreadsheet cell values
 paths:
   /spreadsheets:
     post:
@@ -39,7 +39,7 @@ paths:
       summary: Google Sheets Create a spreadsheet
       description: Creates a new spreadsheet, optionally with initial properties, sheets, and data.
       tags:
-        - spreadsheets
+        - Spreadsheets
       requestBody:
         description: The spreadsheet to create.
         required: true
@@ -71,7 +71,7 @@ paths:
         can include grid data in one of two ways using the fields URL
         parameter or the includeGridData query parameter.
       tags:
-        - spreadsheets
+        - Spreadsheets
       parameters:
         - $ref: '#/components/parameters/spreadsheetId'
         - name: ranges
@@ -114,7 +114,7 @@ paths:
         validated before being applied. If any request is not valid, the
         entire request will fail and nothing will be applied.
       tags:
-        - spreadsheets
+        - Spreadsheets
       parameters:
         - $ref: '#/components/parameters/spreadsheetId'
       requestBody:
@@ -150,7 +150,7 @@ paths:
         allows selecting which subsets of spreadsheet data to return by
         specifying a dataFilters parameter.
       tags:
-        - spreadsheets
+        - Spreadsheets
       parameters:
         - $ref: '#/components/parameters/spreadsheetId'
       requestBody:
@@ -194,7 +194,7 @@ paths:
         Returns a range of values from a spreadsheet. The caller must specify
         the spreadsheet ID and a range.
       tags:
-        - values
+        - Values
       parameters:
         - $ref: '#/components/parameters/spreadsheetId'
         - $ref: '#/components/parameters/range'
@@ -236,7 +236,7 @@ paths:
         Sets values in a range of a spreadsheet. The caller must specify the
         spreadsheet ID, range, and a valueInputOption.
       tags:
-        - values
+        - Values
       parameters:
         - $ref: '#/components/parameters/spreadsheetId'
         - $ref: '#/components/parameters/range'
@@ -295,7 +295,7 @@ paths:
         appended to the next row of the table, starting with the first column
         of the table.
       tags:
-        - values
+        - Values
       parameters:
         - $ref: '#/components/parameters/spreadsheetId'
         - $ref: '#/components/parameters/range'
@@ -362,7 +362,7 @@ paths:
         properties of the cell (such as formatting and data validation) are
         kept.
       tags:
-        - values
+        - Values
       parameters:
         - $ref: '#/components/parameters/spreadsheetId'
         - $ref: '#/components/parameters/range'
@@ -397,7 +397,7 @@ paths:
         Returns one or more ranges of values from a spreadsheet. The caller
         must specify the spreadsheet ID and one or more ranges.
       tags:
-        - values
+        - Values
       parameters:
         - $ref: '#/components/parameters/spreadsheetId'
         - name: ranges
@@ -448,7 +448,7 @@ paths:
         specify the spreadsheet ID, a valueInputOption, and one or more
         ValueRanges.
       tags:
-        - values
+        - Values
       parameters:
         - $ref: '#/components/parameters/spreadsheetId'
       requestBody:
@@ -483,7 +483,7 @@ paths:
         must specify the spreadsheet ID and one or more ranges. Only values
         are cleared; all other properties of the cell are kept.
       tags:
-        - values
+        - Values
       parameters:
         - $ref: '#/components/parameters/spreadsheetId'
       requestBody:
@@ -525,7 +525,7 @@ paths:
         DataFilters. Ranges that match any of the data filters in the request
         will be returned.
       tags:
-        - values
+        - Values
       parameters:
         - $ref: '#/components/parameters/spreadsheetId'
       requestBody:
@@ -572,7 +572,7 @@ paths:
         specified data filters. The caller must specify the spreadsheet ID, a
         valueInputOption, and one or more DataFilterValueRanges.
       tags:
-        - values
+        - Values
       parameters:
         - $ref: '#/components/parameters/spreadsheetId'
       requestBody:
@@ -623,7 +623,7 @@ paths:
         specified data filters. The caller must specify the spreadsheet ID
         and one or more DataFilters.
       tags:
-        - values
+        - Values
       parameters:
         - $ref: '#/components/parameters/spreadsheetId'
       requestBody:
@@ -663,7 +663,7 @@ paths:
         Copies a single sheet from a spreadsheet to another spreadsheet.
         Returns the properties of the newly created sheet.
       tags:
-        - sheets
+        - Sheets
       parameters:
         - $ref: '#/components/parameters/spreadsheetId'
         - name: sheetId
