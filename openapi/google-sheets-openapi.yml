@@ -36,7 +36,7 @@ paths:
   /spreadsheets:
     post:
       operationId: createSpreadsheet
-      summary: Create a spreadsheet
+      summary: Google Sheets Create a spreadsheet
       description: Creates a new spreadsheet, optionally with initial properties, sheets, and data.
       tags:
         - spreadsheets
@@ -64,7 +64,7 @@ paths:
   /spreadsheets/{spreadsheetId}:
     get:
       operationId: getSpreadsheet
-      summary: Get a spreadsheet
+      summary: Google Sheets Get a spreadsheet
       description: >-
         Returns the spreadsheet at the given ID. The caller must specify the
         spreadsheet ID. By default, data within grids is not returned. You
@@ -108,7 +108,7 @@ paths:
   /spreadsheets/{spreadsheetId}:batchUpdate:
     post:
       operationId: batchUpdateSpreadsheet
-      summary: Batch update a spreadsheet
+      summary: Google Sheets Batch update a spreadsheet
       description: >-
         Applies one or more updates to the spreadsheet. Each request is
         validated before being applied. If any request is not valid, the
@@ -143,7 +143,7 @@ paths:
   /spreadsheets/{spreadsheetId}:getByDataFilter:
     post:
       operationId: getSpreadsheetByDataFilter
-      summary: Get a spreadsheet by data filter
+      summary: Google Sheets Get a spreadsheet by data filter
       description: >-
         Returns the spreadsheet at the given ID. The caller must specify the
         spreadsheet ID. This method differs from getSpreadsheet in that it
@@ -189,7 +189,7 @@ paths:
   /spreadsheets/{spreadsheetId}/values/{range}:
     get:
       operationId: getValues
-      summary: Get values from a range
+      summary: Google Sheets Get values from a range
       description: >-
         Returns a range of values from a spreadsheet. The caller must specify
         the spreadsheet ID and a range.
@@ -231,7 +231,7 @@ paths:
 
     put:
       operationId: updateValues
-      summary: Update values in a range
+      summary: Google Sheets Update values in a range
       description: >-
         Sets values in a range of a spreadsheet. The caller must specify the
         spreadsheet ID, range, and a valueInputOption.
@@ -288,7 +288,7 @@ paths:
   /spreadsheets/{spreadsheetId}/values/{range}:append:
     post:
       operationId: appendValues
-      summary: Append values to a range
+      summary: Google Sheets Append values to a range
       description: >-
         Appends values to a spreadsheet. The input range is used to search
         for existing data and find a table within that range. Values will be
@@ -355,7 +355,7 @@ paths:
   /spreadsheets/{spreadsheetId}/values/{range}:clear:
     post:
       operationId: clearValues
-      summary: Clear values from a range
+      summary: Google Sheets Clear values from a range
       description: >-
         Clears values from a spreadsheet. The caller must specify the
         spreadsheet ID and range. Only values are cleared; all other
@@ -392,7 +392,7 @@ paths:
   /spreadsheets/{spreadsheetId}/values:batchGet:
     get:
       operationId: batchGetValues
-      summary: Get values from multiple ranges
+      summary: Google Sheets Get values from multiple ranges
       description: >-
         Returns one or more ranges of values from a spreadsheet. The caller
         must specify the spreadsheet ID and one or more ranges.
@@ -442,7 +442,7 @@ paths:
   /spreadsheets/{spreadsheetId}/values:batchUpdate:
     post:
       operationId: batchUpdateValues
-      summary: Update values in multiple ranges
+      summary: Google Sheets Update values in multiple ranges
       description: >-
         Sets values in one or more ranges of a spreadsheet. The caller must
         specify the spreadsheet ID, a valueInputOption, and one or more
@@ -477,7 +477,7 @@ paths:
   /spreadsheets/{spreadsheetId}/values:batchClear:
     post:
       operationId: batchClearValues
-      summary: Clear values from multiple ranges
+      summary: Google Sheets Clear values from multiple ranges
       description: >-
         Clears one or more ranges of values from a spreadsheet. The caller
         must specify the spreadsheet ID and one or more ranges. Only values
@@ -518,7 +518,7 @@ paths:
   /spreadsheets/{spreadsheetId}/values:batchGetByDataFilter:
     post:
       operationId: batchGetValuesByDataFilter
-      summary: Get values from ranges matching data filters
+      summary: Google Sheets Get values from ranges matching data filters
       description: >-
         Returns one or more ranges of values that match the specified data
         filters. The caller must specify the spreadsheet ID and one or more
@@ -566,7 +566,7 @@ paths:
   /spreadsheets/{spreadsheetId}/values:batchUpdateByDataFilter:
     post:
       operationId: batchUpdateValuesByDataFilter
-      summary: Update values in ranges matching data filters
+      summary: Google Sheets Update values in ranges matching data filters
       description: >-
         Sets values in one or more ranges of a spreadsheet matching the
         specified data filters. The caller must specify the spreadsheet ID, a
@@ -617,7 +617,7 @@ paths:
   /spreadsheets/{spreadsheetId}/values:batchClearByDataFilter:
     post:
       operationId: batchClearValuesByDataFilter
-      summary: Clear values from ranges matching data filters
+      summary: Google Sheets Clear values from ranges matching data filters
       description: >-
         Clears one or more ranges of values from a spreadsheet matching the
         specified data filters. The caller must specify the spreadsheet ID
@@ -658,7 +658,7 @@ paths:
   /spreadsheets/{spreadsheetId}/sheets/{sheetId}:copyTo:
     post:
       operationId: copySheet
-      summary: Copy a sheet to another spreadsheet
+      summary: Google Sheets Copy a sheet to another spreadsheet
       description: >-
         Copies a single sheet from a spreadsheet to another spreadsheet.
         Returns the properties of the newly created sheet.
@@ -704,7 +704,7 @@ paths:
   /spreadsheets/{spreadsheetId}/developerMetadata/{metadataId}:
     get:
       operationId: getDeveloperMetadata
-      summary: Get developer metadata
+      summary: Google Sheets Get developer metadata
       description: >-
         Returns the developer metadata with the specified ID. The caller must
         specify the spreadsheet ID and the developer metadata's unique
@@ -738,7 +738,7 @@ paths:
   /spreadsheets/{spreadsheetId}/developerMetadata:search:
     post:
       operationId: searchDeveloperMetadata
-      summary: Search developer metadata
+      summary: Google Sheets Search developer metadata
       description: >-
         Returns all developer metadata matching the specified DataFilter. If
         the provided DataFilter represents a DeveloperMetadataLookup object,
