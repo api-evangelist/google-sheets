@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ProtectedRange",
+  "type": "object",
+  "description": "A protected range.",
+  "properties": {
+    "protectedRangeId": {
+      "type": "integer",
+      "description": "The ID of the protected range."
+    },
+    "namedRangeId": {
+      "type": "string",
+      "description": "The named range this protected range is backed by, if any."
+    },
+    "description": {
+      "type": "string",
+      "description": "The description of this protected range."
+    },
+    "warningOnly": {
+      "type": "boolean",
+      "description": "True if this protected range will show a warning when editing."
+    },
+    "requestingUserCanEdit": {
+      "type": "boolean",
+      "description": "True if the user who requested this protected range can edit the protected area."
+    },
+    "unprotectedRanges": {
+      "type": "array",
+      "description": "The list of unprotected ranges within a protected sheet."
+    },
+    "editors": {
+      "type": "object",
+      "description": "The users and groups with edit access to the protected range."
+    }
+  }
+}

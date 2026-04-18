@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "FilterView",
+  "type": "object",
+  "properties": {
+    "filterViewId": {
+      "type": "integer"
+    },
+    "title": {
+      "type": "string"
+    },
+    "namedRangeId": {
+      "type": "string"
+    },
+    "sortSpecs": {
+      "type": "array"
+    },
+    "criteria": {
+      "type": "object"
+    },
+    "filterSpecs": {
+      "type": "array"
+    }
+  }
+}

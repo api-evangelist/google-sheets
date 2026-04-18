@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GridProperties",
+  "type": "object",
+  "description": "Properties of a grid.",
+  "properties": {
+    "rowCount": {
+      "type": "integer",
+      "description": "The number of rows in the grid."
+    },
+    "columnCount": {
+      "type": "integer",
+      "description": "The number of columns in the grid."
+    },
+    "frozenRowCount": {
+      "type": "integer",
+      "description": "The number of rows that are frozen in the grid."
+    },
+    "frozenColumnCount": {
+      "type": "integer",
+      "description": "The number of columns that are frozen in the grid."
+    },
+    "hideGridlines": {
+      "type": "boolean",
+      "description": "True if the grid is not showing gridlines in the UI."
+    },
+    "rowGroupControlAfter": {
+      "type": "boolean",
+      "description": "True if the row grouping control toggle is shown after the group."
+    },
+    "columnGroupControlAfter": {
+      "type": "boolean",
+      "description": "True if the column grouping control toggle is shown after the group."
+    }
+  }
+}

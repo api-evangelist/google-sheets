@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BatchUpdateSpreadsheetRequest",
+  "type": "object",
+  "description": "The request for updating any aspect of a spreadsheet.",
+  "properties": {
+    "requests": {
+      "type": "array",
+      "description": "A list of updates to apply to the spreadsheet."
+    },
+    "includeSpreadsheetInResponse": {
+      "type": "boolean",
+      "description": "Determines if the update response should include the spreadsheet resource."
+    },
+    "responseRanges": {
+      "type": "array",
+      "description": "Limits the ranges included in the response spreadsheet."
+    },
+    "responseIncludeGridData": {
+      "type": "boolean",
+      "description": "True if grid data should be returned."
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "protectedRangeId": "500123",
+  "namedRangeId": "500123",
+  "description": "A sample description.",
+  "warningOnly": true,
+  "requestingUserCanEdit": true,
+  "unprotectedRanges": [],
+  "editors": "example_value"
+}

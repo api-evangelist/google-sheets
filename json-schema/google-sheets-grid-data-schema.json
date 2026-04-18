@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GridData",
+  "type": "object",
+  "description": "Data in the grid, as well as metadata about the dimensions.",
+  "properties": {
+    "startRow": {
+      "type": "integer",
+      "description": "The first row this GridData refers to, zero-based."
+    },
+    "startColumn": {
+      "type": "integer",
+      "description": "The first column this GridData refers to, zero-based."
+    },
+    "rowData": {
+      "type": "array",
+      "description": "The data in the grid, one entry per row, starting with the row in startRow."
+    },
+    "rowMetadata": {
+      "type": "array",
+      "description": "Metadata about the requested rows in the grid, starting with the row in startRow."
+    },
+    "columnMetadata": {
+      "type": "array",
+      "description": "Metadata about the requested columns in the grid, starting with the column in startColumn."
+    }
+  }
+}

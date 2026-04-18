@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "GridRange",
+  "type": "object",
+  "properties": {
+    "sheetId": {
+      "type": "integer"
+    },
+    "startRowIndex": {
+      "type": "integer"
+    },
+    "endRowIndex": {
+      "type": "integer"
+    },
+    "startColumnIndex": {
+      "type": "integer"
+    },
+    "endColumnIndex": {
+      "type": "integer"
+    }
+  }
+}

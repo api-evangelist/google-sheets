@@ -1,0 +1,7 @@
+{
+  "title": "Example Title",
+  "locale": "example_value",
+  "autoRecalc": "example_value",
+  "timeZone": "example_value",
+  "importFunctionsExternalUrlAccessAllowed": "https://www.example.com"
+}

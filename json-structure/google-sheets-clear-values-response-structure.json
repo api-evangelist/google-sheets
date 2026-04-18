@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "ClearValuesResponse",
+  "type": "object",
+  "properties": {
+    "spreadsheetId": {
+      "type": "string"
+    },
+    "clearedRange": {
+      "type": "string"
+    }
+  }
+}

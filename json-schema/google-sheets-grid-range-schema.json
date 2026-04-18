@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GridRange",
+  "type": "object",
+  "description": "A range on a sheet. All indexes are zero-based.",
+  "properties": {
+    "sheetId": {
+      "type": "integer",
+      "description": "The sheet this range is on."
+    },
+    "startRowIndex": {
+      "type": "integer",
+      "description": "The start row (inclusive) of the range, or not set if unbounded."
+    },
+    "endRowIndex": {
+      "type": "integer",
+      "description": "The end row (exclusive) of the range, or not set if unbounded."
+    },
+    "startColumnIndex": {
+      "type": "integer",
+      "description": "The start column (inclusive) of the range, or not set if unbounded."
+    },
+    "endColumnIndex": {
+      "type": "integer",
+      "description": "The end column (exclusive) of the range, or not set if unbounded."
+    }
+  }
+}

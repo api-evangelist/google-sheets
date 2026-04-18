@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Border",
+  "type": "object",
+  "description": "A border along a cell.",
+  "properties": {
+    "style": {
+      "type": "string",
+      "description": "The style of the border."
+    },
+    "width": {
+      "type": "integer",
+      "description": "The width of the border, in pixels. Deprecated; the width is determined by the style."
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "TextFormat",
+  "type": "object",
+  "properties": {
+    "fontFamily": {
+      "type": "string"
+    },
+    "fontSize": {
+      "type": "integer"
+    },
+    "bold": {
+      "type": "boolean"
+    },
+    "italic": {
+      "type": "boolean"
+    },
+    "strikethrough": {
+      "type": "boolean"
+    },
+    "underline": {
+      "type": "boolean"
+    }
+  }
+}

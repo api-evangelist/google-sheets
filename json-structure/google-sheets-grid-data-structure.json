@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "GridData",
+  "type": "object",
+  "properties": {
+    "startRow": {
+      "type": "integer"
+    },
+    "startColumn": {
+      "type": "integer"
+    },
+    "rowData": {
+      "type": "array"
+    },
+    "rowMetadata": {
+      "type": "array"
+    },
+    "columnMetadata": {
+      "type": "array"
+    }
+  }
+}

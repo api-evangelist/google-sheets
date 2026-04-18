@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DataExecutionStatus",
+  "type": "object",
+  "description": "The data execution status.",
+  "properties": {
+    "state": {
+      "type": "string",
+      "description": "The state of the data execution."
+    },
+    "errorCode": {
+      "type": "string",
+      "description": "The error code."
+    },
+    "errorMessage": {
+      "type": "string",
+      "description": "The error message, which may be empty."
+    },
+    "lastRefreshTime": {
+      "type": "string",
+      "description": "Gets the time the data last successfully refreshed."
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DataFilterValueRange",
+  "type": "object",
+  "description": "A range of values whose location is specified by a DataFilter.",
+  "properties": {
+    "values": {
+      "type": "array",
+      "description": "The data to be written."
+    }
+  }
+}

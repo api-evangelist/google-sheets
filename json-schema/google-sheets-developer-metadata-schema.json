@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DeveloperMetadata",
+  "type": "object",
+  "description": "Developer metadata associated with a location or object in a spreadsheet.",
+  "properties": {
+    "metadataId": {
+      "type": "integer",
+      "description": "The spreadsheet-scoped unique ID that identifies the metadata."
+    },
+    "metadataKey": {
+      "type": "string",
+      "description": "The metadata key."
+    },
+    "metadataValue": {
+      "type": "string",
+      "description": "Data associated with the metadata's key."
+    },
+    "visibility": {
+      "type": "string",
+      "description": "The metadata visibility."
+    }
+  }
+}

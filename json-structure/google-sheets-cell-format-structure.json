@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "CellFormat",
+  "type": "object",
+  "properties": {
+    "horizontalAlignment": {
+      "type": "string"
+    },
+    "verticalAlignment": {
+      "type": "string"
+    },
+    "wrapStrategy": {
+      "type": "string"
+    },
+    "textDirection": {
+      "type": "string"
+    },
+    "hyperlinkDisplayType": {
+      "type": "string"
+    }
+  }
+}

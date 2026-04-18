@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "DataSourceTable",
+  "type": "object",
+  "properties": {
+    "dataSourceId": {
+      "type": "string"
+    },
+    "columnSelectionType": {
+      "type": "string"
+    },
+    "columns": {
+      "type": "array"
+    },
+    "filterSpecs": {
+      "type": "array"
+    },
+    "sortSpecs": {
+      "type": "array"
+    },
+    "rowLimit": {
+      "type": "integer"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DataSourceSpec",
+  "type": "object",
+  "description": "This specifies the details of the data source.",
+  "properties": {
+    "parameters": {
+      "type": "array",
+      "description": "The parameters of the data source, used when querying the data source."
+    }
+  }
+}

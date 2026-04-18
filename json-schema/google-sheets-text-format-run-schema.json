@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TextFormatRun",
+  "type": "object",
+  "description": "A run of a text format.",
+  "properties": {
+    "startIndex": {
+      "type": "integer",
+      "description": "The character index where this run starts (zero-based)."
+    }
+  }
+}

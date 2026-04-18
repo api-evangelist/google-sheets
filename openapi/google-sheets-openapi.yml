@@ -18,28 +18,28 @@ externalDocs:
   description: Google Sheets API documentation
   url: https://developers.google.com/sheets/api
 servers:
-  - url: https://sheets.googleapis.com/v4
-    description: Google Sheets API v4 production server
+- url: https://sheets.googleapis.com/v4
+  description: Google Sheets API v4 production server
 security:
-  - oauth2: []
-  - apiKey: []
+- oauth2: []
+- apiKey: []
 tags:
-  - name: developerMetadata
-    description: Operations on developer metadata
-  - name: Sheets
-    description: Operations on individual sheets within a spreadsheet
-  - name: Spreadsheets
-    description: Operations on spreadsheet resources
-  - name: Values
-    description: Operations on spreadsheet cell values
+- name: developerMetadata
+  description: Operations on developer metadata
+- name: Sheets
+  description: Operations on individual sheets within a spreadsheet
+- name: Spreadsheets
+  description: Operations on spreadsheet resources
+- name: Values
+  description: Operations on spreadsheet cell values
 paths:
   /spreadsheets:
     post:
       operationId: createSpreadsheet
-      summary: Google Sheets Create a spreadsheet
+      summary: Google Sheets Create a Spreadsheet
       description: Creates a new spreadsheet, optionally with initial properties, sheets, and data.
       tags:
-        - Spreadsheets
+      - Spreadsheets
       requestBody:
         description: The spreadsheet to create.
         required: true
@@ -47,6 +47,47 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Spreadsheet'
+            examples:
+              CreatespreadsheetRequestExample:
+                summary: Default createSpreadsheet request
+                x-microcks-default: true
+                value:
+                  spreadsheetId: '500123'
+                  properties:
+                    title: Example Title
+                    locale: example_value
+                    autoRecalc: ON_CHANGE
+                    timeZone: example_value
+                    importFunctionsExternalUrlAccessAllowed: https://www.example.com
+                  sheets:
+                  - data: {}
+                    merges: {}
+                    conditionalFormats: {}
+                    filterViews: {}
+                    protectedRanges: {}
+                    charts: {}
+                    bandedRanges: {}
+                    slicers: {}
+                  namedRanges:
+                  - namedRangeId: '500123'
+                    name: Example Title
+                  spreadsheetUrl: https://www.example.com
+                  developerMetadata:
+                  - metadataId: '500123'
+                    metadataKey: example_value
+                    metadataValue: example_value
+                    visibility: DEVELOPER_METADATA_VISIBILITY_UNSPECIFIED
+                  dataSources:
+                  - dataSourceId: '500123'
+                    calculatedColumns: {}
+                    sheetId: '500123'
+                  dataSourceSchedules:
+                  - enabled: true
+                    refreshScope: DATA_SOURCE_REFRESH_SCOPE_UNSPECIFIED
+                    nextRun: {}
+                    dailySchedule: {}
+                    weeklySchedule: {}
+                    monthlySchedule: {}
       responses:
         '200':
           description: Successful response containing the newly created spreadsheet.
@@ -54,6 +95,47 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Spreadsheet'
+              examples:
+                Createspreadsheet200Example:
+                  summary: Default createSpreadsheet 200 response
+                  x-microcks-default: true
+                  value:
+                    spreadsheetId: '500123'
+                    properties:
+                      title: Example Title
+                      locale: example_value
+                      autoRecalc: ON_CHANGE
+                      timeZone: example_value
+                      importFunctionsExternalUrlAccessAllowed: https://www.example.com
+                    sheets:
+                    - data: {}
+                      merges: {}
+                      conditionalFormats: {}
+                      filterViews: {}
+                      protectedRanges: {}
+                      charts: {}
+                      bandedRanges: {}
+                      slicers: {}
+                    namedRanges:
+                    - namedRangeId: '500123'
+                      name: Example Title
+                    spreadsheetUrl: https://www.example.com
+                    developerMetadata:
+                    - metadataId: '500123'
+                      metadataKey: example_value
+                      metadataValue: example_value
+                      visibility: DEVELOPER_METADATA_VISIBILITY_UNSPECIFIED
+                    dataSources:
+                    - dataSourceId: '500123'
+                      calculatedColumns: {}
+                      sheetId: '500123'
+                    dataSourceSchedules:
+                    - enabled: true
+                      refreshScope: DATA_SOURCE_REFRESH_SCOPE_UNSPECIFIED
+                      nextRun: {}
+                      dailySchedule: {}
+                      weeklySchedule: {}
+                      monthlySchedule: {}
         '401':
           $ref: '#/components/responses/Unauthorized'
         '403':
@@ -61,34 +143,39 @@ paths:
         '429':
           $ref: '#/components/responses/TooManyRequests'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /spreadsheets/{spreadsheetId}:
     get:
       operationId: getSpreadsheet
-      summary: Google Sheets Get a spreadsheet
+      summary: Google Sheets Get a Spreadsheet
       description: >-
         Returns the spreadsheet at the given ID. The caller must specify the
         spreadsheet ID. By default, data within grids is not returned. You
         can include grid data in one of two ways using the fields URL
         parameter or the includeGridData query parameter.
       tags:
-        - Spreadsheets
+      - Spreadsheets
       parameters:
-        - $ref: '#/components/parameters/spreadsheetId'
-        - name: ranges
-          in: query
-          description: The ranges to retrieve from the spreadsheet.
-          schema:
-            type: array
-            items:
-              type: string
-        - name: includeGridData
-          in: query
-          description: >-
-            True if grid data should be returned. This parameter is ignored
-            if a field mask was set in the request.
-          schema:
-            type: boolean
-            default: false
+      - $ref: '#/components/parameters/spreadsheetId'
+      - name: ranges
+        in: query
+        description: The ranges to retrieve from the spreadsheet.
+        schema:
+          type: array
+          items:
+            type: string
+        example: []
+      - name: includeGridData
+        in: query
+        description: >-
+          True if grid data should be returned. This parameter is ignored
+          if a field mask was set in the request.
+        schema:
+          type: boolean
+          default: false
+        example: true
       responses:
         '200':
           description: Successful response containing the spreadsheet.
@@ -96,6 +183,47 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Spreadsheet'
+              examples:
+                Getspreadsheet200Example:
+                  summary: Default getSpreadsheet 200 response
+                  x-microcks-default: true
+                  value:
+                    spreadsheetId: '500123'
+                    properties:
+                      title: Example Title
+                      locale: example_value
+                      autoRecalc: ON_CHANGE
+                      timeZone: example_value
+                      importFunctionsExternalUrlAccessAllowed: https://www.example.com
+                    sheets:
+                    - data: {}
+                      merges: {}
+                      conditionalFormats: {}
+                      filterViews: {}
+                      protectedRanges: {}
+                      charts: {}
+                      bandedRanges: {}
+                      slicers: {}
+                    namedRanges:
+                    - namedRangeId: '500123'
+                      name: Example Title
+                    spreadsheetUrl: https://www.example.com
+                    developerMetadata:
+                    - metadataId: '500123'
+                      metadataKey: example_value
+                      metadataValue: example_value
+                      visibility: DEVELOPER_METADATA_VISIBILITY_UNSPECIFIED
+                    dataSources:
+                    - dataSourceId: '500123'
+                      calculatedColumns: {}
+                      sheetId: '500123'
+                    dataSourceSchedules:
+                    - enabled: true
+                      refreshScope: DATA_SOURCE_REFRESH_SCOPE_UNSPECIFIED
+                      nextRun: {}
+                      dailySchedule: {}
+                      weeklySchedule: {}
+                      monthlySchedule: {}
         '401':
           $ref: '#/components/responses/Unauthorized'
         '403':
@@ -105,18 +233,21 @@ paths:
         '429':
           $ref: '#/components/responses/TooManyRequests'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /spreadsheets/{spreadsheetId}:batchUpdate:
     post:
       operationId: batchUpdateSpreadsheet
-      summary: Google Sheets Batch update a spreadsheet
+      summary: Google Sheets Batch Update a Spreadsheet
       description: >-
         Applies one or more updates to the spreadsheet. Each request is
         validated before being applied. If any request is not valid, the
         entire request will fail and nothing will be applied.
       tags:
-        - Spreadsheets
+      - Spreadsheets
       parameters:
-        - $ref: '#/components/parameters/spreadsheetId'
+      - $ref: '#/components/parameters/spreadsheetId'
       requestBody:
         description: The batch update request.
         required: true
@@ -124,6 +255,17 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/BatchUpdateSpreadsheetRequest'
+            examples:
+              BatchupdatespreadsheetRequestExample:
+                summary: Default batchUpdateSpreadsheet request
+                x-microcks-default: true
+                value:
+                  requests:
+                  - {}
+                  includeSpreadsheetInResponse: true
+                  responseRanges:
+                  - example_value
+                  responseIncludeGridData: true
       responses:
         '200':
           description: Successful response containing the batch update results.
@@ -131,6 +273,27 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchUpdateSpreadsheetResponse'
+              examples:
+                Batchupdatespreadsheet200Example:
+                  summary: Default batchUpdateSpreadsheet 200 response
+                  x-microcks-default: true
+                  value:
+                    spreadsheetId: '500123'
+                    replies:
+                    - {}
+                    updatedSpreadsheet:
+                      spreadsheetId: '500123'
+                      sheets:
+                      - {}
+                      namedRanges:
+                      - {}
+                      spreadsheetUrl: https://www.example.com
+                      developerMetadata:
+                      - {}
+                      dataSources:
+                      - {}
+                      dataSourceSchedules:
+                      - {}
         '401':
           $ref: '#/components/responses/Unauthorized'
         '403':
@@ -140,19 +303,22 @@ paths:
         '429':
           $ref: '#/components/responses/TooManyRequests'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /spreadsheets/{spreadsheetId}:getByDataFilter:
     post:
       operationId: getSpreadsheetByDataFilter
-      summary: Google Sheets Get a spreadsheet by data filter
+      summary: Google Sheets Get a Spreadsheet by Data Filter
       description: >-
         Returns the spreadsheet at the given ID. The caller must specify the
         spreadsheet ID. This method differs from getSpreadsheet in that it
         allows selecting which subsets of spreadsheet data to return by
         specifying a dataFilters parameter.
       tags:
-        - Spreadsheets
+      - Spreadsheets
       parameters:
-        - $ref: '#/components/parameters/spreadsheetId'
+      - $ref: '#/components/parameters/spreadsheetId'
       requestBody:
         description: The data filter request.
         required: true
@@ -170,6 +336,14 @@ paths:
                   type: boolean
                   description: True if grid data should be returned.
                   default: false
+            examples:
+              GetspreadsheetbydatafilterRequestExample:
+                summary: Default getSpreadsheetByDataFilter request
+                x-microcks-default: true
+                value:
+                  dataFilters:
+                  - a1Range: example_value
+                  includeGridData: true
       responses:
         '200':
           description: Successful response containing the spreadsheet.
@@ -177,6 +351,47 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Spreadsheet'
+              examples:
+                Getspreadsheetbydatafilter200Example:
+                  summary: Default getSpreadsheetByDataFilter 200 response
+                  x-microcks-default: true
+                  value:
+                    spreadsheetId: '500123'
+                    properties:
+                      title: Example Title
+                      locale: example_value
+                      autoRecalc: ON_CHANGE
+                      timeZone: example_value
+                      importFunctionsExternalUrlAccessAllowed: https://www.example.com
+                    sheets:
+                    - data: {}
+                      merges: {}
+                      conditionalFormats: {}
+                      filterViews: {}
+                      protectedRanges: {}
+                      charts: {}
+                      bandedRanges: {}
+                      slicers: {}
+                    namedRanges:
+                    - namedRangeId: '500123'
+                      name: Example Title
+                    spreadsheetUrl: https://www.example.com
+                    developerMetadata:
+                    - metadataId: '500123'
+                      metadataKey: example_value
+                      metadataValue: example_value
+                      visibility: DEVELOPER_METADATA_VISIBILITY_UNSPECIFIED
+                    dataSources:
+                    - dataSourceId: '500123'
+                      calculatedColumns: {}
+                      sheetId: '500123'
+                    dataSourceSchedules:
+                    - enabled: true
+                      refreshScope: DATA_SOURCE_REFRESH_SCOPE_UNSPECIFIED
+                      nextRun: {}
+                      dailySchedule: {}
+                      weeklySchedule: {}
+                      monthlySchedule: {}
         '401':
           $ref: '#/components/responses/Unauthorized'
         '403':
@@ -186,33 +401,39 @@ paths:
         '429':
           $ref: '#/components/responses/TooManyRequests'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /spreadsheets/{spreadsheetId}/values/{range}:
     get:
       operationId: getValues
-      summary: Google Sheets Get values from a range
+      summary: Google Sheets Get Values From a Range
       description: >-
         Returns a range of values from a spreadsheet. The caller must specify
         the spreadsheet ID and a range.
       tags:
-        - Values
+      - Values
       parameters:
-        - $ref: '#/components/parameters/spreadsheetId'
-        - $ref: '#/components/parameters/range'
-        - name: majorDimension
-          in: query
-          description: The major dimension that results should use.
-          schema:
-            $ref: '#/components/schemas/Dimension'
-        - name: valueRenderOption
-          in: query
-          description: How values should be represented in the output.
-          schema:
-            $ref: '#/components/schemas/ValueRenderOption'
-        - name: dateTimeRenderOption
-          in: query
-          description: How dates, times, and durations should be represented in the output.
-          schema:
-            $ref: '#/components/schemas/DateTimeRenderOption'
+      - $ref: '#/components/parameters/spreadsheetId'
+      - $ref: '#/components/parameters/range'
+      - name: majorDimension
+        in: query
+        description: The major dimension that results should use.
+        schema:
+          $ref: '#/components/schemas/Dimension'
+        example: example_value
+      - name: valueRenderOption
+        in: query
+        description: How values should be represented in the output.
+        schema:
+          $ref: '#/components/schemas/ValueRenderOption'
+        example: example_value
+      - name: dateTimeRenderOption
+        in: query
+        description: How dates, times, and durations should be represented in the output.
+        schema:
+          $ref: '#/components/schemas/DateTimeRenderOption'
+        example: example_value
       responses:
         '200':
           description: Successful response containing the requested values.
@@ -220,6 +441,15 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ValueRange'
+              examples:
+                Getvalues200Example:
+                  summary: Default getValues 200 response
+                  x-microcks-default: true
+                  value:
+                    range: example_value
+                    majorDimension: DIMENSION_UNSPECIFIED
+                    values:
+                    - []
         '401':
           $ref: '#/components/responses/Unauthorized'
         '403':
@@ -229,39 +459,46 @@ paths:
         '429':
           $ref: '#/components/responses/TooManyRequests'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     put:
       operationId: updateValues
-      summary: Google Sheets Update values in a range
+      summary: Google Sheets Update Values in a Range
       description: >-
         Sets values in a range of a spreadsheet. The caller must specify the
         spreadsheet ID, range, and a valueInputOption.
       tags:
-        - Values
+      - Values
       parameters:
-        - $ref: '#/components/parameters/spreadsheetId'
-        - $ref: '#/components/parameters/range'
-        - name: valueInputOption
-          in: query
-          description: How the input data should be interpreted.
-          required: true
-          schema:
-            $ref: '#/components/schemas/ValueInputOption'
-        - name: includeValuesInResponse
-          in: query
-          description: Determines if the update response should include the values of the cells that were updated.
-          schema:
-            type: boolean
-            default: false
-        - name: responseValueRenderOption
-          in: query
-          description: Determines how values in the response should be rendered.
-          schema:
-            $ref: '#/components/schemas/ValueRenderOption'
-        - name: responseDateTimeRenderOption
-          in: query
-          description: Determines how dates, times, and durations in the response should be rendered.
-          schema:
-            $ref: '#/components/schemas/DateTimeRenderOption'
+      - $ref: '#/components/parameters/spreadsheetId'
+      - $ref: '#/components/parameters/range'
+      - name: valueInputOption
+        in: query
+        description: How the input data should be interpreted.
+        required: true
+        schema:
+          $ref: '#/components/schemas/ValueInputOption'
+        example: example_value
+      - name: includeValuesInResponse
+        in: query
+        description: Determines if the update response should include the values of the cells that were updated.
+        schema:
+          type: boolean
+          default: false
+        example: true
+      - name: responseValueRenderOption
+        in: query
+        description: Determines how values in the response should be rendered.
+        schema:
+          $ref: '#/components/schemas/ValueRenderOption'
+        example: example_value
+      - name: responseDateTimeRenderOption
+        in: query
+        description: Determines how dates, times, and durations in the response should be rendered.
+        schema:
+          $ref: '#/components/schemas/DateTimeRenderOption'
+        example: example_value
       requestBody:
         description: The values to update.
         required: true
@@ -269,6 +506,15 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ValueRange'
+            examples:
+              UpdatevaluesRequestExample:
+                summary: Default updateValues request
+                x-microcks-default: true
+                value:
+                  range: example_value
+                  majorDimension: DIMENSION_UNSPECIFIED
+                  values:
+                  - []
       responses:
         '200':
           description: Successful response containing the update result.
@@ -276,6 +522,20 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateValuesResponse'
+              examples:
+                Updatevalues200Example:
+                  summary: Default updateValues 200 response
+                  x-microcks-default: true
+                  value:
+                    spreadsheetId: '500123'
+                    updatedRange: example_value
+                    updatedRows: 10
+                    updatedColumns: 10
+                    updatedCells: 10
+                    updatedData:
+                      range: example_value
+                      values:
+                      - {}
         '401':
           $ref: '#/components/responses/Unauthorized'
         '403':
@@ -285,50 +545,58 @@ paths:
         '429':
           $ref: '#/components/responses/TooManyRequests'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /spreadsheets/{spreadsheetId}/values/{range}:append:
     post:
       operationId: appendValues
-      summary: Google Sheets Append values to a range
+      summary: Google Sheets Append Values to a Range
       description: >-
         Appends values to a spreadsheet. The input range is used to search
         for existing data and find a table within that range. Values will be
         appended to the next row of the table, starting with the first column
         of the table.
       tags:
-        - Values
+      - Values
       parameters:
-        - $ref: '#/components/parameters/spreadsheetId'
-        - $ref: '#/components/parameters/range'
-        - name: valueInputOption
-          in: query
-          description: How the input data should be interpreted.
-          required: true
-          schema:
-            $ref: '#/components/schemas/ValueInputOption'
-        - name: insertDataOption
-          in: query
-          description: How the input data should be inserted.
-          schema:
-            type: string
-            enum:
-              - OVERWRITE
-              - INSERT_ROWS
-        - name: includeValuesInResponse
-          in: query
-          description: Determines if the update response should include the values of the cells that were appended.
-          schema:
-            type: boolean
-            default: false
-        - name: responseValueRenderOption
-          in: query
-          description: Determines how values in the response should be rendered.
-          schema:
-            $ref: '#/components/schemas/ValueRenderOption'
-        - name: responseDateTimeRenderOption
-          in: query
-          description: Determines how dates, times, and durations in the response should be rendered.
-          schema:
-            $ref: '#/components/schemas/DateTimeRenderOption'
+      - $ref: '#/components/parameters/spreadsheetId'
+      - $ref: '#/components/parameters/range'
+      - name: valueInputOption
+        in: query
+        description: How the input data should be interpreted.
+        required: true
+        schema:
+          $ref: '#/components/schemas/ValueInputOption'
+        example: example_value
+      - name: insertDataOption
+        in: query
+        description: How the input data should be inserted.
+        schema:
+          type: string
+          enum:
+          - OVERWRITE
+          - INSERT_ROWS
+        example: OVERWRITE
+      - name: includeValuesInResponse
+        in: query
+        description: Determines if the update response should include the values of the cells that were appended.
+        schema:
+          type: boolean
+          default: false
+        example: true
+      - name: responseValueRenderOption
+        in: query
+        description: Determines how values in the response should be rendered.
+        schema:
+          $ref: '#/components/schemas/ValueRenderOption'
+        example: example_value
+      - name: responseDateTimeRenderOption
+        in: query
+        description: Determines how dates, times, and durations in the response should be rendered.
+        schema:
+          $ref: '#/components/schemas/DateTimeRenderOption'
+        example: example_value
       requestBody:
         description: The values to append.
         required: true
@@ -336,6 +604,15 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ValueRange'
+            examples:
+              AppendvaluesRequestExample:
+                summary: Default appendValues request
+                x-microcks-default: true
+                value:
+                  range: example_value
+                  majorDimension: DIMENSION_UNSPECIFIED
+                  values:
+                  - []
       responses:
         '200':
           description: Successful response containing the append result.
@@ -343,6 +620,19 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AppendValuesResponse'
+              examples:
+                Appendvalues200Example:
+                  summary: Default appendValues 200 response
+                  x-microcks-default: true
+                  value:
+                    spreadsheetId: '500123'
+                    tableRange: example_value
+                    updates:
+                      spreadsheetId: '500123'
+                      updatedRange: example_value
+                      updatedRows: 10
+                      updatedColumns: 10
+                      updatedCells: 10
         '401':
           $ref: '#/components/responses/Unauthorized'
         '403':
@@ -352,20 +642,23 @@ paths:
         '429':
           $ref: '#/components/responses/TooManyRequests'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /spreadsheets/{spreadsheetId}/values/{range}:clear:
     post:
       operationId: clearValues
-      summary: Google Sheets Clear values from a range
+      summary: Google Sheets Clear Values From a Range
       description: >-
         Clears values from a spreadsheet. The caller must specify the
         spreadsheet ID and range. Only values are cleared; all other
         properties of the cell (such as formatting and data validation) are
         kept.
       tags:
-        - Values
+      - Values
       parameters:
-        - $ref: '#/components/parameters/spreadsheetId'
-        - $ref: '#/components/parameters/range'
+      - $ref: '#/components/parameters/spreadsheetId'
+      - $ref: '#/components/parameters/range'
       requestBody:
         description: The clear values request.
         required: true
@@ -373,6 +666,11 @@ paths:
           application/json:
             schema:
               type: object
+            examples:
+              ClearvaluesRequestExample:
+                summary: Default clearValues request
+                x-microcks-default: true
+                value: {}
       responses:
         '200':
           description: Successful response containing the cleared range.
@@ -380,6 +678,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ClearValuesResponse'
+              examples:
+                Clearvalues200Example:
+                  summary: Default clearValues 200 response
+                  x-microcks-default: true
+                  value:
+                    spreadsheetId: '500123'
+                    clearedRange: example_value
         '401':
           $ref: '#/components/responses/Unauthorized'
         '403':
@@ -389,40 +694,47 @@ paths:
         '429':
           $ref: '#/components/responses/TooManyRequests'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /spreadsheets/{spreadsheetId}/values:batchGet:
     get:
       operationId: batchGetValues
-      summary: Google Sheets Get values from multiple ranges
+      summary: Google Sheets Get Values From Multiple Ranges
       description: >-
         Returns one or more ranges of values from a spreadsheet. The caller
         must specify the spreadsheet ID and one or more ranges.
       tags:
-        - Values
+      - Values
       parameters:
-        - $ref: '#/components/parameters/spreadsheetId'
-        - name: ranges
-          in: query
-          description: The A1 notation or R1C1 notation of the range to retrieve values from.
-          required: true
-          schema:
-            type: array
-            items:
-              type: string
-        - name: majorDimension
-          in: query
-          description: The major dimension that results should use.
-          schema:
-            $ref: '#/components/schemas/Dimension'
-        - name: valueRenderOption
-          in: query
-          description: How values should be represented in the output.
-          schema:
-            $ref: '#/components/schemas/ValueRenderOption'
-        - name: dateTimeRenderOption
-          in: query
-          description: How dates, times, and durations should be represented in the output.
-          schema:
-            $ref: '#/components/schemas/DateTimeRenderOption'
+      - $ref: '#/components/parameters/spreadsheetId'
+      - name: ranges
+        in: query
+        description: The A1 notation or R1C1 notation of the range to retrieve values from.
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+        example: []
+      - name: majorDimension
+        in: query
+        description: The major dimension that results should use.
+        schema:
+          $ref: '#/components/schemas/Dimension'
+        example: example_value
+      - name: valueRenderOption
+        in: query
+        description: How values should be represented in the output.
+        schema:
+          $ref: '#/components/schemas/ValueRenderOption'
+        example: example_value
+      - name: dateTimeRenderOption
+        in: query
+        description: How dates, times, and durations should be represented in the output.
+        schema:
+          $ref: '#/components/schemas/DateTimeRenderOption'
+        example: example_value
       responses:
         '200':
           description: Successful response containing the requested values.
@@ -430,6 +742,15 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchGetValuesResponse'
+              examples:
+                Batchgetvalues200Example:
+                  summary: Default batchGetValues 200 response
+                  x-microcks-default: true
+                  value:
+                    spreadsheetId: '500123'
+                    valueRanges:
+                    - range: example_value
+                      values: {}
         '401':
           $ref: '#/components/responses/Unauthorized'
         '403':
@@ -439,18 +760,21 @@ paths:
         '429':
           $ref: '#/components/responses/TooManyRequests'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /spreadsheets/{spreadsheetId}/values:batchUpdate:
     post:
       operationId: batchUpdateValues
-      summary: Google Sheets Update values in multiple ranges
+      summary: Google Sheets Update Values in Multiple Ranges
       description: >-
         Sets values in one or more ranges of a spreadsheet. The caller must
         specify the spreadsheet ID, a valueInputOption, and one or more
         ValueRanges.
       tags:
-        - Values
+      - Values
       parameters:
-        - $ref: '#/components/parameters/spreadsheetId'
+      - $ref: '#/components/parameters/spreadsheetId'
       requestBody:
         description: The batch update values request.
         required: true
@@ -458,6 +782,18 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/BatchUpdateValuesRequest'
+            examples:
+              BatchupdatevaluesRequestExample:
+                summary: Default batchUpdateValues request
+                x-microcks-default: true
+                value:
+                  valueInputOption: INPUT_VALUE_OPTION_UNSPECIFIED
+                  data:
+                  - range: example_value
+                    values: {}
+                  includeValuesInResponse: true
+                  responseValueRenderOption: FORMATTED_VALUE
+                  responseDateTimeRenderOption: SERIAL_NUMBER
       responses:
         '200':
           description: Successful response containing the batch update results.
@@ -465,6 +801,22 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchUpdateValuesResponse'
+              examples:
+                Batchupdatevalues200Example:
+                  summary: Default batchUpdateValues 200 response
+                  x-microcks-default: true
+                  value:
+                    spreadsheetId: '500123'
+                    totalUpdatedRows: 10
+                    totalUpdatedColumns: 10
+                    totalUpdatedCells: 10
+                    totalUpdatedSheets: 10
+                    responses:
+                    - spreadsheetId: '500123'
+                      updatedRange: example_value
+                      updatedRows: 10
+                      updatedColumns: 10
+                      updatedCells: 10
         '401':
           $ref: '#/components/responses/Unauthorized'
         '403':
@@ -474,18 +826,21 @@ paths:
         '429':
           $ref: '#/components/responses/TooManyRequests'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /spreadsheets/{spreadsheetId}/values:batchClear:
     post:
       operationId: batchClearValues
-      summary: Google Sheets Clear values from multiple ranges
+      summary: Google Sheets Clear Values From Multiple Ranges
       description: >-
         Clears one or more ranges of values from a spreadsheet. The caller
         must specify the spreadsheet ID and one or more ranges. Only values
         are cleared; all other properties of the cell are kept.
       tags:
-        - Values
+      - Values
       parameters:
-        - $ref: '#/components/parameters/spreadsheetId'
+      - $ref: '#/components/parameters/spreadsheetId'
       requestBody:
         description: The batch clear values request.
         required: true
@@ -499,6 +854,13 @@ paths:
                   description: The ranges to clear in A1 or R1C1 notation.
                   items:
                     type: string
+            examples:
+              BatchclearvaluesRequestExample:
+                summary: Default batchClearValues request
+                x-microcks-default: true
+                value:
+                  ranges:
+                  - example_value
       responses:
         '200':
           description: Successful response containing the cleared ranges.
@@ -506,6 +868,14 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchClearValuesResponse'
+              examples:
+                Batchclearvalues200Example:
+                  summary: Default batchClearValues 200 response
+                  x-microcks-default: true
+                  value:
+                    spreadsheetId: '500123'
+                    clearedRanges:
+                    - example_value
         '401':
           $ref: '#/components/responses/Unauthorized'
         '403':
@@ -515,19 +885,22 @@ paths:
         '429':
           $ref: '#/components/responses/TooManyRequests'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /spreadsheets/{spreadsheetId}/values:batchGetByDataFilter:
     post:
       operationId: batchGetValuesByDataFilter
-      summary: Google Sheets Get values from ranges matching data filters
+      summary: Google Sheets Get Values From Ranges Matching Data Filters
       description: >-
         Returns one or more ranges of values that match the specified data
         filters. The caller must specify the spreadsheet ID and one or more
         DataFilters. Ranges that match any of the data filters in the request
         will be returned.
       tags:
-        - Values
+      - Values
       parameters:
-        - $ref: '#/components/parameters/spreadsheetId'
+      - $ref: '#/components/parameters/spreadsheetId'
       requestBody:
         description: The data filter request.
         required: true
@@ -547,6 +920,16 @@ paths:
                   $ref: '#/components/schemas/ValueRenderOption'
                 dateTimeRenderOption:
                   $ref: '#/components/schemas/DateTimeRenderOption'
+            examples:
+              BatchgetvaluesbydatafilterRequestExample:
+                summary: Default batchGetValuesByDataFilter request
+                x-microcks-default: true
+                value:
+                  dataFilters:
+                  - a1Range: example_value
+                  majorDimension: DIMENSION_UNSPECIFIED
+                  valueRenderOption: FORMATTED_VALUE
+                  dateTimeRenderOption: SERIAL_NUMBER
       responses:
         '200':
           description: Successful response containing the requested values.
@@ -554,6 +937,15 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchGetValuesByDataFilterResponse'
+              examples:
+                Batchgetvaluesbydatafilter200Example:
+                  summary: Default batchGetValuesByDataFilter 200 response
+                  x-microcks-default: true
+                  value:
+                    spreadsheetId: '500123'
+                    valueRanges:
+                    - dataFilters:
+                      - {}
         '401':
           $ref: '#/components/responses/Unauthorized'
         '403':
@@ -563,18 +955,21 @@ paths:
         '429':
           $ref: '#/components/responses/TooManyRequests'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /spreadsheets/{spreadsheetId}/values:batchUpdateByDataFilter:
     post:
       operationId: batchUpdateValuesByDataFilter
-      summary: Google Sheets Update values in ranges matching data filters
+      summary: Google Sheets Update Values in Ranges Matching Data Filters
       description: >-
         Sets values in one or more ranges of a spreadsheet matching the
         specified data filters. The caller must specify the spreadsheet ID, a
         valueInputOption, and one or more DataFilterValueRanges.
       tags:
-        - Values
+      - Values
       parameters:
-        - $ref: '#/components/parameters/spreadsheetId'
+      - $ref: '#/components/parameters/spreadsheetId'
       requestBody:
         description: The data filter update request.
         required: true
@@ -598,6 +993,18 @@ paths:
                   $ref: '#/components/schemas/ValueRenderOption'
                 responseDateTimeRenderOption:
                   $ref: '#/components/schemas/DateTimeRenderOption'
+            examples:
+              BatchupdatevaluesbydatafilterRequestExample:
+                summary: Default batchUpdateValuesByDataFilter request
+                x-microcks-default: true
+                value:
+                  valueInputOption: INPUT_VALUE_OPTION_UNSPECIFIED
+                  data:
+                  - values:
+                    - {}
+                  includeValuesInResponse: true
+                  responseValueRenderOption: FORMATTED_VALUE
+                  responseDateTimeRenderOption: SERIAL_NUMBER
       responses:
         '200':
           description: Successful response containing the update results.
@@ -605,6 +1012,21 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchUpdateValuesByDataFilterResponse'
+              examples:
+                Batchupdatevaluesbydatafilter200Example:
+                  summary: Default batchUpdateValuesByDataFilter 200 response
+                  x-microcks-default: true
+                  value:
+                    spreadsheetId: '500123'
+                    totalUpdatedRows: 10
+                    totalUpdatedColumns: 10
+                    totalUpdatedCells: 10
+                    totalUpdatedSheets: 10
+                    responses:
+                    - updatedRange: example_value
+                      updatedRows: 10
+                      updatedColumns: 10
+                      updatedCells: 10
         '401':
           $ref: '#/components/responses/Unauthorized'
         '403':
@@ -614,18 +1036,21 @@ paths:
         '429':
           $ref: '#/components/responses/TooManyRequests'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /spreadsheets/{spreadsheetId}/values:batchClearByDataFilter:
     post:
       operationId: batchClearValuesByDataFilter
-      summary: Google Sheets Clear values from ranges matching data filters
+      summary: Google Sheets Clear Values From Ranges Matching Data Filters
       description: >-
         Clears one or more ranges of values from a spreadsheet matching the
         specified data filters. The caller must specify the spreadsheet ID
         and one or more DataFilters.
       tags:
-        - Values
+      - Values
       parameters:
-        - $ref: '#/components/parameters/spreadsheetId'
+      - $ref: '#/components/parameters/spreadsheetId'
       requestBody:
         description: The data filter clear request.
         required: true
@@ -639,6 +1064,13 @@ paths:
                   description: The DataFilters used to determine which ranges to clear.
                   items:
                     $ref: '#/components/schemas/DataFilter'
+            examples:
+              BatchclearvaluesbydatafilterRequestExample:
+                summary: Default batchClearValuesByDataFilter request
+                x-microcks-default: true
+                value:
+                  dataFilters:
+                  - a1Range: example_value
       responses:
         '200':
           description: Successful response containing the cleared ranges.
@@ -646,6 +1078,14 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchClearValuesByDataFilterResponse'
+              examples:
+                Batchclearvaluesbydatafilter200Example:
+                  summary: Default batchClearValuesByDataFilter 200 response
+                  x-microcks-default: true
+                  value:
+                    spreadsheetId: '500123'
+                    clearedRanges:
+                    - example_value
         '401':
           $ref: '#/components/responses/Unauthorized'
         '403':
@@ -655,23 +1095,27 @@ paths:
         '429':
           $ref: '#/components/responses/TooManyRequests'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /spreadsheets/{spreadsheetId}/sheets/{sheetId}:copyTo:
     post:
       operationId: copySheet
-      summary: Google Sheets Copy a sheet to another spreadsheet
+      summary: Google Sheets Copy a Sheet to Another Spreadsheet
       description: >-
         Copies a single sheet from a spreadsheet to another spreadsheet.
         Returns the properties of the newly created sheet.
       tags:
-        - Sheets
+      - Sheets
       parameters:
-        - $ref: '#/components/parameters/spreadsheetId'
-        - name: sheetId
-          in: path
-          description: The ID of the sheet to copy.
-          required: true
-          schema:
-            type: integer
+      - $ref: '#/components/parameters/spreadsheetId'
+      - name: sheetId
+        in: path
+        description: The ID of the sheet to copy.
+        required: true
+        schema:
+          type: integer
+        example: '500123'
       requestBody:
         description: The request to copy a sheet.
         required: true
@@ -680,11 +1124,17 @@ paths:
             schema:
               type: object
               required:
-                - destinationSpreadsheetId
+              - destinationSpreadsheetId
               properties:
                 destinationSpreadsheetId:
                   type: string
                   description: The ID of the spreadsheet to copy the sheet to.
+            examples:
+              CopysheetRequestExample:
+                summary: Default copySheet request
+                x-microcks-default: true
+                value:
+                  destinationSpreadsheetId: '500123'
       responses:
         '200':
           description: Successful response containing the properties of the copied sheet.
@@ -692,6 +1142,36 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SheetProperties'
+              examples:
+                Copysheet200Example:
+                  summary: Default copySheet 200 response
+                  x-microcks-default: true
+                  value:
+                    sheetId: '500123'
+                    title: Example Title
+                    index: 10
+                    sheetType: GRID
+                    gridProperties:
+                      rowCount: 10
+                      columnCount: 10
+                      frozenRowCount: 10
+                      frozenColumnCount: 10
+                      hideGridlines: true
+                      rowGroupControlAfter: true
+                      columnGroupControlAfter: true
+                    hidden: true
+                    tabColor:
+                      red: 42.5
+                      green: 42.5
+                      blue: 42.5
+                      alpha: 42.5
+                    tabColorStyle:
+                      themeColor: THEME_COLOR_TYPE_UNSPECIFIED
+                    rightToLeft: true
+                    dataSourceSheetProperties:
+                      dataSourceId: '500123'
+                      columns:
+                      - {}
         '401':
           $ref: '#/components/responses/Unauthorized'
         '403':
@@ -701,24 +1181,28 @@ paths:
         '429':
           $ref: '#/components/responses/TooManyRequests'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /spreadsheets/{spreadsheetId}/developerMetadata/{metadataId}:
     get:
       operationId: getDeveloperMetadata
-      summary: Google Sheets Get developer metadata
+      summary: Google Sheets Get Developer Metadata
       description: >-
         Returns the developer metadata with the specified ID. The caller must
         specify the spreadsheet ID and the developer metadata's unique
         metadataId.
       tags:
-        - developerMetadata
+      - developerMetadata
       parameters:
-        - $ref: '#/components/parameters/spreadsheetId'
-        - name: metadataId
-          in: path
-          description: The ID of the developer metadata to retrieve.
-          required: true
-          schema:
-            type: integer
+      - $ref: '#/components/parameters/spreadsheetId'
+      - name: metadataId
+        in: path
+        description: The ID of the developer metadata to retrieve.
+        required: true
+        schema:
+          type: integer
+        example: '500123'
       responses:
         '200':
           description: Successful response containing the developer metadata.
@@ -726,6 +1210,19 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeveloperMetadata'
+              examples:
+                Getdevelopermetadata200Example:
+                  summary: Default getDeveloperMetadata 200 response
+                  x-microcks-default: true
+                  value:
+                    metadataId: '500123'
+                    metadataKey: example_value
+                    metadataValue: example_value
+                    location:
+                      locationType: DEVELOPER_METADATA_LOCATION_TYPE_UNSPECIFIED
+                      spreadsheet: true
+                      sheetId: '500123'
+                    visibility: DEVELOPER_METADATA_VISIBILITY_UNSPECIFIED
         '401':
           $ref: '#/components/responses/Unauthorized'
         '403':
@@ -735,18 +1232,21 @@ paths:
         '429':
           $ref: '#/components/responses/TooManyRequests'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /spreadsheets/{spreadsheetId}/developerMetadata:search:
     post:
       operationId: searchDeveloperMetadata
-      summary: Google Sheets Search developer metadata
+      summary: Google Sheets Search Developer Metadata
       description: >-
         Returns all developer metadata matching the specified DataFilter. If
         the provided DataFilter represents a DeveloperMetadataLookup object,
         this will return all DeveloperMetadata entries selected by it.
       tags:
-        - developerMetadata
+      - developerMetadata
       parameters:
-        - $ref: '#/components/parameters/spreadsheetId'
+      - $ref: '#/components/parameters/spreadsheetId'
       requestBody:
         description: The search request.
         required: true
@@ -760,6 +1260,13 @@ paths:
                   description: The data filters describing the criteria used to determine which developer metadata entries to return.
                   items:
                     $ref: '#/components/schemas/DataFilter'
+            examples:
+              SearchdevelopermetadataRequestExample:
+                summary: Default searchDeveloperMetadata request
+                x-microcks-default: true
+                value:
+                  dataFilters:
+                  - a1Range: example_value
       responses:
         '200':
           description: Successful response containing matching developer metadata.
@@ -779,6 +1286,19 @@ paths:
                           type: array
                           items:
                             $ref: '#/components/schemas/DataFilter'
+              examples:
+                Searchdevelopermetadata200Example:
+                  summary: Default searchDeveloperMetadata 200 response
+                  x-microcks-default: true
+                  value:
+                    matchedDeveloperMetadata:
+                    - developerMetadata:
+                        metadataId: '500123'
+                        metadataKey: example_value
+                        metadataValue: example_value
+                        visibility: DEVELOPER_METADATA_VISIBILITY_UNSPECIFIED
+                      dataFilters:
+                      - {}
         '401':
           $ref: '#/components/responses/Unauthorized'
         '403':
@@ -788,6 +1308,9 @@ paths:
         '429':
           $ref: '#/components/responses/TooManyRequests'
 
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
 components:
   securitySchemes:
     oauth2:
@@ -862,6 +1385,7 @@ components:
           type: string
           description: The ID of the spreadsheet. Read-only.
           readOnly: true
+          example: '500123'
         properties:
           $ref: '#/components/schemas/SpreadsheetProperties'
         sheets:
@@ -869,26 +1393,31 @@ components:
           description: The sheets that are part of a spreadsheet.
           items:
             $ref: '#/components/schemas/Sheet'
+          example: []
         namedRanges:
           type: array
           description: The named ranges defined in a spreadsheet.
           items:
             $ref: '#/components/schemas/NamedRange'
+          example: []
         spreadsheetUrl:
           type: string
           format: uri
           description: The URL of the spreadsheet. Read-only.
           readOnly: true
+          example: https://www.example.com
         developerMetadata:
           type: array
           description: The developer metadata associated with a spreadsheet.
           items:
             $ref: '#/components/schemas/DeveloperMetadata'
+          example: []
         dataSources:
           type: array
           description: A list of external data sources connected to the spreadsheet.
           items:
             $ref: '#/components/schemas/DataSource'
+          example: []
         dataSourceSchedules:
           type: array
           description: Output only. A list of data source refresh schedules.
@@ -896,6 +1425,7 @@ components:
           items:
             $ref: '#/components/schemas/DataSourceRefreshSchedule'
 
+          example: []
     SpreadsheetProperties:
       type: object
       description: Properties of a spreadsheet.
@@ -903,22 +1433,26 @@ components:
         title:
           type: string
           description: The title of the spreadsheet.
+          example: Example Title
         locale:
           type: string
           description: >-
             The locale of the spreadsheet in one of the following formats:
             an ISO 639-1 language code, an ISO 639-2 language code, or a
             combination of the ISO language code and country code (e.g. en, eng, en_US).
+          example: example_value
         autoRecalc:
           type: string
           description: The amount of time to wait before volatile functions are recalculated.
           enum:
-            - ON_CHANGE
-            - MINUTE
-            - HOUR
+          - ON_CHANGE
+          - MINUTE
+          - HOUR
+          example: ON_CHANGE
         timeZone:
           type: string
           description: The time zone of the spreadsheet in CLDR format (e.g. America/New_York).
+          example: example_value
         defaultFormat:
           $ref: '#/components/schemas/CellFormat'
         iterativeCalculationSettings:
@@ -929,6 +1463,7 @@ components:
           type: boolean
           description: Whether to allow external URL access for image and import functions.
 
+          example: https://www.example.com
     Sheet:
       type: object
       description: A sheet in a spreadsheet.
@@ -940,26 +1475,31 @@ components:
           description: Data in the grid, if this is a grid sheet.
           items:
             $ref: '#/components/schemas/GridData'
+          example: []
         merges:
           type: array
           description: The ranges that are merged together.
           items:
             $ref: '#/components/schemas/GridRange'
+          example: []
         conditionalFormats:
           type: array
           description: The conditional format rules in this sheet.
           items:
             $ref: '#/components/schemas/ConditionalFormatRule'
+          example: []
         filterViews:
           type: array
           description: The filter views in this sheet.
           items:
             $ref: '#/components/schemas/FilterView'
+          example: []
         protectedRanges:
           type: array
           description: The protected ranges in this sheet.
           items:
             $ref: '#/components/schemas/ProtectedRange'
+          example: []
         basicFilter:
           $ref: '#/components/schemas/BasicFilter'
         charts:
@@ -967,17 +1507,20 @@ components:
           description: The specifications of every chart on this sheet.
           items:
             $ref: '#/components/schemas/EmbeddedChart'
+          example: []
         bandedRanges:
           type: array
           description: The banded (alternating colors) ranges on this sheet.
           items:
             $ref: '#/components/schemas/BandedRange'
+          example: []
         slicers:
           type: array
           description: The slicers on this sheet.
           items:
             $ref: '#/components/schemas/Slicer'
 
+          example: []
     SheetProperties:
       type: object
       description: Properties of a sheet.
@@ -985,24 +1528,29 @@ components:
         sheetId:
           type: integer
           description: The ID of the sheet. Must be non-negative. This field cannot be changed once set.
+          example: '500123'
         title:
           type: string
           description: The name of the sheet.
+          example: Example Title
         index:
           type: integer
           description: The index of the sheet within the spreadsheet.
+          example: 10
         sheetType:
           type: string
           description: The type of sheet.
           enum:
-            - GRID
-            - OBJECT
-            - DATA_SOURCE
+          - GRID
+          - OBJECT
+          - DATA_SOURCE
+          example: GRID
         gridProperties:
           $ref: '#/components/schemas/GridProperties'
         hidden:
           type: boolean
           description: True if the sheet is hidden in the UI, false if visible.
+          example: true
         tabColor:
           $ref: '#/components/schemas/Color'
         tabColorStyle:
@@ -1010,6 +1558,7 @@ components:
         rightToLeft:
           type: boolean
           description: True if the sheet is an RTL sheet instead of an LTR sheet.
+          example: true
         dataSourceSheetProperties:
           $ref: '#/components/schemas/DataSourceSheetProperties'
 
@@ -1020,25 +1569,32 @@ components:
         rowCount:
           type: integer
           description: The number of rows in the grid.
+          example: 10
         columnCount:
           type: integer
           description: The number of columns in the grid.
+          example: 10
         frozenRowCount:
           type: integer
           description: The number of rows that are frozen in the grid.
+          example: 10
         frozenColumnCount:
           type: integer
           description: The number of columns that are frozen in the grid.
+          example: 10
         hideGridlines:
           type: boolean
           description: True if the grid is not showing gridlines in the UI.
+          example: true
         rowGroupControlAfter:
           type: boolean
           description: True if the row grouping control toggle is shown after the group.
+          example: true
         columnGroupControlAfter:
           type: boolean
           description: True if the column grouping control toggle is shown after the group.
 
+          example: true
     GridData:
       type: object
       description: Data in the grid, as well as metadata about the dimensions.
@@ -1046,25 +1602,30 @@ components:
         startRow:
           type: integer
           description: The first row this GridData refers to, zero-based.
+          example: 10
         startColumn:
           type: integer
           description: The first column this GridData refers to, zero-based.
+          example: 10
         rowData:
           type: array
           description: The data in the grid, one entry per row, starting with the row in startRow.
           items:
             $ref: '#/components/schemas/RowData'
+          example: []
         rowMetadata:
           type: array
           description: Metadata about the requested rows in the grid, starting with the row in startRow.
           items:
             $ref: '#/components/schemas/DimensionProperties'
+          example: []
         columnMetadata:
           type: array
           description: Metadata about the requested columns in the grid, starting with the column in startColumn.
           items:
             $ref: '#/components/schemas/DimensionProperties'
 
+          example: []
     RowData:
       type: object
       description: Data about each cell in a row.
@@ -1075,6 +1636,7 @@ components:
           items:
             $ref: '#/components/schemas/CellData'
 
+          example: []
     CellData:
       type: object
       description: Data about a specific cell.
@@ -1086,6 +1648,7 @@ components:
         formattedValue:
           type: string
           description: The formatted value of the cell. This is the value as it is shown to the user.
+          example: example_value
         userEnteredFormat:
           $ref: '#/components/schemas/CellFormat'
         effectiveFormat:
@@ -1093,14 +1656,17 @@ components:
         hyperlink:
           type: string
           description: A hyperlink this cell points to, if any.
+          example: example_value
         note:
           type: string
           description: Any note on the cell.
+          example: example_value
         textFormatRuns:
           type: array
           description: Runs of rich text applied to subsections of the cell.
           items:
             $ref: '#/components/schemas/TextFormatRun'
+          example: []
         dataValidation:
           $ref: '#/components/schemas/DataValidationRule'
         pivotTable:
@@ -1117,15 +1683,19 @@ components:
         numberValue:
           type: number
           description: Represents a double value.
+          example: 42.5
         stringValue:
           type: string
           description: Represents a string value.
+          example: example_value
         boolValue:
           type: boolean
           description: Represents a boolean value.
+          example: true
         formulaValue:
           type: string
           description: Represents a formula.
+          example: example_value
         errorValue:
           $ref: '#/components/schemas/ErrorValue'
 
@@ -1137,20 +1707,22 @@ components:
           type: string
           description: The type of error.
           enum:
-            - ERROR_TYPE_UNSPECIFIED
-            - ERROR
-            - NULL_VALUE
-            - DIVIDE_BY_ZERO
-            - VALUE
-            - REF
-            - NAME
-            - NUM
-            - N_A
-            - LOADING
+          - ERROR_TYPE_UNSPECIFIED
+          - ERROR
+          - NULL_VALUE
+          - DIVIDE_BY_ZERO
+          - VALUE
+          - REF
+          - NAME
+          - NUM
+          - N_A
+          - LOADING
+          example: ERROR_TYPE_UNSPECIFIED
         message:
           type: string
           description: A message with more information about the error.
 
+          example: example_value
     CellFormat:
       type: object
       description: The format of a cell.
@@ -1169,43 +1741,48 @@ components:
           type: string
           description: The horizontal alignment of the value in the cell.
           enum:
-            - HORIZONTAL_ALIGN_UNSPECIFIED
-            - LEFT
-            - CENTER
-            - RIGHT
+          - HORIZONTAL_ALIGN_UNSPECIFIED
+          - LEFT
+          - CENTER
+          - RIGHT
+          example: HORIZONTAL_ALIGN_UNSPECIFIED
         verticalAlignment:
           type: string
           description: The vertical alignment of the value in the cell.
           enum:
-            - VERTICAL_ALIGN_UNSPECIFIED
-            - TOP
-            - MIDDLE
-            - BOTTOM
+          - VERTICAL_ALIGN_UNSPECIFIED
+          - TOP
+          - MIDDLE
+          - BOTTOM
+          example: VERTICAL_ALIGN_UNSPECIFIED
         wrapStrategy:
           type: string
           description: The wrap strategy for the value in the cell.
           enum:
-            - WRAP_STRATEGY_UNSPECIFIED
-            - OVERFLOW_CELL
-            - LEGACY_WRAP
-            - CLIP
-            - WRAP
+          - WRAP_STRATEGY_UNSPECIFIED
+          - OVERFLOW_CELL
+          - LEGACY_WRAP
+          - CLIP
+          - WRAP
+          example: WRAP_STRATEGY_UNSPECIFIED
         textDirection:
           type: string
           description: The direction of the text in the cell.
           enum:
-            - TEXT_DIRECTION_UNSPECIFIED
-            - LEFT_TO_RIGHT
-            - RIGHT_TO_LEFT
+          - TEXT_DIRECTION_UNSPECIFIED
+          - LEFT_TO_RIGHT
+          - RIGHT_TO_LEFT
+          example: TEXT_DIRECTION_UNSPECIFIED
         textFormat:
           $ref: '#/components/schemas/TextFormat'
         hyperlinkDisplayType:
           type: string
           description: How a hyperlink, if any, should be displayed in the cell.
           enum:
-            - HYPERLINK_DISPLAY_TYPE_UNSPECIFIED
-            - LINKED
-            - PLAIN_TEXT
+          - HYPERLINK_DISPLAY_TYPE_UNSPECIFIED
+          - LINKED
+          - PLAIN_TEXT
+          example: HYPERLINK_DISPLAY_TYPE_UNSPECIFIED
         textRotation:
           $ref: '#/components/schemas/TextRotation'
 
@@ -1217,19 +1794,21 @@ components:
           type: string
           description: The type of the number format.
           enum:
-            - NUMBER_FORMAT_TYPE_UNSPECIFIED
-            - TEXT
-            - NUMBER
-            - PERCENT
-            - CURRENCY
-            - DATE
-            - TIME
-            - DATE_TIME
-            - SCIENTIFIC
+          - NUMBER_FORMAT_TYPE_UNSPECIFIED
+          - TEXT
+          - NUMBER
+          - PERCENT
+          - CURRENCY
+          - DATE
+          - TIME
+          - DATE_TIME
+          - SCIENTIFIC
+          example: NUMBER_FORMAT_TYPE_UNSPECIFIED
         pattern:
           type: string
           description: Pattern string used for formatting.
 
+          example: example_value
     TextFormat:
       type: object
       description: The format of a run of text in a cell.
@@ -1241,21 +1820,27 @@ components:
         fontFamily:
           type: string
           description: The font family.
+          example: example_value
         fontSize:
           type: integer
           description: The size of the font.
+          example: 10
         bold:
           type: boolean
           description: True if the text is bold.
+          example: true
         italic:
           type: boolean
           description: True if the text is italicized.
+          example: true
         strikethrough:
           type: boolean
           description: True if the text has a strikethrough.
+          example: true
         underline:
           type: boolean
           description: True if the text is underlined.
+          example: true
         link:
           $ref: '#/components/schemas/Link'
 
@@ -1266,6 +1851,7 @@ components:
         startIndex:
           type: integer
           description: The character index where this run starts (zero-based).
+          example: 10
         format:
           $ref: '#/components/schemas/TextFormat'
 
@@ -1277,6 +1863,7 @@ components:
           type: string
           description: The link identifier.
 
+          example: example_value
     Color:
       type: object
       description: >-
@@ -1286,18 +1873,22 @@ components:
         red:
           type: number
           description: The amount of red in the color as a value in the range [0, 1].
+          example: 42.5
         green:
           type: number
           description: The amount of green in the color as a value in the range [0, 1].
+          example: 42.5
         blue:
           type: number
           description: The amount of blue in the color as a value in the range [0, 1].
+          example: 42.5
         alpha:
           type: number
           description: >-
             The fraction of this color that should be applied to the pixel.
             A value of 1.0 corresponds to a solid color.
 
+          example: 42.5
     ColorStyle:
       type: object
       description: A color value.
@@ -1308,17 +1899,18 @@ components:
           type: string
           description: Theme color type.
           enum:
-            - THEME_COLOR_TYPE_UNSPECIFIED
-            - TEXT
-            - BACKGROUND
-            - ACCENT1
-            - ACCENT2
-            - ACCENT3
-            - ACCENT4
-            - ACCENT5
-            - ACCENT6
-            - LINK
+          - THEME_COLOR_TYPE_UNSPECIFIED
+          - TEXT
+          - BACKGROUND
+          - ACCENT1
+          - ACCENT2
+          - ACCENT3
+          - ACCENT4
+          - ACCENT5
+          - ACCENT6
+          - LINK
 
+          example: THEME_COLOR_TYPE_UNSPECIFIED
     Borders:
       type: object
       description: The borders of the cell.
@@ -1340,18 +1932,20 @@ components:
           type: string
           description: The style of the border.
           enum:
-            - STYLE_UNSPECIFIED
-            - DOTTED
-            - DASHED
-            - SOLID
-            - SOLID_MEDIUM
-            - SOLID_THICK
-            - NONE
-            - DOUBLE
+          - STYLE_UNSPECIFIED
+          - DOTTED
+          - DASHED
+          - SOLID
+          - SOLID_MEDIUM
+          - SOLID_THICK
+          - NONE
+          - DOUBLE
+          example: STYLE_UNSPECIFIED
         width:
           type: integer
           description: The width of the border, in pixels. Deprecated; the width is determined by the style.
           deprecated: true
+          example: 10
         color:
           $ref: '#/components/schemas/Color'
         colorStyle:
@@ -1364,16 +1958,20 @@ components:
         top:
           type: integer
           description: The top padding of the cell.
+          example: 10
         right:
           type: integer
           description: The right padding of the cell.
+          example: 10
         bottom:
           type: integer
           description: The bottom padding of the cell.
+          example: 10
         left:
           type: integer
           description: The left padding of the cell.
 
+          example: 10
     TextRotation:
       type: object
       description: The rotation applied to text in a cell.
@@ -1384,10 +1982,12 @@ components:
             The angle between the standard orientation and the desired
             orientation. Measured in degrees. Valid values are between -90
             and 90.
+          example: 10
         vertical:
           type: boolean
           description: If true, text reads top to bottom, but the orientation of individual characters is unchanged.
 
+          example: true
     DimensionProperties:
       type: object
       description: Properties about a dimension.
@@ -1395,17 +1995,21 @@ components:
         hiddenByFilter:
           type: boolean
           description: True if this dimension is being filtered.
+          example: true
         hiddenByUser:
           type: boolean
           description: True if this dimension is explicitly hidden.
+          example: true
         pixelSize:
           type: integer
           description: The height (for rows) or width (for columns) of the dimension in pixels.
+          example: 10
         developerMetadata:
           type: array
           description: The developer metadata associated with a single row or column.
           items:
             $ref: '#/components/schemas/DeveloperMetadata'
+          example: []
         dataSourceColumnReference:
           $ref: '#/components/schemas/DataSourceColumnReference'
 
@@ -1417,6 +2021,7 @@ components:
           type: string
           description: The display name of the column.
 
+          example: Example Title
     GridRange:
       type: object
       description: A range on a sheet. All indexes are zero-based.
@@ -1424,19 +2029,24 @@ components:
         sheetId:
           type: integer
           description: The sheet this range is on.
+          example: '500123'
         startRowIndex:
           type: integer
           description: The start row (inclusive) of the range, or not set if unbounded.
+          example: 10
         endRowIndex:
           type: integer
           description: The end row (exclusive) of the range, or not set if unbounded.
+          example: 10
         startColumnIndex:
           type: integer
           description: The start column (inclusive) of the range, or not set if unbounded.
+          example: 10
         endColumnIndex:
           type: integer
           description: The end column (exclusive) of the range, or not set if unbounded.
 
+          example: 10
     NamedRange:
       type: object
       description: A named range.
@@ -1444,9 +2054,11 @@ components:
         namedRangeId:
           type: string
           description: The ID of the named range.
+          example: '500123'
         name:
           type: string
           description: The name of the named range.
+          example: Example Title
         range:
           $ref: '#/components/schemas/GridRange'
 
@@ -1460,6 +2072,7 @@ components:
             The range the values cover, in A1 notation. For output, this
             range indicates the entire requested range, even though the
             values response will include only the non-empty rows and columns.
+          example: example_value
         majorDimension:
           $ref: '#/components/schemas/Dimension'
         values:
@@ -1471,37 +2084,38 @@ components:
           items:
             type: array
             items: {}
+          example: []
 
     Dimension:
       type: string
       description: Indicates which dimension an operation should apply to.
       enum:
-        - DIMENSION_UNSPECIFIED
-        - ROWS
-        - COLUMNS
+      - DIMENSION_UNSPECIFIED
+      - ROWS
+      - COLUMNS
 
     ValueInputOption:
       type: string
       description: Determines how input data should be interpreted.
       enum:
-        - INPUT_VALUE_OPTION_UNSPECIFIED
-        - RAW
-        - USER_ENTERED
+      - INPUT_VALUE_OPTION_UNSPECIFIED
+      - RAW
+      - USER_ENTERED
 
     ValueRenderOption:
       type: string
       description: Determines how values should be rendered in the output.
       enum:
-        - FORMATTED_VALUE
-        - UNFORMATTED_VALUE
-        - FORMULA
+      - FORMATTED_VALUE
+      - UNFORMATTED_VALUE
+      - FORMULA
 
     DateTimeRenderOption:
       type: string
       description: Determines how dates, times, and durations should be rendered in the output.
       enum:
-        - SERIAL_NUMBER
-        - FORMATTED_STRING
+      - SERIAL_NUMBER
+      - FORMATTED_STRING
 
     DataFilter:
       type: object
@@ -1512,6 +2126,7 @@ components:
         a1Range:
           type: string
           description: Selects data that matches the specified A1 range.
+          example: example_value
         gridRange:
           $ref: '#/components/schemas/GridRange'
 
@@ -1529,6 +2144,7 @@ components:
           items:
             type: array
             items: {}
+          example: []
 
     DeveloperMetadata:
       type: object
@@ -1537,22 +2153,26 @@ components:
         metadataId:
           type: integer
           description: The spreadsheet-scoped unique ID that identifies the metadata.
+          example: '500123'
         metadataKey:
           type: string
           description: The metadata key.
+          example: example_value
         metadataValue:
           type: string
           description: Data associated with the metadata's key.
+          example: example_value
         location:
           $ref: '#/components/schemas/DeveloperMetadataLocation'
         visibility:
           type: string
           description: The metadata visibility.
           enum:
-            - DEVELOPER_METADATA_VISIBILITY_UNSPECIFIED
-            - DOCUMENT
-            - PROJECT
+          - DEVELOPER_METADATA_VISIBILITY_UNSPECIFIED
+          - DOCUMENT
+          - PROJECT
 
+          example: DEVELOPER_METADATA_VISIBILITY_UNSPECIFIED
     DeveloperMetadataLocation:
       type: object
       description: A location where metadata may be associated in a spreadsheet.
@@ -1561,17 +2181,20 @@ components:
           type: string
           description: The type of location this object represents.
           enum:
-            - DEVELOPER_METADATA_LOCATION_TYPE_UNSPECIFIED
-            - ROW
-            - COLUMN
-            - SHEET
-            - SPREADSHEET
+          - DEVELOPER_METADATA_LOCATION_TYPE_UNSPECIFIED
+          - ROW
+          - COLUMN
+          - SHEET
+          - SPREADSHEET
+          example: DEVELOPER_METADATA_LOCATION_TYPE_UNSPECIFIED
         spreadsheet:
           type: boolean
           description: True when metadata is associated with an entire spreadsheet.
+          example: true
         sheetId:
           type: integer
           description: The ID of the sheet when metadata is associated with an entire sheet.
+          example: '500123'
         dimensionRange:
           $ref: '#/components/schemas/DimensionRange'
 
@@ -1583,37 +2206,43 @@ components:
           type: string
           description: Limits the selected developer metadata to that which has a matching location type.
           enum:
-            - DEVELOPER_METADATA_LOCATION_TYPE_UNSPECIFIED
-            - ROW
-            - COLUMN
-            - SHEET
-            - SPREADSHEET
+          - DEVELOPER_METADATA_LOCATION_TYPE_UNSPECIFIED
+          - ROW
+          - COLUMN
+          - SHEET
+          - SPREADSHEET
+          example: DEVELOPER_METADATA_LOCATION_TYPE_UNSPECIFIED
         metadataLocation:
           $ref: '#/components/schemas/DeveloperMetadataLocation'
         locationMatchingStrategy:
           type: string
           description: Determines how this lookup matches the location.
           enum:
-            - DEVELOPER_METADATA_LOCATION_MATCHING_STRATEGY_UNSPECIFIED
-            - EXACT_LOCATION
-            - INTERSECTING_LOCATION
+          - DEVELOPER_METADATA_LOCATION_MATCHING_STRATEGY_UNSPECIFIED
+          - EXACT_LOCATION
+          - INTERSECTING_LOCATION
+          example: DEVELOPER_METADATA_LOCATION_MATCHING_STRATEGY_UNSPECIFIED
         metadataId:
           type: integer
           description: Limits the selected developer metadata to that which has a matching metadata ID.
+          example: '500123'
         metadataKey:
           type: string
           description: Limits the selected developer metadata to that which has a matching metadata key.
+          example: example_value
         metadataValue:
           type: string
           description: Limits the selected developer metadata to that which has a matching metadata value.
+          example: example_value
         visibility:
           type: string
           description: Limits the selected developer metadata to that which has a matching visibility.
           enum:
-            - DEVELOPER_METADATA_VISIBILITY_UNSPECIFIED
-            - DOCUMENT
-            - PROJECT
+          - DEVELOPER_METADATA_VISIBILITY_UNSPECIFIED
+          - DOCUMENT
+          - PROJECT
 
+          example: DEVELOPER_METADATA_VISIBILITY_UNSPECIFIED
     DimensionRange:
       type: object
       description: A range along a single dimension on a sheet.
@@ -1621,15 +2250,18 @@ components:
         sheetId:
           type: integer
           description: The sheet this span is on.
+          example: '500123'
         dimension:
           $ref: '#/components/schemas/Dimension'
         startIndex:
           type: integer
           description: The start (inclusive) of the span.
+          example: 10
         endIndex:
           type: integer
           description: The end (exclusive) of the span.
 
+          example: 10
     DataSource:
       type: object
       description: Information about an external data source in the spreadsheet.
@@ -1637,6 +2269,7 @@ components:
         dataSourceId:
           type: string
           description: The spreadsheet-scoped unique ID that identifies the data source.
+          example: '500123'
         spec:
           $ref: '#/components/schemas/DataSourceSpec'
         calculatedColumns:
@@ -1644,10 +2277,12 @@ components:
           description: All calculated columns in the data source.
           items:
             $ref: '#/components/schemas/DataSourceColumn'
+          example: []
         sheetId:
           type: integer
           description: The ID of the Sheet connected with the data source.
 
+          example: '500123'
     DataSourceSpec:
       type: object
       description: This specifies the details of the data source.
@@ -1657,6 +2292,7 @@ components:
           description: The parameters of the data source, used when querying the data source.
           items:
             $ref: '#/components/schemas/DataSourceParameter'
+          example: []
         bigQuery:
           $ref: '#/components/schemas/BigQueryDataSourceSpec'
 
@@ -1667,6 +2303,7 @@ components:
         projectId:
           type: string
           description: The ID of a BigQuery enabled Google Cloud project with a billing account attached.
+          example: '500123'
         querySpec:
           type: object
           description: A BigQueryQuerySpec.
@@ -1674,6 +2311,7 @@ components:
             rawQuery:
               type: string
               description: The raw query string.
+          example: example_value
         tableSpec:
           type: object
           description: A BigQueryTableSpec.
@@ -1688,6 +2326,7 @@ components:
               type: string
               description: The BigQuery dataset id.
 
+          example: example_value
     DataSourceColumn:
       type: object
       description: A column in a data source.
@@ -1698,6 +2337,7 @@ components:
           type: string
           description: The formula of the calculated column.
 
+          example: example_value
     DataSourceParameter:
       type: object
       description: A parameter in a data source's query.
@@ -1705,9 +2345,11 @@ components:
         name:
           type: string
           description: Named parameter.
+          example: Example Title
         namedRangeId:
           type: string
           description: ID of a NamedRange.
+          example: '500123'
         range:
           $ref: '#/components/schemas/GridRange'
 
@@ -1718,12 +2360,14 @@ components:
         enabled:
           type: boolean
           description: True if the refresh schedule is enabled.
+          example: true
         refreshScope:
           type: string
           description: The scope of the refresh.
           enum:
-            - DATA_SOURCE_REFRESH_SCOPE_UNSPECIFIED
-            - ALL_DATA_SOURCES
+          - DATA_SOURCE_REFRESH_SCOPE_UNSPECIFIED
+          - ALL_DATA_SOURCES
+          example: DATA_SOURCE_REFRESH_SCOPE_UNSPECIFIED
         nextRun:
           type: object
           description: Output only. The time interval of the next run.
@@ -1734,6 +2378,7 @@ components:
             endTime:
               type: string
               format: date-time
+          example: example_value
         dailySchedule:
           type: object
           description: Daily refresh schedule.
@@ -1750,6 +2395,7 @@ components:
                   type: integer
                 nanos:
                   type: integer
+          example: example_value
         weeklySchedule:
           type: object
           description: Weekly refresh schedule.
@@ -1770,14 +2416,15 @@ components:
               items:
                 type: string
                 enum:
-                  - DAY_OF_WEEK_UNSPECIFIED
-                  - MONDAY
-                  - TUESDAY
-                  - WEDNESDAY
-                  - THURSDAY
-                  - FRIDAY
-                  - SATURDAY
-                  - SUNDAY
+                - DAY_OF_WEEK_UNSPECIFIED
+                - MONDAY
+                - TUESDAY
+                - WEDNESDAY
+                - THURSDAY
+                - FRIDAY
+                - SATURDAY
+                - SUNDAY
+          example: example_value
         monthlySchedule:
           type: object
           description: Monthly refresh schedule.
@@ -1798,6 +2445,7 @@ components:
               items:
                 type: integer
 
+          example: example_value
     DataSourceSheetProperties:
       type: object
       description: Additional properties of a DATA_SOURCE sheet.
@@ -1805,11 +2453,13 @@ components:
         dataSourceId:
           type: string
           description: ID of the DataSource the sheet is connected to.
+          example: '500123'
         columns:
           type: array
           description: The columns displayed on the sheet.
           items:
             $ref: '#/components/schemas/DataSourceColumn'
+          example: []
         dataExecutionStatus:
           $ref: '#/components/schemas/DataExecutionStatus'
 
@@ -1821,44 +2471,48 @@ components:
           type: string
           description: The state of the data execution.
           enum:
-            - DATA_EXECUTION_STATE_UNSPECIFIED
-            - NOT_STARTED
-            - RUNNING
-            - CANCELLING
-            - SUCCEEDED
-            - FAILED
+          - DATA_EXECUTION_STATE_UNSPECIFIED
+          - NOT_STARTED
+          - RUNNING
+          - CANCELLING
+          - SUCCEEDED
+          - FAILED
+          example: DATA_EXECUTION_STATE_UNSPECIFIED
         errorCode:
           type: string
           description: The error code.
           enum:
-            - DATA_EXECUTION_ERROR_CODE_UNSPECIFIED
-            - TIMED_OUT
-            - TOO_MANY_ROWS
-            - TOO_MANY_COLUMNS
-            - TOO_MANY_CELLS
-            - ENGINE
-            - PARAMETER_INVALID
-            - UNSUPPORTED_DATA_TYPE
-            - DUPLICATE_COLUMN_NAMES
-            - INTERRUPTED
-            - CONCURRENT_QUERY
-            - OTHER
-            - TOO_MANY_CHARS_PER_CELL
-            - DATA_NOT_FOUND
-            - PERMISSION_DENIED
-            - MISSING_COLUMN_ALIAS
-            - OBJECT_NOT_FOUND
-            - OBJECT_IN_ERROR_STATE
-            - OBJECT_SPEC_INVALID
-            - DATA_EXECUTION_CANCELLED
+          - DATA_EXECUTION_ERROR_CODE_UNSPECIFIED
+          - TIMED_OUT
+          - TOO_MANY_ROWS
+          - TOO_MANY_COLUMNS
+          - TOO_MANY_CELLS
+          - ENGINE
+          - PARAMETER_INVALID
+          - UNSUPPORTED_DATA_TYPE
+          - DUPLICATE_COLUMN_NAMES
+          - INTERRUPTED
+          - CONCURRENT_QUERY
+          - OTHER
+          - TOO_MANY_CHARS_PER_CELL
+          - DATA_NOT_FOUND
+          - PERMISSION_DENIED
+          - MISSING_COLUMN_ALIAS
+          - OBJECT_NOT_FOUND
+          - OBJECT_IN_ERROR_STATE
+          - OBJECT_SPEC_INVALID
+          - DATA_EXECUTION_CANCELLED
+          example: DATA_EXECUTION_ERROR_CODE_UNSPECIFIED
         errorMessage:
           type: string
           description: The error message, which may be empty.
+          example: example_value
         lastRefreshTime:
           type: string
           format: date-time
           description: Gets the time the data last successfully refreshed.
 
+          example: '2026-01-15T10:30:00Z'
     DataSourceTable:
       type: object
       description: A data source table, which allows the user to import a static table of data from the DataSource into Sheets.
@@ -1866,31 +2520,37 @@ components:
         dataSourceId:
           type: string
           description: The ID of the data source the data source table is associated with.
+          example: '500123'
         columnSelectionType:
           type: string
           description: The type to select columns for the data source table.
           enum:
-            - DATA_SOURCE_TABLE_COLUMN_SELECTION_TYPE_UNSPECIFIED
-            - SELECTED
-            - SYNC_ALL
+          - DATA_SOURCE_TABLE_COLUMN_SELECTION_TYPE_UNSPECIFIED
+          - SELECTED
+          - SYNC_ALL
+          example: DATA_SOURCE_TABLE_COLUMN_SELECTION_TYPE_UNSPECIFIED
         columns:
           type: array
           description: Columns selected for the data source table.
           items:
             $ref: '#/components/schemas/DataSourceColumnReference'
+          example: []
         filterSpecs:
           type: array
           description: Filter specifications in the data source table.
           items:
             $ref: '#/components/schemas/FilterSpec'
+          example: []
         sortSpecs:
           type: array
           description: Sort specifications in the data source table.
           items:
             $ref: '#/components/schemas/SortSpec'
+          example: []
         rowLimit:
           type: integer
           description: The limit of rows to return.
+          example: 10
         dataExecutionStatus:
           $ref: '#/components/schemas/DataExecutionStatus'
 
@@ -1901,6 +2561,7 @@ components:
         dataSourceId:
           type: string
           description: The ID of the data source the formula is associated with.
+          example: '500123'
         dataExecutionStatus:
           $ref: '#/components/schemas/DataExecutionStatus'
 
@@ -1913,6 +2574,7 @@ components:
         columnIndex:
           type: integer
           description: The zero-based column index.
+          example: 10
         dataSourceColumnReference:
           $ref: '#/components/schemas/DataSourceColumnReference'
 
@@ -1925,6 +2587,7 @@ components:
           description: Values that should be hidden.
           items:
             type: string
+          example: []
         condition:
           $ref: '#/components/schemas/BooleanCondition'
         visibleBackgroundColor:
@@ -1944,39 +2607,40 @@ components:
           type: string
           description: The type of condition.
           enum:
-            - CONDITION_TYPE_UNSPECIFIED
-            - NUMBER_GREATER
-            - NUMBER_GREATER_THAN_EQ
-            - NUMBER_LESS
-            - NUMBER_LESS_THAN_EQ
-            - NUMBER_EQ
-            - NUMBER_NOT_EQ
-            - NUMBER_BETWEEN
-            - NUMBER_NOT_BETWEEN
-            - TEXT_CONTAINS
-            - TEXT_NOT_CONTAINS
-            - TEXT_STARTS_WITH
-            - TEXT_ENDS_WITH
-            - TEXT_EQ
-            - TEXT_IS_EMAIL
-            - TEXT_IS_URL
-            - DATE_EQ
-            - DATE_BEFORE
-            - DATE_AFTER
-            - DATE_ON_OR_BEFORE
-            - DATE_ON_OR_AFTER
-            - DATE_BETWEEN
-            - DATE_NOT_BETWEEN
-            - DATE_IS_VALID
-            - ONE_OF_RANGE
-            - ONE_OF_LIST
-            - BLANK
-            - NOT_BLANK
-            - CUSTOM_FORMULA
-            - BOOLEAN
-            - TEXT_NOT_EQ
-            - DATE_NOT_EQ
-            - FILTER_EXPRESSION
+          - CONDITION_TYPE_UNSPECIFIED
+          - NUMBER_GREATER
+          - NUMBER_GREATER_THAN_EQ
+          - NUMBER_LESS
+          - NUMBER_LESS_THAN_EQ
+          - NUMBER_EQ
+          - NUMBER_NOT_EQ
+          - NUMBER_BETWEEN
+          - NUMBER_NOT_BETWEEN
+          - TEXT_CONTAINS
+          - TEXT_NOT_CONTAINS
+          - TEXT_STARTS_WITH
+          - TEXT_ENDS_WITH
+          - TEXT_EQ
+          - TEXT_IS_EMAIL
+          - TEXT_IS_URL
+          - DATE_EQ
+          - DATE_BEFORE
+          - DATE_AFTER
+          - DATE_ON_OR_BEFORE
+          - DATE_ON_OR_AFTER
+          - DATE_BETWEEN
+          - DATE_NOT_BETWEEN
+          - DATE_IS_VALID
+          - ONE_OF_RANGE
+          - ONE_OF_LIST
+          - BLANK
+          - NOT_BLANK
+          - CUSTOM_FORMULA
+          - BOOLEAN
+          - TEXT_NOT_EQ
+          - DATE_NOT_EQ
+          - FILTER_EXPRESSION
+          example: CONDITION_TYPE_UNSPECIFIED
         values:
           type: array
           description: >-
@@ -1985,6 +2649,7 @@ components:
           items:
             $ref: '#/components/schemas/ConditionValue'
 
+          example: []
     ConditionValue:
       type: object
       description: The value of the condition.
@@ -1993,17 +2658,19 @@ components:
           type: string
           description: A relative date.
           enum:
-            - RELATIVE_DATE_UNSPECIFIED
-            - PAST_YEAR
-            - PAST_MONTH
-            - PAST_WEEK
-            - YESTERDAY
-            - TODAY
-            - TOMORROW
+          - RELATIVE_DATE_UNSPECIFIED
+          - PAST_YEAR
+          - PAST_MONTH
+          - PAST_WEEK
+          - YESTERDAY
+          - TODAY
+          - TOMORROW
+          example: RELATIVE_DATE_UNSPECIFIED
         userEnteredValue:
           type: string
           description: A value the condition is based on.
 
+          example: example_value
     SortSpec:
       type: object
       description: A sort order associated with a specific column or row.
@@ -2011,13 +2678,15 @@ components:
         dimensionIndex:
           type: integer
           description: The dimension the sort should be applied to.
+          example: 10
         sortOrder:
           type: string
           description: The order data should be sorted.
           enum:
-            - SORT_ORDER_UNSPECIFIED
-            - ASCENDING
-            - DESCENDING
+          - SORT_ORDER_UNSPECIFIED
+          - ASCENDING
+          - DESCENDING
+          example: SORT_ORDER_UNSPECIFIED
         foregroundColor:
           $ref: '#/components/schemas/Color'
         foregroundColorStyle:
@@ -2038,13 +2707,16 @@ components:
         inputMessage:
           type: string
           description: A message to show the user when adding data to the cell.
+          example: example_value
         strict:
           type: boolean
           description: True if invalid data should be rejected.
+          example: true
         showCustomUi:
           type: boolean
           description: True if the UI should be customized based on the kind of condition.
 
+          example: true
     PivotTable:
       type: object
       description: A pivot table.
@@ -2056,38 +2728,45 @@ components:
           description: Each row grouping in the pivot table.
           items:
             $ref: '#/components/schemas/PivotGroup'
+          example: []
         columns:
           type: array
           description: Each column grouping in the pivot table.
           items:
             $ref: '#/components/schemas/PivotGroup'
+          example: []
         values:
           type: array
           description: A list of values to include in the pivot table.
           items:
             $ref: '#/components/schemas/PivotValue'
+          example: []
         criteria:
           type: object
           description: An optional mapping of filters per source column offset.
           additionalProperties:
             $ref: '#/components/schemas/PivotFilterCriteria'
+          example: example_value
         filterSpecs:
           type: array
           description: The filters applied to the source columns before aggregating data.
           items:
             $ref: '#/components/schemas/PivotFilterSpec'
+          example: []
         valueLayout:
           type: string
           description: Whether values should be listed horizontally or vertically.
           enum:
-            - HORIZONTAL
-            - VERTICAL
+          - HORIZONTAL
+          - VERTICAL
+          example: HORIZONTAL
         dataExecutionStatus:
           $ref: '#/components/schemas/DataExecutionStatus'
         dataSourceId:
           type: string
           description: The ID of the data source the pivot table is reading data from.
 
+          example: '500123'
     PivotGroup:
       type: object
       description: A single grouping (either row or column) in a pivot table.
@@ -2095,24 +2774,29 @@ components:
         sourceColumnOffset:
           type: integer
           description: The column offset of the source range that this grouping is based on.
+          example: 10
         showTotals:
           type: boolean
           description: True if the pivot table should include the totals for this grouping.
+          example: true
         sortOrder:
           type: string
           description: The order the values in this group should be sorted.
           enum:
-            - SORT_ORDER_UNSPECIFIED
-            - ASCENDING
-            - DESCENDING
+          - SORT_ORDER_UNSPECIFIED
+          - ASCENDING
+          - DESCENDING
+          example: SORT_ORDER_UNSPECIFIED
         valueBucket:
           $ref: '#/components/schemas/PivotGroupSortValueBucket'
         repeatHeadings:
           type: boolean
           description: True if the headings in this pivot group should be repeated.
+          example: true
         label:
           type: string
           description: The labels to use for the row/column groups which can be customized.
+          example: Example Title
         groupRule:
           $ref: '#/components/schemas/PivotGroupRule'
         groupLimit:
@@ -2127,12 +2811,14 @@ components:
         valuesIndex:
           type: integer
           description: The offset in the PivotTable.values list which the values in this grouping should be sorted by.
+          example: 10
         buckets:
           type: array
           description: Determines the bucket from which values are chosen to sort.
           items:
             $ref: '#/components/schemas/ExtendedValue'
 
+          example: []
     PivotGroupRule:
       type: object
       description: An optional setting on a PivotGroup that defines buckets for the values in the source data column.
@@ -2152,6 +2838,7 @@ components:
                     type: array
                     items:
                       $ref: '#/components/schemas/ExtendedValue'
+          example: example_value
         histogramRule:
           type: object
           description: A HistogramRule.
@@ -2162,6 +2849,7 @@ components:
               type: number
             end:
               type: number
+          example: example_value
         dateTimeRule:
           type: object
           description: A DateTimeRule.
@@ -2169,22 +2857,23 @@ components:
             type:
               type: string
               enum:
-                - DATE_TIME_RULE_TYPE_UNSPECIFIED
-                - SECOND
-                - MINUTE
-                - HOUR
-                - HOUR_MINUTE
-                - HOUR_MINUTE_AMPM
-                - DAY_OF_YEAR
-                - DAY_OF_MONTH
-                - DAY_OF_WEEK
-                - MONTH
-                - QUARTER
-                - YEAR
-                - YEAR_MONTH
-                - YEAR_QUARTER
-                - YEAR_MONTH_DAY
+              - DATE_TIME_RULE_TYPE_UNSPECIFIED
+              - SECOND
+              - MINUTE
+              - HOUR
+              - HOUR_MINUTE
+              - HOUR_MINUTE_AMPM
+              - DAY_OF_YEAR
+              - DAY_OF_MONTH
+              - DAY_OF_WEEK
+              - MONTH
+              - QUARTER
+              - YEAR
+              - YEAR_MONTH
+              - YEAR_QUARTER
+              - YEAR_MONTH_DAY
 
+          example: example_value
     PivotGroupLimit:
       type: object
       description: The count limit on rows or columns in the pivot group.
@@ -2192,10 +2881,12 @@ components:
         countLimit:
           type: integer
           description: The count limit.
+          example: 10
         applyOrder:
           type: integer
           description: The order in which the group limit is applied to the pivot table.
 
+          example: 10
     PivotValue:
       type: object
       description: The definition of how a value in a pivot table should be calculated.
@@ -2204,38 +2895,43 @@ components:
           type: string
           description: A function to summarize the value.
           enum:
-            - PIVOT_STANDARD_VALUE_FUNCTION_UNSPECIFIED
-            - SUM
-            - COUNTA
-            - COUNT
-            - COUNTUNIQUE
-            - AVERAGE
-            - MAX
-            - MIN
-            - MEDIAN
-            - PRODUCT
-            - STDEV
-            - STDEVP
-            - VAR
-            - VARP
-            - CUSTOM
+          - PIVOT_STANDARD_VALUE_FUNCTION_UNSPECIFIED
+          - SUM
+          - COUNTA
+          - COUNT
+          - COUNTUNIQUE
+          - AVERAGE
+          - MAX
+          - MIN
+          - MEDIAN
+          - PRODUCT
+          - STDEV
+          - STDEVP
+          - VAR
+          - VARP
+          - CUSTOM
+          example: PIVOT_STANDARD_VALUE_FUNCTION_UNSPECIFIED
         name:
           type: string
           description: A name to use for the value.
+          example: Example Title
         calculatedDisplayType:
           type: string
           description: If specified, indicates that pivot values should be displayed as the result of a calculation with another pivot value.
           enum:
-            - PIVOT_VALUE_CALCULATED_DISPLAY_TYPE_UNSPECIFIED
-            - PERCENT_OF_ROW_TOTAL
-            - PERCENT_OF_COLUMN_TOTAL
-            - PERCENT_OF_GRAND_TOTAL
+          - PIVOT_VALUE_CALCULATED_DISPLAY_TYPE_UNSPECIFIED
+          - PERCENT_OF_ROW_TOTAL
+          - PERCENT_OF_COLUMN_TOTAL
+          - PERCENT_OF_GRAND_TOTAL
+          example: PIVOT_VALUE_CALCULATED_DISPLAY_TYPE_UNSPECIFIED
         sourceColumnOffset:
           type: integer
           description: The column offset of the source range that this value reads from.
+          example: 10
         formula:
           type: string
           description: A custom formula to calculate the value.
+          example: example_value
         dataSourceColumnReference:
           $ref: '#/components/schemas/DataSourceColumnReference'
 
@@ -2248,12 +2944,14 @@ components:
           description: Values that should be included.
           items:
             type: string
+          example: []
         condition:
           $ref: '#/components/schemas/BooleanCondition'
         visibleByDefault:
           type: boolean
           description: Whether values are visible by default.
 
+          example: true
     PivotFilterSpec:
       type: object
       description: The pivot table filter criteria associated with a specific source column offset.
@@ -2263,6 +2961,7 @@ components:
         columnOffsetIndex:
           type: integer
           description: The zero-based column offset of the source range.
+          example: 10
         dataSourceColumnReference:
           $ref: '#/components/schemas/DataSourceColumnReference'
 
@@ -2275,6 +2974,7 @@ components:
           description: The ranges that are formatted if the condition is true.
           items:
             $ref: '#/components/schemas/GridRange'
+          example: []
         booleanRule:
           type: object
           description: The formatting is either on or off according to the rule.
@@ -2283,6 +2983,7 @@ components:
               $ref: '#/components/schemas/BooleanCondition'
             format:
               $ref: '#/components/schemas/CellFormat'
+          example: example_value
         gradientRule:
           type: object
           description: The formatting will vary based on the gradients in the rule.
@@ -2294,6 +2995,7 @@ components:
             maxpoint:
               $ref: '#/components/schemas/InterpolationPoint'
 
+          example: example_value
     InterpolationPoint:
       type: object
       description: A single interpolation point on a gradient conditional format.
@@ -2306,16 +3008,18 @@ components:
           type: string
           description: How the value should be interpreted.
           enum:
-            - INTERPOLATION_POINT_TYPE_UNSPECIFIED
-            - MIN
-            - MAX
-            - NUMBER
-            - PERCENT
-            - PERCENTILE
+          - INTERPOLATION_POINT_TYPE_UNSPECIFIED
+          - MIN
+          - MAX
+          - NUMBER
+          - PERCENT
+          - PERCENTILE
+          example: INTERPOLATION_POINT_TYPE_UNSPECIFIED
         value:
           type: string
           description: The value this interpolation point uses.
 
+          example: example_value
     FilterView:
       type: object
       description: A filter view.
@@ -2323,30 +3027,36 @@ components:
         filterViewId:
           type: integer
           description: The ID of the filter view.
+          example: '500123'
         title:
           type: string
           description: The name of the filter view.
+          example: Example Title
         range:
           $ref: '#/components/schemas/GridRange'
         namedRangeId:
           type: string
           description: The named range this filter view is backed by, if any.
+          example: '500123'
         sortSpecs:
           type: array
           description: The sort order per column.
           items:
             $ref: '#/components/schemas/SortSpec'
+          example: []
         criteria:
           type: object
           description: The criteria for showing/hiding values per column.
           additionalProperties:
             $ref: '#/components/schemas/FilterCriteria'
+          example: example_value
         filterSpecs:
           type: array
           description: The filter criteria for showing/hiding values per column.
           items:
             $ref: '#/components/schemas/FilterSpec'
 
+          example: []
     ProtectedRange:
       type: object
       description: A protected range.
@@ -2354,25 +3064,31 @@ components:
         protectedRangeId:
           type: integer
           description: The ID of the protected range.
+          example: '500123'
         range:
           $ref: '#/components/schemas/GridRange'
         namedRangeId:
           type: string
           description: The named range this protected range is backed by, if any.
+          example: '500123'
         description:
           type: string
           description: The description of this protected range.
+          example: A sample description.
         warningOnly:
           type: boolean
           description: True if this protected range will show a warning when editing.
+          example: true
         requestingUserCanEdit:
           type: boolean
           description: True if the user who requested this protected range can edit the protected area.
+          example: true
         unprotectedRanges:
           type: array
           description: The list of unprotected ranges within a protected sheet.
           items:
             $ref: '#/components/schemas/GridRange'
+          example: []
         editors:
           type: object
           description: The users and groups with edit access to the protected range.
@@ -2388,6 +3104,7 @@ components:
             domainUsersCanEdit:
               type: boolean
 
+          example: example_value
     BasicFilter:
       type: object
       description: The default filter associated with a sheet.
@@ -2399,17 +3116,20 @@ components:
           description: The sort order per column.
           items:
             $ref: '#/components/schemas/SortSpec'
+          example: []
         criteria:
           type: object
           description: The criteria for showing/hiding values per column.
           additionalProperties:
             $ref: '#/components/schemas/FilterCriteria'
+          example: example_value
         filterSpecs:
           type: array
           description: The filter criteria per column.
           items:
             $ref: '#/components/schemas/FilterSpec'
 
+          example: []
     EmbeddedChart:
       type: object
       description: A chart embedded in a sheet.
@@ -2417,12 +3137,14 @@ components:
         chartId:
           type: integer
           description: The ID of the chart.
+          example: '500123'
         position:
           $ref: '#/components/schemas/EmbeddedObjectPosition'
         spec:
           type: object
           description: The specification of the chart.
 
+          example: example_value
     EmbeddedObjectPosition:
       type: object
       description: The position of an embedded object such as a chart.
@@ -2430,6 +3152,7 @@ components:
         sheetId:
           type: integer
           description: The sheet this is on.
+          example: '500123'
         overlayPosition:
           type: object
           description: The position at which the object is overlaid on top of a grid.
@@ -2444,10 +3167,12 @@ components:
               type: integer
             heightPixels:
               type: integer
+          example: example_value
         newSheet:
           type: boolean
           description: If true, the embedded object is put on a new sheet whose ID is chosen for you.
 
+          example: true
     GridCoordinate:
       type: object
       description: A coordinate in a sheet.
@@ -2455,13 +3180,16 @@ components:
         sheetId:
           type: integer
           description: The sheet this coordinate is on.
+          example: '500123'
         rowIndex:
           type: integer
           description: The row index of the coordinate.
+          example: 10
         columnIndex:
           type: integer
           description: The column index of the coordinate.
 
+          example: 10
     BandedRange:
       type: object
       description: A banded (alternating colors) range in a sheet.
@@ -2469,6 +3197,7 @@ components:
         bandedRangeId:
           type: integer
           description: The ID of the banded range.
+          example: '500123'
         range:
           $ref: '#/components/schemas/GridRange'
         rowProperties:
@@ -2504,6 +3233,7 @@ components:
         slicerId:
           type: integer
           description: The ID of the slicer.
+          example: '500123'
         spec:
           type: object
           description: The specification of the slicer.
@@ -2527,10 +3257,11 @@ components:
             horizontalAlignment:
               type: string
               enum:
-                - HORIZONTAL_ALIGN_UNSPECIFIED
-                - LEFT
-                - CENTER
-                - RIGHT
+              - HORIZONTAL_ALIGN_UNSPECIFIED
+              - LEFT
+              - CENTER
+              - RIGHT
+          example: example_value
         position:
           $ref: '#/components/schemas/EmbeddedObjectPosition'
 
@@ -2541,10 +3272,12 @@ components:
         maxIterations:
           type: integer
           description: When iterative calculation is enabled, the maximum number of calculation rounds to perform.
+          example: 10
         convergenceThreshold:
           type: number
           description: When iterative calculation is enabled and successive results differ by less than this threshold value, the calculation rounds stop.
 
+          example: 42.5
     SpreadsheetTheme:
       type: object
       description: Represents spreadsheet theme.
@@ -2552,6 +3285,7 @@ components:
         primaryFontFamily:
           type: string
           description: Name of the primary font family.
+          example: example_value
         themeColors:
           type: array
           description: The spreadsheet theme color pairs.
@@ -2561,19 +3295,20 @@ components:
               colorType:
                 type: string
                 enum:
-                  - THEME_COLOR_TYPE_UNSPECIFIED
-                  - TEXT
-                  - BACKGROUND
-                  - ACCENT1
-                  - ACCENT2
-                  - ACCENT3
-                  - ACCENT4
-                  - ACCENT5
-                  - ACCENT6
-                  - LINK
+                - THEME_COLOR_TYPE_UNSPECIFIED
+                - TEXT
+                - BACKGROUND
+                - ACCENT1
+                - ACCENT2
+                - ACCENT3
+                - ACCENT4
+                - ACCENT5
+                - ACCENT6
+                - LINK
               color:
                 $ref: '#/components/schemas/ColorStyle'
 
+          example: []
     BatchUpdateSpreadsheetRequest:
       type: object
       description: The request for updating any aspect of a spreadsheet.
@@ -2586,20 +3321,24 @@ components:
             description: >-
               A single kind of update to apply to a spreadsheet. The specific
               update type is determined by which field is set.
+          example: []
         includeSpreadsheetInResponse:
           type: boolean
           description: Determines if the update response should include the spreadsheet resource.
           default: false
+          example: true
         responseRanges:
           type: array
           description: Limits the ranges included in the response spreadsheet.
           items:
             type: string
+          example: []
         responseIncludeGridData:
           type: boolean
           description: True if grid data should be returned.
           default: false
 
+          example: true
     BatchUpdateSpreadsheetResponse:
       type: object
       description: The reply for batch updating a spreadsheet.
@@ -2607,12 +3346,14 @@ components:
         spreadsheetId:
           type: string
           description: The spreadsheet the updates were applied to.
+          example: '500123'
         replies:
           type: array
           description: The reply of the updates.
           items:
             type: object
             description: A single response from an update.
+          example: []
         updatedSpreadsheet:
           $ref: '#/components/schemas/Spreadsheet'
 
@@ -2623,18 +3364,23 @@ components:
         spreadsheetId:
           type: string
           description: The spreadsheet the updates were applied to.
+          example: '500123'
         updatedRange:
           type: string
           description: The range (in A1 notation) that updates were applied to.
+          example: example_value
         updatedRows:
           type: integer
           description: The number of rows where at least one cell in the row was updated.
+          example: 10
         updatedColumns:
           type: integer
           description: The number of columns where at least one cell in the column was updated.
+          example: 10
         updatedCells:
           type: integer
           description: The number of cells updated.
+          example: 10
         updatedData:
           $ref: '#/components/schemas/ValueRange'
 
@@ -2645,9 +3391,11 @@ components:
         spreadsheetId:
           type: string
           description: The spreadsheet the updates were applied to.
+          example: '500123'
         tableRange:
           type: string
           description: The range (in A1 notation) of the table that values are being appended to.
+          example: example_value
         updates:
           $ref: '#/components/schemas/UpdateValuesResponse'
 
@@ -2658,10 +3406,12 @@ components:
         spreadsheetId:
           type: string
           description: The spreadsheet the updates were applied to.
+          example: '500123'
         clearedRange:
           type: string
           description: The range (in A1 notation) that was cleared.
 
+          example: example_value
     BatchGetValuesResponse:
       type: object
       description: The response when retrieving more than one range of values in a spreadsheet.
@@ -2669,12 +3419,14 @@ components:
         spreadsheetId:
           type: string
           description: The ID of the spreadsheet the data was retrieved from.
+          example: '500123'
         valueRanges:
           type: array
           description: The requested ranges of values.
           items:
             $ref: '#/components/schemas/ValueRange'
 
+          example: []
     BatchUpdateValuesRequest:
       type: object
       description: The request for updating more than one range of values in a spreadsheet.
@@ -2686,10 +3438,12 @@ components:
           description: The new values to apply to the spreadsheet.
           items:
             $ref: '#/components/schemas/ValueRange'
+          example: []
         includeValuesInResponse:
           type: boolean
           description: Determines if the update response should include the values of the cells that were updated.
           default: false
+          example: true
         responseValueRenderOption:
           $ref: '#/components/schemas/ValueRenderOption'
         responseDateTimeRenderOption:
@@ -2702,24 +3456,30 @@ components:
         spreadsheetId:
           type: string
           description: The spreadsheet the updates were applied to.
+          example: '500123'
         totalUpdatedRows:
           type: integer
           description: The total number of rows where at least one cell in the row was updated.
+          example: 10
         totalUpdatedColumns:
           type: integer
           description: The total number of columns where at least one cell in the column was updated.
+          example: 10
         totalUpdatedCells:
           type: integer
           description: The total number of cells updated.
+          example: 10
         totalUpdatedSheets:
           type: integer
           description: The total number of sheets where at least one cell in the sheet was updated.
+          example: 10
         responses:
           type: array
           description: One UpdateValuesResponse per requested range, in the same order as the requests appeared.
           items:
             $ref: '#/components/schemas/UpdateValuesResponse'
 
+          example: []
     BatchClearValuesResponse:
       type: object
       description: The response when clearing a range of values in a spreadsheet.
@@ -2727,12 +3487,14 @@ components:
         spreadsheetId:
           type: string
           description: The spreadsheet the updates were applied to.
+          example: '500123'
         clearedRanges:
           type: array
           description: The ranges that were cleared, in A1 notation.
           items:
             type: string
 
+          example: []
     BatchGetValuesByDataFilterResponse:
       type: object
       description: The response when retrieving more than one range of values in a spreadsheet selected by DataFilters.
@@ -2740,6 +3502,7 @@ components:
         spreadsheetId:
           type: string
           description: The ID of the spreadsheet the data was retrieved from.
+          example: '500123'
         valueRanges:
           type: array
           description: The requested values with the list of data filters that matched them.
@@ -2753,6 +3516,7 @@ components:
                 items:
                   $ref: '#/components/schemas/DataFilter'
 
+          example: []
     BatchUpdateValuesByDataFilterResponse:
       type: object
       description: The response when updating a range of values in a spreadsheet by data filter.
@@ -2760,14 +3524,19 @@ components:
         spreadsheetId:
           type: string
           description: The spreadsheet the updates were applied to.
+          example: '500123'
         totalUpdatedRows:
           type: integer
+          example: 10
         totalUpdatedColumns:
           type: integer
+          example: 10
         totalUpdatedCells:
           type: integer
+          example: 10
         totalUpdatedSheets:
           type: integer
+          example: 10
         responses:
           type: array
           items:
@@ -2786,6 +3555,7 @@ components:
               dataFilter:
                 $ref: '#/components/schemas/DataFilter'
 
+          example: []
     BatchClearValuesByDataFilterResponse:
       type: object
       description: The response when clearing a range of values selected by DataFilters in a spreadsheet.
@@ -2793,12 +3563,14 @@ components:
         spreadsheetId:
           type: string
           description: The spreadsheet the updates were applied to.
+          example: '500123'
         clearedRanges:
           type: array
           description: The ranges that were cleared, in A1 notation.
           items:
             type: string
 
+          example: []
     ErrorResponse:
       type: object
       description: An error response from the API.
@@ -2820,3 +3592,4 @@ components:
               description: Additional error details.
               items:
                 type: object
+          example: example_value

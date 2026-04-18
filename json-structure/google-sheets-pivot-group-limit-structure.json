@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "PivotGroupLimit",
+  "type": "object",
+  "properties": {
+    "countLimit": {
+      "type": "integer"
+    },
+    "applyOrder": {
+      "type": "integer"
+    }
+  }
+}

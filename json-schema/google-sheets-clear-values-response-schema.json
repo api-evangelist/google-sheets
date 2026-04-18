@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ClearValuesResponse",
+  "type": "object",
+  "description": "The response when clearing a range of values in a spreadsheet.",
+  "properties": {
+    "spreadsheetId": {
+      "type": "string",
+      "description": "The spreadsheet the updates were applied to."
+    },
+    "clearedRange": {
+      "type": "string",
+      "description": "The range (in A1 notation) that was cleared."
+    }
+  }
+}

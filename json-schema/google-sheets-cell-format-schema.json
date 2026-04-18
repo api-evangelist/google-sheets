@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CellFormat",
+  "type": "object",
+  "description": "The format of a cell.",
+  "properties": {
+    "horizontalAlignment": {
+      "type": "string",
+      "description": "The horizontal alignment of the value in the cell."
+    },
+    "verticalAlignment": {
+      "type": "string",
+      "description": "The vertical alignment of the value in the cell."
+    },
+    "wrapStrategy": {
+      "type": "string",
+      "description": "The wrap strategy for the value in the cell."
+    },
+    "textDirection": {
+      "type": "string",
+      "description": "The direction of the text in the cell."
+    },
+    "hyperlinkDisplayType": {
+      "type": "string",
+      "description": "How a hyperlink, if any, should be displayed in the cell."
+    }
+  }
+}

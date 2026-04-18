@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "Spreadsheet",
+  "type": "object",
+  "properties": {
+    "spreadsheetId": {
+      "type": "string"
+    },
+    "sheets": {
+      "type": "array"
+    },
+    "namedRanges": {
+      "type": "array"
+    },
+    "spreadsheetUrl": {
+      "type": "string"
+    },
+    "developerMetadata": {
+      "type": "array"
+    },
+    "dataSources": {
+      "type": "array"
+    },
+    "dataSourceSchedules": {
+      "type": "array"
+    }
+  }
+}

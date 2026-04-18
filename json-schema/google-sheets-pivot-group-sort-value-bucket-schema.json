@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PivotGroupSortValueBucket",
+  "type": "object",
+  "description": "Information about which values in a pivot group should be used for sorting.",
+  "properties": {
+    "valuesIndex": {
+      "type": "integer",
+      "description": "The offset in the PivotTable.values list which the values in this grouping should be sorted by."
+    },
+    "buckets": {
+      "type": "array",
+      "description": "Determines the bucket from which values are chosen to sort."
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "enabled": true,
+  "refreshScope": "example_value",
+  "nextRun": "example_value",
+  "dailySchedule": "example_value",
+  "weeklySchedule": "example_value",
+  "monthlySchedule": "example_value"
+}

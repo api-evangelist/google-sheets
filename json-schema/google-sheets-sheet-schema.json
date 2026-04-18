@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Sheet",
+  "type": "object",
+  "description": "A sheet in a spreadsheet.",
+  "properties": {
+    "data": {
+      "type": "array",
+      "description": "Data in the grid, if this is a grid sheet."
+    },
+    "merges": {
+      "type": "array",
+      "description": "The ranges that are merged together."
+    },
+    "conditionalFormats": {
+      "type": "array",
+      "description": "The conditional format rules in this sheet."
+    },
+    "filterViews": {
+      "type": "array",
+      "description": "The filter views in this sheet."
+    },
+    "protectedRanges": {
+      "type": "array",
+      "description": "The protected ranges in this sheet."
+    },
+    "charts": {
+      "type": "array",
+      "description": "The specifications of every chart on this sheet."
+    },
+    "bandedRanges": {
+      "type": "array",
+      "description": "The banded (alternating colors) ranges on this sheet."
+    },
+    "slicers": {
+      "type": "array",
+      "description": "The slicers on this sheet."
+    }
+  }
+}

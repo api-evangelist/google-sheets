@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ExtendedValue",
+  "type": "object",
+  "description": "The kinds of value that a cell in a spreadsheet can have.",
+  "properties": {
+    "numberValue": {
+      "type": "number",
+      "description": "Represents a double value."
+    },
+    "stringValue": {
+      "type": "string",
+      "description": "Represents a string value."
+    },
+    "boolValue": {
+      "type": "boolean",
+      "description": "Represents a boolean value."
+    },
+    "formulaValue": {
+      "type": "string",
+      "description": "Represents a formula."
+    }
+  }
+}

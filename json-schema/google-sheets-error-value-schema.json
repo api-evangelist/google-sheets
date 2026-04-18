@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ErrorValue",
+  "type": "object",
+  "description": "An error in a cell.",
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "The type of error."
+    },
+    "message": {
+      "type": "string",
+      "description": "A message with more information about the error."
+    }
+  }
+}

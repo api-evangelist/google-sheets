@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "DataExecutionStatus",
+  "type": "object",
+  "properties": {
+    "state": {
+      "type": "string"
+    },
+    "errorCode": {
+      "type": "string"
+    },
+    "errorMessage": {
+      "type": "string"
+    },
+    "lastRefreshTime": {
+      "type": "string"
+    }
+  }
+}

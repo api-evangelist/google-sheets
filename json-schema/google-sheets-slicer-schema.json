@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Slicer",
+  "type": "object",
+  "description": "A slicer in a sheet.",
+  "properties": {
+    "slicerId": {
+      "type": "integer",
+      "description": "The ID of the slicer."
+    },
+    "spec": {
+      "type": "object",
+      "description": "The specification of the slicer."
+    }
+  }
+}

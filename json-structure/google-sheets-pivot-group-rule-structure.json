@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "PivotGroupRule",
+  "type": "object",
+  "properties": {
+    "manualRule": {
+      "type": "object"
+    },
+    "histogramRule": {
+      "type": "object"
+    },
+    "dateTimeRule": {
+      "type": "object"
+    }
+  }
+}

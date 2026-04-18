@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PivotTable",
+  "type": "object",
+  "description": "A pivot table.",
+  "properties": {
+    "rows": {
+      "type": "array",
+      "description": "Each row grouping in the pivot table."
+    },
+    "columns": {
+      "type": "array",
+      "description": "Each column grouping in the pivot table."
+    },
+    "values": {
+      "type": "array",
+      "description": "A list of values to include in the pivot table."
+    },
+    "criteria": {
+      "type": "object",
+      "description": "An optional mapping of filters per source column offset."
+    },
+    "filterSpecs": {
+      "type": "array",
+      "description": "The filters applied to the source columns before aggregating data."
+    },
+    "valueLayout": {
+      "type": "string",
+      "description": "Whether values should be listed horizontally or vertically."
+    },
+    "dataSourceId": {
+      "type": "string",
+      "description": "The ID of the data source the pivot table is reading data from."
+    }
+  }
+}

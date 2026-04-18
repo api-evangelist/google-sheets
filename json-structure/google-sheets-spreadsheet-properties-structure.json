@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "SpreadsheetProperties",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "locale": {
+      "type": "string"
+    },
+    "autoRecalc": {
+      "type": "string"
+    },
+    "timeZone": {
+      "type": "string"
+    },
+    "importFunctionsExternalUrlAccessAllowed": {
+      "type": "boolean"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SortSpec",
+  "type": "object",
+  "description": "A sort order associated with a specific column or row.",
+  "properties": {
+    "dimensionIndex": {
+      "type": "integer",
+      "description": "The dimension the sort should be applied to."
+    },
+    "sortOrder": {
+      "type": "string",
+      "description": "The order data should be sorted."
+    }
+  }
+}

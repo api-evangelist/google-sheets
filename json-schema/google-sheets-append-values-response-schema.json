@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AppendValuesResponse",
+  "type": "object",
+  "description": "The response when updating a range of values by appending.",
+  "properties": {
+    "spreadsheetId": {
+      "type": "string",
+      "description": "The spreadsheet the updates were applied to."
+    },
+    "tableRange": {
+      "type": "string",
+      "description": "The range (in A1 notation) of the table that values are being appended to."
+    }
+  }
+}

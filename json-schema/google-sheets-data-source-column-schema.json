@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DataSourceColumn",
+  "type": "object",
+  "description": "A column in a data source.",
+  "properties": {
+    "formula": {
+      "type": "string",
+      "description": "The formula of the calculated column."
+    }
+  }
+}

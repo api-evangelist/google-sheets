@@ -1,0 +1,6 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Dimension",
+  "type": "string",
+  "description": "Indicates which dimension an operation should apply to."
+}

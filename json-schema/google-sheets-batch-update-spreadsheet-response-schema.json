@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BatchUpdateSpreadsheetResponse",
+  "type": "object",
+  "description": "The reply for batch updating a spreadsheet.",
+  "properties": {
+    "spreadsheetId": {
+      "type": "string",
+      "description": "The spreadsheet the updates were applied to."
+    },
+    "replies": {
+      "type": "array",
+      "description": "The reply of the updates."
+    }
+  }
+}

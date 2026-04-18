@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DataSourceSheetProperties",
+  "type": "object",
+  "description": "Additional properties of a DATA_SOURCE sheet.",
+  "properties": {
+    "dataSourceId": {
+      "type": "string",
+      "description": "ID of the DataSource the sheet is connected to."
+    },
+    "columns": {
+      "type": "array",
+      "description": "The columns displayed on the sheet."
+    }
+  }
+}

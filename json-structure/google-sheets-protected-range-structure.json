@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "ProtectedRange",
+  "type": "object",
+  "properties": {
+    "protectedRangeId": {
+      "type": "integer"
+    },
+    "namedRangeId": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "warningOnly": {
+      "type": "boolean"
+    },
+    "requestingUserCanEdit": {
+      "type": "boolean"
+    },
+    "unprotectedRanges": {
+      "type": "array"
+    },
+    "editors": {
+      "type": "object"
+    }
+  }
+}

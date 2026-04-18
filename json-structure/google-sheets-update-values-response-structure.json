@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "UpdateValuesResponse",
+  "type": "object",
+  "properties": {
+    "spreadsheetId": {
+      "type": "string"
+    },
+    "updatedRange": {
+      "type": "string"
+    },
+    "updatedRows": {
+      "type": "integer"
+    },
+    "updatedColumns": {
+      "type": "integer"
+    },
+    "updatedCells": {
+      "type": "integer"
+    }
+  }
+}

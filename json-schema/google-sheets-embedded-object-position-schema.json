@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "EmbeddedObjectPosition",
+  "type": "object",
+  "description": "The position of an embedded object such as a chart.",
+  "properties": {
+    "sheetId": {
+      "type": "integer",
+      "description": "The sheet this is on."
+    },
+    "overlayPosition": {
+      "type": "object",
+      "description": "The position at which the object is overlaid on top of a grid."
+    },
+    "newSheet": {
+      "type": "boolean",
+      "description": "If true, the embedded object is put on a new sheet whose ID is chosen for you."
+    }
+  }
+}

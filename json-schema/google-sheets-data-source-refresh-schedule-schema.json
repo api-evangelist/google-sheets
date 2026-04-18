@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DataSourceRefreshSchedule",
+  "type": "object",
+  "description": "Schedule for refreshing a data source.",
+  "properties": {
+    "enabled": {
+      "type": "boolean",
+      "description": "True if the refresh schedule is enabled."
+    },
+    "refreshScope": {
+      "type": "string",
+      "description": "The scope of the refresh."
+    },
+    "nextRun": {
+      "type": "object",
+      "description": "Output only. The time interval of the next run."
+    },
+    "dailySchedule": {
+      "type": "object",
+      "description": "Daily refresh schedule."
+    },
+    "weeklySchedule": {
+      "type": "object",
+      "description": "Weekly refresh schedule."
+    },
+    "monthlySchedule": {
+      "type": "object",
+      "description": "Monthly refresh schedule."
+    }
+  }
+}

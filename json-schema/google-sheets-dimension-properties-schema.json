@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DimensionProperties",
+  "type": "object",
+  "description": "Properties about a dimension.",
+  "properties": {
+    "hiddenByFilter": {
+      "type": "boolean",
+      "description": "True if this dimension is being filtered."
+    },
+    "hiddenByUser": {
+      "type": "boolean",
+      "description": "True if this dimension is explicitly hidden."
+    },
+    "pixelSize": {
+      "type": "integer",
+      "description": "The height (for rows) or width (for columns) of the dimension in pixels."
+    },
+    "developerMetadata": {
+      "type": "array",
+      "description": "The developer metadata associated with a single row or column."
+    }
+  }
+}

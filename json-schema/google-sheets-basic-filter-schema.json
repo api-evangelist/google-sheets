@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BasicFilter",
+  "type": "object",
+  "description": "The default filter associated with a sheet.",
+  "properties": {
+    "sortSpecs": {
+      "type": "array",
+      "description": "The sort order per column."
+    },
+    "criteria": {
+      "type": "object",
+      "description": "The criteria for showing/hiding values per column."
+    },
+    "filterSpecs": {
+      "type": "array",
+      "description": "The filter criteria per column."
+    }
+  }
+}

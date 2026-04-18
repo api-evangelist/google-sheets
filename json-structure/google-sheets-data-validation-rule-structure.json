@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "DataValidationRule",
+  "type": "object",
+  "properties": {
+    "inputMessage": {
+      "type": "string"
+    },
+    "strict": {
+      "type": "boolean"
+    },
+    "showCustomUi": {
+      "type": "boolean"
+    }
+  }
+}

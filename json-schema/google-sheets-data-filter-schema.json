@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DataFilter",
+  "type": "object",
+  "description": "Filter that describes what data should be selected or returned from a request.",
+  "properties": {
+    "a1Range": {
+      "type": "string",
+      "description": "Selects data that matches the specified A1 range."
+    }
+  }
+}

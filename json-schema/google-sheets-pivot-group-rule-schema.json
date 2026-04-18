@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PivotGroupRule",
+  "type": "object",
+  "description": "An optional setting on a PivotGroup that defines buckets for the values in the source data column.",
+  "properties": {
+    "manualRule": {
+      "type": "object",
+      "description": "A ManualRule."
+    },
+    "histogramRule": {
+      "type": "object",
+      "description": "A HistogramRule."
+    },
+    "dateTimeRule": {
+      "type": "object",
+      "description": "A DateTimeRule."
+    }
+  }
+}

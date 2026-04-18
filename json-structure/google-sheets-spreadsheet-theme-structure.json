@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "SpreadsheetTheme",
+  "type": "object",
+  "properties": {
+    "primaryFontFamily": {
+      "type": "string"
+    },
+    "themeColors": {
+      "type": "array"
+    }
+  }
+}

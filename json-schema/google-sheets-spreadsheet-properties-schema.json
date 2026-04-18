@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SpreadsheetProperties",
+  "type": "object",
+  "description": "Properties of a spreadsheet.",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "The title of the spreadsheet."
+    },
+    "locale": {
+      "type": "string",
+      "description": "The locale of the spreadsheet in one of the following formats: an ISO 639-1 language code, an ISO 639-2 language code, or a combination of the ISO language code and country code (e.g. en, eng, en_US)."
+    },
+    "autoRecalc": {
+      "type": "string",
+      "description": "The amount of time to wait before volatile functions are recalculated."
+    },
+    "timeZone": {
+      "type": "string",
+      "description": "The time zone of the spreadsheet in CLDR format (e.g. America/New_York)."
+    },
+    "importFunctionsExternalUrlAccessAllowed": {
+      "type": "boolean",
+      "description": "Whether to allow external URL access for image and import functions."
+    }
+  }
+}

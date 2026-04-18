@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DeveloperMetadataLocation",
+  "type": "object",
+  "description": "A location where metadata may be associated in a spreadsheet.",
+  "properties": {
+    "locationType": {
+      "type": "string",
+      "description": "The type of location this object represents."
+    },
+    "spreadsheet": {
+      "type": "boolean",
+      "description": "True when metadata is associated with an entire spreadsheet."
+    },
+    "sheetId": {
+      "type": "integer",
+      "description": "The ID of the sheet when metadata is associated with an entire sheet."
+    }
+  }
+}

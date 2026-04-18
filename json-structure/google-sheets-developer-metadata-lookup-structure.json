@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "DeveloperMetadataLookup",
+  "type": "object",
+  "properties": {
+    "locationType": {
+      "type": "string"
+    },
+    "locationMatchingStrategy": {
+      "type": "string"
+    },
+    "metadataId": {
+      "type": "integer"
+    },
+    "metadataKey": {
+      "type": "string"
+    },
+    "metadataValue": {
+      "type": "string"
+    },
+    "visibility": {
+      "type": "string"
+    }
+  }
+}

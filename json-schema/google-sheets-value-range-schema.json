@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ValueRange",
+  "type": "object",
+  "description": "Data within a range of the spreadsheet.",
+  "properties": {
+    "range": {
+      "type": "string",
+      "description": "The range the values cover, in A1 notation. For output, this range indicates the entire requested range, even though the values response will include only the non-empty rows and columns."
+    },
+    "values": {
+      "type": "array",
+      "description": "The data that was read or to be written. This is an array of arrays, the outer array representing all the data and each inner array representing a major dimension."
+    }
+  }
+}

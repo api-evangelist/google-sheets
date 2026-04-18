@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FilterCriteria",
+  "type": "object",
+  "description": "Criteria for showing/hiding rows in a filter or filter view.",
+  "properties": {
+    "hiddenValues": {
+      "type": "array",
+      "description": "Values that should be hidden."
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TextRotation",
+  "type": "object",
+  "description": "The rotation applied to text in a cell.",
+  "properties": {
+    "angle": {
+      "type": "integer",
+      "description": "The angle between the standard orientation and the desired orientation. Measured in degrees. Valid values are between -90 and 90."
+    },
+    "vertical": {
+      "type": "boolean",
+      "description": "If true, text reads top to bottom, but the orientation of individual characters is unchanged."
+    }
+  }
+}

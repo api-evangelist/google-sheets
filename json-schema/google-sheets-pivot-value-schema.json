@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PivotValue",
+  "type": "object",
+  "description": "The definition of how a value in a pivot table should be calculated.",
+  "properties": {
+    "summarizeFunction": {
+      "type": "string",
+      "description": "A function to summarize the value."
+    },
+    "name": {
+      "type": "string",
+      "description": "A name to use for the value."
+    },
+    "calculatedDisplayType": {
+      "type": "string",
+      "description": "If specified, indicates that pivot values should be displayed as the result of a calculation with another pivot value."
+    },
+    "sourceColumnOffset": {
+      "type": "integer",
+      "description": "The column offset of the source range that this value reads from."
+    },
+    "formula": {
+      "type": "string",
+      "description": "A custom formula to calculate the value."
+    }
+  }
+}

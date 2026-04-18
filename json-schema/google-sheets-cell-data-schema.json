@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CellData",
+  "type": "object",
+  "description": "Data about a specific cell.",
+  "properties": {
+    "formattedValue": {
+      "type": "string",
+      "description": "The formatted value of the cell. This is the value as it is shown to the user."
+    },
+    "hyperlink": {
+      "type": "string",
+      "description": "A hyperlink this cell points to, if any."
+    },
+    "note": {
+      "type": "string",
+      "description": "Any note on the cell."
+    },
+    "textFormatRuns": {
+      "type": "array",
+      "description": "Runs of rich text applied to subsections of the cell."
+    }
+  }
+}

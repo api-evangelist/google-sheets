@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RowData",
+  "type": "object",
+  "description": "Data about each cell in a row.",
+  "properties": {
+    "values": {
+      "type": "array",
+      "description": "The values in the row, one per column."
+    }
+  }
+}

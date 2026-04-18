@@ -1,0 +1,258 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Google Sheets Spreadsheet Data Management"
+  description: "Workflow for managing spreadsheet data including creating spreadsheets, reading and writing cell values, batch operations, and metadata management. Used by data analysts, developers, and automation engineers."
+  tags:
+    - Google Sheets
+    - Spreadsheets
+    - Data Management
+    - Automation
+  created: "2026-04-18"
+  modified: "2026-04-18"
+
+binds:
+  - namespace: env
+    keys:
+      GOOGLE_OAUTH_TOKEN: GOOGLE_OAUTH_TOKEN
+
+capability:
+  consumes:
+    - import: google-sheets
+      location: ./shared/google-sheets.yaml
+
+  exposes:
+    - type: rest
+      port: 8080
+      namespace: sheets-data-api
+      description: "Unified REST API for Google Sheets data management."
+      resources:
+        - path: /v1/spreadsheets
+          name: spreadsheets
+          description: "Spreadsheet lifecycle operations"
+          operations:
+            - method: POST
+              name: create-spreadsheet
+              description: "Create a new spreadsheet"
+              call: "google-sheets.create-spreadsheet"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/spreadsheets/{spreadsheetId}
+          name: spreadsheet
+          description: "Single spreadsheet operations"
+          operations:
+            - method: GET
+              name: get-spreadsheet
+              description: "Get spreadsheet details"
+              call: "google-sheets.get-spreadsheet"
+              with:
+                spreadsheetId: "rest.spreadsheetId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/spreadsheets/{spreadsheetId}/values/{range}
+          name: values
+          description: "Cell value read and write operations"
+          operations:
+            - method: GET
+              name: get-values
+              description: "Read values from a range"
+              call: "google-sheets.get-values"
+              with:
+                spreadsheetId: "rest.spreadsheetId"
+                range: "rest.range"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: PUT
+              name: update-values
+              description: "Write values to a range"
+              call: "google-sheets.update-values"
+              with:
+                spreadsheetId: "rest.spreadsheetId"
+                range: "rest.range"
+                valueInputOption: "rest.valueInputOption"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: append-values
+              description: "Append values to a range"
+              call: "google-sheets.append-values"
+              with:
+                spreadsheetId: "rest.spreadsheetId"
+                range: "rest.range"
+                valueInputOption: "rest.valueInputOption"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: DELETE
+              name: clear-values
+              description: "Clear values from a range"
+              call: "google-sheets.clear-values"
+              with:
+                spreadsheetId: "rest.spreadsheetId"
+                range: "rest.range"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9090
+      namespace: sheets-data-mcp
+      transport: http
+      description: "MCP server for AI-assisted Google Sheets data management."
+      tools:
+        - name: create-spreadsheet
+          description: "Create a new Google Sheets spreadsheet"
+          hints:
+            readOnly: false
+            idempotent: false
+          call: "google-sheets.create-spreadsheet"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-spreadsheet
+          description: "Get spreadsheet details by ID"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "google-sheets.get-spreadsheet"
+          with:
+            spreadsheetId: "tools.spreadsheetId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: batch-update-spreadsheet
+          description: "Apply batch updates to a spreadsheet"
+          hints:
+            readOnly: false
+            idempotent: false
+          call: "google-sheets.batch-update-spreadsheet"
+          with:
+            spreadsheetId: "tools.spreadsheetId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-values
+          description: "Read values from a spreadsheet range"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "google-sheets.get-values"
+          with:
+            spreadsheetId: "tools.spreadsheetId"
+            range: "tools.range"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: update-values
+          description: "Write values to a spreadsheet range"
+          hints:
+            readOnly: false
+            idempotent: true
+          call: "google-sheets.update-values"
+          with:
+            spreadsheetId: "tools.spreadsheetId"
+            range: "tools.range"
+            valueInputOption: "tools.valueInputOption"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: append-values
+          description: "Append rows of data to a spreadsheet"
+          hints:
+            readOnly: false
+            idempotent: false
+          call: "google-sheets.append-values"
+          with:
+            spreadsheetId: "tools.spreadsheetId"
+            range: "tools.range"
+            valueInputOption: "tools.valueInputOption"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: clear-values
+          description: "Clear values from a spreadsheet range"
+          hints:
+            readOnly: false
+            destructive: true
+            idempotent: true
+          call: "google-sheets.clear-values"
+          with:
+            spreadsheetId: "tools.spreadsheetId"
+            range: "tools.range"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: batch-get-values
+          description: "Read values from multiple ranges at once"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "google-sheets.batch-get-values"
+          with:
+            spreadsheetId: "tools.spreadsheetId"
+            ranges: "tools.ranges"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: batch-update-values
+          description: "Write values to multiple ranges at once"
+          hints:
+            readOnly: false
+            idempotent: true
+          call: "google-sheets.batch-update-values"
+          with:
+            spreadsheetId: "tools.spreadsheetId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: batch-clear-values
+          description: "Clear values from multiple ranges"
+          hints:
+            readOnly: false
+            destructive: true
+            idempotent: true
+          call: "google-sheets.batch-clear-values"
+          with:
+            spreadsheetId: "tools.spreadsheetId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: copy-sheet
+          description: "Copy a sheet to another spreadsheet"
+          hints:
+            readOnly: false
+            idempotent: false
+          call: "google-sheets.copy-sheet"
+          with:
+            spreadsheetId: "tools.spreadsheetId"
+            sheetId: "tools.sheetId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-developer-metadata
+          description: "Get developer metadata by ID"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "google-sheets.get-developer-metadata"
+          with:
+            spreadsheetId: "tools.spreadsheetId"
+            metadataId: "tools.metadataId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: search-developer-metadata
+          description: "Search developer metadata matching filters"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "google-sheets.search-developer-metadata"
+          with:
+            spreadsheetId: "tools.spreadsheetId"
+          outputParameters:
+            - type: object
+              mapping: "$."

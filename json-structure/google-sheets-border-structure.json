@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "Border",
+  "type": "object",
+  "properties": {
+    "style": {
+      "type": "string"
+    },
+    "width": {
+      "type": "integer"
+    }
+  }
+}

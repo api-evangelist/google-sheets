@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SheetProperties",
+  "type": "object",
+  "description": "Properties of a sheet.",
+  "properties": {
+    "sheetId": {
+      "type": "integer",
+      "description": "The ID of the sheet. Must be non-negative. This field cannot be changed once set."
+    },
+    "title": {
+      "type": "string",
+      "description": "The name of the sheet."
+    },
+    "index": {
+      "type": "integer",
+      "description": "The index of the sheet within the spreadsheet."
+    },
+    "sheetType": {
+      "type": "string",
+      "description": "The type of sheet."
+    },
+    "hidden": {
+      "type": "boolean",
+      "description": "True if the sheet is hidden in the UI, false if visible."
+    },
+    "rightToLeft": {
+      "type": "boolean",
+      "description": "True if the sheet is an RTL sheet instead of an LTR sheet."
+    }
+  }
+}

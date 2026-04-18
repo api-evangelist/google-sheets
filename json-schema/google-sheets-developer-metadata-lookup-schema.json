@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DeveloperMetadataLookup",
+  "type": "object",
+  "description": "Selects DeveloperMetadata that matches all of the specified fields.",
+  "properties": {
+    "locationType": {
+      "type": "string",
+      "description": "Limits the selected developer metadata to that which has a matching location type."
+    },
+    "locationMatchingStrategy": {
+      "type": "string",
+      "description": "Determines how this lookup matches the location."
+    },
+    "metadataId": {
+      "type": "integer",
+      "description": "Limits the selected developer metadata to that which has a matching metadata ID."
+    },
+    "metadataKey": {
+      "type": "string",
+      "description": "Limits the selected developer metadata to that which has a matching metadata key."
+    },
+    "metadataValue": {
+      "type": "string",
+      "description": "Limits the selected developer metadata to that which has a matching metadata value."
+    },
+    "visibility": {
+      "type": "string",
+      "description": "Limits the selected developer metadata to that which has a matching visibility."
+    }
+  }
+}

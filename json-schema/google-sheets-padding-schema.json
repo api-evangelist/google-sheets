@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Padding",
+  "type": "object",
+  "description": "The amount of padding around the cell, in pixels.",
+  "properties": {
+    "top": {
+      "type": "integer",
+      "description": "The top padding of the cell."
+    },
+    "right": {
+      "type": "integer",
+      "description": "The right padding of the cell."
+    },
+    "bottom": {
+      "type": "integer",
+      "description": "The bottom padding of the cell."
+    },
+    "left": {
+      "type": "integer",
+      "description": "The left padding of the cell."
+    }
+  }
+}

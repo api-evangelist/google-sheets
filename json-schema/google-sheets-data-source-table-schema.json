@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DataSourceTable",
+  "type": "object",
+  "description": "A data source table, which allows the user to import a static table of data from the DataSource into Sheets.",
+  "properties": {
+    "dataSourceId": {
+      "type": "string",
+      "description": "The ID of the data source the data source table is associated with."
+    },
+    "columnSelectionType": {
+      "type": "string",
+      "description": "The type to select columns for the data source table."
+    },
+    "columns": {
+      "type": "array",
+      "description": "Columns selected for the data source table."
+    },
+    "filterSpecs": {
+      "type": "array",
+      "description": "Filter specifications in the data source table."
+    },
+    "sortSpecs": {
+      "type": "array",
+      "description": "Sort specifications in the data source table."
+    },
+    "rowLimit": {
+      "type": "integer",
+      "description": "The limit of rows to return."
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "SheetProperties",
+  "type": "object",
+  "properties": {
+    "sheetId": {
+      "type": "integer"
+    },
+    "title": {
+      "type": "string"
+    },
+    "index": {
+      "type": "integer"
+    },
+    "sheetType": {
+      "type": "string"
+    },
+    "hidden": {
+      "type": "boolean"
+    },
+    "rightToLeft": {
+      "type": "boolean"
+    }
+  }
+}

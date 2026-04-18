@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "InterpolationPoint",
+  "type": "object",
+  "description": "A single interpolation point on a gradient conditional format.",
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "How the value should be interpreted."
+    },
+    "value": {
+      "type": "string",
+      "description": "The value this interpolation point uses."
+    }
+  }
+}

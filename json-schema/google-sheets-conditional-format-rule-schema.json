@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ConditionalFormatRule",
+  "type": "object",
+  "description": "A rule describing a conditional format.",
+  "properties": {
+    "ranges": {
+      "type": "array",
+      "description": "The ranges that are formatted if the condition is true."
+    },
+    "booleanRule": {
+      "type": "object",
+      "description": "The formatting is either on or off according to the rule."
+    },
+    "gradientRule": {
+      "type": "object",
+      "description": "The formatting will vary based on the gradients in the rule."
+    }
+  }
+}

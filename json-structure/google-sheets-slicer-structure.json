@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "Slicer",
+  "type": "object",
+  "properties": {
+    "slicerId": {
+      "type": "integer"
+    },
+    "spec": {
+      "type": "object"
+    }
+  }
+}

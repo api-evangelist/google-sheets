@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PivotFilterCriteria",
+  "type": "object",
+  "description": "Criteria for showing/hiding rows in a pivot table.",
+  "properties": {
+    "visibleValues": {
+      "type": "array",
+      "description": "Values that should be included."
+    },
+    "visibleByDefault": {
+      "type": "boolean",
+      "description": "Whether values are visible by default."
+    }
+  }
+}

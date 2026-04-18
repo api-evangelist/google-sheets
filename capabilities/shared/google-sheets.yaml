@@ -1,0 +1,502 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Google Sheets API"
+  description: "The Google Sheets API lets you read, write, and format data in Google Sheets."
+  tags:
+    - Google Sheets
+    - Spreadsheets
+    - Data
+    - Productivity
+  created: "2026-04-18"
+  modified: "2026-04-18"
+
+binds:
+  - namespace: env
+    keys:
+      GOOGLE_OAUTH_TOKEN: GOOGLE_OAUTH_TOKEN
+
+capability:
+  consumes:
+    - type: http
+      namespace: google-sheets
+      baseUri: https://sheets.googleapis.com/v4
+      description: "Google Sheets API v4 for reading, writing, and formatting spreadsheet data."
+      authentication:
+        type: bearer
+        token: "{{GOOGLE_OAUTH_TOKEN}}"
+      resources:
+        - name: spreadsheets
+          path: /spreadsheets
+          description: "Spreadsheet lifecycle and batch operations."
+          operations:
+            - name: create-spreadsheet
+              method: POST
+              description: "Creates a new spreadsheet."
+              inputParameters: []
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  properties:
+                    title: "{{tools.title}}"
+            - name: get-spreadsheet
+              method: GET
+              description: "Returns the spreadsheet at the given ID."
+              inputParameters:
+                - name: spreadsheetId
+                  in: path
+                  type: string
+                  required: true
+                  description: "The spreadsheet to request."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: batch-update-spreadsheet
+              method: POST
+              description: "Applies one or more updates to the spreadsheet."
+              inputParameters:
+                - name: spreadsheetId
+                  in: path
+                  type: string
+                  required: true
+                  description: "The spreadsheet to apply the updates to."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  requests: "{{tools.requests}}"
+        - name: values
+          path: /spreadsheets/{spreadsheetId}/values
+          description: "Read and write cell values."
+          operations:
+            - name: get-values
+              method: GET
+              description: "Returns a range of values from a spreadsheet."
+              inputParameters:
+                - name: spreadsheetId
+                  in: path
+                  type: string
+                  required: true
+                  description: "The ID of the spreadsheet to retrieve data from."
+                - name: range
+                  in: path
+                  type: string
+                  required: true
+                  description: "The A1 notation of the values to retrieve."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: update-values
+              method: PUT
+              description: "Sets values in a range of a spreadsheet."
+              inputParameters:
+                - name: spreadsheetId
+                  in: path
+                  type: string
+                  required: true
+                  description: "The ID of the spreadsheet to update."
+                - name: range
+                  in: path
+                  type: string
+                  required: true
+                  description: "The A1 notation of the values to update."
+                - name: valueInputOption
+                  in: query
+                  type: string
+                  required: true
+                  description: "How the input data should be interpreted."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  values: "{{tools.values}}"
+            - name: append-values
+              method: POST
+              description: "Appends values to a spreadsheet."
+              inputParameters:
+                - name: spreadsheetId
+                  in: path
+                  type: string
+                  required: true
+                  description: "The ID of the spreadsheet to update."
+                - name: range
+                  in: path
+                  type: string
+                  required: true
+                  description: "The A1 notation of a range to search for a logical table of data."
+                - name: valueInputOption
+                  in: query
+                  type: string
+                  required: true
+                  description: "How the input data should be interpreted."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  values: "{{tools.values}}"
+            - name: clear-values
+              method: POST
+              description: "Clears values from a spreadsheet."
+              inputParameters:
+                - name: spreadsheetId
+                  in: path
+                  type: string
+                  required: true
+                  description: "The ID of the spreadsheet to update."
+                - name: range
+                  in: path
+                  type: string
+                  required: true
+                  description: "The A1 notation of the values to clear."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: batch-get-values
+              method: GET
+              description: "Returns one or more ranges of values from a spreadsheet."
+              inputParameters:
+                - name: spreadsheetId
+                  in: path
+                  type: string
+                  required: true
+                  description: "The ID of the spreadsheet to retrieve data from."
+                - name: ranges
+                  in: query
+                  type: array
+                  required: true
+                  description: "The A1 notation of the values to retrieve."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: batch-update-values
+              method: POST
+              description: "Sets values in one or more ranges of a spreadsheet."
+              inputParameters:
+                - name: spreadsheetId
+                  in: path
+                  type: string
+                  required: true
+                  description: "The ID of the spreadsheet to update."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  data: "{{tools.data}}"
+                  valueInputOption: "{{tools.valueInputOption}}"
+            - name: batch-clear-values
+              method: POST
+              description: "Clears one or more ranges of values from a spreadsheet."
+              inputParameters:
+                - name: spreadsheetId
+                  in: path
+                  type: string
+                  required: true
+                  description: "The ID of the spreadsheet to update."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  ranges: "{{tools.ranges}}"
+        - name: sheets
+          path: /spreadsheets/{spreadsheetId}
+          description: "Sheet management operations."
+          operations:
+            - name: copy-sheet
+              method: POST
+              description: "Copies a single sheet from a spreadsheet to another spreadsheet."
+              inputParameters:
+                - name: spreadsheetId
+                  in: path
+                  type: string
+                  required: true
+                  description: "The ID of the spreadsheet containing the sheet to copy."
+                - name: sheetId
+                  in: path
+                  type: integer
+                  required: true
+                  description: "The ID of the sheet to copy."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  destinationSpreadsheetId: "{{tools.destinationSpreadsheetId}}"
+        - name: developer-metadata
+          path: /spreadsheets/{spreadsheetId}/developerMetadata
+          description: "Developer metadata operations."
+          operations:
+            - name: get-developer-metadata
+              method: GET
+              description: "Returns the developer metadata with the specified ID."
+              inputParameters:
+                - name: spreadsheetId
+                  in: path
+                  type: string
+                  required: true
+                  description: "The ID of the spreadsheet."
+                - name: metadataId
+                  in: path
+                  type: integer
+                  required: true
+                  description: "The ID of the developer metadata to retrieve."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: search-developer-metadata
+              method: POST
+              description: "Returns all developer metadata matching the specified DataFilter."
+              inputParameters:
+                - name: spreadsheetId
+                  in: path
+                  type: string
+                  required: true
+                  description: "The ID of the spreadsheet."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  dataFilters: "{{tools.dataFilters}}"
+
+  exposes:
+    - type: rest
+      port: 8100
+      namespace: google-sheets-rest
+      resources:
+        - path: /v1/spreadsheets
+          name: spreadsheets
+          description: "Spreadsheet management"
+          operations:
+            - method: POST
+              name: create-spreadsheet
+              description: "Create a new spreadsheet"
+              call: "google-sheets.create-spreadsheet"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/spreadsheets/{spreadsheetId}
+          name: spreadsheet
+          description: "Single spreadsheet operations"
+          operations:
+            - method: GET
+              name: get-spreadsheet
+              description: "Get a spreadsheet by ID"
+              call: "google-sheets.get-spreadsheet"
+              with:
+                spreadsheetId: "rest.spreadsheetId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/spreadsheets/{spreadsheetId}/values/{range}
+          name: values
+          description: "Cell value operations"
+          operations:
+            - method: GET
+              name: get-values
+              description: "Get values from a range"
+              call: "google-sheets.get-values"
+              with:
+                spreadsheetId: "rest.spreadsheetId"
+                range: "rest.range"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9100
+      namespace: google-sheets-mcp
+      transport: http
+      tools:
+        - name: create-spreadsheet
+          description: "Create a new Google Sheets spreadsheet"
+          hints:
+            readOnly: false
+            idempotent: false
+          call: "google-sheets.create-spreadsheet"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-spreadsheet
+          description: "Get a spreadsheet by ID"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "google-sheets.get-spreadsheet"
+          with:
+            spreadsheetId: "tools.spreadsheetId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: batch-update-spreadsheet
+          description: "Apply batch updates to a spreadsheet"
+          hints:
+            readOnly: false
+            idempotent: false
+          call: "google-sheets.batch-update-spreadsheet"
+          with:
+            spreadsheetId: "tools.spreadsheetId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-values
+          description: "Get values from a spreadsheet range"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "google-sheets.get-values"
+          with:
+            spreadsheetId: "tools.spreadsheetId"
+            range: "tools.range"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: update-values
+          description: "Update values in a spreadsheet range"
+          hints:
+            readOnly: false
+            idempotent: true
+          call: "google-sheets.update-values"
+          with:
+            spreadsheetId: "tools.spreadsheetId"
+            range: "tools.range"
+            valueInputOption: "tools.valueInputOption"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: append-values
+          description: "Append values to a spreadsheet"
+          hints:
+            readOnly: false
+            idempotent: false
+          call: "google-sheets.append-values"
+          with:
+            spreadsheetId: "tools.spreadsheetId"
+            range: "tools.range"
+            valueInputOption: "tools.valueInputOption"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: clear-values
+          description: "Clear values from a spreadsheet range"
+          hints:
+            readOnly: false
+            destructive: true
+            idempotent: true
+          call: "google-sheets.clear-values"
+          with:
+            spreadsheetId: "tools.spreadsheetId"
+            range: "tools.range"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: batch-get-values
+          description: "Get values from multiple ranges"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "google-sheets.batch-get-values"
+          with:
+            spreadsheetId: "tools.spreadsheetId"
+            ranges: "tools.ranges"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: batch-update-values
+          description: "Update values across multiple ranges"
+          hints:
+            readOnly: false
+            idempotent: true
+          call: "google-sheets.batch-update-values"
+          with:
+            spreadsheetId: "tools.spreadsheetId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: batch-clear-values
+          description: "Clear values from multiple ranges"
+          hints:
+            readOnly: false
+            destructive: true
+            idempotent: true
+          call: "google-sheets.batch-clear-values"
+          with:
+            spreadsheetId: "tools.spreadsheetId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: copy-sheet
+          description: "Copy a sheet to another spreadsheet"
+          hints:
+            readOnly: false
+            idempotent: false
+          call: "google-sheets.copy-sheet"
+          with:
+            spreadsheetId: "tools.spreadsheetId"
+            sheetId: "tools.sheetId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-developer-metadata
+          description: "Get developer metadata by ID"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "google-sheets.get-developer-metadata"
+          with:
+            spreadsheetId: "tools.spreadsheetId"
+            metadataId: "tools.metadataId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: search-developer-metadata
+          description: "Search developer metadata matching filters"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "google-sheets.search-developer-metadata"
+          with:
+            spreadsheetId: "tools.spreadsheetId"
+          outputParameters:
+            - type: object
+              mapping: "$."

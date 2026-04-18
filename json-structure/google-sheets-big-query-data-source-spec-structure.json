@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "BigQueryDataSourceSpec",
+  "type": "object",
+  "properties": {
+    "projectId": {
+      "type": "string"
+    },
+    "querySpec": {
+      "type": "object"
+    },
+    "tableSpec": {
+      "type": "object"
+    }
+  }
+}

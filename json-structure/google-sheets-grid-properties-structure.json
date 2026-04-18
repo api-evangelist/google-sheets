@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "GridProperties",
+  "type": "object",
+  "properties": {
+    "rowCount": {
+      "type": "integer"
+    },
+    "columnCount": {
+      "type": "integer"
+    },
+    "frozenRowCount": {
+      "type": "integer"
+    },
+    "frozenColumnCount": {
+      "type": "integer"
+    },
+    "hideGridlines": {
+      "type": "boolean"
+    },
+    "rowGroupControlAfter": {
+      "type": "boolean"
+    },
+    "columnGroupControlAfter": {
+      "type": "boolean"
+    }
+  }
+}

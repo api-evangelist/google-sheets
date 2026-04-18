@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "Sheet",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "array"
+    },
+    "merges": {
+      "type": "array"
+    },
+    "conditionalFormats": {
+      "type": "array"
+    },
+    "filterViews": {
+      "type": "array"
+    },
+    "protectedRanges": {
+      "type": "array"
+    },
+    "charts": {
+      "type": "array"
+    },
+    "bandedRanges": {
+      "type": "array"
+    },
+    "slicers": {
+      "type": "array"
+    }
+  }
+}

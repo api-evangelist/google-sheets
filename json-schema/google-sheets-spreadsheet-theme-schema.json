@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SpreadsheetTheme",
+  "type": "object",
+  "description": "Represents spreadsheet theme.",
+  "properties": {
+    "primaryFontFamily": {
+      "type": "string",
+      "description": "Name of the primary font family."
+    },
+    "themeColors": {
+      "type": "array",
+      "description": "The spreadsheet theme color pairs."
+    }
+  }
+}

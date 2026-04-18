@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PivotGroupLimit",
+  "type": "object",
+  "description": "The count limit on rows or columns in the pivot group.",
+  "properties": {
+    "countLimit": {
+      "type": "integer",
+      "description": "The count limit."
+    },
+    "applyOrder": {
+      "type": "integer",
+      "description": "The order in which the group limit is applied to the pivot table."
+    }
+  }
+}

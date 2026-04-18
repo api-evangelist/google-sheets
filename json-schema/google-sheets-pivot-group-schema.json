@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PivotGroup",
+  "type": "object",
+  "description": "A single grouping (either row or column) in a pivot table.",
+  "properties": {
+    "sourceColumnOffset": {
+      "type": "integer",
+      "description": "The column offset of the source range that this grouping is based on."
+    },
+    "showTotals": {
+      "type": "boolean",
+      "description": "True if the pivot table should include the totals for this grouping."
+    },
+    "sortOrder": {
+      "type": "string",
+      "description": "The order the values in this group should be sorted."
+    },
+    "repeatHeadings": {
+      "type": "boolean",
+      "description": "True if the headings in this pivot group should be repeated."
+    },
+    "label": {
+      "type": "string",
+      "description": "The labels to use for the row/column groups which can be customized."
+    }
+  }
+}

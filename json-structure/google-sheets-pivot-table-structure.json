@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "PivotTable",
+  "type": "object",
+  "properties": {
+    "rows": {
+      "type": "array"
+    },
+    "columns": {
+      "type": "array"
+    },
+    "values": {
+      "type": "array"
+    },
+    "criteria": {
+      "type": "object"
+    },
+    "filterSpecs": {
+      "type": "array"
+    },
+    "valueLayout": {
+      "type": "string"
+    },
+    "dataSourceId": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FilterSpec",
+  "type": "object",
+  "description": "The filter criteria associated with a specific column.",
+  "properties": {
+    "columnIndex": {
+      "type": "integer",
+      "description": "The zero-based column index."
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BandingProperties",
+  "type": "object",
+  "description": "Properties referring a single dimension (either row or column).",
+  "properties": {}
+}

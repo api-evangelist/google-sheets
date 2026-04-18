@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "DataSourceParameter",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "namedRangeId": {
+      "type": "string"
+    }
+  }
+}

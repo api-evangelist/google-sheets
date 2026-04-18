@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "UpdateValuesResponse",
+  "type": "object",
+  "description": "The response when updating a range of values in a spreadsheet.",
+  "properties": {
+    "spreadsheetId": {
+      "type": "string",
+      "description": "The spreadsheet the updates were applied to."
+    },
+    "updatedRange": {
+      "type": "string",
+      "description": "The range (in A1 notation) that updates were applied to."
+    },
+    "updatedRows": {
+      "type": "integer",
+      "description": "The number of rows where at least one cell in the row was updated."
+    },
+    "updatedColumns": {
+      "type": "integer",
+      "description": "The number of columns where at least one cell in the column was updated."
+    },
+    "updatedCells": {
+      "type": "integer",
+      "description": "The number of cells updated."
+    }
+  }
+}

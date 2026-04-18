@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "PivotValue",
+  "type": "object",
+  "properties": {
+    "summarizeFunction": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "calculatedDisplayType": {
+      "type": "string"
+    },
+    "sourceColumnOffset": {
+      "type": "integer"
+    },
+    "formula": {
+      "type": "string"
+    }
+  }
+}

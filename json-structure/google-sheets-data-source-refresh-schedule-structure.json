@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "DataSourceRefreshSchedule",
+  "type": "object",
+  "properties": {
+    "enabled": {
+      "type": "boolean"
+    },
+    "refreshScope": {
+      "type": "string"
+    },
+    "nextRun": {
+      "type": "object"
+    },
+    "dailySchedule": {
+      "type": "object"
+    },
+    "weeklySchedule": {
+      "type": "object"
+    },
+    "monthlySchedule": {
+      "type": "object"
+    }
+  }
+}

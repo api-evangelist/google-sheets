@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BooleanCondition",
+  "type": "object",
+  "description": "A condition that can evaluate to true or false.",
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "The type of condition."
+    },
+    "values": {
+      "type": "array",
+      "description": "The values of the condition. The number of supported values depends on the condition type."
+    }
+  }
+}

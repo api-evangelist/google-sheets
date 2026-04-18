@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PivotFilterSpec",
+  "type": "object",
+  "description": "The pivot table filter criteria associated with a specific source column offset.",
+  "properties": {
+    "columnOffsetIndex": {
+      "type": "integer",
+      "description": "The zero-based column offset of the source range."
+    }
+  }
+}

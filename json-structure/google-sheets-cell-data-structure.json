@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "CellData",
+  "type": "object",
+  "properties": {
+    "formattedValue": {
+      "type": "string"
+    },
+    "hyperlink": {
+      "type": "string"
+    },
+    "note": {
+      "type": "string"
+    },
+    "textFormatRuns": {
+      "type": "array"
+    }
+  }
+}

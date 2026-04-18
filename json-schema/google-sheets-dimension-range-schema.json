@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DimensionRange",
+  "type": "object",
+  "description": "A range along a single dimension on a sheet.",
+  "properties": {
+    "sheetId": {
+      "type": "integer",
+      "description": "The sheet this span is on."
+    },
+    "startIndex": {
+      "type": "integer",
+      "description": "The start (inclusive) of the span."
+    },
+    "endIndex": {
+      "type": "integer",
+      "description": "The end (exclusive) of the span."
+    }
+  }
+}

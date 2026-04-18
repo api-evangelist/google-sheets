@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "DimensionProperties",
+  "type": "object",
+  "properties": {
+    "hiddenByFilter": {
+      "type": "boolean"
+    },
+    "hiddenByUser": {
+      "type": "boolean"
+    },
+    "pixelSize": {
+      "type": "integer"
+    },
+    "developerMetadata": {
+      "type": "array"
+    }
+  }
+}

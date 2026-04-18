@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FilterView",
+  "type": "object",
+  "description": "A filter view.",
+  "properties": {
+    "filterViewId": {
+      "type": "integer",
+      "description": "The ID of the filter view."
+    },
+    "title": {
+      "type": "string",
+      "description": "The name of the filter view."
+    },
+    "namedRangeId": {
+      "type": "string",
+      "description": "The named range this filter view is backed by, if any."
+    },
+    "sortSpecs": {
+      "type": "array",
+      "description": "The sort order per column."
+    },
+    "criteria": {
+      "type": "object",
+      "description": "The criteria for showing/hiding values per column."
+    },
+    "filterSpecs": {
+      "type": "array",
+      "description": "The filter criteria for showing/hiding values per column."
+    }
+  }
+}

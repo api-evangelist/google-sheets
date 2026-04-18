@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BandedRange",
+  "type": "object",
+  "description": "A banded (alternating colors) range in a sheet.",
+  "properties": {
+    "bandedRangeId": {
+      "type": "integer",
+      "description": "The ID of the banded range."
+    }
+  }
+}

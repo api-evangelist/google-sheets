@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "EmbeddedChart",
+  "type": "object",
+  "description": "A chart embedded in a sheet.",
+  "properties": {
+    "chartId": {
+      "type": "integer",
+      "description": "The ID of the chart."
+    },
+    "spec": {
+      "type": "object",
+      "description": "The specification of the chart."
+    }
+  }
+}

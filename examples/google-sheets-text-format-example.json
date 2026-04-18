@@ -1,0 +1,8 @@
+{
+  "fontFamily": "example_value",
+  "fontSize": 10,
+  "bold": true,
+  "italic": true,
+  "strikethrough": true,
+  "underline": true
+}

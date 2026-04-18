@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DataSource",
+  "type": "object",
+  "description": "Information about an external data source in the spreadsheet.",
+  "properties": {
+    "dataSourceId": {
+      "type": "string",
+      "description": "The spreadsheet-scoped unique ID that identifies the data source."
+    },
+    "calculatedColumns": {
+      "type": "array",
+      "description": "All calculated columns in the data source."
+    },
+    "sheetId": {
+      "type": "integer",
+      "description": "The ID of the Sheet connected with the data source."
+    }
+  }
+}

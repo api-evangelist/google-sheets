@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BatchGetValuesResponse",
+  "type": "object",
+  "description": "The response when retrieving more than one range of values in a spreadsheet.",
+  "properties": {
+    "spreadsheetId": {
+      "type": "string",
+      "description": "The ID of the spreadsheet the data was retrieved from."
+    },
+    "valueRanges": {
+      "type": "array",
+      "description": "The requested ranges of values."
+    }
+  }
+}

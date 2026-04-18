@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GridCoordinate",
+  "type": "object",
+  "description": "A coordinate in a sheet.",
+  "properties": {
+    "sheetId": {
+      "type": "integer",
+      "description": "The sheet this coordinate is on."
+    },
+    "rowIndex": {
+      "type": "integer",
+      "description": "The row index of the coordinate."
+    },
+    "columnIndex": {
+      "type": "integer",
+      "description": "The column index of the coordinate."
+    }
+  }
+}

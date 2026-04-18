@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "BasicFilter",
+  "type": "object",
+  "properties": {
+    "sortSpecs": {
+      "type": "array"
+    },
+    "criteria": {
+      "type": "object"
+    },
+    "filterSpecs": {
+      "type": "array"
+    }
+  }
+}

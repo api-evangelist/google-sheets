@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TextFormat",
+  "type": "object",
+  "description": "The format of a run of text in a cell.",
+  "properties": {
+    "fontFamily": {
+      "type": "string",
+      "description": "The font family."
+    },
+    "fontSize": {
+      "type": "integer",
+      "description": "The size of the font."
+    },
+    "bold": {
+      "type": "boolean",
+      "description": "True if the text is bold."
+    },
+    "italic": {
+      "type": "boolean",
+      "description": "True if the text is italicized."
+    },
+    "strikethrough": {
+      "type": "boolean",
+      "description": "True if the text has a strikethrough."
+    },
+    "underline": {
+      "type": "boolean",
+      "description": "True if the text is underlined."
+    }
+  }
+}

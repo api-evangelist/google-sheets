@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "PivotGroup",
+  "type": "object",
+  "properties": {
+    "sourceColumnOffset": {
+      "type": "integer"
+    },
+    "showTotals": {
+      "type": "boolean"
+    },
+    "sortOrder": {
+      "type": "string"
+    },
+    "repeatHeadings": {
+      "type": "boolean"
+    },
+    "label": {
+      "type": "string"
+    }
+  }
+}

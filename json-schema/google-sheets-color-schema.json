@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Color",
+  "type": "object",
+  "description": "Represents a color in the RGBA color space. Values are in the range [0, 1].",
+  "properties": {
+    "red": {
+      "type": "number",
+      "description": "The amount of red in the color as a value in the range [0, 1]."
+    },
+    "green": {
+      "type": "number",
+      "description": "The amount of green in the color as a value in the range [0, 1]."
+    },
+    "blue": {
+      "type": "number",
+      "description": "The amount of blue in the color as a value in the range [0, 1]."
+    },
+    "alpha": {
+      "type": "number",
+      "description": "The fraction of this color that should be applied to the pixel. A value of 1.0 corresponds to a solid color."
+    }
+  }
+}

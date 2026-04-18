@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DataSourceParameter",
+  "type": "object",
+  "description": "A parameter in a data source's query.",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Named parameter."
+    },
+    "namedRangeId": {
+      "type": "string",
+      "description": "ID of a NamedRange."
+    }
+  }
+}

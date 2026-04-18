@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "DeveloperMetadata",
+  "type": "object",
+  "properties": {
+    "metadataId": {
+      "type": "integer"
+    },
+    "metadataKey": {
+      "type": "string"
+    },
+    "metadataValue": {
+      "type": "string"
+    },
+    "visibility": {
+      "type": "string"
+    }
+  }
+}

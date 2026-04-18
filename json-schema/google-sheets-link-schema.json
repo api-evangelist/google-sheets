@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Link",
+  "type": "object",
+  "description": "An external or local reference.",
+  "properties": {
+    "uri": {
+      "type": "string",
+      "description": "The link identifier."
+    }
+  }
+}

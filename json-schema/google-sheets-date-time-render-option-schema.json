@@ -1,0 +1,6 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DateTimeRenderOption",
+  "type": "string",
+  "description": "Determines how dates, times, and durations should be rendered in the output."
+}
