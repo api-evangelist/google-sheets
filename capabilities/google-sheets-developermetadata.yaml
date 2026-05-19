@@ -1,0 +1,122 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Google Sheets API — developerMetadata
+  description: 'Google Sheets API — developerMetadata. 2 operations. Lead operation: Google Sheets Get Developer Metadata.
+    Self-contained Naftiko capability covering one Google Sheets business surface.'
+  tags:
+  - Google Sheets
+  - developerMetadata
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    GOOGLE_SHEETS_API_KEY: GOOGLE_SHEETS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: google-sheets-developermetadata
+    baseUri: https://sheets.googleapis.com/v4
+    description: Google Sheets API — developerMetadata business capability. Self-contained, no shared references.
+    resources:
+    - name: spreadsheets-spreadsheetId-developerMetadata-metadataId
+      path: /spreadsheets/{spreadsheetId}/developerMetadata/{metadataId}
+      operations:
+      - name: getdevelopermetadata
+        method: GET
+        description: Google Sheets Get Developer Metadata
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: metadataId
+          in: path
+          type: integer
+          description: The ID of the developer metadata to retrieve.
+          required: true
+    - name: spreadsheets-spreadsheetId-developerMetadata:search
+      path: /spreadsheets/{spreadsheetId}/developerMetadata:search
+      operations:
+      - name: searchdevelopermetadata
+        method: POST
+        description: Google Sheets Search Developer Metadata
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.GOOGLE_SHEETS_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: google-sheets-developermetadata-rest
+    port: 8080
+    description: REST adapter for Google Sheets API — developerMetadata. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/spreadsheets/{spreadsheetid}/developermetadata/{metadataid}
+      name: spreadsheets-spreadsheetid-developermetadata-metadataid
+      description: REST surface for spreadsheets-spreadsheetId-developerMetadata-metadataId.
+      operations:
+      - method: GET
+        name: getdevelopermetadata
+        description: Google Sheets Get Developer Metadata
+        call: google-sheets-developermetadata.getdevelopermetadata
+        with:
+          metadataId: rest.metadataId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/spreadsheets/{spreadsheetid}/developermetadata-search
+      name: spreadsheets-spreadsheetid-developermetadata-search
+      description: REST surface for spreadsheets-spreadsheetId-developerMetadata:search.
+      operations:
+      - method: POST
+        name: searchdevelopermetadata
+        description: Google Sheets Search Developer Metadata
+        call: google-sheets-developermetadata.searchdevelopermetadata
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: google-sheets-developermetadata-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Google Sheets API — developerMetadata. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: google-sheets-get-developer-metadata
+      description: Google Sheets Get Developer Metadata
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: google-sheets-developermetadata.getdevelopermetadata
+      with:
+        metadataId: tools.metadataId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-sheets-search-developer-metadata
+      description: Google Sheets Search Developer Metadata
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: google-sheets-developermetadata.searchdevelopermetadata
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

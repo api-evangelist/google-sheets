@@ -1,0 +1,536 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Google Sheets API — Values
+  description: 'Google Sheets API — Values. 10 operations. Lead operation: Google Sheets Get Values From a Range. Self-contained
+    Naftiko capability covering one Google Sheets business surface.'
+  tags:
+  - Google Sheets
+  - Values
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    GOOGLE_SHEETS_API_KEY: GOOGLE_SHEETS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: google-sheets-values
+    baseUri: https://sheets.googleapis.com/v4
+    description: Google Sheets API — Values business capability. Self-contained, no shared references.
+    resources:
+    - name: spreadsheets-spreadsheetId-values-range
+      path: /spreadsheets/{spreadsheetId}/values/{range}
+      operations:
+      - name: getvalues
+        method: GET
+        description: Google Sheets Get Values From a Range
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: majorDimension
+          in: query
+          type: string
+          description: The major dimension that results should use.
+        - name: valueRenderOption
+          in: query
+          type: string
+          description: How values should be represented in the output.
+        - name: dateTimeRenderOption
+          in: query
+          type: string
+          description: How dates, times, and durations should be represented in the output.
+      - name: updatevalues
+        method: PUT
+        description: Google Sheets Update Values in a Range
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: valueInputOption
+          in: query
+          type: string
+          description: How the input data should be interpreted.
+          required: true
+        - name: includeValuesInResponse
+          in: query
+          type: boolean
+          description: Determines if the update response should include the values of the cells that were updated.
+        - name: responseValueRenderOption
+          in: query
+          type: string
+          description: Determines how values in the response should be rendered.
+        - name: responseDateTimeRenderOption
+          in: query
+          type: string
+          description: Determines how dates, times, and durations in the response should be rendered.
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: spreadsheets-spreadsheetId-values-range}:append
+      path: /spreadsheets/{spreadsheetId}/values/{range}:append
+      operations:
+      - name: appendvalues
+        method: POST
+        description: Google Sheets Append Values to a Range
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: valueInputOption
+          in: query
+          type: string
+          description: How the input data should be interpreted.
+          required: true
+        - name: insertDataOption
+          in: query
+          type: string
+          description: How the input data should be inserted.
+        - name: includeValuesInResponse
+          in: query
+          type: boolean
+          description: Determines if the update response should include the values of the cells that were appended.
+        - name: responseValueRenderOption
+          in: query
+          type: string
+          description: Determines how values in the response should be rendered.
+        - name: responseDateTimeRenderOption
+          in: query
+          type: string
+          description: Determines how dates, times, and durations in the response should be rendered.
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: spreadsheets-spreadsheetId-values-range}:clear
+      path: /spreadsheets/{spreadsheetId}/values/{range}:clear
+      operations:
+      - name: clearvalues
+        method: POST
+        description: Google Sheets Clear Values From a Range
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: spreadsheets-spreadsheetId-values:batchClear
+      path: /spreadsheets/{spreadsheetId}/values:batchClear
+      operations:
+      - name: batchclearvalues
+        method: POST
+        description: Google Sheets Clear Values From Multiple Ranges
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: spreadsheets-spreadsheetId-values:batchClearByDataFilter
+      path: /spreadsheets/{spreadsheetId}/values:batchClearByDataFilter
+      operations:
+      - name: batchclearvaluesbydatafilter
+        method: POST
+        description: Google Sheets Clear Values From Ranges Matching Data Filters
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: spreadsheets-spreadsheetId-values:batchGet
+      path: /spreadsheets/{spreadsheetId}/values:batchGet
+      operations:
+      - name: batchgetvalues
+        method: GET
+        description: Google Sheets Get Values From Multiple Ranges
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: ranges
+          in: query
+          type: array
+          description: The A1 notation or R1C1 notation of the range to retrieve values from.
+          required: true
+        - name: majorDimension
+          in: query
+          type: string
+          description: The major dimension that results should use.
+        - name: valueRenderOption
+          in: query
+          type: string
+          description: How values should be represented in the output.
+        - name: dateTimeRenderOption
+          in: query
+          type: string
+          description: How dates, times, and durations should be represented in the output.
+    - name: spreadsheets-spreadsheetId-values:batchGetByDataFilter
+      path: /spreadsheets/{spreadsheetId}/values:batchGetByDataFilter
+      operations:
+      - name: batchgetvaluesbydatafilter
+        method: POST
+        description: Google Sheets Get Values From Ranges Matching Data Filters
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: spreadsheets-spreadsheetId-values:batchUpdate
+      path: /spreadsheets/{spreadsheetId}/values:batchUpdate
+      operations:
+      - name: batchupdatevalues
+        method: POST
+        description: Google Sheets Update Values in Multiple Ranges
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: spreadsheets-spreadsheetId-values:batchUpdateByDataFilter
+      path: /spreadsheets/{spreadsheetId}/values:batchUpdateByDataFilter
+      operations:
+      - name: batchupdatevaluesbydatafilter
+        method: POST
+        description: Google Sheets Update Values in Ranges Matching Data Filters
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.GOOGLE_SHEETS_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: google-sheets-values-rest
+    port: 8080
+    description: REST adapter for Google Sheets API — Values. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/spreadsheets/{spreadsheetid}/values/{range}
+      name: spreadsheets-spreadsheetid-values-range
+      description: REST surface for spreadsheets-spreadsheetId-values-range.
+      operations:
+      - method: GET
+        name: getvalues
+        description: Google Sheets Get Values From a Range
+        call: google-sheets-values.getvalues
+        with:
+          majorDimension: rest.majorDimension
+          valueRenderOption: rest.valueRenderOption
+          dateTimeRenderOption: rest.dateTimeRenderOption
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatevalues
+        description: Google Sheets Update Values in a Range
+        call: google-sheets-values.updatevalues
+        with:
+          valueInputOption: rest.valueInputOption
+          includeValuesInResponse: rest.includeValuesInResponse
+          responseValueRenderOption: rest.responseValueRenderOption
+          responseDateTimeRenderOption: rest.responseDateTimeRenderOption
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/spreadsheets/{spreadsheetid}/values/range-append
+      name: spreadsheets-spreadsheetid-values-range-append
+      description: REST surface for spreadsheets-spreadsheetId-values-range}:append.
+      operations:
+      - method: POST
+        name: appendvalues
+        description: Google Sheets Append Values to a Range
+        call: google-sheets-values.appendvalues
+        with:
+          valueInputOption: rest.valueInputOption
+          insertDataOption: rest.insertDataOption
+          includeValuesInResponse: rest.includeValuesInResponse
+          responseValueRenderOption: rest.responseValueRenderOption
+          responseDateTimeRenderOption: rest.responseDateTimeRenderOption
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/spreadsheets/{spreadsheetid}/values/range-clear
+      name: spreadsheets-spreadsheetid-values-range-clear
+      description: REST surface for spreadsheets-spreadsheetId-values-range}:clear.
+      operations:
+      - method: POST
+        name: clearvalues
+        description: Google Sheets Clear Values From a Range
+        call: google-sheets-values.clearvalues
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/spreadsheets/{spreadsheetid}/values-batchclear
+      name: spreadsheets-spreadsheetid-values-batchclear
+      description: REST surface for spreadsheets-spreadsheetId-values:batchClear.
+      operations:
+      - method: POST
+        name: batchclearvalues
+        description: Google Sheets Clear Values From Multiple Ranges
+        call: google-sheets-values.batchclearvalues
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/spreadsheets/{spreadsheetid}/values-batchclearbydatafilter
+      name: spreadsheets-spreadsheetid-values-batchclearbydatafilter
+      description: REST surface for spreadsheets-spreadsheetId-values:batchClearByDataFilter.
+      operations:
+      - method: POST
+        name: batchclearvaluesbydatafilter
+        description: Google Sheets Clear Values From Ranges Matching Data Filters
+        call: google-sheets-values.batchclearvaluesbydatafilter
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/spreadsheets/{spreadsheetid}/values-batchget
+      name: spreadsheets-spreadsheetid-values-batchget
+      description: REST surface for spreadsheets-spreadsheetId-values:batchGet.
+      operations:
+      - method: GET
+        name: batchgetvalues
+        description: Google Sheets Get Values From Multiple Ranges
+        call: google-sheets-values.batchgetvalues
+        with:
+          ranges: rest.ranges
+          majorDimension: rest.majorDimension
+          valueRenderOption: rest.valueRenderOption
+          dateTimeRenderOption: rest.dateTimeRenderOption
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/spreadsheets/{spreadsheetid}/values-batchgetbydatafilter
+      name: spreadsheets-spreadsheetid-values-batchgetbydatafilter
+      description: REST surface for spreadsheets-spreadsheetId-values:batchGetByDataFilter.
+      operations:
+      - method: POST
+        name: batchgetvaluesbydatafilter
+        description: Google Sheets Get Values From Ranges Matching Data Filters
+        call: google-sheets-values.batchgetvaluesbydatafilter
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/spreadsheets/{spreadsheetid}/values-batchupdate
+      name: spreadsheets-spreadsheetid-values-batchupdate
+      description: REST surface for spreadsheets-spreadsheetId-values:batchUpdate.
+      operations:
+      - method: POST
+        name: batchupdatevalues
+        description: Google Sheets Update Values in Multiple Ranges
+        call: google-sheets-values.batchupdatevalues
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/spreadsheets/{spreadsheetid}/values-batchupdatebydatafilter
+      name: spreadsheets-spreadsheetid-values-batchupdatebydatafilter
+      description: REST surface for spreadsheets-spreadsheetId-values:batchUpdateByDataFilter.
+      operations:
+      - method: POST
+        name: batchupdatevaluesbydatafilter
+        description: Google Sheets Update Values in Ranges Matching Data Filters
+        call: google-sheets-values.batchupdatevaluesbydatafilter
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: google-sheets-values-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Google Sheets API — Values. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: google-sheets-get-values-range
+      description: Google Sheets Get Values From a Range
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: google-sheets-values.getvalues
+      with:
+        majorDimension: tools.majorDimension
+        valueRenderOption: tools.valueRenderOption
+        dateTimeRenderOption: tools.dateTimeRenderOption
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-sheets-update-values-range
+      description: Google Sheets Update Values in a Range
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: google-sheets-values.updatevalues
+      with:
+        valueInputOption: tools.valueInputOption
+        includeValuesInResponse: tools.includeValuesInResponse
+        responseValueRenderOption: tools.responseValueRenderOption
+        responseDateTimeRenderOption: tools.responseDateTimeRenderOption
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-sheets-append-values-range
+      description: Google Sheets Append Values to a Range
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: google-sheets-values.appendvalues
+      with:
+        valueInputOption: tools.valueInputOption
+        insertDataOption: tools.insertDataOption
+        includeValuesInResponse: tools.includeValuesInResponse
+        responseValueRenderOption: tools.responseValueRenderOption
+        responseDateTimeRenderOption: tools.responseDateTimeRenderOption
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-sheets-clear-values-range
+      description: Google Sheets Clear Values From a Range
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: google-sheets-values.clearvalues
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-sheets-clear-values-multiple
+      description: Google Sheets Clear Values From Multiple Ranges
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: google-sheets-values.batchclearvalues
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-sheets-clear-values-ranges
+      description: Google Sheets Clear Values From Ranges Matching Data Filters
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: google-sheets-values.batchclearvaluesbydatafilter
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-sheets-get-values-multiple
+      description: Google Sheets Get Values From Multiple Ranges
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: google-sheets-values.batchgetvalues
+      with:
+        ranges: tools.ranges
+        majorDimension: tools.majorDimension
+        valueRenderOption: tools.valueRenderOption
+        dateTimeRenderOption: tools.dateTimeRenderOption
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-sheets-get-values-ranges
+      description: Google Sheets Get Values From Ranges Matching Data Filters
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: google-sheets-values.batchgetvaluesbydatafilter
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-sheets-update-values-multiple
+      description: Google Sheets Update Values in Multiple Ranges
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: google-sheets-values.batchupdatevalues
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-sheets-update-values-ranges
+      description: Google Sheets Update Values in Ranges Matching Data Filters
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: google-sheets-values.batchupdatevaluesbydatafilter
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
