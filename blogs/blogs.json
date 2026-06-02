@@ -2,13 +2,13 @@
   "repo": "google-sheets",
   "feeds": [
     {
-      "source": "https://workspace.google.com/blog/developers-practitioners",
-      "feed_url": "",
+      "source": "https://developers.google.com/workspace/sheets/api/reference/rest",
+      "feed_url": "https://developers.google.com/workspace/sheets/api/reference/rest",
       "title": "",
       "saved": 0,
-      "error": "no_feed"
+      "method": "none"
     }
   ],
-  "fetched": "2026-05-17T20:48:52Z",
+  "fetched": "2026-06-01T23:35:02Z",
   "post_count": 0
 }
