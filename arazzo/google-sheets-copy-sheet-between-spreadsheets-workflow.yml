@@ -1,0 +1,102 @@
+arazzo: 1.0.1
+info:
+  title: Google Sheets Copy a Sheet Between Spreadsheets
+  summary: Read a source spreadsheet, copy one of its sheets into a destination spreadsheet, then confirm the destination.
+  description: >-
+    A sheet-cloning flow across two spreadsheets. The workflow reads the source
+    spreadsheet to confirm it exists, copies a single sheet from it into a
+    destination spreadsheet, and then reads the destination spreadsheet back so
+    the caller can confirm the new tab is present. Every step spells out its
+    request inline so the flow can be read and executed without opening the
+    underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: googleSheetsApi
+  url: ../openapi/google-sheets-openapi.yml
+  type: openapi
+workflows:
+- workflowId: copy-sheet-between-spreadsheets
+  summary: Copy a single sheet from one spreadsheet into another and confirm it.
+  description: >-
+    Confirms the source spreadsheet, copies one of its sheets into the
+    destination spreadsheet, and reads the destination back to confirm the
+    copied tab.
+  inputs:
+    type: object
+    required:
+    - accessToken
+    - sourceSpreadsheetId
+    - sheetId
+    - destinationSpreadsheetId
+    properties:
+      accessToken:
+        type: string
+        description: OAuth 2.0 bearer access token with the spreadsheets scope.
+      sourceSpreadsheetId:
+        type: string
+        description: The ID of the spreadsheet to copy a sheet from.
+      sheetId:
+        type: integer
+        description: The numeric ID of the sheet within the source spreadsheet to copy.
+      destinationSpreadsheetId:
+        type: string
+        description: The ID of the spreadsheet to copy the sheet into.
+  steps:
+  - stepId: readSource
+    description: Read the source spreadsheet to confirm it exists before copying from it.
+    operationId: getSpreadsheet
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: spreadsheetId
+      in: path
+      value: $inputs.sourceSpreadsheetId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      sourceTitle: $response.body#/properties/title
+      sheets: $response.body#/sheets
+  - stepId: copySheet
+    description: >-
+      Copy the named sheet from the source spreadsheet into the destination
+      spreadsheet and capture the new sheet's properties.
+    operationId: copySheet
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: spreadsheetId
+      in: path
+      value: $inputs.sourceSpreadsheetId
+    - name: sheetId
+      in: path
+      value: $inputs.sheetId
+    requestBody:
+      contentType: application/json
+      payload:
+        destinationSpreadsheetId: $inputs.destinationSpreadsheetId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      copiedSheetId: $response.body#/sheetId
+      copiedSheetTitle: $response.body#/title
+  - stepId: confirmDestination
+    description: Read the destination spreadsheet back to confirm the copied tab is present.
+    operationId: getSpreadsheet
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: spreadsheetId
+      in: path
+      value: $inputs.destinationSpreadsheetId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      destinationSheets: $response.body#/sheets
+  outputs:
+    sourceTitle: $steps.readSource.outputs.sourceTitle
+    copiedSheetId: $steps.copySheet.outputs.copiedSheetId
+    copiedSheetTitle: $steps.copySheet.outputs.copiedSheetTitle
+    destinationSheets: $steps.confirmDestination.outputs.destinationSheets

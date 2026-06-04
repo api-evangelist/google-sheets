@@ -1,0 +1,123 @@
+arazzo: 1.0.1
+info:
+  title: Google Sheets Create and Seed a Spreadsheet
+  summary: Create a new spreadsheet, append seed rows to it, then read them back.
+  description: >-
+    A foundational Google Sheets bootstrap flow. The workflow creates a brand
+    new spreadsheet with a titled grid, appends an initial block of rows to the
+    first tab using append semantics so existing data is never overwritten, and
+    then reads the same range back to confirm the values landed. Every step
+    spells out its request inline so the flow can be read and executed without
+    opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: googleSheetsApi
+  url: ../openapi/google-sheets-openapi.yml
+  type: openapi
+workflows:
+- workflowId: create-and-seed-spreadsheet
+  summary: Create a spreadsheet, append seed rows, and read them back.
+  description: >-
+    Creates a spreadsheet titled by the caller, appends a block of seed rows to
+    the supplied range, and reads the appended range back so the caller can
+    verify the write.
+  inputs:
+    type: object
+    required:
+    - accessToken
+    - title
+    - range
+    - values
+    properties:
+      accessToken:
+        type: string
+        description: OAuth 2.0 bearer access token with the spreadsheets scope.
+      title:
+        type: string
+        description: The title to give the newly created spreadsheet.
+      range:
+        type: string
+        description: The A1 notation range to append the seed rows to (e.g. Sheet1!A1).
+      values:
+        type: array
+        description: A two-dimensional array of cell values to seed the spreadsheet with.
+        items:
+          type: array
+          items: {}
+  steps:
+  - stepId: createSpreadsheet
+    description: >-
+      Create a new spreadsheet with the supplied title and capture its
+      generated spreadsheet ID and URL.
+    operationId: createSpreadsheet
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    requestBody:
+      contentType: application/json
+      payload:
+        properties:
+          title: $inputs.title
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      spreadsheetId: $response.body#/spreadsheetId
+      spreadsheetUrl: $response.body#/spreadsheetUrl
+  - stepId: appendSeedRows
+    description: >-
+      Append the supplied two-dimensional value block to the target range,
+      letting the API find the table and write to the next available rows.
+    operationId: appendValues
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: spreadsheetId
+      in: path
+      value: $steps.createSpreadsheet.outputs.spreadsheetId
+    - name: range
+      in: path
+      value: $inputs.range
+    - name: valueInputOption
+      in: query
+      value: USER_ENTERED
+    - name: insertDataOption
+      in: query
+      value: INSERT_ROWS
+    requestBody:
+      contentType: application/json
+      payload:
+        range: $inputs.range
+        majorDimension: ROWS
+        values: $inputs.values
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      tableRange: $response.body#/tableRange
+      updatedRange: $response.body#/updates/updatedRange
+      updatedCells: $response.body#/updates/updatedCells
+  - stepId: readBack
+    description: >-
+      Read the appended range back from the spreadsheet to confirm the seed
+      rows were written.
+    operationId: getValues
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: spreadsheetId
+      in: path
+      value: $steps.createSpreadsheet.outputs.spreadsheetId
+    - name: range
+      in: path
+      value: $steps.appendSeedRows.outputs.updatedRange
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      values: $response.body#/values
+  outputs:
+    spreadsheetId: $steps.createSpreadsheet.outputs.spreadsheetId
+    spreadsheetUrl: $steps.createSpreadsheet.outputs.spreadsheetUrl
+    seededRange: $steps.appendSeedRows.outputs.updatedRange
+    readBackValues: $steps.readBack.outputs.values

@@ -1,0 +1,115 @@
+arazzo: 1.0.1
+info:
+  title: Google Sheets Create, Write, and Verify
+  summary: Create a spreadsheet, write values into a range, then read the range back to verify the write.
+  description: >-
+    A create-and-confirm flow for greenfield spreadsheets. The workflow creates
+    a new spreadsheet, writes a block of values into a range using update
+    semantics, and then reads the same range back so the caller can confirm the
+    cells were set as expected. Every step spells out its request inline so the
+    flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: googleSheetsApi
+  url: ../openapi/google-sheets-openapi.yml
+  type: openapi
+workflows:
+- workflowId: create-write-and-verify
+  summary: Create a spreadsheet, write values, and read them back to verify.
+  description: >-
+    Creates a spreadsheet, sets values in a range, and reads the same range
+    back to confirm the write landed.
+  inputs:
+    type: object
+    required:
+    - accessToken
+    - title
+    - range
+    - values
+    properties:
+      accessToken:
+        type: string
+        description: OAuth 2.0 bearer access token with the spreadsheets scope.
+      title:
+        type: string
+        description: The title to give the newly created spreadsheet.
+      range:
+        type: string
+        description: The A1 notation range to write values to (e.g. Sheet1!A1:C3).
+      values:
+        type: array
+        description: A two-dimensional array of cell values to write.
+        items:
+          type: array
+          items: {}
+  steps:
+  - stepId: createSpreadsheet
+    description: Create the spreadsheet and capture its generated spreadsheet ID.
+    operationId: createSpreadsheet
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    requestBody:
+      contentType: application/json
+      payload:
+        properties:
+          title: $inputs.title
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      spreadsheetId: $response.body#/spreadsheetId
+      spreadsheetUrl: $response.body#/spreadsheetUrl
+  - stepId: writeValues
+    description: Set the supplied values into the target range using USER_ENTERED interpretation.
+    operationId: updateValues
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: spreadsheetId
+      in: path
+      value: $steps.createSpreadsheet.outputs.spreadsheetId
+    - name: range
+      in: path
+      value: $inputs.range
+    - name: valueInputOption
+      in: query
+      value: USER_ENTERED
+    - name: includeValuesInResponse
+      in: query
+      value: true
+    requestBody:
+      contentType: application/json
+      payload:
+        range: $inputs.range
+        majorDimension: ROWS
+        values: $inputs.values
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      updatedRange: $response.body#/updatedRange
+      updatedCells: $response.body#/updatedCells
+  - stepId: verify
+    description: Read the written range back from the spreadsheet to confirm the values.
+    operationId: getValues
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: spreadsheetId
+      in: path
+      value: $steps.createSpreadsheet.outputs.spreadsheetId
+    - name: range
+      in: path
+      value: $steps.writeValues.outputs.updatedRange
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      values: $response.body#/values
+  outputs:
+    spreadsheetId: $steps.createSpreadsheet.outputs.spreadsheetId
+    spreadsheetUrl: $steps.createSpreadsheet.outputs.spreadsheetUrl
+    updatedRange: $steps.writeValues.outputs.updatedRange
+    verifiedValues: $steps.verify.outputs.values

@@ -1,0 +1,116 @@
+arazzo: 1.0.1
+info:
+  title: Google Sheets Update and Read Values by Data Filter
+  summary: Resolve a spreadsheet via a data filter, update matching ranges by filter, then read them back by filter.
+  description: >-
+    A data-filter-driven write-and-verify flow. The workflow resolves the
+    spreadsheet using a getByDataFilter request to confirm the target ranges
+    exist, updates the values of the ranges selected by an A1 data filter, and
+    then reads those same filtered ranges back to confirm the write. Every step
+    spells out its request inline so the flow can be read and executed without
+    opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: googleSheetsApi
+  url: ../openapi/google-sheets-openapi.yml
+  type: openapi
+workflows:
+- workflowId: update-and-read-by-data-filter
+  summary: Update and read spreadsheet values selected by an A1 data filter.
+  description: >-
+    Confirms the spreadsheet via getByDataFilter, updates the values of a
+    filter-selected range, and reads the filtered range back.
+  inputs:
+    type: object
+    required:
+    - accessToken
+    - spreadsheetId
+    - a1Range
+    - values
+    properties:
+      accessToken:
+        type: string
+        description: OAuth 2.0 bearer access token with the spreadsheets scope.
+      spreadsheetId:
+        type: string
+        description: The ID of the spreadsheet to update.
+      a1Range:
+        type: string
+        description: The A1 notation range used as the data filter (e.g. Sheet1!A1:C5).
+      values:
+        type: array
+        description: A two-dimensional array of cell values to write to the filtered range.
+        items:
+          type: array
+          items: {}
+  steps:
+  - stepId: resolveByFilter
+    description: >-
+      Confirm the spreadsheet and target range by reading it through a data
+      filter before writing.
+    operationId: getSpreadsheetByDataFilter
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: spreadsheetId
+      in: path
+      value: $inputs.spreadsheetId
+    requestBody:
+      contentType: application/json
+      payload:
+        dataFilters:
+        - a1Range: $inputs.a1Range
+        includeGridData: false
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      spreadsheetId: $response.body#/spreadsheetId
+  - stepId: updateByFilter
+    description: >-
+      Update the values of the filter-selected range using USER_ENTERED
+      interpretation.
+    operationId: batchUpdateValuesByDataFilter
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: spreadsheetId
+      in: path
+      value: $inputs.spreadsheetId
+    requestBody:
+      contentType: application/json
+      payload:
+        valueInputOption: USER_ENTERED
+        data:
+        - dataFilter:
+            a1Range: $inputs.a1Range
+          majorDimension: ROWS
+          values: $inputs.values
+        includeValuesInResponse: false
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      totalUpdatedCells: $response.body#/totalUpdatedCells
+  - stepId: readByFilter
+    description: Read the filter-selected range back to confirm the update landed.
+    operationId: batchGetValuesByDataFilter
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: spreadsheetId
+      in: path
+      value: $inputs.spreadsheetId
+    requestBody:
+      contentType: application/json
+      payload:
+        dataFilters:
+        - a1Range: $inputs.a1Range
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      valueRanges: $response.body#/valueRanges
+  outputs:
+    totalUpdatedCells: $steps.updateByFilter.outputs.totalUpdatedCells
+    valueRanges: $steps.readByFilter.outputs.valueRanges

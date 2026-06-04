@@ -1,0 +1,119 @@
+arazzo: 1.0.1
+info:
+  title: Google Sheets Bulk Load Multiple Ranges
+  summary: Create a spreadsheet, write several ranges in one batch, then read them all back in one batch.
+  description: >-
+    A bulk provisioning flow for spreadsheets that need several disjoint ranges
+    populated at once. The workflow creates a new spreadsheet, applies a single
+    values batchUpdate that writes every supplied range together, and then reads
+    all of those ranges back with a single values batchGet. Every step spells
+    out its request inline so the flow can be read and executed without opening
+    the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: googleSheetsApi
+  url: ../openapi/google-sheets-openapi.yml
+  type: openapi
+workflows:
+- workflowId: bulk-load-multiple-ranges
+  summary: Create a spreadsheet and bulk write and read multiple ranges.
+  description: >-
+    Creates a spreadsheet, writes several value ranges in one batchUpdate, and
+    reads them all back in one batchGet.
+  inputs:
+    type: object
+    required:
+    - accessToken
+    - title
+    - data
+    - ranges
+    properties:
+      accessToken:
+        type: string
+        description: OAuth 2.0 bearer access token with the spreadsheets scope.
+      title:
+        type: string
+        description: The title to give the newly created spreadsheet.
+      data:
+        type: array
+        description: An array of ValueRange objects (each with range, majorDimension, and values) to write.
+        items:
+          type: object
+          properties:
+            range:
+              type: string
+            majorDimension:
+              type: string
+            values:
+              type: array
+              items:
+                type: array
+                items: {}
+      ranges:
+        type: array
+        description: The A1 notation ranges to read back after writing.
+        items:
+          type: string
+  steps:
+  - stepId: createSpreadsheet
+    description: Create the spreadsheet and capture its generated spreadsheet ID.
+    operationId: createSpreadsheet
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    requestBody:
+      contentType: application/json
+      payload:
+        properties:
+          title: $inputs.title
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      spreadsheetId: $response.body#/spreadsheetId
+      spreadsheetUrl: $response.body#/spreadsheetUrl
+  - stepId: bulkWrite
+    description: >-
+      Write every supplied value range into the spreadsheet in a single
+      batchUpdate using USER_ENTERED interpretation.
+    operationId: batchUpdateValues
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: spreadsheetId
+      in: path
+      value: $steps.createSpreadsheet.outputs.spreadsheetId
+    requestBody:
+      contentType: application/json
+      payload:
+        valueInputOption: USER_ENTERED
+        data: $inputs.data
+        includeValuesInResponse: false
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      totalUpdatedCells: $response.body#/totalUpdatedCells
+      totalUpdatedSheets: $response.body#/totalUpdatedSheets
+  - stepId: bulkRead
+    description: Read all of the supplied ranges back from the spreadsheet in one batchGet.
+    operationId: batchGetValues
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: spreadsheetId
+      in: path
+      value: $steps.createSpreadsheet.outputs.spreadsheetId
+    - name: ranges
+      in: query
+      value: $inputs.ranges
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      valueRanges: $response.body#/valueRanges
+  outputs:
+    spreadsheetId: $steps.createSpreadsheet.outputs.spreadsheetId
+    spreadsheetUrl: $steps.createSpreadsheet.outputs.spreadsheetUrl
+    totalUpdatedCells: $steps.bulkWrite.outputs.totalUpdatedCells
+    valueRanges: $steps.bulkRead.outputs.valueRanges

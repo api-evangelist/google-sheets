@@ -1,0 +1,127 @@
+arazzo: 1.0.1
+info:
+  title: Google Sheets Append Rows and Format the Header
+  summary: Create a spreadsheet, append rows including a header, then bold the header row via batchUpdate.
+  description: >-
+    A flow that produces a presentable table in a fresh spreadsheet. The
+    workflow creates a new spreadsheet, appends a block of rows whose first row
+    is a header, and then applies a batchUpdate repeatCell request that bolds
+    the header row on the first sheet. Every step spells out its request inline
+    so the flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: googleSheetsApi
+  url: ../openapi/google-sheets-openapi.yml
+  type: openapi
+workflows:
+- workflowId: append-and-format-header
+  summary: Create a spreadsheet, append rows, and bold the header row.
+  description: >-
+    Creates a spreadsheet, appends a header plus data rows, and applies a
+    repeatCell batchUpdate to bold the header row of the target sheet.
+  inputs:
+    type: object
+    required:
+    - accessToken
+    - title
+    - range
+    - values
+    - sheetId
+    properties:
+      accessToken:
+        type: string
+        description: OAuth 2.0 bearer access token with the spreadsheets scope.
+      title:
+        type: string
+        description: The title to give the newly created spreadsheet.
+      range:
+        type: string
+        description: The A1 notation range to append rows to (e.g. Sheet1!A1).
+      values:
+        type: array
+        description: A two-dimensional array whose first row is the header.
+        items:
+          type: array
+          items: {}
+      sheetId:
+        type: integer
+        description: The numeric ID of the sheet whose header row should be bolded (0 for the first sheet).
+  steps:
+  - stepId: createSpreadsheet
+    description: Create the spreadsheet and capture its generated spreadsheet ID.
+    operationId: createSpreadsheet
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    requestBody:
+      contentType: application/json
+      payload:
+        properties:
+          title: $inputs.title
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      spreadsheetId: $response.body#/spreadsheetId
+      spreadsheetUrl: $response.body#/spreadsheetUrl
+  - stepId: appendRows
+    description: Append the header and data rows to the target range.
+    operationId: appendValues
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: spreadsheetId
+      in: path
+      value: $steps.createSpreadsheet.outputs.spreadsheetId
+    - name: range
+      in: path
+      value: $inputs.range
+    - name: valueInputOption
+      in: query
+      value: USER_ENTERED
+    requestBody:
+      contentType: application/json
+      payload:
+        range: $inputs.range
+        majorDimension: ROWS
+        values: $inputs.values
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      updatedRange: $response.body#/updates/updatedRange
+  - stepId: boldHeader
+    description: >-
+      Apply a repeatCell batchUpdate that sets bold text on the first row of
+      the target sheet.
+    operationId: batchUpdateSpreadsheet
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: spreadsheetId
+      in: path
+      value: $steps.createSpreadsheet.outputs.spreadsheetId
+    requestBody:
+      contentType: application/json
+      payload:
+        requests:
+        - repeatCell:
+            range:
+              sheetId: $inputs.sheetId
+              startRowIndex: 0
+              endRowIndex: 1
+            cell:
+              userEnteredFormat:
+                textFormat:
+                  bold: true
+            fields: userEnteredFormat.textFormat.bold
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      spreadsheetId: $response.body#/spreadsheetId
+  outputs:
+    spreadsheetId: $steps.createSpreadsheet.outputs.spreadsheetId
+    spreadsheetUrl: $steps.createSpreadsheet.outputs.spreadsheetUrl
+    appendedRange: $steps.appendRows.outputs.updatedRange

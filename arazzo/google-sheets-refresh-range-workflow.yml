@@ -1,0 +1,114 @@
+arazzo: 1.0.1
+info:
+  title: Google Sheets Refresh a Range
+  summary: Read the current values of a range, clear it, then write a fresh set of values into it.
+  description: >-
+    A safe range-refresh pattern. The workflow first reads the existing values
+    of a range so the caller has a snapshot, clears the range so no stale rows
+    are left behind, and then writes a fresh block of values into the same
+    range. Every step spells out its request inline so the flow can be read and
+    executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: googleSheetsApi
+  url: ../openapi/google-sheets-openapi.yml
+  type: openapi
+workflows:
+- workflowId: refresh-range
+  summary: Snapshot, clear, and rewrite the values of a single range.
+  description: >-
+    Reads the current values of a range, clears it, and writes a fresh set of
+    values into the same range so the range ends up holding only the new data.
+  inputs:
+    type: object
+    required:
+    - accessToken
+    - spreadsheetId
+    - range
+    - values
+    properties:
+      accessToken:
+        type: string
+        description: OAuth 2.0 bearer access token with the spreadsheets scope.
+      spreadsheetId:
+        type: string
+        description: The ID of the spreadsheet to refresh.
+      range:
+        type: string
+        description: The A1 notation range to snapshot, clear, and rewrite.
+      values:
+        type: array
+        description: A two-dimensional array of fresh cell values to write.
+        items:
+          type: array
+          items: {}
+  steps:
+  - stepId: snapshot
+    description: Read the current values of the range so the caller has a before snapshot.
+    operationId: getValues
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: spreadsheetId
+      in: path
+      value: $inputs.spreadsheetId
+    - name: range
+      in: path
+      value: $inputs.range
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      previousValues: $response.body#/values
+  - stepId: clearRange
+    description: Clear the range so the subsequent write starts from a clean range.
+    operationId: clearValues
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: spreadsheetId
+      in: path
+      value: $inputs.spreadsheetId
+    - name: range
+      in: path
+      value: $inputs.range
+    requestBody:
+      contentType: application/json
+      payload: {}
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      clearedRange: $response.body#/clearedRange
+  - stepId: writeFresh
+    description: Write the fresh block of values into the now-cleared range.
+    operationId: updateValues
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: spreadsheetId
+      in: path
+      value: $inputs.spreadsheetId
+    - name: range
+      in: path
+      value: $inputs.range
+    - name: valueInputOption
+      in: query
+      value: USER_ENTERED
+    requestBody:
+      contentType: application/json
+      payload:
+        range: $inputs.range
+        majorDimension: ROWS
+        values: $inputs.values
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      updatedRange: $response.body#/updatedRange
+      updatedCells: $response.body#/updatedCells
+  outputs:
+    previousValues: $steps.snapshot.outputs.previousValues
+    clearedRange: $steps.clearRange.outputs.clearedRange
+    updatedRange: $steps.writeFresh.outputs.updatedRange
+    updatedCells: $steps.writeFresh.outputs.updatedCells

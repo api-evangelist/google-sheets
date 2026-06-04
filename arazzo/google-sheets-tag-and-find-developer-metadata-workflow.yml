@@ -1,0 +1,115 @@
+arazzo: 1.0.1
+info:
+  title: Google Sheets Tag and Find a Spreadsheet With Developer Metadata
+  summary: Create a spreadsheet, attach a developer metadata tag via batchUpdate, then search for it by key.
+  description: >-
+    A flow that demonstrates spreadsheet-scoped developer metadata. The
+    workflow creates a new spreadsheet, attaches a developer metadata key/value
+    pair to the whole spreadsheet via a createDeveloperMetadata batchUpdate
+    request, and then searches for that metadata by key to confirm it was
+    stored. Every step spells out its request inline so the flow can be read and
+    executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: googleSheetsApi
+  url: ../openapi/google-sheets-openapi.yml
+  type: openapi
+workflows:
+- workflowId: tag-and-find-developer-metadata
+  summary: Create a spreadsheet, tag it with developer metadata, and search for the tag.
+  description: >-
+    Creates a spreadsheet, attaches a spreadsheet-scoped developer metadata
+    key/value pair, and searches for it by key using a developerMetadataLookup
+    data filter.
+  inputs:
+    type: object
+    required:
+    - accessToken
+    - title
+    - metadataKey
+    - metadataValue
+    properties:
+      accessToken:
+        type: string
+        description: OAuth 2.0 bearer access token with the spreadsheets scope.
+      title:
+        type: string
+        description: The title to give the newly created spreadsheet.
+      metadataKey:
+        type: string
+        description: The developer metadata key to attach and later search for.
+      metadataValue:
+        type: string
+        description: The developer metadata value to associate with the key.
+  steps:
+  - stepId: createSpreadsheet
+    description: Create the spreadsheet and capture its generated spreadsheet ID.
+    operationId: createSpreadsheet
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    requestBody:
+      contentType: application/json
+      payload:
+        properties:
+          title: $inputs.title
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      spreadsheetId: $response.body#/spreadsheetId
+      spreadsheetUrl: $response.body#/spreadsheetUrl
+  - stepId: tagSpreadsheet
+    description: >-
+      Attach a spreadsheet-scoped developer metadata key/value pair using a
+      createDeveloperMetadata batchUpdate request.
+    operationId: batchUpdateSpreadsheet
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: spreadsheetId
+      in: path
+      value: $steps.createSpreadsheet.outputs.spreadsheetId
+    requestBody:
+      contentType: application/json
+      payload:
+        requests:
+        - createDeveloperMetadata:
+            developerMetadata:
+              metadataKey: $inputs.metadataKey
+              metadataValue: $inputs.metadataValue
+              location:
+                spreadsheet: true
+              visibility: DOCUMENT
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      spreadsheetId: $response.body#/spreadsheetId
+      replies: $response.body#/replies
+  - stepId: findByKey
+    description: >-
+      Search the spreadsheet for developer metadata matching the supplied key
+      using a developerMetadataLookup data filter.
+    operationId: searchDeveloperMetadata
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: spreadsheetId
+      in: path
+      value: $steps.createSpreadsheet.outputs.spreadsheetId
+    requestBody:
+      contentType: application/json
+      payload:
+        dataFilters:
+        - developerMetadataLookup:
+            metadataKey: $inputs.metadataKey
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      matchedDeveloperMetadata: $response.body#/matchedDeveloperMetadata
+  outputs:
+    spreadsheetId: $steps.createSpreadsheet.outputs.spreadsheetId
+    spreadsheetUrl: $steps.createSpreadsheet.outputs.spreadsheetUrl
+    matchedDeveloperMetadata: $steps.findByKey.outputs.matchedDeveloperMetadata

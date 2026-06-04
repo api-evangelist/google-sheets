@@ -1,0 +1,112 @@
+arazzo: 1.0.1
+info:
+  title: Google Sheets Seed a Range Only If Empty
+  summary: Read a range and branch — write seed values only when the range has no existing data.
+  description: >-
+    An idempotent seeding pattern that avoids clobbering data that is already
+    present. The workflow reads the target range, and then branches: when the
+    range already contains values it leaves them untouched, and when the range
+    is empty it writes the supplied seed values. Every step spells out its
+    request inline so the flow can be read and executed without opening the
+    underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: googleSheetsApi
+  url: ../openapi/google-sheets-openapi.yml
+  type: openapi
+workflows:
+- workflowId: seed-if-empty
+  summary: Write seed values into a range only when that range is currently empty.
+  description: >-
+    Reads a range and writes the supplied seed values only when no values are
+    present, leaving an already-populated range untouched.
+  inputs:
+    type: object
+    required:
+    - accessToken
+    - spreadsheetId
+    - range
+    - values
+    properties:
+      accessToken:
+        type: string
+        description: OAuth 2.0 bearer access token with the spreadsheets scope.
+      spreadsheetId:
+        type: string
+        description: The ID of the spreadsheet to seed.
+      range:
+        type: string
+        description: The A1 notation range to check and conditionally seed.
+      values:
+        type: array
+        description: A two-dimensional array of seed cell values to write when the range is empty.
+        items:
+          type: array
+          items: {}
+  steps:
+  - stepId: checkRange
+    description: >-
+      Read the target range and branch on whether it already contains any
+      values.
+    operationId: getValues
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: spreadsheetId
+      in: path
+      value: $inputs.spreadsheetId
+    - name: range
+      in: path
+      value: $inputs.range
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      existingValues: $response.body#/values
+    onSuccess:
+    - name: rangeEmpty
+      type: goto
+      stepId: seedRange
+      criteria:
+      - context: $response.body
+        condition: $.values.length == 0
+        type: jsonpath
+    - name: rangeHasData
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.values.length > 0
+        type: jsonpath
+  - stepId: seedRange
+    description: >-
+      Write the supplied seed values into the empty range using USER_ENTERED
+      interpretation.
+    operationId: updateValues
+    parameters:
+    - name: Authorization
+      in: header
+      value: Bearer $inputs.accessToken
+    - name: spreadsheetId
+      in: path
+      value: $inputs.spreadsheetId
+    - name: range
+      in: path
+      value: $inputs.range
+    - name: valueInputOption
+      in: query
+      value: USER_ENTERED
+    requestBody:
+      contentType: application/json
+      payload:
+        range: $inputs.range
+        majorDimension: ROWS
+        values: $inputs.values
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      updatedRange: $response.body#/updatedRange
+      updatedCells: $response.body#/updatedCells
+  outputs:
+    existingValues: $steps.checkRange.outputs.existingValues
+    seededRange: $steps.seedRange.outputs.updatedRange
+    seededCells: $steps.seedRange.outputs.updatedCells
