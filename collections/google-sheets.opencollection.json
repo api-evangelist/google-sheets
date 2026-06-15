@@ -1,0 +1,565 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Google Sheets API",
+    "version": "v4"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://accounts.google.com/o/oauth2/v2/auth",
+      "accessTokenUrl": "https://oauth2.googleapis.com/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Spreadsheets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google Sheets Create a Spreadsheet",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sheets.googleapis.com/v4/spreadsheets",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new spreadsheet, optionally with initial properties, sheets, and data."
+        },
+        {
+          "info": {
+            "name": "Google Sheets Get a Spreadsheet",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sheets.googleapis.com/v4/spreadsheets/:spreadsheetId",
+            "params": [
+              {
+                "name": "spreadsheetId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the spreadsheet to retrieve or modify."
+              },
+              {
+                "name": "ranges",
+                "value": "",
+                "type": "query",
+                "description": "The ranges to retrieve from the spreadsheet."
+              },
+              {
+                "name": "includeGridData",
+                "value": "true",
+                "type": "query",
+                "description": "True if grid data should be returned. This parameter is ignored if a field mask was set in the request."
+              }
+            ]
+          },
+          "docs": "Returns the spreadsheet at the given ID. The caller must specify the spreadsheet ID. By default, data within grids is not returned. You can include grid data in one of two ways using the fields URL parameter or the includeGridData query parameter."
+        },
+        {
+          "info": {
+            "name": "Google Sheets Batch Update a Spreadsheet",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sheets.googleapis.com/v4/spreadsheets/:spreadsheetId:batchUpdate",
+            "params": [
+              {
+                "name": "spreadsheetId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the spreadsheet to retrieve or modify."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Applies one or more updates to the spreadsheet. Each request is validated before being applied. If any request is not valid, the entire request will fail and nothing will be applied."
+        },
+        {
+          "info": {
+            "name": "Google Sheets Get a Spreadsheet by Data Filter",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sheets.googleapis.com/v4/spreadsheets/:spreadsheetId:getByDataFilter",
+            "params": [
+              {
+                "name": "spreadsheetId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the spreadsheet to retrieve or modify."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns the spreadsheet at the given ID. The caller must specify the spreadsheet ID. This method differs from getSpreadsheet in that it allows selecting which subsets of spreadsheet data to return by specifying a dataFilters parameter."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Values",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google Sheets Get Values From a Range",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sheets.googleapis.com/v4/spreadsheets/:spreadsheetId/values/:range",
+            "params": [
+              {
+                "name": "spreadsheetId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the spreadsheet to retrieve or modify."
+              },
+              {
+                "name": "range",
+                "value": "",
+                "type": "path",
+                "description": "The A1 notation or R1C1 notation of the range to read or modify. For example, Sheet1!A1:D5 or Sheet1!R1C1:R5C4."
+              },
+              {
+                "name": "majorDimension",
+                "value": "example_value",
+                "type": "query",
+                "description": "The major dimension that results should use."
+              },
+              {
+                "name": "valueRenderOption",
+                "value": "example_value",
+                "type": "query",
+                "description": "How values should be represented in the output."
+              },
+              {
+                "name": "dateTimeRenderOption",
+                "value": "example_value",
+                "type": "query",
+                "description": "How dates, times, and durations should be represented in the output."
+              }
+            ]
+          },
+          "docs": "Returns a range of values from a spreadsheet. The caller must specify the spreadsheet ID and a range."
+        },
+        {
+          "info": {
+            "name": "Google Sheets Update Values in a Range",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://sheets.googleapis.com/v4/spreadsheets/:spreadsheetId/values/:range",
+            "params": [
+              {
+                "name": "spreadsheetId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the spreadsheet to retrieve or modify."
+              },
+              {
+                "name": "range",
+                "value": "",
+                "type": "path",
+                "description": "The A1 notation or R1C1 notation of the range to read or modify. For example, Sheet1!A1:D5 or Sheet1!R1C1:R5C4."
+              },
+              {
+                "name": "valueInputOption",
+                "value": "example_value",
+                "type": "query",
+                "description": "How the input data should be interpreted."
+              },
+              {
+                "name": "includeValuesInResponse",
+                "value": "true",
+                "type": "query",
+                "description": "Determines if the update response should include the values of the cells that were updated."
+              },
+              {
+                "name": "responseValueRenderOption",
+                "value": "example_value",
+                "type": "query",
+                "description": "Determines how values in the response should be rendered."
+              },
+              {
+                "name": "responseDateTimeRenderOption",
+                "value": "example_value",
+                "type": "query",
+                "description": "Determines how dates, times, and durations in the response should be rendered."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sets values in a range of a spreadsheet. The caller must specify the spreadsheet ID, range, and a valueInputOption."
+        },
+        {
+          "info": {
+            "name": "Google Sheets Append Values to a Range",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sheets.googleapis.com/v4/spreadsheets/:spreadsheetId/values/:range:append",
+            "params": [
+              {
+                "name": "spreadsheetId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the spreadsheet to retrieve or modify."
+              },
+              {
+                "name": "range",
+                "value": "",
+                "type": "path",
+                "description": "The A1 notation or R1C1 notation of the range to read or modify. For example, Sheet1!A1:D5 or Sheet1!R1C1:R5C4."
+              },
+              {
+                "name": "valueInputOption",
+                "value": "example_value",
+                "type": "query",
+                "description": "How the input data should be interpreted."
+              },
+              {
+                "name": "insertDataOption",
+                "value": "OVERWRITE",
+                "type": "query",
+                "description": "How the input data should be inserted."
+              },
+              {
+                "name": "includeValuesInResponse",
+                "value": "true",
+                "type": "query",
+                "description": "Determines if the update response should include the values of the cells that were appended."
+              },
+              {
+                "name": "responseValueRenderOption",
+                "value": "example_value",
+                "type": "query",
+                "description": "Determines how values in the response should be rendered."
+              },
+              {
+                "name": "responseDateTimeRenderOption",
+                "value": "example_value",
+                "type": "query",
+                "description": "Determines how dates, times, and durations in the response should be rendered."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Appends values to a spreadsheet. The input range is used to search for existing data and find a table within that range. Values will be appended to the next row of the table, starting with the first column of the table."
+        },
+        {
+          "info": {
+            "name": "Google Sheets Clear Values From a Range",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sheets.googleapis.com/v4/spreadsheets/:spreadsheetId/values/:range:clear",
+            "params": [
+              {
+                "name": "spreadsheetId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the spreadsheet to retrieve or modify."
+              },
+              {
+                "name": "range",
+                "value": "",
+                "type": "path",
+                "description": "The A1 notation or R1C1 notation of the range to read or modify. For example, Sheet1!A1:D5 or Sheet1!R1C1:R5C4."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Clears values from a spreadsheet. The caller must specify the spreadsheet ID and range. Only values are cleared; all other properties of the cell (such as formatting and data validation) are kept."
+        },
+        {
+          "info": {
+            "name": "Google Sheets Get Values From Multiple Ranges",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sheets.googleapis.com/v4/spreadsheets/:spreadsheetId/values:batchGet",
+            "params": [
+              {
+                "name": "spreadsheetId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the spreadsheet to retrieve or modify."
+              },
+              {
+                "name": "ranges",
+                "value": "",
+                "type": "query",
+                "description": "The A1 notation or R1C1 notation of the range to retrieve values from."
+              },
+              {
+                "name": "majorDimension",
+                "value": "example_value",
+                "type": "query",
+                "description": "The major dimension that results should use."
+              },
+              {
+                "name": "valueRenderOption",
+                "value": "example_value",
+                "type": "query",
+                "description": "How values should be represented in the output."
+              },
+              {
+                "name": "dateTimeRenderOption",
+                "value": "example_value",
+                "type": "query",
+                "description": "How dates, times, and durations should be represented in the output."
+              }
+            ]
+          },
+          "docs": "Returns one or more ranges of values from a spreadsheet. The caller must specify the spreadsheet ID and one or more ranges."
+        },
+        {
+          "info": {
+            "name": "Google Sheets Update Values in Multiple Ranges",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sheets.googleapis.com/v4/spreadsheets/:spreadsheetId/values:batchUpdate",
+            "params": [
+              {
+                "name": "spreadsheetId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the spreadsheet to retrieve or modify."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sets values in one or more ranges of a spreadsheet. The caller must specify the spreadsheet ID, a valueInputOption, and one or more ValueRanges."
+        },
+        {
+          "info": {
+            "name": "Google Sheets Clear Values From Multiple Ranges",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sheets.googleapis.com/v4/spreadsheets/:spreadsheetId/values:batchClear",
+            "params": [
+              {
+                "name": "spreadsheetId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the spreadsheet to retrieve or modify."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Clears one or more ranges of values from a spreadsheet. The caller must specify the spreadsheet ID and one or more ranges. Only values are cleared; all other properties of the cell are kept."
+        },
+        {
+          "info": {
+            "name": "Google Sheets Get Values From Ranges Matching Data Filters",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sheets.googleapis.com/v4/spreadsheets/:spreadsheetId/values:batchGetByDataFilter",
+            "params": [
+              {
+                "name": "spreadsheetId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the spreadsheet to retrieve or modify."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns one or more ranges of values that match the specified data filters. The caller must specify the spreadsheet ID and one or more DataFilters. Ranges that match any of the data filters in the request will be returned."
+        },
+        {
+          "info": {
+            "name": "Google Sheets Update Values in Ranges Matching Data Filters",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sheets.googleapis.com/v4/spreadsheets/:spreadsheetId/values:batchUpdateByDataFilter",
+            "params": [
+              {
+                "name": "spreadsheetId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the spreadsheet to retrieve or modify."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sets values in one or more ranges of a spreadsheet matching the specified data filters. The caller must specify the spreadsheet ID, a valueInputOption, and one or more DataFilterValueRanges."
+        },
+        {
+          "info": {
+            "name": "Google Sheets Clear Values From Ranges Matching Data Filters",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sheets.googleapis.com/v4/spreadsheets/:spreadsheetId/values:batchClearByDataFilter",
+            "params": [
+              {
+                "name": "spreadsheetId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the spreadsheet to retrieve or modify."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Clears one or more ranges of values from a spreadsheet matching the specified data filters. The caller must specify the spreadsheet ID and one or more DataFilters."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Sheets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google Sheets Copy a Sheet to Another Spreadsheet",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sheets.googleapis.com/v4/spreadsheets/:spreadsheetId/sheets/:sheetId:copyTo",
+            "params": [
+              {
+                "name": "spreadsheetId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the spreadsheet to retrieve or modify."
+              },
+              {
+                "name": "sheetId",
+                "value": "500123",
+                "type": "path",
+                "description": "The ID of the sheet to copy."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Copies a single sheet from a spreadsheet to another spreadsheet. Returns the properties of the newly created sheet."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "developerMetadata",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google Sheets Get Developer Metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sheets.googleapis.com/v4/spreadsheets/:spreadsheetId/developerMetadata/:metadataId",
+            "params": [
+              {
+                "name": "spreadsheetId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the spreadsheet to retrieve or modify."
+              },
+              {
+                "name": "metadataId",
+                "value": "500123",
+                "type": "path",
+                "description": "The ID of the developer metadata to retrieve."
+              }
+            ]
+          },
+          "docs": "Returns the developer metadata with the specified ID. The caller must specify the spreadsheet ID and the developer metadata's unique metadataId."
+        },
+        {
+          "info": {
+            "name": "Google Sheets Search Developer Metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sheets.googleapis.com/v4/spreadsheets/:spreadsheetId/developerMetadata:search",
+            "params": [
+              {
+                "name": "spreadsheetId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the spreadsheet to retrieve or modify."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns all developer metadata matching the specified DataFilter. If the provided DataFilter represents a DeveloperMetadataLookup object, this will return all DeveloperMetadata entries selected by it."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
