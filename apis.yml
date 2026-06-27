@@ -20,13 +20,13 @@ apis:
         url: openapi/google-sheets-openapi.yml
       - type: Authentication
         url: https://developers.google.com/sheets/api/guides/authorizing
-      - type: Quickstart
+      - type: GettingStarted
         url: https://developers.google.com/sheets/api/quickstart/python
       - type: GettingStarted
         url: https://developers.google.com/workspace/sheets/api/guides/concepts
       - type: APIReference
         url: https://developers.google.com/workspace/sheets/api/reference/rest
-      - type: SDK
+      - type: SDKs
         url: https://developers.google.com/workspace/sheets/api/guides/libraries
       - type: ChangeLog
         url: https://developers.google.com/workspace/sheets/release-notes
@@ -34,7 +34,7 @@ apis:
         url: https://developers.google.com/workspace/sheets/api/samples
       - type: RateLimits
         url: https://developers.google.com/workspace/sheets/api/limits
-      - type: Errors
+      - type: ErrorCodes
         url: https://developers.google.com/workspace/sheets/api/troubleshoot-api-errors
       - type: JSONSchema
         url: json-schema/google-sheets-spreadsheet-schema.json
@@ -83,47 +83,42 @@ maintainers:
 common:
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/google-sheets/overview
-  - type: ArazzoWorkflows
-    url: arazzo/
-    workflows:
-      - url: arazzo/google-sheets-append-and-format-header-workflow.yml
-        name: Google Sheets Append Rows and Format the Header
-        summary: Create a spreadsheet, append rows including a header, then bold the header row via batchUpdate.
-      - url: arazzo/google-sheets-archive-and-clear-multiple-ranges-workflow.yml
-        name: Google Sheets Archive and Clear Multiple Ranges
-        summary: Read several ranges as an archive, clear them all in one batch, then re-read to confirm they are empty.
-      - url: arazzo/google-sheets-bulk-load-multiple-ranges-workflow.yml
-        name: Google Sheets Bulk Load Multiple Ranges
-        summary: Create a spreadsheet, write several ranges in one batch, then read them all back in one batch.
-      - url: arazzo/google-sheets-copy-sheet-between-spreadsheets-workflow.yml
-        name: Google Sheets Copy a Sheet Between Spreadsheets
-        summary: >-
-          Read a source spreadsheet, copy one of its sheets into a destination spreadsheet, then confirm the
-          destination.
-      - url: arazzo/google-sheets-create-and-seed-spreadsheet-workflow.yml
-        name: Google Sheets Create and Seed a Spreadsheet
-        summary: Create a new spreadsheet, append seed rows to it, then read them back.
-      - url: arazzo/google-sheets-create-with-extra-sheet-and-write-workflow.yml
-        name: Google Sheets Create With an Extra Sheet and Write
-        summary: Create a spreadsheet, add a second named sheet to it, then write values into that sheet.
-      - url: arazzo/google-sheets-create-write-and-verify-workflow.yml
-        name: Google Sheets Create, Write, and Verify
-        summary: Create a spreadsheet, write values into a range, then read the range back to verify the write.
-      - url: arazzo/google-sheets-overwrite-or-append-rows-workflow.yml
-        name: Google Sheets Overwrite or Append Rows
-        summary: Inspect a range and branch — overwrite it in place when it already has data, otherwise append fresh rows.
-      - url: arazzo/google-sheets-refresh-range-workflow.yml
-        name: Google Sheets Refresh a Range
-        summary: Read the current values of a range, clear it, then write a fresh set of values into it.
-      - url: arazzo/google-sheets-seed-if-empty-workflow.yml
-        name: Google Sheets Seed a Range Only If Empty
-        summary: Read a range and branch — write seed values only when the range has no existing data.
-      - url: arazzo/google-sheets-tag-and-find-developer-metadata-workflow.yml
-        name: Google Sheets Tag and Find a Spreadsheet With Developer Metadata
-        summary: Create a spreadsheet, attach a developer metadata tag via batchUpdate, then search for it by key.
-      - url: arazzo/google-sheets-update-and-read-by-data-filter-workflow.yml
-        name: Google Sheets Update and Read Values by Data Filter
-        summary: Resolve a spreadsheet via a data filter, update matching ranges by filter, then read them back by filter.
+  - type: Arazzo
+    url: arazzo/google-sheets-append-and-format-header-workflow.yml
+    name: Google Sheets Append Rows and Format the Header
+  - type: Arazzo
+    url: arazzo/google-sheets-archive-and-clear-multiple-ranges-workflow.yml
+    name: Google Sheets Archive and Clear Multiple Ranges
+  - type: Arazzo
+    url: arazzo/google-sheets-bulk-load-multiple-ranges-workflow.yml
+    name: Google Sheets Bulk Load Multiple Ranges
+  - type: Arazzo
+    url: arazzo/google-sheets-copy-sheet-between-spreadsheets-workflow.yml
+    name: Google Sheets Copy a Sheet Between Spreadsheets
+  - type: Arazzo
+    url: arazzo/google-sheets-create-and-seed-spreadsheet-workflow.yml
+    name: Google Sheets Create and Seed a Spreadsheet
+  - type: Arazzo
+    url: arazzo/google-sheets-create-with-extra-sheet-and-write-workflow.yml
+    name: Google Sheets Create With an Extra Sheet and Write
+  - type: Arazzo
+    url: arazzo/google-sheets-create-write-and-verify-workflow.yml
+    name: Google Sheets Create, Write, and Verify
+  - type: Arazzo
+    url: arazzo/google-sheets-overwrite-or-append-rows-workflow.yml
+    name: Google Sheets Overwrite or Append Rows
+  - type: Arazzo
+    url: arazzo/google-sheets-refresh-range-workflow.yml
+    name: Google Sheets Refresh a Range
+  - type: Arazzo
+    url: arazzo/google-sheets-seed-if-empty-workflow.yml
+    name: Google Sheets Seed a Range Only If Empty
+  - type: Arazzo
+    url: arazzo/google-sheets-tag-and-find-developer-metadata-workflow.yml
+    name: Google Sheets Tag and Find a Spreadsheet With Developer Metadata
+  - type: Arazzo
+    url: arazzo/google-sheets-update-and-read-by-data-filter-workflow.yml
+    name: Google Sheets Update and Read Values by Data Filter
   - type: Portal
     url: https://developers.google.com/workspace/sheets/api
   - type: Documentation
@@ -140,7 +135,7 @@ common:
     url: https://developers.google.com/terms
   - type: PrivacyPolicy
     url: https://policies.google.com/privacy
-  - type: SignUp
+  - type: Signup
     url: https://console.cloud.google.com/
   - type: Login
     url: https://console.cloud.google.com/
@@ -152,7 +147,7 @@ common:
     url: https://developers.google.com/workspace/sheets/api/guides/concepts
   - type: Authentication
     url: https://developers.google.com/sheets/api/guides/authorizing
-  - type: SDK
+  - type: SDKs
     url: https://developers.google.com/workspace/sheets/api/guides/libraries
   - type: ReleaseNotes
     url: https://developers.google.com/workspace/sheets/release-notes
