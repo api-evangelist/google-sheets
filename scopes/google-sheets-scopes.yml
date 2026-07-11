@@ -1,0 +1,42 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/google-sheets-openapi.yml
+schemes:
+- name: oauth2
+  source: openapi/google-sheets-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://accounts.google.com/o/oauth2/v2/auth
+    tokenUrl: https://oauth2.googleapis.com/token
+  description: OAuth 2.0 authentication for accessing user spreadsheets.
+scopes:
+- scope: https://www.googleapis.com/auth/drive
+  description: Full access to Google Drive files.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/google-sheets-openapi.yml
+- scope: https://www.googleapis.com/auth/drive.file
+  description: Access to files created or opened by the app.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/google-sheets-openapi.yml
+- scope: https://www.googleapis.com/auth/drive.readonly
+  description: Read-only access to Google Drive files.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/google-sheets-openapi.yml
+- scope: https://www.googleapis.com/auth/spreadsheets
+  description: Read and write access to all spreadsheets.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/google-sheets-openapi.yml
+- scope: https://www.googleapis.com/auth/spreadsheets.readonly
+  description: Read-only access to all spreadsheets.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/google-sheets-openapi.yml

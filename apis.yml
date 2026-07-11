@@ -81,6 +81,8 @@ maintainers:
     email: kin@apievangelist.com
     url: https://apievangelist.com
 common:
+  - type: OAuthScopes
+    url: scopes/google-sheets-scopes.yml
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/google-sheets/overview
   - type: Arazzo
