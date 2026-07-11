@@ -81,6 +81,12 @@ maintainers:
     email: kin@apievangelist.com
     url: https://apievangelist.com
 common:
+  - type: VulnerabilityDisclosure
+    url: security/google-sheets-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/google-sheets-domain-security.yml
+  - type: Authentication
+    url: authentication/google-sheets-authentication.yml
   - type: OAuthScopes
     url: scopes/google-sheets-scopes.yml
   - type: PostmanWorkspace
