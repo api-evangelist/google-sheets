@@ -1,0 +1,83 @@
+generated: '2026-06-20'
+method: searched
+source: >-
+  https://developers.google.com/workspace/sheets/api/guides/concepts,
+  https://developers.google.com/sheets/api/guides/authorizing,
+  https://developers.google.com/workspace/sheets/api/limits,
+  https://cloud.google.com/apis/design (Google API design guide), and derived
+  from openapi/google-sheets-openapi.yml.
+description: >-
+  Cross-cutting request/response conventions that apply to every Google Sheets
+  API operation: authentication, addressing (A1 ranges / data filters), field
+  masks, batching, versioning, the error envelope, and quota signaling. These
+  are the runtime-semantics conventions OpenAPI does not fully express.
+
+base_url: https://sheets.googleapis.com/v4
+api_style: REST over HTTPS, JSON request and response bodies
+
+authentication:
+  scheme: OAuth 2.0 (Google Identity) Bearer access token; API key for public reads
+  key_types:
+    - "oauth2 access token (Authorization: Bearer)"
+    - "api key (?key= query param)"
+  scopes: [spreadsheets, spreadsheets.readonly, drive, drive.readonly, drive.file]
+  docs: https://developers.google.com/sheets/api/guides/authorizing
+  detail: authentication/google-sheets-authentication.yml
+
+addressing:
+  ranges: A1 notation (e.g. Sheet1!A1:D5) or R1C1 notation for values operations.
+  data_filters: >-
+    DataFilter (A1 range, GridRange, or DeveloperMetadataLookup) selects target
+    cells for the *ByDataFilter operation variants.
+  ids: spreadsheetId in the path; sheetId (integer) and developerMetadataId within the resource.
+
+field_masks:
+  supported: true
+  mechanism: >-
+    The Google API standard `fields` query parameter selects a partial response;
+    update masks (e.g. updateMask in batchUpdate requests) limit which fields a
+    write touches.
+  docs: https://cloud.google.com/apis/design/design_patterns#partial_response
+
+batching:
+  supported: true
+  mechanism: >-
+    spreadsheets:batchUpdate applies an ordered array of structural/formatting
+    requests atomically; values:batchGet / batchUpdate / batchClear (and the
+    *ByDataFilter variants) operate on multiple ranges in one call.
+  docs: https://developers.google.com/workspace/sheets/api/guides/batchupdate
+
+pagination:
+  style: none
+  notes: >-
+    The captured value/spreadsheet operations are range- or data-filter-scoped
+    rather than cursor-paginated; there is no pageToken/pageSize on this surface.
+
+idempotency:
+  supported: false
+  notes: >-
+    No Idempotency-Key header. updateValues (write to a fixed range) is naturally
+    idempotent; appendValues is not — retries can append duplicate rows.
+
+value_options:
+  value_input_option: [RAW, USER_ENTERED]
+  value_render_option: [FORMATTED_VALUE, UNFORMATTED_VALUE, FORMULA]
+  date_time_render_option: [SERIAL_NUMBER, FORMATTED_STRING]
+  insert_data_option: [OVERWRITE, INSERT_ROWS]
+
+versioning:
+  scheme: uri-path
+  current: v4
+  detail: lifecycle/google-sheets-lifecycle.yml
+
+error_envelope:
+  media_type: application/json
+  shape: '{ "error": { "code": number, "message": string, "status": string, "details": array } }'
+  detail: errors/google-sheets-problem-types.yml
+
+rate_limit_signaling:
+  mechanism: >-
+    Per-minute read/write quotas per project and per user; exceeding returns HTTP
+    429 RESOURCE_EXHAUSTED. Clients should use exponential backoff.
+  docs: https://developers.google.com/workspace/sheets/api/limits
+  detail: rate-limits/google-sheets-rate-limits.yml

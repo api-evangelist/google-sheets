@@ -1,0 +1,25 @@
+generated: '2026-06-20'
+method: searched
+description: >-
+  Results of probing the /.well-known/ discovery surface for the Google Sheets
+  API host (baseURL https://sheets.googleapis.com) and the OpenAPI servers[]
+  host. Status is the HTTP code observed at fetch time. The Sheets API host is a
+  Google API front-end that does not serve any /.well-known/ discovery
+  documents: security.txt and api-catalog return 400 (bad request from the API
+  router), the OIDC/OAuth AS and ai-plugin paths return 404. No documents were
+  saved. Note: Google's OIDC discovery lives on accounts.google.com, not on the
+  API host; Google's security.txt lives at https://www.google.com/.well-known/
+  security.txt (captured under security/google-sheets-vulnerability-disclosure.yml).
+hosts:
+  - host: https://sheets.googleapis.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 400
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 400
+      - path: /.well-known/ai-plugin.json
+        status: 404

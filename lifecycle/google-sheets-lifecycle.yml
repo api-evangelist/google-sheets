@@ -1,0 +1,42 @@
+generated: '2026-06-20'
+method: searched
+source: >-
+  https://developers.google.com/workspace/sheets/release-notes,
+  https://developers.google.com/workspace/sheets/api/limits,
+  https://developers.google.com/terms (Google APIs Terms of Service /
+  deprecation policy), https://www.google.com/appsstatus/dashboard/.
+versioning:
+  scheme: uri-path
+  current: v4
+  mechanism: Major version in the URL path (https://sheets.googleapis.com/v4).
+  docs: https://developers.google.com/workspace/sheets/api/reference/rest
+  notes: >-
+    The Sheets API is versioned by major number in the base path. v4 is current;
+    v3 (the legacy Sheets/gdata API) reached end-of-life on 2021-08-02. Additive
+    changes ship within v4 without a version bump.
+deprecation:
+  policy_url: https://developers.google.com/terms
+  sunset_header: false
+  notes: >-
+    Google's API deprecation policy (Google APIs Terms of Service) commits to a
+    deprecation notice period — generally one year for Workspace/Google APIs —
+    before shutting down a version. Changes are announced in the release notes
+    rather than via RFC 8594 Sunset/Deprecation HTTP headers.
+sla:
+  url: https://workspace.google.com/terms/sla.html
+  public_uptime_target: "99.9%"
+  notes: >-
+    Google Workspace publishes a 99.9% monthly uptime SLA for covered Workspace
+    services; API-specific credits are governed by the Workspace/Cloud terms.
+status_page: https://www.google.com/appsstatus/dashboard/
+rate_limits: https://developers.google.com/workspace/sheets/api/limits
+recent_milestones:
+  - date: '2025-06-17'
+    change: Create/update/read Google Drive and People smart chips became generally available.
+  - date: '2025-04-29'
+    change: Table operations (create/modify tables, basic table actions) added to the API.
+  - date: '2021-08-02'
+    change: Google Sheets API v3 reached end-of-life; migrate to v4.
+  - date: '2016-06-15'
+    change: Google Sheets API v4 launched.
+deprecated_operations: []

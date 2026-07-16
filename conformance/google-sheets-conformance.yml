@@ -1,0 +1,62 @@
+generated: '2026-06-20'
+method: derived
+source: >-
+  Derived from openapi/google-sheets-openapi.yml (securitySchemes, error schema,
+  pagination/data-filter parameters) and Google API documentation claims
+  (developers.google.com/sheets/api/guides/authorizing, Google API design guide
+  cloud.google.com/apis/design/errors, Google Cloud compliance).
+standards:
+  - id: oauth2
+    conforms: true
+    evidence: >-
+      openapi securitySchemes define an oauth2 scheme (authorizationCode flow,
+      accounts.google.com authorize + oauth2.googleapis.com token) with granular
+      Sheets/Drive scopes.
+  - id: oidc
+    conforms: true
+    evidence: >-
+      Google is a certified OpenID Connect provider; discovery is served at
+      https://accounts.google.com/.well-known/openid-configuration (not on the
+      Sheets API host).
+  - id: api-key-auth
+    conforms: true
+    evidence: openapi securitySchemes define an apiKey scheme (query param `key`) for public reads.
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: >-
+      Errors use Google's google.rpc.Status envelope {"error":{"code","message",
+      "status","details"}}, not application/problem+json.
+  - id: google-rpc-status-errors
+    conforms: true
+    evidence: >-
+      Error responses follow the canonical Google API error model
+      (cloud.google.com/apis/design/errors) with numeric code, message, and
+      canonical status string (e.g. NOT_FOUND, RESOURCE_EXHAUSTED).
+  - id: pagination
+    conforms: false
+    evidence: >-
+      The Sheets values/spreadsheet surface is range- and data-filter-oriented,
+      not list-cursor paginated; no pageToken/pageSize on the captured operations.
+  - id: idempotency
+    conforms: false
+    evidence: >-
+      No Idempotency-Key header; writes are addressed by range (updateValues is
+      naturally idempotent, appendValues is not).
+  - id: batch-operations
+    conforms: true
+    evidence: >-
+      First-class batching via batchUpdate (spreadsheets:batchUpdate) and
+      values:batchGet/batchUpdate/batchClear and *ByDataFilter variants.
+  - id: field-masks
+    conforms: true
+    evidence: >-
+      Google API standard `fields` / update field masks select partial
+      responses and updated fields (cloud.google.com/apis/design/design_patterns).
+  - id: rest-json
+    conforms: true
+    evidence: JSON over HTTPS REST, defined by a Google Discovery Document.
+  - id: grpc
+    conforms: false
+    evidence: >-
+      No published .proto in googleapis/googleapis for Sheets; the service is
+      Discovery/REST-only.

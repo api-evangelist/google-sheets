@@ -1,0 +1,70 @@
+generated: '2026-06-20'
+method: derived
+format: google-rpc-status
+source: >-
+  Derived from the shared ErrorResponse schema referenced by 4xx responses
+  (401/403/404/429) across openapi/google-sheets-openapi.yml, enriched from the
+  Google Sheets error troubleshooting guide
+  (developers.google.com/workspace/sheets/api/troubleshoot-api-errors) and the
+  Google API error model (cloud.google.com/apis/design/errors). Google does NOT
+  use RFC 9457 application/problem+json; every error is returned as
+  {"error": {"code", "message", "status", "details"[]}}.
+docs: https://developers.google.com/workspace/sheets/api/troubleshoot-api-errors
+envelope:
+  media_type: application/json
+  shape: '{ "error": { "code": number, "message": string, "status": string, "details": array } }'
+  status_field: >-
+    `status` is the canonical google.rpc.Code name (e.g. INVALID_ARGUMENT,
+    UNAUTHENTICATED, PERMISSION_DENIED, NOT_FOUND, RESOURCE_EXHAUSTED, INTERNAL,
+    UNAVAILABLE); `code` is the HTTP status number.
+problems:
+  - status: 400
+    canonical_status: INVALID_ARGUMENT
+    title: Bad Request
+    meaning: The request was malformed — invalid range/A1 notation, bad field mask, or invalid parameter value.
+    remediation: Check the request against the REST reference; validate A1/R1C1 ranges and the `fields` mask.
+    source_operations:
+      - openapi/google-sheets-openapi.yml#updateValues
+      - openapi/google-sheets-openapi.yml#appendValues
+  - status: 401
+    canonical_status: UNAUTHENTICATED
+    title: Unauthorized
+    meaning: Authentication credentials are missing, expired, or invalid.
+    remediation: Obtain/refresh a valid OAuth 2.0 access token (or supply a valid API key for public reads).
+    source_operations:
+      - openapi/google-sheets-openapi.yml#getSpreadsheet
+      - openapi/google-sheets-openapi.yml#getValues
+  - status: 403
+    canonical_status: PERMISSION_DENIED
+    title: Forbidden
+    meaning: The caller lacks permission — insufficient OAuth scope, the Sheets API is disabled for the project, or the user cannot access the file.
+    remediation: Grant the required scope (spreadsheets / spreadsheets.readonly), enable the Sheets API in the Cloud project, and confirm the user has file access.
+    source_operations:
+      - openapi/google-sheets-openapi.yml#batchUpdateSpreadsheet
+      - openapi/google-sheets-openapi.yml#updateValues
+  - status: 404
+    canonical_status: NOT_FOUND
+    title: Not Found
+    meaning: The requested spreadsheet, sheet, range, or developer metadata was not found.
+    remediation: Verify the spreadsheetId and that the range/metadata exists and is visible to the caller.
+    source_operations:
+      - openapi/google-sheets-openapi.yml#getSpreadsheet
+      - openapi/google-sheets-openapi.yml#getDeveloperMetadata
+  - status: 429
+    canonical_status: RESOURCE_EXHAUSTED
+    title: Too Many Requests
+    meaning: A per-minute read/write quota (per project and per user) was exceeded.
+    remediation: Back off exponentially, batch requests, and stay within the published per-minute quotas; request a quota increase in the Cloud console.
+    source_operations:
+      - openapi/google-sheets-openapi.yml#getValues
+      - openapi/google-sheets-openapi.yml#batchUpdateValues
+  - status: 500
+    canonical_status: INTERNAL
+    title: Internal Server Error
+    meaning: An unexpected problem with the API itself.
+    remediation: Retry with backoff; if it persists, file an issue on the Google Issue Tracker with the request details.
+  - status: 503
+    canonical_status: UNAVAILABLE
+    title: Service Unavailable
+    meaning: The service is unavailable, or the request/spreadsheet complexity is too high.
+    remediation: Use batchUpdate, limit to ~1 request/second, restrict ranges with A1 notation and field masks, and use exponential backoff.

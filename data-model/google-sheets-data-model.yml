@@ -1,0 +1,54 @@
+generated: '2026-06-20'
+method: derived
+source: >-
+  Derived from the schema $ref graph in openapi/google-sheets-openapi.yml
+  (Spreadsheet -> Sheet -> grid/format/filter children) and the Sheets object
+  reference (developers.google.com/workspace/sheets/api/reference/rest). Captures
+  the containment/entity graph of the spreadsheet resource. IDs in this API are
+  not prefixed strings — a spreadsheet is addressed by spreadsheetId (an opaque
+  Drive file id) and a sheet by an integer sheetId.
+docs: https://developers.google.com/workspace/sheets/api/reference/rest
+notation: >-
+  relationships use has_one / has_many / belongs_to with the field name that
+  carries the reference; direction is from the owning entity.
+
+entities:
+  - {name: Spreadsheet, id: spreadsheetId, domain: core, description: The top-level spreadsheet file (a Google Drive object).}
+  - {name: SpreadsheetProperties, id: null, domain: core, description: Title, locale, timeZone, autoRecalc, default format, theme.}
+  - {name: Sheet, id: sheetId, domain: core, description: A tab within a spreadsheet (GRID, OBJECT, or DATA_SOURCE).}
+  - {name: SheetProperties, id: sheetId, domain: core, description: Sheet id, title, index, grid dimensions, tab color.}
+  - {name: GridData, id: null, domain: values, description: The cell data for a region of a grid sheet.}
+  - {name: RowData, id: null, domain: values, description: A row of CellData within GridData.}
+  - {name: CellData, id: null, domain: values, description: A single cell — value, formula, format, note, data validation.}
+  - {name: ValueRange, id: null, domain: values, description: A range of values for the spreadsheets.values surface.}
+  - {name: NamedRange, id: namedRangeId, domain: structure, description: A named A1 range for formula references.}
+  - {name: DeveloperMetadata, id: metadataId, domain: metadata, description: Application-defined key/value metadata attached to a location.}
+  - {name: DataSource, id: dataSourceId, domain: data-source, description: An external data source (e.g. BigQuery) connected to the spreadsheet.}
+  - {name: ProtectedRange, id: protectedRangeId, domain: structure, description: A range with edit protection.}
+  - {name: ConditionalFormatRule, id: null, domain: format, description: A conditional formatting rule on a sheet.}
+  - {name: FilterView, id: filterViewId, domain: filter, description: A saved filter view on a sheet.}
+  - {name: BandedRange, id: bandedRangeId, domain: format, description: An alternating-color banded range.}
+  - {name: EmbeddedChart, id: chartId, domain: chart, description: A chart embedded on a sheet.}
+  - {name: Slicer, id: slicerId, domain: filter, description: A slicer control on a sheet.}
+  - {name: PivotTable, id: null, domain: analysis, description: A pivot table anchored in a cell.}
+  - {name: DataValidationRule, id: null, domain: values, description: A validation rule applied to cells.}
+
+relationships:
+  - {from: Spreadsheet, to: SpreadsheetProperties, kind: has_one, via: properties}
+  - {from: Spreadsheet, to: Sheet, kind: has_many, via: sheets}
+  - {from: Spreadsheet, to: NamedRange, kind: has_many, via: namedRanges}
+  - {from: Spreadsheet, to: DeveloperMetadata, kind: has_many, via: developerMetadata}
+  - {from: Spreadsheet, to: DataSource, kind: has_many, via: dataSources}
+  - {from: Sheet, to: SheetProperties, kind: has_one, via: properties}
+  - {from: Sheet, to: GridData, kind: has_many, via: data}
+  - {from: Sheet, to: ConditionalFormatRule, kind: has_many, via: conditionalFormats}
+  - {from: Sheet, to: FilterView, kind: has_many, via: filterViews}
+  - {from: Sheet, to: ProtectedRange, kind: has_many, via: protectedRanges}
+  - {from: Sheet, to: EmbeddedChart, kind: has_many, via: charts}
+  - {from: Sheet, to: BandedRange, kind: has_many, via: bandedRanges}
+  - {from: Sheet, to: Slicer, kind: has_many, via: slicers}
+  - {from: GridData, to: RowData, kind: has_many, via: rowData}
+  - {from: RowData, to: CellData, kind: has_many, via: values}
+  - {from: CellData, to: DataValidationRule, kind: has_one, via: dataValidation}
+  - {from: CellData, to: PivotTable, kind: has_one, via: pivotTable}
+  - {from: DeveloperMetadata, to: Sheet, kind: belongs_to, via: location.dimensionRange/sheetId}

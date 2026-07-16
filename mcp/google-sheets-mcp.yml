@@ -1,0 +1,71 @@
+generated: '2026-06-20'
+method: derived
+status: candidate
+source: >-
+  Derived from openapi/google-sheets-openapi.yml operations. As of this round
+  Google's official remote Workspace MCP servers (developers.google.com/workspace/
+  guides/configure-mcp-servers) cover Gmail, Drive, Calendar, People and Chat —
+  there is NO official Sheets-specific MCP server (Drive's server can edit Sheets
+  files indirectly). Several community servers exist (e.g. github.com/freema/
+  mcp-gsheets, github.com/distrihub/mcp-google-workspace). This is a candidate
+  tool surface mapped 1:1 from the Sheets REST operations, not a published server.
+server:
+  name: google-sheets
+  transport: http
+official: false
+notes: >-
+  No first-party hosted Sheets MCP endpoint published. Watch
+  developers.google.com/workspace/guides/configure-mcp-servers for a Sheets
+  server; until then use Drive's Workspace MCP server or a community server.
+tools:
+  - name: create_spreadsheet
+    description: Create a new spreadsheet, optionally with initial properties, sheets, and data.
+    source_operation: openapi/google-sheets-openapi.yml#createSpreadsheet
+  - name: get_spreadsheet
+    description: Return the spreadsheet at the given ID, optionally filtered by ranges and fields.
+    source_operation: openapi/google-sheets-openapi.yml#getSpreadsheet
+  - name: batch_update_spreadsheet
+    description: Apply one or more structural/formatting updates to a spreadsheet in a single call.
+    source_operation: openapi/google-sheets-openapi.yml#batchUpdateSpreadsheet
+  - name: get_spreadsheet_by_data_filter
+    description: Return the spreadsheet filtered by DataFilters instead of A1 ranges.
+    source_operation: openapi/google-sheets-openapi.yml#getSpreadsheetByDataFilter
+  - name: get_values
+    description: Read a range of values from a spreadsheet.
+    source_operation: openapi/google-sheets-openapi.yml#getValues
+  - name: update_values
+    description: Write values into a range of a spreadsheet.
+    source_operation: openapi/google-sheets-openapi.yml#updateValues
+  - name: append_values
+    description: Append rows of values after a table in a range.
+    source_operation: openapi/google-sheets-openapi.yml#appendValues
+  - name: clear_values
+    description: Clear values from a range while preserving formatting.
+    source_operation: openapi/google-sheets-openapi.yml#clearValues
+  - name: batch_get_values
+    description: Read values from multiple ranges in one call.
+    source_operation: openapi/google-sheets-openapi.yml#batchGetValues
+  - name: batch_update_values
+    description: Write values to multiple ranges in one call.
+    source_operation: openapi/google-sheets-openapi.yml#batchUpdateValues
+  - name: batch_clear_values
+    description: Clear values from multiple ranges in one call.
+    source_operation: openapi/google-sheets-openapi.yml#batchClearValues
+  - name: batch_get_values_by_data_filter
+    description: Read values from ranges selected by DataFilters.
+    source_operation: openapi/google-sheets-openapi.yml#batchGetValuesByDataFilter
+  - name: batch_update_values_by_data_filter
+    description: Write values to ranges selected by DataFilters.
+    source_operation: openapi/google-sheets-openapi.yml#batchUpdateValuesByDataFilter
+  - name: batch_clear_values_by_data_filter
+    description: Clear values from ranges selected by DataFilters.
+    source_operation: openapi/google-sheets-openapi.yml#batchClearValuesByDataFilter
+  - name: copy_sheet
+    description: Copy a single sheet from one spreadsheet to another.
+    source_operation: openapi/google-sheets-openapi.yml#copySheet
+  - name: get_developer_metadata
+    description: Return the developer metadata with the given ID.
+    source_operation: openapi/google-sheets-openapi.yml#getDeveloperMetadata
+  - name: search_developer_metadata
+    description: Search a spreadsheet for developer metadata matching a DataFilter.
+    source_operation: openapi/google-sheets-openapi.yml#searchDeveloperMetadata

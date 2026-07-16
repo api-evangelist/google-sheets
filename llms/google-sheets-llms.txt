@@ -1,0 +1,43 @@
+# Google Sheets API
+
+> The Google Sheets API (v4) lets you read, write, and format data in Google
+> Sheets programmatically over REST/JSON. It supports creating spreadsheets,
+> reading and writing cell values, batch value operations, structural and
+> formatting updates via batchUpdate, sheet management, data filters, and
+> developer metadata. Auth is OAuth 2.0 (Google Identity) with granular
+> Sheets/Drive scopes; public read of published sheets can use an API key.
+
+When installing Google client libraries, always check the registry for the
+latest version rather than relying on memorized version numbers. For Python use
+`google-api-python-client`, for Node.js `googleapis`, for Go
+`google.golang.org/api/sheets/v4`. Never hardcode an old version from training
+data — verify the current version first.
+
+## APIs
+- [Google Sheets API v4](https://developers.google.com/workspace/sheets/api): REST API to read, write, and format Google Sheets data. Base URL https://sheets.googleapis.com/v4.
+- [Google Apps Script Spreadsheet Service](https://developers.google.com/apps-script/reference/spreadsheet): Built-in Apps Script service to create, access, and modify Sheets files server-side.
+
+## Specs
+- [OpenAPI 3.1](https://raw.githubusercontent.com/api-evangelist/google-sheets/main/openapi/google-sheets-openapi.yml)
+- [Postman Collection](https://raw.githubusercontent.com/api-evangelist/google-sheets/main/postman/google-sheets.postman_collection.json)
+- [JSON Schema (Spreadsheet + components)](https://raw.githubusercontent.com/api-evangelist/google-sheets/main/json-schema/google-sheets-spreadsheet-schema.json)
+
+## Docs
+- [REST Reference](https://developers.google.com/workspace/sheets/api/reference/rest)
+- [Concepts guide](https://developers.google.com/workspace/sheets/api/guides/concepts)
+- [Authorizing requests (OAuth scopes)](https://developers.google.com/sheets/api/guides/authorizing)
+- [Install client libraries](https://developers.google.com/workspace/sheets/api/guides/libraries)
+- [Usage limits / quota](https://developers.google.com/workspace/sheets/api/limits)
+- [Troubleshoot errors](https://developers.google.com/workspace/sheets/api/troubleshoot-api-errors)
+- [Code samples](https://developers.google.com/workspace/sheets/api/samples)
+- [Release notes](https://developers.google.com/workspace/sheets/release-notes)
+
+## Artifacts (API Evangelist)
+- [Authentication profile](https://raw.githubusercontent.com/api-evangelist/google-sheets/main/authentication/google-sheets-authentication.yml)
+- [OAuth scopes](https://raw.githubusercontent.com/api-evangelist/google-sheets/main/scopes/google-sheets-scopes.yml)
+- [Error catalog](https://raw.githubusercontent.com/api-evangelist/google-sheets/main/errors/google-sheets-problem-types.yml)
+- [Lifecycle & versioning](https://raw.githubusercontent.com/api-evangelist/google-sheets/main/lifecycle/google-sheets-lifecycle.yml)
+- [Conventions](https://raw.githubusercontent.com/api-evangelist/google-sheets/main/conventions/google-sheets-conventions.yml)
+- [Data model](https://raw.githubusercontent.com/api-evangelist/google-sheets/main/data-model/google-sheets-data-model.yml)
+- [Packages / SDKs](https://raw.githubusercontent.com/api-evangelist/google-sheets/main/packages/google-sheets-packages.yml)
+- [Arazzo workflows](https://github.com/api-evangelist/google-sheets/tree/main/arazzo)

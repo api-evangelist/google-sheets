@@ -1,0 +1,30 @@
+generated: '2026-06-20'
+method: searched
+source: https://developers.google.com/workspace/sheets/release-notes
+description: >-
+  Structured capture of the Google Sheets API dated release notes. Google does
+  not version the API by date; changes ship additively within v4 and are
+  announced as dated release-notes entries. This records the recent window; the
+  live release notes are the source of truth.
+docs: https://developers.google.com/workspace/sheets/release-notes
+versioning:
+  scheme: uri-path
+  current: v4
+  detail: lifecycle/google-sheets-lifecycle.yml
+entries:
+  - date: '2025-06-17'
+    additions:
+      - Google Drive and People smart chips — create, update, and read — are generally available in the Sheets API.
+    highlights:
+      - Programmatic support for smart chips (Drive file chips and People chips) inside spreadsheet cells.
+  - date: '2025-04-29'
+    additions:
+      - Table operations — create and modify tables and take basic actions on tables via the Sheets API.
+    highlights:
+      - First-class table support in batchUpdate.
+  - date: '2021-08-02'
+    breaking:
+      - Google Sheets API v3 (legacy gdata) reached end-of-life; clients must use v4.
+  - date: '2016-06-15'
+    highlights:
+      - Google Sheets API v4 launched with full spreadsheet read/write/format access.

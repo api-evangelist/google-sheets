@@ -1,0 +1,34 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Google Sheets API
+  version: 1.0.0
+extends: openapi/google-sheets-openapi.yml
+generated: '2026-06-20'
+method: generated
+source: openapi/google-sheets-openapi.yml
+actions:
+  - target: $.info
+    update:
+      x-apievangelist:
+        catalog: https://apis.io/google-sheets
+        provider: Google
+        maintainer: Kin Lane <kin@apievangelist.com>
+        artifacts:
+          - apis.yml
+          - vocabulary/google-sheets-vocabulary.yaml
+          - rules/google-sheets-spectral-rules.yml
+          - conformance/google-sheets-conformance.yml
+          - errors/google-sheets-problem-types.yml
+          - lifecycle/google-sheets-lifecycle.yml
+          - conventions/google-sheets-conventions.yml
+          - data-model/google-sheets-data-model.yml
+          - packages/google-sheets-packages.yml
+          - authentication/google-sheets-authentication.yml
+          - scopes/google-sheets-scopes.yml
+          - mcp/google-sheets-mcp.yml
+  - target: $.info
+    update:
+      x-apievangelist-rating: 4
+  - target: $.externalDocs
+    update:
+      x-apievangelist-changelog: https://developers.google.com/workspace/sheets/release-notes

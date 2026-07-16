@@ -1,0 +1,64 @@
+generated: '2026-06-20'
+method: searched
+source: https://developers.google.com/workspace/sheets/api/guides/libraries
+description: >-
+  First-party Google API client libraries that cover the Google Sheets API v4.
+  Google ships one broad "Google API Client Library" per language (the Sheets
+  service is a module within it) rather than a Sheets-only SDK. Verified against
+  the public package registries (HTTP status recorded at fetch time) and the
+  Sheets "Install client libraries" documentation. All are maintained by Google
+  under the googleapis GitHub organization.
+packages:
+  - language: python
+    registry: pypi
+    name: google-api-python-client
+    url: https://pypi.org/project/google-api-python-client/
+    source: https://github.com/googleapis/google-api-python-client
+    install: pip install google-api-python-client
+    official: true
+    note: Sheets accessed via build('sheets', 'v4', ...). Pair with google-auth for OAuth.
+  - language: javascript
+    registry: npm
+    name: googleapis
+    url: https://www.npmjs.com/package/googleapis
+    source: https://github.com/googleapis/google-api-nodejs-client
+    install: npm install googleapis
+    official: true
+    note: Sheets accessed via google.sheets('v4').
+  - language: java
+    registry: maven
+    name: com.google.apis:google-api-services-sheets
+    url: https://central.sonatype.com/artifact/com.google.apis/google-api-services-sheets
+    source: https://github.com/googleapis/google-api-java-client-services
+    install: 'implementation "com.google.apis:google-api-services-sheets:v4-rev-latest"'
+    official: true
+  - language: csharp
+    registry: nuget
+    name: Google.Apis.Sheets.v4
+    url: https://www.nuget.org/packages/Google.Apis.Sheets.v4/
+    source: https://github.com/googleapis/google-api-dotnet-client
+    install: dotnet add package Google.Apis.Sheets.v4
+    official: true
+  - language: go
+    registry: go
+    name: google.golang.org/api/sheets/v4
+    url: https://pkg.go.dev/google.golang.org/api/sheets/v4
+    source: https://github.com/googleapis/google-api-go-client
+    install: go get google.golang.org/api/sheets/v4
+    official: true
+    note: Maintenance mode (critical bugs / security only).
+  - language: ruby
+    registry: rubygems
+    name: google-apis-sheets_v4
+    url: https://rubygems.org/gems/google-apis-sheets_v4
+    source: https://github.com/googleapis/google-api-ruby-client
+    install: gem install google-apis-sheets_v4
+    official: true
+  - language: php
+    registry: packagist
+    name: google/apiclient
+    url: https://packagist.org/packages/google/apiclient
+    source: https://github.com/googleapis/google-api-php-client
+    install: composer require google/apiclient
+    official: true
+    note: Sheets accessed via Google\Service\Sheets within the umbrella client.

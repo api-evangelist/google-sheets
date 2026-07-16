@@ -4,7 +4,7 @@ description: API for reading, writing, and formatting data in Google Sheets.
 image: https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png
 url: https://developers.google.com/sheets/api
 created: '2024-01-01'
-modified: '2026-05-19'
+modified: '2026-06-20'
 specificationVersion: '0.19'
 type: Index
 apis:
@@ -91,6 +91,28 @@ common:
     url: authentication/google-sheets-authentication.yml
   - type: OAuthScopes
     url: scopes/google-sheets-scopes.yml
+  - type: Packages
+    url: packages/google-sheets-packages.yml
+  - type: WellKnown
+    url: well-known/google-sheets-well-known.yml
+  - type: MCPServer
+    url: mcp/google-sheets-mcp.yml
+  - type: LLMsTxt
+    url: llms/google-sheets-llms.txt
+  - type: Overlay
+    url: overlays/google-sheets-openapi-overlay.yaml
+  - type: Conformance
+    url: conformance/google-sheets-conformance.yml
+  - type: ErrorCatalog
+    url: errors/google-sheets-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/google-sheets-lifecycle.yml
+  - type: Conventions
+    url: conventions/google-sheets-conventions.yml
+  - type: ChangeLog
+    url: changelog/google-sheets-changelog.yml
+  - type: DataModel
+    url: data-model/google-sheets-data-model.yml
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/google-sheets/overview
   - type: Arazzo
