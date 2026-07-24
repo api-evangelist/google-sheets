@@ -1,0 +1,375 @@
+openapi: 3.1.0
+info:
+  title: Google Sheets developerMetadata API
+  description: The Google Sheets API lets you read, write, and format data in Google Sheets. It supports creating spreadsheets, reading and writing cell values, updating formatting, managing sheets within a spreadsheet, and working with developer metadata.
+  version: v4
+  termsOfService: https://developers.google.com/terms
+  contact:
+    name: Google Workspace Developer Support
+    url: https://developers.google.com/sheets/api/support
+  license:
+    name: Creative Commons Attribution 4.0
+    url: https://creativecommons.org/licenses/by/4.0/
+servers:
+- url: https://sheets.googleapis.com/v4
+  description: Google Sheets API v4 production server
+security:
+- oauth2: []
+- apiKey: []
+tags:
+- name: developerMetadata
+  description: Operations on developer metadata
+paths:
+  /spreadsheets/{spreadsheetId}/developerMetadata/{metadataId}:
+    get:
+      operationId: getDeveloperMetadata
+      summary: Google Sheets Get Developer Metadata
+      description: Returns the developer metadata with the specified ID. The caller must specify the spreadsheet ID and the developer metadata's unique metadataId.
+      tags:
+      - developerMetadata
+      parameters:
+      - $ref: '#/components/parameters/spreadsheetId'
+      - name: metadataId
+        in: path
+        description: The ID of the developer metadata to retrieve.
+        required: true
+        schema:
+          type: integer
+        example: '500123'
+      responses:
+        '200':
+          description: Successful response containing the developer metadata.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeveloperMetadata'
+              examples:
+                Getdevelopermetadata200Example:
+                  summary: Default getDeveloperMetadata 200 response
+                  x-microcks-default: true
+                  value:
+                    metadataId: '500123'
+                    metadataKey: example_value
+                    metadataValue: example_value
+                    location:
+                      locationType: DEVELOPER_METADATA_LOCATION_TYPE_UNSPECIFIED
+                      spreadsheet: true
+                      sheetId: '500123'
+                    visibility: DEVELOPER_METADATA_VISIBILITY_UNSPECIFIED
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /spreadsheets/{spreadsheetId}/developerMetadata:search:
+    post:
+      operationId: searchDeveloperMetadata
+      summary: Google Sheets Search Developer Metadata
+      description: Returns all developer metadata matching the specified DataFilter. If the provided DataFilter represents a DeveloperMetadataLookup object, this will return all DeveloperMetadata entries selected by it.
+      tags:
+      - developerMetadata
+      parameters:
+      - $ref: '#/components/parameters/spreadsheetId'
+      requestBody:
+        description: The search request.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                dataFilters:
+                  type: array
+                  description: The data filters describing the criteria used to determine which developer metadata entries to return.
+                  items:
+                    $ref: '#/components/schemas/DataFilter'
+            examples:
+              SearchdevelopermetadataRequestExample:
+                summary: Default searchDeveloperMetadata request
+                x-microcks-default: true
+                value:
+                  dataFilters:
+                  - a1Range: example_value
+      responses:
+        '200':
+          description: Successful response containing matching developer metadata.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  matchedDeveloperMetadata:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        developerMetadata:
+                          $ref: '#/components/schemas/DeveloperMetadata'
+                        dataFilters:
+                          type: array
+                          items:
+                            $ref: '#/components/schemas/DataFilter'
+              examples:
+                Searchdevelopermetadata200Example:
+                  summary: Default searchDeveloperMetadata 200 response
+                  x-microcks-default: true
+                  value:
+                    matchedDeveloperMetadata:
+                    - developerMetadata:
+                        metadataId: '500123'
+                        metadataKey: example_value
+                        metadataValue: example_value
+                        visibility: DEVELOPER_METADATA_VISIBILITY_UNSPECIFIED
+                      dataFilters:
+                      - {}
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    DeveloperMetadataLocation:
+      type: object
+      description: A location where metadata may be associated in a spreadsheet.
+      properties:
+        locationType:
+          type: string
+          description: The type of location this object represents.
+          enum:
+          - DEVELOPER_METADATA_LOCATION_TYPE_UNSPECIFIED
+          - ROW
+          - COLUMN
+          - SHEET
+          - SPREADSHEET
+          example: DEVELOPER_METADATA_LOCATION_TYPE_UNSPECIFIED
+        spreadsheet:
+          type: boolean
+          description: True when metadata is associated with an entire spreadsheet.
+          example: true
+        sheetId:
+          type: integer
+          description: The ID of the sheet when metadata is associated with an entire sheet.
+          example: '500123'
+        dimensionRange:
+          $ref: '#/components/schemas/DimensionRange'
+    GridRange:
+      type: object
+      description: A range on a sheet. All indexes are zero-based.
+      properties:
+        sheetId:
+          type: integer
+          description: The sheet this range is on.
+          example: '500123'
+        startRowIndex:
+          type: integer
+          description: The start row (inclusive) of the range, or not set if unbounded.
+          example: 10
+        endRowIndex:
+          type: integer
+          description: The end row (exclusive) of the range, or not set if unbounded.
+          example: 10
+        startColumnIndex:
+          type: integer
+          description: The start column (inclusive) of the range, or not set if unbounded.
+          example: 10
+        endColumnIndex:
+          type: integer
+          description: The end column (exclusive) of the range, or not set if unbounded.
+          example: 10
+    ErrorResponse:
+      type: object
+      description: An error response from the API.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+              description: The HTTP status code.
+            message:
+              type: string
+              description: A human-readable error message.
+            status:
+              type: string
+              description: The status of the error.
+            details:
+              type: array
+              description: Additional error details.
+              items:
+                type: object
+          example: example_value
+    DeveloperMetadata:
+      type: object
+      description: Developer metadata associated with a location or object in a spreadsheet.
+      properties:
+        metadataId:
+          type: integer
+          description: The spreadsheet-scoped unique ID that identifies the metadata.
+          example: '500123'
+        metadataKey:
+          type: string
+          description: The metadata key.
+          example: example_value
+        metadataValue:
+          type: string
+          description: Data associated with the metadata's key.
+          example: example_value
+        location:
+          $ref: '#/components/schemas/DeveloperMetadataLocation'
+        visibility:
+          type: string
+          description: The metadata visibility.
+          enum:
+          - DEVELOPER_METADATA_VISIBILITY_UNSPECIFIED
+          - DOCUMENT
+          - PROJECT
+          example: DEVELOPER_METADATA_VISIBILITY_UNSPECIFIED
+    DataFilter:
+      type: object
+      description: Filter that describes what data should be selected or returned from a request.
+      properties:
+        developerMetadataLookup:
+          $ref: '#/components/schemas/DeveloperMetadataLookup'
+        a1Range:
+          type: string
+          description: Selects data that matches the specified A1 range.
+          example: example_value
+        gridRange:
+          $ref: '#/components/schemas/GridRange'
+    DeveloperMetadataLookup:
+      type: object
+      description: Selects DeveloperMetadata that matches all of the specified fields.
+      properties:
+        locationType:
+          type: string
+          description: Limits the selected developer metadata to that which has a matching location type.
+          enum:
+          - DEVELOPER_METADATA_LOCATION_TYPE_UNSPECIFIED
+          - ROW
+          - COLUMN
+          - SHEET
+          - SPREADSHEET
+          example: DEVELOPER_METADATA_LOCATION_TYPE_UNSPECIFIED
+        metadataLocation:
+          $ref: '#/components/schemas/DeveloperMetadataLocation'
+        locationMatchingStrategy:
+          type: string
+          description: Determines how this lookup matches the location.
+          enum:
+          - DEVELOPER_METADATA_LOCATION_MATCHING_STRATEGY_UNSPECIFIED
+          - EXACT_LOCATION
+          - INTERSECTING_LOCATION
+          example: DEVELOPER_METADATA_LOCATION_MATCHING_STRATEGY_UNSPECIFIED
+        metadataId:
+          type: integer
+          description: Limits the selected developer metadata to that which has a matching metadata ID.
+          example: '500123'
+        metadataKey:
+          type: string
+          description: Limits the selected developer metadata to that which has a matching metadata key.
+          example: example_value
+        metadataValue:
+          type: string
+          description: Limits the selected developer metadata to that which has a matching metadata value.
+          example: example_value
+        visibility:
+          type: string
+          description: Limits the selected developer metadata to that which has a matching visibility.
+          enum:
+          - DEVELOPER_METADATA_VISIBILITY_UNSPECIFIED
+          - DOCUMENT
+          - PROJECT
+          example: DEVELOPER_METADATA_VISIBILITY_UNSPECIFIED
+    Dimension:
+      type: string
+      description: Indicates which dimension an operation should apply to.
+      enum:
+      - DIMENSION_UNSPECIFIED
+      - ROWS
+      - COLUMNS
+    DimensionRange:
+      type: object
+      description: A range along a single dimension on a sheet.
+      properties:
+        sheetId:
+          type: integer
+          description: The sheet this span is on.
+          example: '500123'
+        dimension:
+          $ref: '#/components/schemas/Dimension'
+        startIndex:
+          type: integer
+          description: The start (inclusive) of the span.
+          example: 10
+        endIndex:
+          type: integer
+          description: The end (exclusive) of the span.
+          example: 10
+  parameters:
+    spreadsheetId:
+      name: spreadsheetId
+      in: path
+      description: The ID of the spreadsheet to retrieve or modify.
+      required: true
+      schema:
+        type: string
+  responses:
+    Unauthorized:
+      description: Authentication credentials are missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    TooManyRequests:
+      description: Rate limit exceeded. Too many requests in a given amount of time.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Forbidden:
+      description: The caller does not have permission to access the requested resource.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: The requested spreadsheet or range was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 authentication for accessing user spreadsheets.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/v2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/spreadsheets: Read and write access to all spreadsheets.
+            https://www.googleapis.com/auth/spreadsheets.readonly: Read-only access to all spreadsheets.
+            https://www.googleapis.com/auth/drive: Full access to Google Drive files.
+            https://www.googleapis.com/auth/drive.readonly: Read-only access to Google Drive files.
+            https://www.googleapis.com/auth/drive.file: Access to files created or opened by the app.
+    apiKey:
+      type: apiKey
+      in: query
+      name: key
+      description: API key for accessing public spreadsheets without user authentication.
+externalDocs:
+  description: Google Sheets API documentation
+  url: https://developers.google.com/sheets/api

@@ -1,0 +1,1147 @@
+openapi: 3.1.0
+info:
+  title: Google Sheets developerMetadata Values API
+  description: The Google Sheets API lets you read, write, and format data in Google Sheets. It supports creating spreadsheets, reading and writing cell values, updating formatting, managing sheets within a spreadsheet, and working with developer metadata.
+  version: v4
+  termsOfService: https://developers.google.com/terms
+  contact:
+    name: Google Workspace Developer Support
+    url: https://developers.google.com/sheets/api/support
+  license:
+    name: Creative Commons Attribution 4.0
+    url: https://creativecommons.org/licenses/by/4.0/
+servers:
+- url: https://sheets.googleapis.com/v4
+  description: Google Sheets API v4 production server
+security:
+- oauth2: []
+- apiKey: []
+tags:
+- name: Values
+  description: Operations on spreadsheet cell values
+paths:
+  /spreadsheets/{spreadsheetId}/values/{range}:
+    get:
+      operationId: getValues
+      summary: Google Sheets Get Values From a Range
+      description: Returns a range of values from a spreadsheet. The caller must specify the spreadsheet ID and a range.
+      tags:
+      - Values
+      parameters:
+      - $ref: '#/components/parameters/spreadsheetId'
+      - $ref: '#/components/parameters/range'
+      - name: majorDimension
+        in: query
+        description: The major dimension that results should use.
+        schema:
+          $ref: '#/components/schemas/Dimension'
+        example: example_value
+      - name: valueRenderOption
+        in: query
+        description: How values should be represented in the output.
+        schema:
+          $ref: '#/components/schemas/ValueRenderOption'
+        example: example_value
+      - name: dateTimeRenderOption
+        in: query
+        description: How dates, times, and durations should be represented in the output.
+        schema:
+          $ref: '#/components/schemas/DateTimeRenderOption'
+        example: example_value
+      responses:
+        '200':
+          description: Successful response containing the requested values.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValueRange'
+              examples:
+                Getvalues200Example:
+                  summary: Default getValues 200 response
+                  x-microcks-default: true
+                  value:
+                    range: example_value
+                    majorDimension: DIMENSION_UNSPECIFIED
+                    values:
+                    - []
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    put:
+      operationId: updateValues
+      summary: Google Sheets Update Values in a Range
+      description: Sets values in a range of a spreadsheet. The caller must specify the spreadsheet ID, range, and a valueInputOption.
+      tags:
+      - Values
+      parameters:
+      - $ref: '#/components/parameters/spreadsheetId'
+      - $ref: '#/components/parameters/range'
+      - name: valueInputOption
+        in: query
+        description: How the input data should be interpreted.
+        required: true
+        schema:
+          $ref: '#/components/schemas/ValueInputOption'
+        example: example_value
+      - name: includeValuesInResponse
+        in: query
+        description: Determines if the update response should include the values of the cells that were updated.
+        schema:
+          type: boolean
+          default: false
+        example: true
+      - name: responseValueRenderOption
+        in: query
+        description: Determines how values in the response should be rendered.
+        schema:
+          $ref: '#/components/schemas/ValueRenderOption'
+        example: example_value
+      - name: responseDateTimeRenderOption
+        in: query
+        description: Determines how dates, times, and durations in the response should be rendered.
+        schema:
+          $ref: '#/components/schemas/DateTimeRenderOption'
+        example: example_value
+      requestBody:
+        description: The values to update.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ValueRange'
+            examples:
+              UpdatevaluesRequestExample:
+                summary: Default updateValues request
+                x-microcks-default: true
+                value:
+                  range: example_value
+                  majorDimension: DIMENSION_UNSPECIFIED
+                  values:
+                  - []
+      responses:
+        '200':
+          description: Successful response containing the update result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateValuesResponse'
+              examples:
+                Updatevalues200Example:
+                  summary: Default updateValues 200 response
+                  x-microcks-default: true
+                  value:
+                    spreadsheetId: '500123'
+                    updatedRange: example_value
+                    updatedRows: 10
+                    updatedColumns: 10
+                    updatedCells: 10
+                    updatedData:
+                      range: example_value
+                      values:
+                      - {}
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /spreadsheets/{spreadsheetId}/values/{range}:append:
+    post:
+      operationId: appendValues
+      summary: Google Sheets Append Values to a Range
+      description: Appends values to a spreadsheet. The input range is used to search for existing data and find a table within that range. Values will be appended to the next row of the table, starting with the first column of the table.
+      tags:
+      - Values
+      parameters:
+      - $ref: '#/components/parameters/spreadsheetId'
+      - $ref: '#/components/parameters/range'
+      - name: valueInputOption
+        in: query
+        description: How the input data should be interpreted.
+        required: true
+        schema:
+          $ref: '#/components/schemas/ValueInputOption'
+        example: example_value
+      - name: insertDataOption
+        in: query
+        description: How the input data should be inserted.
+        schema:
+          type: string
+          enum:
+          - OVERWRITE
+          - INSERT_ROWS
+        example: OVERWRITE
+      - name: includeValuesInResponse
+        in: query
+        description: Determines if the update response should include the values of the cells that were appended.
+        schema:
+          type: boolean
+          default: false
+        example: true
+      - name: responseValueRenderOption
+        in: query
+        description: Determines how values in the response should be rendered.
+        schema:
+          $ref: '#/components/schemas/ValueRenderOption'
+        example: example_value
+      - name: responseDateTimeRenderOption
+        in: query
+        description: Determines how dates, times, and durations in the response should be rendered.
+        schema:
+          $ref: '#/components/schemas/DateTimeRenderOption'
+        example: example_value
+      requestBody:
+        description: The values to append.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ValueRange'
+            examples:
+              AppendvaluesRequestExample:
+                summary: Default appendValues request
+                x-microcks-default: true
+                value:
+                  range: example_value
+                  majorDimension: DIMENSION_UNSPECIFIED
+                  values:
+                  - []
+      responses:
+        '200':
+          description: Successful response containing the append result.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AppendValuesResponse'
+              examples:
+                Appendvalues200Example:
+                  summary: Default appendValues 200 response
+                  x-microcks-default: true
+                  value:
+                    spreadsheetId: '500123'
+                    tableRange: example_value
+                    updates:
+                      spreadsheetId: '500123'
+                      updatedRange: example_value
+                      updatedRows: 10
+                      updatedColumns: 10
+                      updatedCells: 10
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /spreadsheets/{spreadsheetId}/values/{range}:clear:
+    post:
+      operationId: clearValues
+      summary: Google Sheets Clear Values From a Range
+      description: Clears values from a spreadsheet. The caller must specify the spreadsheet ID and range. Only values are cleared; all other properties of the cell (such as formatting and data validation) are kept.
+      tags:
+      - Values
+      parameters:
+      - $ref: '#/components/parameters/spreadsheetId'
+      - $ref: '#/components/parameters/range'
+      requestBody:
+        description: The clear values request.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+            examples:
+              ClearvaluesRequestExample:
+                summary: Default clearValues request
+                x-microcks-default: true
+                value: {}
+      responses:
+        '200':
+          description: Successful response containing the cleared range.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClearValuesResponse'
+              examples:
+                Clearvalues200Example:
+                  summary: Default clearValues 200 response
+                  x-microcks-default: true
+                  value:
+                    spreadsheetId: '500123'
+                    clearedRange: example_value
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /spreadsheets/{spreadsheetId}/values:batchGet:
+    get:
+      operationId: batchGetValues
+      summary: Google Sheets Get Values From Multiple Ranges
+      description: Returns one or more ranges of values from a spreadsheet. The caller must specify the spreadsheet ID and one or more ranges.
+      tags:
+      - Values
+      parameters:
+      - $ref: '#/components/parameters/spreadsheetId'
+      - name: ranges
+        in: query
+        description: The A1 notation or R1C1 notation of the range to retrieve values from.
+        required: true
+        schema:
+          type: array
+          items:
+            type: string
+        example: []
+      - name: majorDimension
+        in: query
+        description: The major dimension that results should use.
+        schema:
+          $ref: '#/components/schemas/Dimension'
+        example: example_value
+      - name: valueRenderOption
+        in: query
+        description: How values should be represented in the output.
+        schema:
+          $ref: '#/components/schemas/ValueRenderOption'
+        example: example_value
+      - name: dateTimeRenderOption
+        in: query
+        description: How dates, times, and durations should be represented in the output.
+        schema:
+          $ref: '#/components/schemas/DateTimeRenderOption'
+        example: example_value
+      responses:
+        '200':
+          description: Successful response containing the requested values.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BatchGetValuesResponse'
+              examples:
+                Batchgetvalues200Example:
+                  summary: Default batchGetValues 200 response
+                  x-microcks-default: true
+                  value:
+                    spreadsheetId: '500123'
+                    valueRanges:
+                    - range: example_value
+                      values: {}
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /spreadsheets/{spreadsheetId}/values:batchUpdate:
+    post:
+      operationId: batchUpdateValues
+      summary: Google Sheets Update Values in Multiple Ranges
+      description: Sets values in one or more ranges of a spreadsheet. The caller must specify the spreadsheet ID, a valueInputOption, and one or more ValueRanges.
+      tags:
+      - Values
+      parameters:
+      - $ref: '#/components/parameters/spreadsheetId'
+      requestBody:
+        description: The batch update values request.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BatchUpdateValuesRequest'
+            examples:
+              BatchupdatevaluesRequestExample:
+                summary: Default batchUpdateValues request
+                x-microcks-default: true
+                value:
+                  valueInputOption: INPUT_VALUE_OPTION_UNSPECIFIED
+                  data:
+                  - range: example_value
+                    values: {}
+                  includeValuesInResponse: true
+                  responseValueRenderOption: FORMATTED_VALUE
+                  responseDateTimeRenderOption: SERIAL_NUMBER
+      responses:
+        '200':
+          description: Successful response containing the batch update results.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BatchUpdateValuesResponse'
+              examples:
+                Batchupdatevalues200Example:
+                  summary: Default batchUpdateValues 200 response
+                  x-microcks-default: true
+                  value:
+                    spreadsheetId: '500123'
+                    totalUpdatedRows: 10
+                    totalUpdatedColumns: 10
+                    totalUpdatedCells: 10
+                    totalUpdatedSheets: 10
+                    responses:
+                    - spreadsheetId: '500123'
+                      updatedRange: example_value
+                      updatedRows: 10
+                      updatedColumns: 10
+                      updatedCells: 10
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /spreadsheets/{spreadsheetId}/values:batchClear:
+    post:
+      operationId: batchClearValues
+      summary: Google Sheets Clear Values From Multiple Ranges
+      description: Clears one or more ranges of values from a spreadsheet. The caller must specify the spreadsheet ID and one or more ranges. Only values are cleared; all other properties of the cell are kept.
+      tags:
+      - Values
+      parameters:
+      - $ref: '#/components/parameters/spreadsheetId'
+      requestBody:
+        description: The batch clear values request.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ranges:
+                  type: array
+                  description: The ranges to clear in A1 or R1C1 notation.
+                  items:
+                    type: string
+            examples:
+              BatchclearvaluesRequestExample:
+                summary: Default batchClearValues request
+                x-microcks-default: true
+                value:
+                  ranges:
+                  - example_value
+      responses:
+        '200':
+          description: Successful response containing the cleared ranges.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BatchClearValuesResponse'
+              examples:
+                Batchclearvalues200Example:
+                  summary: Default batchClearValues 200 response
+                  x-microcks-default: true
+                  value:
+                    spreadsheetId: '500123'
+                    clearedRanges:
+                    - example_value
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /spreadsheets/{spreadsheetId}/values:batchGetByDataFilter:
+    post:
+      operationId: batchGetValuesByDataFilter
+      summary: Google Sheets Get Values From Ranges Matching Data Filters
+      description: Returns one or more ranges of values that match the specified data filters. The caller must specify the spreadsheet ID and one or more DataFilters. Ranges that match any of the data filters in the request will be returned.
+      tags:
+      - Values
+      parameters:
+      - $ref: '#/components/parameters/spreadsheetId'
+      requestBody:
+        description: The data filter request.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                dataFilters:
+                  type: array
+                  description: The data filters used to match the ranges of values to retrieve.
+                  items:
+                    $ref: '#/components/schemas/DataFilter'
+                majorDimension:
+                  $ref: '#/components/schemas/Dimension'
+                valueRenderOption:
+                  $ref: '#/components/schemas/ValueRenderOption'
+                dateTimeRenderOption:
+                  $ref: '#/components/schemas/DateTimeRenderOption'
+            examples:
+              BatchgetvaluesbydatafilterRequestExample:
+                summary: Default batchGetValuesByDataFilter request
+                x-microcks-default: true
+                value:
+                  dataFilters:
+                  - a1Range: example_value
+                  majorDimension: DIMENSION_UNSPECIFIED
+                  valueRenderOption: FORMATTED_VALUE
+                  dateTimeRenderOption: SERIAL_NUMBER
+      responses:
+        '200':
+          description: Successful response containing the requested values.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BatchGetValuesByDataFilterResponse'
+              examples:
+                Batchgetvaluesbydatafilter200Example:
+                  summary: Default batchGetValuesByDataFilter 200 response
+                  x-microcks-default: true
+                  value:
+                    spreadsheetId: '500123'
+                    valueRanges:
+                    - dataFilters:
+                      - {}
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /spreadsheets/{spreadsheetId}/values:batchUpdateByDataFilter:
+    post:
+      operationId: batchUpdateValuesByDataFilter
+      summary: Google Sheets Update Values in Ranges Matching Data Filters
+      description: Sets values in one or more ranges of a spreadsheet matching the specified data filters. The caller must specify the spreadsheet ID, a valueInputOption, and one or more DataFilterValueRanges.
+      tags:
+      - Values
+      parameters:
+      - $ref: '#/components/parameters/spreadsheetId'
+      requestBody:
+        description: The data filter update request.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                valueInputOption:
+                  $ref: '#/components/schemas/ValueInputOption'
+                data:
+                  type: array
+                  description: The new values to apply to the spreadsheet.
+                  items:
+                    $ref: '#/components/schemas/DataFilterValueRange'
+                includeValuesInResponse:
+                  type: boolean
+                  description: Determines if the update response should include the values of the cells that were updated.
+                  default: false
+                responseValueRenderOption:
+                  $ref: '#/components/schemas/ValueRenderOption'
+                responseDateTimeRenderOption:
+                  $ref: '#/components/schemas/DateTimeRenderOption'
+            examples:
+              BatchupdatevaluesbydatafilterRequestExample:
+                summary: Default batchUpdateValuesByDataFilter request
+                x-microcks-default: true
+                value:
+                  valueInputOption: INPUT_VALUE_OPTION_UNSPECIFIED
+                  data:
+                  - values:
+                    - {}
+                  includeValuesInResponse: true
+                  responseValueRenderOption: FORMATTED_VALUE
+                  responseDateTimeRenderOption: SERIAL_NUMBER
+      responses:
+        '200':
+          description: Successful response containing the update results.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BatchUpdateValuesByDataFilterResponse'
+              examples:
+                Batchupdatevaluesbydatafilter200Example:
+                  summary: Default batchUpdateValuesByDataFilter 200 response
+                  x-microcks-default: true
+                  value:
+                    spreadsheetId: '500123'
+                    totalUpdatedRows: 10
+                    totalUpdatedColumns: 10
+                    totalUpdatedCells: 10
+                    totalUpdatedSheets: 10
+                    responses:
+                    - updatedRange: example_value
+                      updatedRows: 10
+                      updatedColumns: 10
+                      updatedCells: 10
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /spreadsheets/{spreadsheetId}/values:batchClearByDataFilter:
+    post:
+      operationId: batchClearValuesByDataFilter
+      summary: Google Sheets Clear Values From Ranges Matching Data Filters
+      description: Clears one or more ranges of values from a spreadsheet matching the specified data filters. The caller must specify the spreadsheet ID and one or more DataFilters.
+      tags:
+      - Values
+      parameters:
+      - $ref: '#/components/parameters/spreadsheetId'
+      requestBody:
+        description: The data filter clear request.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                dataFilters:
+                  type: array
+                  description: The DataFilters used to determine which ranges to clear.
+                  items:
+                    $ref: '#/components/schemas/DataFilter'
+            examples:
+              BatchclearvaluesbydatafilterRequestExample:
+                summary: Default batchClearValuesByDataFilter request
+                x-microcks-default: true
+                value:
+                  dataFilters:
+                  - a1Range: example_value
+      responses:
+        '200':
+          description: Successful response containing the cleared ranges.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BatchClearValuesByDataFilterResponse'
+              examples:
+                Batchclearvaluesbydatafilter200Example:
+                  summary: Default batchClearValuesByDataFilter 200 response
+                  x-microcks-default: true
+                  value:
+                    spreadsheetId: '500123'
+                    clearedRanges:
+                    - example_value
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    BatchClearValuesResponse:
+      type: object
+      description: The response when clearing a range of values in a spreadsheet.
+      properties:
+        spreadsheetId:
+          type: string
+          description: The spreadsheet the updates were applied to.
+          example: '500123'
+        clearedRanges:
+          type: array
+          description: The ranges that were cleared, in A1 notation.
+          items:
+            type: string
+          example: []
+    GridRange:
+      type: object
+      description: A range on a sheet. All indexes are zero-based.
+      properties:
+        sheetId:
+          type: integer
+          description: The sheet this range is on.
+          example: '500123'
+        startRowIndex:
+          type: integer
+          description: The start row (inclusive) of the range, or not set if unbounded.
+          example: 10
+        endRowIndex:
+          type: integer
+          description: The end row (exclusive) of the range, or not set if unbounded.
+          example: 10
+        startColumnIndex:
+          type: integer
+          description: The start column (inclusive) of the range, or not set if unbounded.
+          example: 10
+        endColumnIndex:
+          type: integer
+          description: The end column (exclusive) of the range, or not set if unbounded.
+          example: 10
+    AppendValuesResponse:
+      type: object
+      description: The response when updating a range of values by appending.
+      properties:
+        spreadsheetId:
+          type: string
+          description: The spreadsheet the updates were applied to.
+          example: '500123'
+        tableRange:
+          type: string
+          description: The range (in A1 notation) of the table that values are being appended to.
+          example: example_value
+        updates:
+          $ref: '#/components/schemas/UpdateValuesResponse'
+    DataFilterValueRange:
+      type: object
+      description: A range of values whose location is specified by a DataFilter.
+      properties:
+        dataFilter:
+          $ref: '#/components/schemas/DataFilter'
+        majorDimension:
+          $ref: '#/components/schemas/Dimension'
+        values:
+          type: array
+          description: The data to be written.
+          items:
+            type: array
+            items: {}
+          example: []
+    DeveloperMetadataLookup:
+      type: object
+      description: Selects DeveloperMetadata that matches all of the specified fields.
+      properties:
+        locationType:
+          type: string
+          description: Limits the selected developer metadata to that which has a matching location type.
+          enum:
+          - DEVELOPER_METADATA_LOCATION_TYPE_UNSPECIFIED
+          - ROW
+          - COLUMN
+          - SHEET
+          - SPREADSHEET
+          example: DEVELOPER_METADATA_LOCATION_TYPE_UNSPECIFIED
+        metadataLocation:
+          $ref: '#/components/schemas/DeveloperMetadataLocation'
+        locationMatchingStrategy:
+          type: string
+          description: Determines how this lookup matches the location.
+          enum:
+          - DEVELOPER_METADATA_LOCATION_MATCHING_STRATEGY_UNSPECIFIED
+          - EXACT_LOCATION
+          - INTERSECTING_LOCATION
+          example: DEVELOPER_METADATA_LOCATION_MATCHING_STRATEGY_UNSPECIFIED
+        metadataId:
+          type: integer
+          description: Limits the selected developer metadata to that which has a matching metadata ID.
+          example: '500123'
+        metadataKey:
+          type: string
+          description: Limits the selected developer metadata to that which has a matching metadata key.
+          example: example_value
+        metadataValue:
+          type: string
+          description: Limits the selected developer metadata to that which has a matching metadata value.
+          example: example_value
+        visibility:
+          type: string
+          description: Limits the selected developer metadata to that which has a matching visibility.
+          enum:
+          - DEVELOPER_METADATA_VISIBILITY_UNSPECIFIED
+          - DOCUMENT
+          - PROJECT
+          example: DEVELOPER_METADATA_VISIBILITY_UNSPECIFIED
+    BatchUpdateValuesRequest:
+      type: object
+      description: The request for updating more than one range of values in a spreadsheet.
+      properties:
+        valueInputOption:
+          $ref: '#/components/schemas/ValueInputOption'
+        data:
+          type: array
+          description: The new values to apply to the spreadsheet.
+          items:
+            $ref: '#/components/schemas/ValueRange'
+          example: []
+        includeValuesInResponse:
+          type: boolean
+          description: Determines if the update response should include the values of the cells that were updated.
+          default: false
+          example: true
+        responseValueRenderOption:
+          $ref: '#/components/schemas/ValueRenderOption'
+        responseDateTimeRenderOption:
+          $ref: '#/components/schemas/DateTimeRenderOption'
+    BatchUpdateValuesResponse:
+      type: object
+      description: The response when updating a range of values in a spreadsheet.
+      properties:
+        spreadsheetId:
+          type: string
+          description: The spreadsheet the updates were applied to.
+          example: '500123'
+        totalUpdatedRows:
+          type: integer
+          description: The total number of rows where at least one cell in the row was updated.
+          example: 10
+        totalUpdatedColumns:
+          type: integer
+          description: The total number of columns where at least one cell in the column was updated.
+          example: 10
+        totalUpdatedCells:
+          type: integer
+          description: The total number of cells updated.
+          example: 10
+        totalUpdatedSheets:
+          type: integer
+          description: The total number of sheets where at least one cell in the sheet was updated.
+          example: 10
+        responses:
+          type: array
+          description: One UpdateValuesResponse per requested range, in the same order as the requests appeared.
+          items:
+            $ref: '#/components/schemas/UpdateValuesResponse'
+          example: []
+    DeveloperMetadataLocation:
+      type: object
+      description: A location where metadata may be associated in a spreadsheet.
+      properties:
+        locationType:
+          type: string
+          description: The type of location this object represents.
+          enum:
+          - DEVELOPER_METADATA_LOCATION_TYPE_UNSPECIFIED
+          - ROW
+          - COLUMN
+          - SHEET
+          - SPREADSHEET
+          example: DEVELOPER_METADATA_LOCATION_TYPE_UNSPECIFIED
+        spreadsheet:
+          type: boolean
+          description: True when metadata is associated with an entire spreadsheet.
+          example: true
+        sheetId:
+          type: integer
+          description: The ID of the sheet when metadata is associated with an entire sheet.
+          example: '500123'
+        dimensionRange:
+          $ref: '#/components/schemas/DimensionRange'
+    UpdateValuesResponse:
+      type: object
+      description: The response when updating a range of values in a spreadsheet.
+      properties:
+        spreadsheetId:
+          type: string
+          description: The spreadsheet the updates were applied to.
+          example: '500123'
+        updatedRange:
+          type: string
+          description: The range (in A1 notation) that updates were applied to.
+          example: example_value
+        updatedRows:
+          type: integer
+          description: The number of rows where at least one cell in the row was updated.
+          example: 10
+        updatedColumns:
+          type: integer
+          description: The number of columns where at least one cell in the column was updated.
+          example: 10
+        updatedCells:
+          type: integer
+          description: The number of cells updated.
+          example: 10
+        updatedData:
+          $ref: '#/components/schemas/ValueRange'
+    ErrorResponse:
+      type: object
+      description: An error response from the API.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+              description: The HTTP status code.
+            message:
+              type: string
+              description: A human-readable error message.
+            status:
+              type: string
+              description: The status of the error.
+            details:
+              type: array
+              description: Additional error details.
+              items:
+                type: object
+          example: example_value
+    DimensionRange:
+      type: object
+      description: A range along a single dimension on a sheet.
+      properties:
+        sheetId:
+          type: integer
+          description: The sheet this span is on.
+          example: '500123'
+        dimension:
+          $ref: '#/components/schemas/Dimension'
+        startIndex:
+          type: integer
+          description: The start (inclusive) of the span.
+          example: 10
+        endIndex:
+          type: integer
+          description: The end (exclusive) of the span.
+          example: 10
+    DateTimeRenderOption:
+      type: string
+      description: Determines how dates, times, and durations should be rendered in the output.
+      enum:
+      - SERIAL_NUMBER
+      - FORMATTED_STRING
+    ValueRange:
+      type: object
+      description: Data within a range of the spreadsheet.
+      properties:
+        range:
+          type: string
+          description: The range the values cover, in A1 notation. For output, this range indicates the entire requested range, even though the values response will include only the non-empty rows and columns.
+          example: example_value
+        majorDimension:
+          $ref: '#/components/schemas/Dimension'
+        values:
+          type: array
+          description: The data that was read or to be written. This is an array of arrays, the outer array representing all the data and each inner array representing a major dimension.
+          items:
+            type: array
+            items: {}
+          example: []
+    BatchGetValuesByDataFilterResponse:
+      type: object
+      description: The response when retrieving more than one range of values in a spreadsheet selected by DataFilters.
+      properties:
+        spreadsheetId:
+          type: string
+          description: The ID of the spreadsheet the data was retrieved from.
+          example: '500123'
+        valueRanges:
+          type: array
+          description: The requested values with the list of data filters that matched them.
+          items:
+            type: object
+            properties:
+              valueRange:
+                $ref: '#/components/schemas/ValueRange'
+              dataFilters:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DataFilter'
+          example: []
+    Dimension:
+      type: string
+      description: Indicates which dimension an operation should apply to.
+      enum:
+      - DIMENSION_UNSPECIFIED
+      - ROWS
+      - COLUMNS
+    BatchUpdateValuesByDataFilterResponse:
+      type: object
+      description: The response when updating a range of values in a spreadsheet by data filter.
+      properties:
+        spreadsheetId:
+          type: string
+          description: The spreadsheet the updates were applied to.
+          example: '500123'
+        totalUpdatedRows:
+          type: integer
+          example: 10
+        totalUpdatedColumns:
+          type: integer
+          example: 10
+        totalUpdatedCells:
+          type: integer
+          example: 10
+        totalUpdatedSheets:
+          type: integer
+          example: 10
+        responses:
+          type: array
+          items:
+            type: object
+            properties:
+              updatedRange:
+                type: string
+              updatedRows:
+                type: integer
+              updatedColumns:
+                type: integer
+              updatedCells:
+                type: integer
+              updatedData:
+                $ref: '#/components/schemas/ValueRange'
+              dataFilter:
+                $ref: '#/components/schemas/DataFilter'
+          example: []
+    BatchClearValuesByDataFilterResponse:
+      type: object
+      description: The response when clearing a range of values selected by DataFilters in a spreadsheet.
+      properties:
+        spreadsheetId:
+          type: string
+          description: The spreadsheet the updates were applied to.
+          example: '500123'
+        clearedRanges:
+          type: array
+          description: The ranges that were cleared, in A1 notation.
+          items:
+            type: string
+          example: []
+    ValueRenderOption:
+      type: string
+      description: Determines how values should be rendered in the output.
+      enum:
+      - FORMATTED_VALUE
+      - UNFORMATTED_VALUE
+      - FORMULA
+    BatchGetValuesResponse:
+      type: object
+      description: The response when retrieving more than one range of values in a spreadsheet.
+      properties:
+        spreadsheetId:
+          type: string
+          description: The ID of the spreadsheet the data was retrieved from.
+          example: '500123'
+        valueRanges:
+          type: array
+          description: The requested ranges of values.
+          items:
+            $ref: '#/components/schemas/ValueRange'
+          example: []
+    DataFilter:
+      type: object
+      description: Filter that describes what data should be selected or returned from a request.
+      properties:
+        developerMetadataLookup:
+          $ref: '#/components/schemas/DeveloperMetadataLookup'
+        a1Range:
+          type: string
+          description: Selects data that matches the specified A1 range.
+          example: example_value
+        gridRange:
+          $ref: '#/components/schemas/GridRange'
+    ClearValuesResponse:
+      type: object
+      description: The response when clearing a range of values in a spreadsheet.
+      properties:
+        spreadsheetId:
+          type: string
+          description: The spreadsheet the updates were applied to.
+          example: '500123'
+        clearedRange:
+          type: string
+          description: The range (in A1 notation) that was cleared.
+          example: example_value
+    ValueInputOption:
+      type: string
+      description: Determines how input data should be interpreted.
+      enum:
+      - INPUT_VALUE_OPTION_UNSPECIFIED
+      - RAW
+      - USER_ENTERED
+  parameters:
+    range:
+      name: range
+      in: path
+      description: The A1 notation or R1C1 notation of the range to read or modify. For example, Sheet1!A1:D5 or Sheet1!R1C1:R5C4.
+      required: true
+      schema:
+        type: string
+    spreadsheetId:
+      name: spreadsheetId
+      in: path
+      description: The ID of the spreadsheet to retrieve or modify.
+      required: true
+      schema:
+        type: string
+  responses:
+    NotFound:
+      description: The requested spreadsheet or range was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Authentication credentials are missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    TooManyRequests:
+      description: Rate limit exceeded. Too many requests in a given amount of time.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Forbidden:
+      description: The caller does not have permission to access the requested resource.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 authentication for accessing user spreadsheets.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/v2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/spreadsheets: Read and write access to all spreadsheets.
+            https://www.googleapis.com/auth/spreadsheets.readonly: Read-only access to all spreadsheets.
+            https://www.googleapis.com/auth/drive: Full access to Google Drive files.
+            https://www.googleapis.com/auth/drive.readonly: Read-only access to Google Drive files.
+            https://www.googleapis.com/auth/drive.file: Access to files created or opened by the app.
+    apiKey:
+      type: apiKey
+      in: query
+      name: key
+      description: API key for accessing public spreadsheets without user authentication.
+externalDocs:
+  description: Google Sheets API documentation
+  url: https://developers.google.com/sheets/api

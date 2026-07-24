@@ -1,0 +1,380 @@
+openapi: 3.1.0
+info:
+  title: Google developerMetadata Sheets API
+  description: The Google Sheets API lets you read, write, and format data in Google Sheets. It supports creating spreadsheets, reading and writing cell values, updating formatting, managing sheets within a spreadsheet, and working with developer metadata.
+  version: v4
+  termsOfService: https://developers.google.com/terms
+  contact:
+    name: Google Workspace Developer Support
+    url: https://developers.google.com/sheets/api/support
+  license:
+    name: Creative Commons Attribution 4.0
+    url: https://creativecommons.org/licenses/by/4.0/
+servers:
+- url: https://sheets.googleapis.com/v4
+  description: Google Sheets API v4 production server
+security:
+- oauth2: []
+- apiKey: []
+tags:
+- name: Sheets
+  description: Operations on individual sheets within a spreadsheet
+paths:
+  /spreadsheets/{spreadsheetId}/sheets/{sheetId}:copyTo:
+    post:
+      operationId: copySheet
+      summary: Google Sheets Copy a Sheet to Another Spreadsheet
+      description: Copies a single sheet from a spreadsheet to another spreadsheet. Returns the properties of the newly created sheet.
+      tags:
+      - Sheets
+      parameters:
+      - $ref: '#/components/parameters/spreadsheetId'
+      - name: sheetId
+        in: path
+        description: The ID of the sheet to copy.
+        required: true
+        schema:
+          type: integer
+        example: '500123'
+      requestBody:
+        description: The request to copy a sheet.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - destinationSpreadsheetId
+              properties:
+                destinationSpreadsheetId:
+                  type: string
+                  description: The ID of the spreadsheet to copy the sheet to.
+            examples:
+              CopysheetRequestExample:
+                summary: Default copySheet request
+                x-microcks-default: true
+                value:
+                  destinationSpreadsheetId: '500123'
+      responses:
+        '200':
+          description: Successful response containing the properties of the copied sheet.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SheetProperties'
+              examples:
+                Copysheet200Example:
+                  summary: Default copySheet 200 response
+                  x-microcks-default: true
+                  value:
+                    sheetId: '500123'
+                    title: Example Title
+                    index: 10
+                    sheetType: GRID
+                    gridProperties:
+                      rowCount: 10
+                      columnCount: 10
+                      frozenRowCount: 10
+                      frozenColumnCount: 10
+                      hideGridlines: true
+                      rowGroupControlAfter: true
+                      columnGroupControlAfter: true
+                    hidden: true
+                    tabColor:
+                      red: 42.5
+                      green: 42.5
+                      blue: 42.5
+                      alpha: 42.5
+                    tabColorStyle:
+                      themeColor: THEME_COLOR_TYPE_UNSPECIFIED
+                    rightToLeft: true
+                    dataSourceSheetProperties:
+                      dataSourceId: '500123'
+                      columns:
+                      - {}
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    DataSourceColumn:
+      type: object
+      description: A column in a data source.
+      properties:
+        reference:
+          $ref: '#/components/schemas/DataSourceColumnReference'
+        formula:
+          type: string
+          description: The formula of the calculated column.
+          example: example_value
+    Color:
+      type: object
+      description: Represents a color in the RGBA color space. Values are in the range [0, 1].
+      properties:
+        red:
+          type: number
+          description: The amount of red in the color as a value in the range [0, 1].
+          example: 42.5
+        green:
+          type: number
+          description: The amount of green in the color as a value in the range [0, 1].
+          example: 42.5
+        blue:
+          type: number
+          description: The amount of blue in the color as a value in the range [0, 1].
+          example: 42.5
+        alpha:
+          type: number
+          description: The fraction of this color that should be applied to the pixel. A value of 1.0 corresponds to a solid color.
+          example: 42.5
+    ColorStyle:
+      type: object
+      description: A color value.
+      properties:
+        rgbColor:
+          $ref: '#/components/schemas/Color'
+        themeColor:
+          type: string
+          description: Theme color type.
+          enum:
+          - THEME_COLOR_TYPE_UNSPECIFIED
+          - TEXT
+          - BACKGROUND
+          - ACCENT1
+          - ACCENT2
+          - ACCENT3
+          - ACCENT4
+          - ACCENT5
+          - ACCENT6
+          - LINK
+          example: THEME_COLOR_TYPE_UNSPECIFIED
+    ErrorResponse:
+      type: object
+      description: An error response from the API.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+              description: The HTTP status code.
+            message:
+              type: string
+              description: A human-readable error message.
+            status:
+              type: string
+              description: The status of the error.
+            details:
+              type: array
+              description: Additional error details.
+              items:
+                type: object
+          example: example_value
+    SheetProperties:
+      type: object
+      description: Properties of a sheet.
+      properties:
+        sheetId:
+          type: integer
+          description: The ID of the sheet. Must be non-negative. This field cannot be changed once set.
+          example: '500123'
+        title:
+          type: string
+          description: The name of the sheet.
+          example: Example Title
+        index:
+          type: integer
+          description: The index of the sheet within the spreadsheet.
+          example: 10
+        sheetType:
+          type: string
+          description: The type of sheet.
+          enum:
+          - GRID
+          - OBJECT
+          - DATA_SOURCE
+          example: GRID
+        gridProperties:
+          $ref: '#/components/schemas/GridProperties'
+        hidden:
+          type: boolean
+          description: True if the sheet is hidden in the UI, false if visible.
+          example: true
+        tabColor:
+          $ref: '#/components/schemas/Color'
+        tabColorStyle:
+          $ref: '#/components/schemas/ColorStyle'
+        rightToLeft:
+          type: boolean
+          description: True if the sheet is an RTL sheet instead of an LTR sheet.
+          example: true
+        dataSourceSheetProperties:
+          $ref: '#/components/schemas/DataSourceSheetProperties'
+    GridProperties:
+      type: object
+      description: Properties of a grid.
+      properties:
+        rowCount:
+          type: integer
+          description: The number of rows in the grid.
+          example: 10
+        columnCount:
+          type: integer
+          description: The number of columns in the grid.
+          example: 10
+        frozenRowCount:
+          type: integer
+          description: The number of rows that are frozen in the grid.
+          example: 10
+        frozenColumnCount:
+          type: integer
+          description: The number of columns that are frozen in the grid.
+          example: 10
+        hideGridlines:
+          type: boolean
+          description: True if the grid is not showing gridlines in the UI.
+          example: true
+        rowGroupControlAfter:
+          type: boolean
+          description: True if the row grouping control toggle is shown after the group.
+          example: true
+        columnGroupControlAfter:
+          type: boolean
+          description: True if the column grouping control toggle is shown after the group.
+          example: true
+    DataSourceSheetProperties:
+      type: object
+      description: Additional properties of a DATA_SOURCE sheet.
+      properties:
+        dataSourceId:
+          type: string
+          description: ID of the DataSource the sheet is connected to.
+          example: '500123'
+        columns:
+          type: array
+          description: The columns displayed on the sheet.
+          items:
+            $ref: '#/components/schemas/DataSourceColumn'
+          example: []
+        dataExecutionStatus:
+          $ref: '#/components/schemas/DataExecutionStatus'
+    DataSourceColumnReference:
+      type: object
+      description: An unique identifier that references a data source column.
+      properties:
+        name:
+          type: string
+          description: The display name of the column.
+          example: Example Title
+    DataExecutionStatus:
+      type: object
+      description: The data execution status.
+      properties:
+        state:
+          type: string
+          description: The state of the data execution.
+          enum:
+          - DATA_EXECUTION_STATE_UNSPECIFIED
+          - NOT_STARTED
+          - RUNNING
+          - CANCELLING
+          - SUCCEEDED
+          - FAILED
+          example: DATA_EXECUTION_STATE_UNSPECIFIED
+        errorCode:
+          type: string
+          description: The error code.
+          enum:
+          - DATA_EXECUTION_ERROR_CODE_UNSPECIFIED
+          - TIMED_OUT
+          - TOO_MANY_ROWS
+          - TOO_MANY_COLUMNS
+          - TOO_MANY_CELLS
+          - ENGINE
+          - PARAMETER_INVALID
+          - UNSUPPORTED_DATA_TYPE
+          - DUPLICATE_COLUMN_NAMES
+          - INTERRUPTED
+          - CONCURRENT_QUERY
+          - OTHER
+          - TOO_MANY_CHARS_PER_CELL
+          - DATA_NOT_FOUND
+          - PERMISSION_DENIED
+          - MISSING_COLUMN_ALIAS
+          - OBJECT_NOT_FOUND
+          - OBJECT_IN_ERROR_STATE
+          - OBJECT_SPEC_INVALID
+          - DATA_EXECUTION_CANCELLED
+          example: DATA_EXECUTION_ERROR_CODE_UNSPECIFIED
+        errorMessage:
+          type: string
+          description: The error message, which may be empty.
+          example: example_value
+        lastRefreshTime:
+          type: string
+          format: date-time
+          description: Gets the time the data last successfully refreshed.
+          example: '2026-01-15T10:30:00Z'
+  parameters:
+    spreadsheetId:
+      name: spreadsheetId
+      in: path
+      description: The ID of the spreadsheet to retrieve or modify.
+      required: true
+      schema:
+        type: string
+  responses:
+    Unauthorized:
+      description: Authentication credentials are missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: The requested spreadsheet or range was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    TooManyRequests:
+      description: Rate limit exceeded. Too many requests in a given amount of time.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Forbidden:
+      description: The caller does not have permission to access the requested resource.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 authentication for accessing user spreadsheets.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/v2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/spreadsheets: Read and write access to all spreadsheets.
+            https://www.googleapis.com/auth/spreadsheets.readonly: Read-only access to all spreadsheets.
+            https://www.googleapis.com/auth/drive: Full access to Google Drive files.
+            https://www.googleapis.com/auth/drive.readonly: Read-only access to Google Drive files.
+            https://www.googleapis.com/auth/drive.file: Access to files created or opened by the app.
+    apiKey:
+      type: apiKey
+      in: query
+      name: key
+      description: API key for accessing public spreadsheets without user authentication.
+externalDocs:
+  description: Google Sheets API documentation
+  url: https://developers.google.com/sheets/api
