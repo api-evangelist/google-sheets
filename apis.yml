@@ -1,6 +1,19 @@
 aid: google-sheets
 name: Google Sheets
 description: API for reading, writing, and formatting data in Google Sheets.
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 image: https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png
 url: https://developers.google.com/sheets/api
 created: '2024-01-01'
@@ -8,74 +21,167 @@ modified: '2026-06-20'
 specificationVersion: '0.19'
 type: Index
 apis:
-  - name: Google Sheets API v4
-    description: The Google Sheets API lets you read, write, and format Google Sheets data.
-    image: https://www.gstatic.com/images/branding/product/2x/sheets_2020q4_48dp.png
-    humanURL: https://developers.google.com/sheets/api
-    baseURL: https://sheets.googleapis.com/v4
-    properties:
-      - type: Documentation
-        url: https://developers.google.com/sheets/api/reference/rest
-      - type: OpenAPI
-        url: openapi/google-sheets-openapi.yml
-      - type: Authentication
-        url: https://developers.google.com/sheets/api/guides/authorizing
-      - type: GettingStarted
-        url: https://developers.google.com/sheets/api/quickstart/python
-      - type: GettingStarted
-        url: https://developers.google.com/workspace/sheets/api/guides/concepts
-      - type: APIReference
-        url: https://developers.google.com/workspace/sheets/api/reference/rest
-      - type: SDKs
-        url: https://developers.google.com/workspace/sheets/api/guides/libraries
-      - type: ChangeLog
-        url: https://developers.google.com/workspace/sheets/release-notes
-      - type: CodeExamples
-        url: https://developers.google.com/workspace/sheets/api/samples
-      - type: RateLimits
-        url: https://developers.google.com/workspace/sheets/api/limits
-      - type: ErrorCodes
-        url: https://developers.google.com/workspace/sheets/api/troubleshoot-api-errors
-      - type: JSONSchema
-        url: json-schema/google-sheets-spreadsheet-schema.json
-      - type: JSONLD
-        url: json-ld/google-sheets-context.jsonld
-    contact:
-      - type: Support
-        url: https://support.google.com/developers/
-      - type: StackOverflow
-        url: https://stackoverflow.com/questions/tagged/google-sheets-api
-    tags:
-      - Collaboration
-      - Data
-      - Google
-      - Productivity
-      - Spreadsheets
-  - name: Google Apps Script Spreadsheet Service
-    description: >-
-      The built-in Google Apps Script Spreadsheet Service allows creation, access, and modification of Google Sheets
-      files directly from Apps Script with performance bundling and numerous classes for formatting, data sources,
-      structure, and content.
-    image: https://www.gstatic.com/images/branding/product/2x/apps_script_48dp.png
-    humanURL: https://developers.google.com/apps-script/reference/spreadsheet
-    properties:
-      - type: Documentation
-        url: https://developers.google.com/apps-script/reference/spreadsheet
-      - type: GettingStarted
-        url: https://developers.google.com/apps-script
-      - type: APIReference
-        url: https://developers.google.com/apps-script/reference
-      - type: ReleaseNotes
-        url: https://developers.google.com/apps-script/release-notes
-    contact:
-      - type: StackOverflow
-        url: https://stackoverflow.com/questions/tagged/google-apps-script
-    tags:
-      - Apps Script
-      - Automation
-      - Google
-      - Scripting
-      - Spreadsheets
+- name: Google Apps Script Spreadsheet Service
+  description: >-
+    The built-in Google Apps Script Spreadsheet Service allows creation, access, and modification of Google
+    Sheets files directly from Apps Script with performance bundling and numerous classes for formatting,
+    data sources, structure, and content.
+  image: https://www.gstatic.com/images/branding/product/2x/apps_script_48dp.png
+  humanURL: https://developers.google.com/apps-script/reference/spreadsheet
+  properties:
+  - type: Documentation
+    url: https://developers.google.com/apps-script/reference/spreadsheet
+  - type: GettingStarted
+    url: https://developers.google.com/apps-script
+  - type: APIReference
+    url: https://developers.google.com/apps-script/reference
+  - type: ReleaseNotes
+    url: https://developers.google.com/apps-script/release-notes
+  contact:
+  - type: StackOverflow
+    url: https://stackoverflow.com/questions/tagged/google-apps-script
+  tags:
+  - Apps Script
+  - Automation
+  - Google
+  - Scripting
+  - Spreadsheets
+- aid: google-sheets:google-sheets-developermetadata-api
+  name: Google Sheets developerMetadata API
+  description: Operations on developer metadata
+  humanURL: https://developers.google.com/sheets/api
+  baseURL: https://sheets.googleapis.com/v4
+  tags:
+  - developerMetadata
+  properties:
+  - type: OpenAPI
+    url: openapi/google-sheets-developermetadata-api-openapi.yml
+  - type: Documentation
+    url: https://developers.google.com/sheets/api/reference/rest
+  - type: Authentication
+    url: https://developers.google.com/sheets/api/guides/authorizing
+  - type: GettingStarted
+    url: https://developers.google.com/sheets/api/quickstart/python
+  - type: GettingStarted
+    url: https://developers.google.com/workspace/sheets/api/guides/concepts
+  - type: APIReference
+    url: https://developers.google.com/workspace/sheets/api/reference/rest
+  - type: SDKs
+    url: https://developers.google.com/workspace/sheets/api/guides/libraries
+  - type: ChangeLog
+    url: https://developers.google.com/workspace/sheets/release-notes
+  - type: CodeExamples
+    url: https://developers.google.com/workspace/sheets/api/samples
+  - type: RateLimits
+    url: https://developers.google.com/workspace/sheets/api/limits
+  - type: ErrorCodes
+    url: https://developers.google.com/workspace/sheets/api/troubleshoot-api-errors
+  - type: JSONSchema
+    url: json-schema/google-sheets-spreadsheet-schema.json
+  - type: JSONLD
+    url: json-ld/google-sheets-context.jsonld
+- aid: google-sheets:google-sheets-sheets-api
+  name: Google Sheets Sheets API
+  description: Operations on individual sheets within a spreadsheet
+  humanURL: https://developers.google.com/sheets/api
+  baseURL: https://sheets.googleapis.com/v4
+  tags:
+  - Sheets
+  properties:
+  - type: OpenAPI
+    url: openapi/google-sheets-sheets-api-openapi.yml
+  - type: Documentation
+    url: https://developers.google.com/sheets/api/reference/rest
+  - type: Authentication
+    url: https://developers.google.com/sheets/api/guides/authorizing
+  - type: GettingStarted
+    url: https://developers.google.com/sheets/api/quickstart/python
+  - type: GettingStarted
+    url: https://developers.google.com/workspace/sheets/api/guides/concepts
+  - type: APIReference
+    url: https://developers.google.com/workspace/sheets/api/reference/rest
+  - type: SDKs
+    url: https://developers.google.com/workspace/sheets/api/guides/libraries
+  - type: ChangeLog
+    url: https://developers.google.com/workspace/sheets/release-notes
+  - type: CodeExamples
+    url: https://developers.google.com/workspace/sheets/api/samples
+  - type: RateLimits
+    url: https://developers.google.com/workspace/sheets/api/limits
+  - type: ErrorCodes
+    url: https://developers.google.com/workspace/sheets/api/troubleshoot-api-errors
+  - type: JSONSchema
+    url: json-schema/google-sheets-spreadsheet-schema.json
+  - type: JSONLD
+    url: json-ld/google-sheets-context.jsonld
+- aid: google-sheets:google-sheets-spreadsheets-api
+  name: Google Sheets Spreadsheets API
+  description: Operations on spreadsheet resources
+  humanURL: https://developers.google.com/sheets/api
+  baseURL: https://sheets.googleapis.com/v4
+  tags:
+  - Spreadsheets
+  properties:
+  - type: OpenAPI
+    url: openapi/google-sheets-spreadsheets-api-openapi.yml
+  - type: Documentation
+    url: https://developers.google.com/sheets/api/reference/rest
+  - type: Authentication
+    url: https://developers.google.com/sheets/api/guides/authorizing
+  - type: GettingStarted
+    url: https://developers.google.com/sheets/api/quickstart/python
+  - type: GettingStarted
+    url: https://developers.google.com/workspace/sheets/api/guides/concepts
+  - type: APIReference
+    url: https://developers.google.com/workspace/sheets/api/reference/rest
+  - type: SDKs
+    url: https://developers.google.com/workspace/sheets/api/guides/libraries
+  - type: ChangeLog
+    url: https://developers.google.com/workspace/sheets/release-notes
+  - type: CodeExamples
+    url: https://developers.google.com/workspace/sheets/api/samples
+  - type: RateLimits
+    url: https://developers.google.com/workspace/sheets/api/limits
+  - type: ErrorCodes
+    url: https://developers.google.com/workspace/sheets/api/troubleshoot-api-errors
+  - type: JSONSchema
+    url: json-schema/google-sheets-spreadsheet-schema.json
+  - type: JSONLD
+    url: json-ld/google-sheets-context.jsonld
+- aid: google-sheets:google-sheets-values-api
+  name: Google Sheets Values API
+  description: Operations on spreadsheet cell values
+  humanURL: https://developers.google.com/sheets/api
+  baseURL: https://sheets.googleapis.com/v4
+  tags:
+  - Values
+  properties:
+  - type: OpenAPI
+    url: openapi/google-sheets-values-api-openapi.yml
+  - type: Documentation
+    url: https://developers.google.com/sheets/api/reference/rest
+  - type: Authentication
+    url: https://developers.google.com/sheets/api/guides/authorizing
+  - type: GettingStarted
+    url: https://developers.google.com/sheets/api/quickstart/python
+  - type: GettingStarted
+    url: https://developers.google.com/workspace/sheets/api/guides/concepts
+  - type: APIReference
+    url: https://developers.google.com/workspace/sheets/api/reference/rest
+  - type: SDKs
+    url: https://developers.google.com/workspace/sheets/api/guides/libraries
+  - type: ChangeLog
+    url: https://developers.google.com/workspace/sheets/release-notes
+  - type: CodeExamples
+    url: https://developers.google.com/workspace/sheets/api/samples
+  - type: RateLimits
+    url: https://developers.google.com/workspace/sheets/api/limits
+  - type: ErrorCodes
+    url: https://developers.google.com/workspace/sheets/api/troubleshoot-api-errors
+  - type: JSONSchema
+    url: json-schema/google-sheets-spreadsheet-schema.json
+  - type: JSONLD
+    url: json-ld/google-sheets-context.jsonld
 maintainers:
   - name: Kin Lane
     email: kin@apievangelist.com
