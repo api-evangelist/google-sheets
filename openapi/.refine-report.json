@@ -1,0 +1,20 @@
+{
+  "provider": "google-sheets",
+  "sources": [
+    "google-sheets-developermetadata-api-openapi.yml",
+    "google-sheets-sheets-api-openapi.yml",
+    "google-sheets-spreadsheets-api-openapi.yml",
+    "google-sheets-values-api-openapi.yml"
+  ],
+  "outputs": [
+    "google-sheets-developermetadata-api-openapi.yml",
+    "google-sheets-sheets-api-openapi.yml",
+    "google-sheets-spreadsheets-api-openapi.yml",
+    "google-sheets-values-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
