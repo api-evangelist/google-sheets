@@ -1,0 +1,1281 @@
+{
+  "item": [
+    {
+      "id": "ced18246-92b4-41cb-ba5f-eafb309a122f",
+      "name": "Spreadsheets",
+      "description": {
+        "content": "Operations on spreadsheet resources",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1e8bd75d-635c-41aa-9fc9-5d6a7149601e",
+          "name": "Google Sheets Create a Spreadsheet",
+          "request": {
+            "name": "Google Sheets Create a Spreadsheet",
+            "description": {
+              "content": "Creates a new spreadsheet, optionally with initial properties, sheets, and data.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "spreadsheets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"properties\": {\n    \"title\": \"<string>\",\n    \"locale\": \"<string>\",\n    \"autoRecalc\": \"<string>\",\n    \"timeZone\": \"<string>\",\n    \"defaultFormat\": {\n      \"numberFormat\": {\n        \"type\": \"<string>\",\n        \"pattern\": \"<string>\"\n      },\n      \"backgroundColor\": {\n        \"red\": \"<number>\",\n        \"green\": \"<number>\",\n        \"blue\": \"<number>\",\n        \"alpha\": \"<number>\"\n      },\n      \"backgroundColorStyle\": {\n        \"rgbColor\": {\n          \"red\": \"<number>\",\n          \"green\": \"<number>\",\n          \"blue\": \"<number>\",\n          \"alpha\": \"<number>\"\n        },\n        \"themeColor\": \"<string>\"\n      },\n      \"borders\": {\n        \"top\": {\n          \"style\": \"<string>\",\n          \"width\": \"<integer>\",\n          \"color\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"colorStyle\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"bottom\": {\n          \"style\": \"<string>\",\n          \"width\": \"<integer>\",\n          \"color\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"colorStyle\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"left\": {\n          \"style\": \"<string>\",\n          \"width\": \"<integer>\",\n          \"color\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"colorStyle\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"right\": {\n          \"style\": \"<string>\",\n          \"width\": \"<integer>\",\n          \"color\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"colorStyle\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"padding\": {\n        \"top\": \"<integer>\",\n        \"right\": \"<integer>\",\n        \"bottom\": \"<integer>\",\n        \"left\": \"<integer>\"\n      },\n      \"horizontalAlignment\": \"<string>\",\n      \"verticalAlignment\": \"<string>\",\n      \"wrapStrategy\": \"<string>\",\n      \"textDirection\": \"<string>\",\n      \"textFormat\": {\n        \"foregroundColor\": {\n          \"red\": \"<number>\",\n          \"green\": \"<number>\",\n          \"blue\": \"<number>\",\n          \"alpha\": \"<number>\"\n        },\n        \"foregroundColorStyle\": {\n          \"rgbColor\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"themeColor\": \"<string>\"\n        },\n        \"fontFamily\": \"<string>\",\n        \"fontSize\": \"<integer>\",\n        \"bold\": \"<boolean>\",\n        \"italic\": \"<boolean>\",\n        \"strikethrough\": \"<boolean>\",\n        \"underline\": \"<boolean>\",\n        \"link\": {\n          \"uri\": \"<string>\"\n        }\n      },\n      \"hyperlinkDisplayType\": \"<string>\",\n      \"textRotation\": {\n        \"angle\": \"<integer>\",\n        \"vertical\": \"<boolean>\"\n      }\n    },\n    \"iterativeCalculationSettings\": {\n      \"maxIterations\": \"<integer>\",\n      \"convergenceThreshold\": \"<number>\"\n    },\n    \"spreadsheetTheme\": {\n      \"primaryFontFamily\": \"<string>\",\n      \"themeColors\": [\n        {\n          \"colorType\": \"<string>\",\n          \"color\": {\n            \"rgbColor\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"themeColor\": \"<string>\"\n          }\n        },\n        {\n          \"colorType\": \"<string>\",\n          \"color\": {\n            \"rgbColor\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"themeColor\": \"<string>\"\n          }\n        }\n      ]\n    },\n    \"importFunctionsExternalUrlAccessAllowed\": \"<boolean>\"\n  },\n  \"sheets\": [\n    {\n      \"properties\": {\n        \"sheetId\": \"<integer>\",\n        \"title\": \"<string>\",\n        \"index\": \"<integer>\",\n        \"sheetType\": \"<string>\",\n        \"gridProperties\": {\n          \"rowCount\": \"<integer>\",\n          \"columnCount\": \"<integer>\",\n          \"frozenRowCount\": \"<integer>\",\n          \"frozenColumnCount\": \"<integer>\",\n          \"hideGridlines\": \"<boolean>\",\n          \"rowGroupControlAfter\": \"<boolean>\",\n          \"columnGroupControlAfter\": \"<boolean>\"\n        },\n        \"hidden\": \"<boolean>\",\n        \"tabColor\": {\n          \"red\": \"<number>\",\n          \"green\": \"<number>\",\n          \"blue\": \"<number>\",\n          \"alpha\": \"<number>\"\n        },\n        \"tabColorStyle\": {\n          \"rgbColor\": {\n            \"red\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"green\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"blue\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"alpha\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"themeColor\": \"<string>\"\n        },\n        \"rightToLeft\": \"<boolean>\",\n        \"dataSourceSheetProperties\": {\n          \"dataSourceId\": \"<string>\",\n          \"columns\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"dataExecutionStatus\": {\n            \"state\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"errorCode\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"errorMessage\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"lastRefreshTime\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      \"data\": [\n        {\n          \"startRow\": \"<integer>\",\n          \"startColumn\": \"<integer>\",\n          \"rowData\": [\n            {\n              \"values\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"values\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"rowMetadata\": [\n            {\n              \"hiddenByFilter\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"hiddenByUser\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"pixelSize\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"developerMetadata\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"dataSourceColumnReference\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"hiddenByFilter\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"hiddenByUser\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"pixelSize\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"developerMetadata\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"dataSourceColumnReference\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"columnMetadata\": [\n            {\n              \"hiddenByFilter\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"hiddenByUser\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"pixelSize\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"developerMetadata\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"dataSourceColumnReference\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"hiddenByFilter\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"hiddenByUser\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"pixelSize\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"developerMetadata\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"dataSourceColumnReference\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"startRow\": \"<integer>\",\n          \"startColumn\": \"<integer>\",\n          \"rowData\": [\n            {\n              \"values\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"values\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"rowMetadata\": [\n            {\n              \"hiddenByFilter\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"hiddenByUser\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"pixelSize\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"developerMetadata\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"dataSourceColumnReference\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"hiddenByFilter\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"hiddenByUser\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"pixelSize\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"developerMetadata\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"dataSourceColumnReference\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"columnMetadata\": [\n            {\n              \"hiddenByFilter\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"hiddenByUser\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"pixelSize\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"developerMetadata\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"dataSourceColumnReference\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"hiddenByFilter\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"hiddenByUser\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"pixelSize\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"developerMetadata\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"dataSourceColumnReference\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"merges\": [\n        {\n          \"sheetId\": \"<integer>\",\n          \"startRowIndex\": \"<integer>\",\n          \"endRowIndex\": \"<integer>\",\n          \"startColumnIndex\": \"<integer>\",\n          \"endColumnIndex\": \"<integer>\"\n        },\n        {\n          \"sheetId\": \"<integer>\",\n          \"startRowIndex\": \"<integer>\",\n          \"endRowIndex\": \"<integer>\",\n          \"startColumnIndex\": \"<integer>\",\n          \"endColumnIndex\": \"<integer>\"\n        }\n      ],\n      \"conditionalFormats\": [\n        {\n          \"ranges\": [\n            {\n              \"sheetId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"startRowIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"endRowIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"startColumnIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"endColumnIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"sheetId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"startRowIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"endRowIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"startColumnIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"endColumnIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"booleanRule\": {\n            \"condition\": {\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"values\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"format\": {\n              \"numberFormat\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"backgroundColor\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"backgroundColorStyle\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"borders\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"padding\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"horizontalAlignment\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"verticalAlignment\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"wrapStrategy\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"textDirection\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"textFormat\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"hyperlinkDisplayType\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"textRotation\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          },\n          \"gradientRule\": {\n            \"minpoint\": {\n              \"color\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"colorStyle\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"midpoint\": {\n              \"color\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"colorStyle\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"maxpoint\": {\n              \"color\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"colorStyle\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          }\n        },\n        {\n          \"ranges\": [\n            {\n              \"sheetId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"startRowIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"endRowIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"startColumnIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"endColumnIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"sheetId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"startRowIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"endRowIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"startColumnIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"endColumnIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"booleanRule\": {\n            \"condition\": {\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"values\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"format\": {\n              \"numberFormat\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"backgroundColor\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"backgroundColorStyle\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"borders\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"padding\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"horizontalAlignment\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"verticalAlignment\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"wrapStrategy\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"textDirection\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"textFormat\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"hyperlinkDisplayType\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"textRotation\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          },\n          \"gradientRule\": {\n            \"minpoint\": {\n              \"color\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"colorStyle\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"midpoint\": {\n              \"color\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"colorStyle\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"maxpoint\": {\n              \"color\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"colorStyle\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          }\n        }\n      ],\n      \"filterViews\": [\n        {\n          \"filterViewId\": \"<integer>\",\n          \"title\": \"<string>\",\n          \"range\": {\n            \"sheetId\": \"<integer>\",\n            \"startRowIndex\": \"<integer>\",\n            \"endRowIndex\": \"<integer>\",\n            \"startColumnIndex\": \"<integer>\",\n            \"endColumnIndex\": \"<integer>\"\n          },\n          \"namedRangeId\": \"<string>\",\n          \"sortSpecs\": [\n            {\n              \"dimensionIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sortOrder\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"foregroundColor\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"foregroundColorStyle\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"backgroundColor\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"backgroundColorStyle\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"dataSourceColumnReference\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"dimensionIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sortOrder\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"foregroundColor\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"foregroundColorStyle\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"backgroundColor\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"backgroundColorStyle\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"dataSourceColumnReference\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"criteria\": {\n            \"key_0\": {\n              \"hiddenValues\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"condition\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"visibleBackgroundColor\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"visibleBackgroundColorStyle\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"visibleForegroundColor\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"visibleForegroundColorStyle\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"key_1\": {\n              \"hiddenValues\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"condition\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"visibleBackgroundColor\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"visibleBackgroundColorStyle\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"visibleForegroundColor\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"visibleForegroundColorStyle\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          },\n          \"filterSpecs\": [\n            {\n              \"filterCriteria\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"columnIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"dataSourceColumnReference\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"filterCriteria\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"columnIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"dataSourceColumnReference\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"filterViewId\": \"<integer>\",\n          \"title\": \"<string>\",\n          \"range\": {\n            \"sheetId\": \"<integer>\",\n            \"startRowIndex\": \"<integer>\",\n            \"endRowIndex\": \"<integer>\",\n            \"startColumnIndex\": \"<integer>\",\n            \"endColumnIndex\": \"<integer>\"\n          },\n          \"namedRangeId\": \"<string>\",\n          \"sortSpecs\": [\n            {\n              \"dimensionIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sortOrder\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"foregroundColor\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"foregroundColorStyle\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"backgroundColor\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"backgroundColorStyle\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"dataSourceColumnReference\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"dimensionIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sortOrder\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"foregroundColor\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"foregroundColorStyle\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"backgroundColor\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"backgroundColorStyle\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"dataSourceColumnReference\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"criteria\": {\n            \"key_0\": {\n              \"hiddenValues\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"condition\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"visibleBackgroundColor\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"visibleBackgroundColorStyle\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"visibleForegroundColor\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"visibleForegroundColorStyle\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          },\n          \"filterSpecs\": [\n            {\n              \"filterCriteria\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"columnIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"dataSourceColumnReference\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"filterCriteria\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"columnIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"dataSourceColumnReference\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"protectedRanges\": [\n        {\n          \"protectedRangeId\": \"<integer>\",\n          \"range\": {\n            \"sheetId\": \"<integer>\",\n            \"startRowIndex\": \"<integer>\",\n            \"endRowIndex\": \"<integer>\",\n            \"startColumnIndex\": \"<integer>\",\n            \"endColumnIndex\": \"<integer>\"\n          },\n          \"namedRangeId\": \"<string>\",\n          \"description\": \"<string>\",\n          \"warningOnly\": \"<boolean>\",\n          \"requestingUserCanEdit\": \"<boolean>\",\n          \"unprotectedRanges\": [\n            {\n              \"sheetId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"startRowIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"endRowIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"startColumnIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"endColumnIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"sheetId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"startRowIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"endRowIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"startColumnIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"endColumnIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"editors\": {\n            \"users\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"groups\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"domainUsersCanEdit\": \"<boolean>\"\n          }\n        },\n        {\n          \"protectedRangeId\": \"<integer>\",\n          \"range\": {\n            \"sheetId\": \"<integer>\",\n            \"startRowIndex\": \"<integer>\",\n            \"endRowIndex\": \"<integer>\",\n            \"startColumnIndex\": \"<integer>\",\n            \"endColumnIndex\": \"<integer>\"\n          },\n          \"namedRangeId\": \"<string>\",\n          \"description\": \"<string>\",\n          \"warningOnly\": \"<boolean>\",\n          \"requestingUserCanEdit\": \"<boolean>\",\n          \"unprotectedRanges\": [\n            {\n              \"sheetId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"startRowIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"endRowIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"startColumnIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"endColumnIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"sheetId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"startRowIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"endRowIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"startColumnIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"endColumnIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"editors\": {\n            \"users\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"groups\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"domainUsersCanEdit\": \"<boolean>\"\n          }\n        }\n      ],\n      \"basicFilter\": {\n        \"range\": {\n          \"sheetId\": \"<integer>\",\n          \"startRowIndex\": \"<integer>\",\n          \"endRowIndex\": \"<integer>\",\n          \"startColumnIndex\": \"<integer>\",\n          \"endColumnIndex\": \"<integer>\"\n        },\n        \"sortSpecs\": [\n          {\n            \"dimensionIndex\": \"<integer>\",\n            \"sortOrder\": \"<string>\",\n            \"foregroundColor\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"foregroundColorStyle\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"backgroundColor\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"backgroundColorStyle\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"dataSourceColumnReference\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"dimensionIndex\": \"<integer>\",\n            \"sortOrder\": \"<string>\",\n            \"foregroundColor\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"foregroundColorStyle\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"backgroundColor\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"backgroundColorStyle\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"dataSourceColumnReference\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"criteria\": {\n          \"key_0\": {\n            \"hiddenValues\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"condition\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"visibleBackgroundColor\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"visibleBackgroundColorStyle\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"visibleForegroundColor\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"visibleForegroundColorStyle\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"key_1\": {\n            \"hiddenValues\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"condition\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"visibleBackgroundColor\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"visibleBackgroundColorStyle\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"visibleForegroundColor\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"visibleForegroundColorStyle\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"filterSpecs\": [\n          {\n            \"filterCriteria\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"columnIndex\": \"<integer>\",\n            \"dataSourceColumnReference\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"filterCriteria\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"columnIndex\": \"<integer>\",\n            \"dataSourceColumnReference\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      \"charts\": [\n        {\n          \"chartId\": \"<integer>\",\n          \"position\": {\n            \"sheetId\": \"<integer>\",\n            \"overlayPosition\": {\n              \"anchorCell\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"offsetXPixels\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"offsetYPixels\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"widthPixels\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"heightPixels\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"newSheet\": \"<boolean>\"\n          },\n          \"spec\": \"<object>\"\n        },\n        {\n          \"chartId\": \"<integer>\",\n          \"position\": {\n            \"sheetId\": \"<integer>\",\n            \"overlayPosition\": {\n              \"anchorCell\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"offsetXPixels\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"offsetYPixels\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"widthPixels\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"heightPixels\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"newSheet\": \"<boolean>\"\n          },\n          \"spec\": \"<object>\"\n        }\n      ],\n      \"bandedRanges\": [\n        {\n          \"bandedRangeId\": \"<integer>\",\n          \"range\": {\n            \"sheetId\": \"<integer>\",\n            \"startRowIndex\": \"<integer>\",\n            \"endRowIndex\": \"<integer>\",\n            \"startColumnIndex\": \"<integer>\",\n            \"endColumnIndex\": \"<integer>\"\n          },\n          \"rowProperties\": {\n            \"headerColor\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"headerColorStyle\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"firstBandColor\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"firstBandColorStyle\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"secondBandColor\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"secondBandColorStyle\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"footerColor\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"footerColorStyle\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"columnProperties\": {\n            \"headerColor\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"headerColorStyle\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"firstBandColor\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"firstBandColorStyle\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"secondBandColor\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"secondBandColorStyle\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"footerColor\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"footerColorStyle\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        {\n          \"bandedRangeId\": \"<integer>\",\n          \"range\": {\n            \"sheetId\": \"<integer>\",\n            \"startRowIndex\": \"<integer>\",\n            \"endRowIndex\": \"<integer>\",\n            \"startColumnIndex\": \"<integer>\",\n            \"endColumnIndex\": \"<integer>\"\n          },\n          \"rowProperties\": {\n            \"headerColor\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"headerColorStyle\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"firstBandColor\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"firstBandColorStyle\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"secondBandColor\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"secondBandColorStyle\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"footerColor\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"footerColorStyle\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"columnProperties\": {\n            \"headerColor\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"headerColorStyle\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"firstBandColor\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"firstBandColorStyle\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"secondBandColor\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"secondBandColorStyle\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"footerColor\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"footerColorStyle\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      ],\n      \"slicers\": [\n        {\n          \"slicerId\": \"<integer>\",\n          \"spec\": {\n            \"dataRange\": {\n              \"sheetId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"startRowIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"endRowIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"startColumnIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"endColumnIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"filterCriteria\": {\n              \"hiddenValues\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"condition\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"visibleBackgroundColor\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"visibleBackgroundColorStyle\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"visibleForegroundColor\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"visibleForegroundColorStyle\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"columnIndex\": \"<integer>\",\n            \"applyToPivotTables\": \"<boolean>\",\n            \"title\": \"<string>\",\n            \"textFormat\": {\n              \"foregroundColor\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"foregroundColorStyle\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"fontFamily\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"fontSize\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"bold\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"italic\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"strikethrough\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"underline\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"link\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"backgroundColor\": {\n              \"red\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"green\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"blue\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"alpha\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"backgroundColorStyle\": {\n              \"rgbColor\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"themeColor\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"horizontalAlignment\": \"<string>\"\n          },\n          \"position\": {\n            \"sheetId\": \"<integer>\",\n            \"overlayPosition\": {\n              \"anchorCell\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"offsetXPixels\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"offsetYPixels\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"widthPixels\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"heightPixels\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"newSheet\": \"<boolean>\"\n          }\n        },\n        {\n          \"slicerId\": \"<integer>\",\n          \"spec\": {\n            \"dataRange\": {\n              \"sheetId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"startRowIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"endRowIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"startColumnIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"endColumnIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"filterCriteria\": {\n              \"hiddenValues\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"condition\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"visibleBackgroundColor\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"visibleBackgroundColorStyle\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"visibleForegroundColor\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"visibleForegroundColorStyle\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"columnIndex\": \"<integer>\",\n            \"applyToPivotTables\": \"<boolean>\",\n            \"title\": \"<string>\",\n            \"textFormat\": {\n              \"foregroundColor\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"foregroundColorStyle\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"fontFamily\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"fontSize\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"bold\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"italic\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"strikethrough\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"underline\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"link\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"backgroundColor\": {\n              \"red\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"green\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"blue\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"alpha\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"backgroundColorStyle\": {\n              \"rgbColor\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"themeColor\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"horizontalAlignment\": \"<string>\"\n          },\n          \"position\": {\n            \"sheetId\": \"<integer>\",\n            \"overlayPosition\": {\n              \"anchorCell\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"offsetXPixels\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"offsetYPixels\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"widthPixels\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"heightPixels\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"newSheet\": \"<boolean>\"\n          }\n        }\n      ]\n    },\n    {\n      \"properties\": {\n        \"sheetId\": \"<integer>\",\n        \"title\": \"<string>\",\n        \"index\": \"<integer>\",\n        \"sheetType\": \"<string>\",\n        \"gridProperties\": {\n          \"rowCount\": \"<integer>\",\n          \"columnCount\": \"<integer>\",\n          \"frozenRowCount\": \"<integer>\",\n          \"frozenColumnCount\": \"<integer>\",\n          \"hideGridlines\": \"<boolean>\",\n          \"rowGroupControlAfter\": \"<boolean>\",\n          \"columnGroupControlAfter\": \"<boolean>\"\n        },\n        \"hidden\": \"<boolean>\",\n        \"tabColor\": {\n          \"red\": \"<number>\",\n          \"green\": \"<number>\",\n          \"blue\": \"<number>\",\n          \"alpha\": \"<number>\"\n        },\n        \"tabColorStyle\": {\n          \"rgbColor\": {\n            \"red\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"green\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"blue\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"alpha\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"themeColor\": \"<string>\"\n        },\n        \"rightToLeft\": \"<boolean>\",\n        \"dataSourceSheetProperties\": {\n          \"dataSourceId\": \"<string>\",\n          \"columns\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"dataExecutionStatus\": {\n            \"state\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"errorCode\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"errorMessage\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"lastRefreshTime\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      },\n      \"data\": [\n        {\n          \"startRow\": \"<integer>\",\n          \"startColumn\": \"<integer>\",\n          \"rowData\": [\n            {\n              \"values\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"values\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"rowMetadata\": [\n            {\n              \"hiddenByFilter\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"hiddenByUser\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"pixelSize\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"developerMetadata\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"dataSourceColumnReference\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"hiddenByFilter\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"hiddenByUser\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"pixelSize\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"developerMetadata\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"dataSourceColumnReference\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"columnMetadata\": [\n            {\n              \"hiddenByFilter\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"hiddenByUser\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"pixelSize\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"developerMetadata\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"dataSourceColumnReference\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"hiddenByFilter\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"hiddenByUser\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"pixelSize\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"developerMetadata\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"dataSourceColumnReference\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"startRow\": \"<integer>\",\n          \"startColumn\": \"<integer>\",\n          \"rowData\": [\n            {\n              \"values\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"values\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"rowMetadata\": [\n            {\n              \"hiddenByFilter\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"hiddenByUser\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"pixelSize\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"developerMetadata\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"dataSourceColumnReference\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"hiddenByFilter\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"hiddenByUser\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"pixelSize\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"developerMetadata\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"dataSourceColumnReference\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"columnMetadata\": [\n            {\n              \"hiddenByFilter\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"hiddenByUser\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"pixelSize\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"developerMetadata\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"dataSourceColumnReference\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"hiddenByFilter\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"hiddenByUser\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"pixelSize\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"developerMetadata\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"dataSourceColumnReference\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"merges\": [\n        {\n          \"sheetId\": \"<integer>\",\n          \"startRowIndex\": \"<integer>\",\n          \"endRowIndex\": \"<integer>\",\n          \"startColumnIndex\": \"<integer>\",\n          \"endColumnIndex\": \"<integer>\"\n        },\n        {\n          \"sheetId\": \"<integer>\",\n          \"startRowIndex\": \"<integer>\",\n          \"endRowIndex\": \"<integer>\",\n          \"startColumnIndex\": \"<integer>\",\n          \"endColumnIndex\": \"<integer>\"\n        }\n      ],\n      \"conditionalFormats\": [\n        {\n          \"ranges\": [\n            {\n              \"sheetId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"startRowIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"endRowIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"startColumnIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"endColumnIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"sheetId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"startRowIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"endRowIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"startColumnIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"endColumnIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"booleanRule\": {\n            \"condition\": {\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"values\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"format\": {\n              \"numberFormat\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"backgroundColor\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"backgroundColorStyle\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"borders\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"padding\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"horizontalAlignment\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"verticalAlignment\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"wrapStrategy\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"textDirection\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"textFormat\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"hyperlinkDisplayType\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"textRotation\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          },\n          \"gradientRule\": {\n            \"minpoint\": {\n              \"color\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"colorStyle\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"midpoint\": {\n              \"color\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"colorStyle\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"maxpoint\": {\n              \"color\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"colorStyle\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          }\n        },\n        {\n          \"ranges\": [\n            {\n              \"sheetId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"startRowIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"endRowIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"startColumnIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"endColumnIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"sheetId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"startRowIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"endRowIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"startColumnIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"endColumnIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"booleanRule\": {\n            \"condition\": {\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"values\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"format\": {\n              \"numberFormat\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"backgroundColor\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"backgroundColorStyle\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"borders\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"padding\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"horizontalAlignment\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"verticalAlignment\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"wrapStrategy\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"textDirection\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"textFormat\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"hyperlinkDisplayType\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"textRotation\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          },\n          \"gradientRule\": {\n            \"minpoint\": {\n              \"color\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"colorStyle\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"midpoint\": {\n              \"color\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"colorStyle\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"maxpoint\": {\n              \"color\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"colorStyle\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          }\n        }\n      ],\n      \"filterViews\": [\n        {\n          \"filterViewId\": \"<integer>\",\n          \"title\": \"<string>\",\n          \"range\": {\n            \"sheetId\": \"<integer>\",\n            \"startRowIndex\": \"<integer>\",\n            \"endRowIndex\": \"<integer>\",\n            \"startColumnIndex\": \"<integer>\",\n            \"endColumnIndex\": \"<integer>\"\n          },\n          \"namedRangeId\": \"<string>\",\n          \"sortSpecs\": [\n            {\n              \"dimensionIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sortOrder\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"foregroundColor\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"foregroundColorStyle\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"backgroundColor\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"backgroundColorStyle\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"dataSourceColumnReference\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"dimensionIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sortOrder\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"foregroundColor\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"foregroundColorStyle\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"backgroundColor\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"backgroundColorStyle\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"dataSourceColumnReference\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"criteria\": {\n            \"key_0\": {\n              \"hiddenValues\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"condition\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"visibleBackgroundColor\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"visibleBackgroundColorStyle\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"visibleForegroundColor\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"visibleForegroundColorStyle\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"key_1\": {\n              \"hiddenValues\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"condition\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"visibleBackgroundColor\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"visibleBackgroundColorStyle\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"visibleForegroundColor\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"visibleForegroundColorStyle\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          },\n          \"filterSpecs\": [\n            {\n              \"filterCriteria\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"columnIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"dataSourceColumnReference\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"filterCriteria\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"columnIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"dataSourceColumnReference\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"filterViewId\": \"<integer>\",\n          \"title\": \"<string>\",\n          \"range\": {\n            \"sheetId\": \"<integer>\",\n            \"startRowIndex\": \"<integer>\",\n            \"endRowIndex\": \"<integer>\",\n            \"startColumnIndex\": \"<integer>\",\n            \"endColumnIndex\": \"<integer>\"\n          },\n          \"namedRangeId\": \"<string>\",\n          \"sortSpecs\": [\n            {\n              \"dimensionIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sortOrder\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"foregroundColor\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"foregroundColorStyle\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"backgroundColor\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"backgroundColorStyle\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"dataSourceColumnReference\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"dimensionIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sortOrder\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"foregroundColor\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"foregroundColorStyle\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"backgroundColor\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"backgroundColorStyle\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"dataSourceColumnReference\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"criteria\": {\n            \"key_0\": {\n              \"hiddenValues\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"condition\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"visibleBackgroundColor\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"visibleBackgroundColorStyle\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"visibleForegroundColor\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"visibleForegroundColorStyle\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"key_1\": {\n              \"hiddenValues\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"condition\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"visibleBackgroundColor\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"visibleBackgroundColorStyle\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"visibleForegroundColor\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"visibleForegroundColorStyle\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          },\n          \"filterSpecs\": [\n            {\n              \"filterCriteria\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"columnIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"dataSourceColumnReference\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"filterCriteria\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"columnIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"dataSourceColumnReference\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"protectedRanges\": [\n        {\n          \"protectedRangeId\": \"<integer>\",\n          \"range\": {\n            \"sheetId\": \"<integer>\",\n            \"startRowIndex\": \"<integer>\",\n            \"endRowIndex\": \"<integer>\",\n            \"startColumnIndex\": \"<integer>\",\n            \"endColumnIndex\": \"<integer>\"\n          },\n          \"namedRangeId\": \"<string>\",\n          \"description\": \"<string>\",\n          \"warningOnly\": \"<boolean>\",\n          \"requestingUserCanEdit\": \"<boolean>\",\n          \"unprotectedRanges\": [\n            {\n              \"sheetId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"startRowIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"endRowIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"startColumnIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"endColumnIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"sheetId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"startRowIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"endRowIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"startColumnIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"endColumnIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"editors\": {\n            \"users\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"groups\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"domainUsersCanEdit\": \"<boolean>\"\n          }\n        },\n        {\n          \"protectedRangeId\": \"<integer>\",\n          \"range\": {\n            \"sheetId\": \"<integer>\",\n            \"startRowIndex\": \"<integer>\",\n            \"endRowIndex\": \"<integer>\",\n            \"startColumnIndex\": \"<integer>\",\n            \"endColumnIndex\": \"<integer>\"\n          },\n          \"namedRangeId\": \"<string>\",\n          \"description\": \"<string>\",\n          \"warningOnly\": \"<boolean>\",\n          \"requestingUserCanEdit\": \"<boolean>\",\n          \"unprotectedRanges\": [\n            {\n              \"sheetId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"startRowIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"endRowIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"startColumnIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"endColumnIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"sheetId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"startRowIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"endRowIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"startColumnIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"endColumnIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"editors\": {\n            \"users\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"groups\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"domainUsersCanEdit\": \"<boolean>\"\n          }\n        }\n      ],\n      \"basicFilter\": {\n        \"range\": {\n          \"sheetId\": \"<integer>\",\n          \"startRowIndex\": \"<integer>\",\n          \"endRowIndex\": \"<integer>\",\n          \"startColumnIndex\": \"<integer>\",\n          \"endColumnIndex\": \"<integer>\"\n        },\n        \"sortSpecs\": [\n          {\n            \"dimensionIndex\": \"<integer>\",\n            \"sortOrder\": \"<string>\",\n            \"foregroundColor\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"foregroundColorStyle\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"backgroundColor\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"backgroundColorStyle\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"dataSourceColumnReference\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"dimensionIndex\": \"<integer>\",\n            \"sortOrder\": \"<string>\",\n            \"foregroundColor\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"foregroundColorStyle\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"backgroundColor\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"backgroundColorStyle\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"dataSourceColumnReference\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"criteria\": {\n          \"key_0\": {\n            \"hiddenValues\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"condition\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"visibleBackgroundColor\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"visibleBackgroundColorStyle\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"visibleForegroundColor\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"visibleForegroundColorStyle\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"key_1\": {\n            \"hiddenValues\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"condition\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"visibleBackgroundColor\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"visibleBackgroundColorStyle\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"visibleForegroundColor\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"visibleForegroundColorStyle\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"key_2\": {\n            \"hiddenValues\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"condition\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"visibleBackgroundColor\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"visibleBackgroundColorStyle\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"visibleForegroundColor\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"visibleForegroundColorStyle\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"filterSpecs\": [\n          {\n            \"filterCriteria\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"columnIndex\": \"<integer>\",\n            \"dataSourceColumnReference\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"filterCriteria\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"columnIndex\": \"<integer>\",\n            \"dataSourceColumnReference\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      \"charts\": [\n        {\n          \"chartId\": \"<integer>\",\n          \"position\": {\n            \"sheetId\": \"<integer>\",\n            \"overlayPosition\": {\n              \"anchorCell\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"offsetXPixels\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"offsetYPixels\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"widthPixels\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"heightPixels\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"newSheet\": \"<boolean>\"\n          },\n          \"spec\": \"<object>\"\n        },\n        {\n          \"chartId\": \"<integer>\",\n          \"position\": {\n            \"sheetId\": \"<integer>\",\n            \"overlayPosition\": {\n              \"anchorCell\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"offsetXPixels\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"offsetYPixels\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"widthPixels\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"heightPixels\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"newSheet\": \"<boolean>\"\n          },\n          \"spec\": \"<object>\"\n        }\n      ],\n      \"bandedRanges\": [\n        {\n          \"bandedRangeId\": \"<integer>\",\n          \"range\": {\n            \"sheetId\": \"<integer>\",\n            \"startRowIndex\": \"<integer>\",\n            \"endRowIndex\": \"<integer>\",\n            \"startColumnIndex\": \"<integer>\",\n            \"endColumnIndex\": \"<integer>\"\n          },\n          \"rowProperties\": {\n            \"headerColor\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"headerColorStyle\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"firstBandColor\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"firstBandColorStyle\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"secondBandColor\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"secondBandColorStyle\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"footerColor\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"footerColorStyle\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"columnProperties\": {\n            \"headerColor\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"headerColorStyle\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"firstBandColor\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"firstBandColorStyle\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"secondBandColor\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"secondBandColorStyle\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"footerColor\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"footerColorStyle\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        {\n          \"bandedRangeId\": \"<integer>\",\n          \"range\": {\n            \"sheetId\": \"<integer>\",\n            \"startRowIndex\": \"<integer>\",\n            \"endRowIndex\": \"<integer>\",\n            \"startColumnIndex\": \"<integer>\",\n            \"endColumnIndex\": \"<integer>\"\n          },\n          \"rowProperties\": {\n            \"headerColor\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"headerColorStyle\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"firstBandColor\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"firstBandColorStyle\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"secondBandColor\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"secondBandColorStyle\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"footerColor\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"footerColorStyle\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"columnProperties\": {\n            \"headerColor\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"headerColorStyle\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"firstBandColor\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"firstBandColorStyle\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"secondBandColor\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"secondBandColorStyle\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"footerColor\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"footerColorStyle\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      ],\n      \"slicers\": [\n        {\n          \"slicerId\": \"<integer>\",\n          \"spec\": {\n            \"dataRange\": {\n              \"sheetId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"startRowIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"endRowIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"startColumnIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"endColumnIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"filterCriteria\": {\n              \"hiddenValues\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"condition\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"visibleBackgroundColor\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"visibleBackgroundColorStyle\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"visibleForegroundColor\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"visibleForegroundColorStyle\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"columnIndex\": \"<integer>\",\n            \"applyToPivotTables\": \"<boolean>\",\n            \"title\": \"<string>\",\n            \"textFormat\": {\n              \"foregroundColor\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"foregroundColorStyle\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"fontFamily\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"fontSize\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"bold\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"italic\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"strikethrough\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"underline\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"link\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"backgroundColor\": {\n              \"red\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"green\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"blue\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"alpha\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"backgroundColorStyle\": {\n              \"rgbColor\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"themeColor\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"horizontalAlignment\": \"<string>\"\n          },\n          \"position\": {\n            \"sheetId\": \"<integer>\",\n            \"overlayPosition\": {\n              \"anchorCell\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"offsetXPixels\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"offsetYPixels\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"widthPixels\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"heightPixels\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"newSheet\": \"<boolean>\"\n          }\n        },\n        {\n          \"slicerId\": \"<integer>\",\n          \"spec\": {\n            \"dataRange\": {\n              \"sheetId\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"startRowIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"endRowIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"startColumnIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"endColumnIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"filterCriteria\": {\n              \"hiddenValues\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"condition\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"visibleBackgroundColor\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"visibleBackgroundColorStyle\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"visibleForegroundColor\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"visibleForegroundColorStyle\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"columnIndex\": \"<integer>\",\n            \"applyToPivotTables\": \"<boolean>\",\n            \"title\": \"<string>\",\n            \"textFormat\": {\n              \"foregroundColor\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"foregroundColorStyle\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"fontFamily\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"fontSize\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"bold\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"italic\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"strikethrough\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"underline\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"link\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"backgroundColor\": {\n              \"red\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"green\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"blue\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"alpha\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"backgroundColorStyle\": {\n              \"rgbColor\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"themeColor\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"horizontalAlignment\": \"<string>\"\n          },\n          \"position\": {\n            \"sheetId\": \"<integer>\",\n            \"overlayPosition\": {\n              \"anchorCell\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"offsetXPixels\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"offsetYPixels\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"widthPixels\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"heightPixels\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            \"newSheet\": \"<boolean>\"\n          }\n        }\n      ]\n    }\n  ],\n  \"namedRanges\": [\n    {\n      \"namedRangeId\": \"<string>\",\n      \"name\": \"<string>\",\n      \"range\": {\n        \"sheetId\": \"<integer>\",\n        \"startRowIndex\": \"<integer>\",\n        \"endRowIndex\": \"<integer>\",\n        \"startColumnIndex\": \"<integer>\",\n        \"endColumnIndex\": \"<integer>\"\n      }\n    },\n    {\n      \"namedRangeId\": \"<string>\",\n      \"name\": \"<string>\",\n      \"range\": {\n        \"sheetId\": \"<integer>\",\n        \"startRowIndex\": \"<integer>\",\n        \"endRowIndex\": \"<integer>\",\n        \"startColumnIndex\": \"<integer>\",\n        \"endColumnIndex\": \"<integer>\"\n      }\n    }\n  ],\n  \"developerMetadata\": [\n    {\n      \"metadataId\": \"<integer>\",\n      \"metadataKey\": \"<string>\",\n      \"metadataValue\": \"<string>\",\n      \"location\": {\n        \"locationType\": \"<string>\",\n        \"spreadsheet\": \"<boolean>\",\n        \"sheetId\": \"<integer>\",\n        \"dimensionRange\": {\n          \"sheetId\": \"<integer>\",\n          \"dimension\": \"<string>\",\n          \"startIndex\": \"<integer>\",\n          \"endIndex\": \"<integer>\"\n        }\n      },\n      \"visibility\": \"<string>\"\n    },\n    {\n      \"metadataId\": \"<integer>\",\n      \"metadataKey\": \"<string>\",\n      \"metadataValue\": \"<string>\",\n      \"location\": {\n        \"locationType\": \"<string>\",\n        \"spreadsheet\": \"<boolean>\",\n        \"sheetId\": \"<integer>\",\n        \"dimensionRange\": {\n          \"sheetId\": \"<integer>\",\n          \"dimension\": \"<string>\",\n          \"startIndex\": \"<integer>\",\n          \"endIndex\": \"<integer>\"\n        }\n      },\n      \"visibility\": \"<string>\"\n    }\n  ],\n  \"dataSources\": [\n    {\n      \"dataSourceId\": \"<string>\",\n      \"spec\": {\n        \"parameters\": [\n          {\n            \"name\": \"<string>\",\n            \"namedRangeId\": \"<string>\",\n            \"range\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"name\": \"<string>\",\n            \"namedRangeId\": \"<string>\",\n            \"range\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"bigQuery\": {\n          \"projectId\": \"<string>\",\n          \"querySpec\": {\n            \"rawQuery\": \"<string>\"\n          },\n          \"tableSpec\": {\n            \"tableProjectId\": \"<string>\",\n            \"tableId\": \"<string>\",\n            \"datasetId\": \"<string>\"\n          }\n        }\n      },\n      \"calculatedColumns\": [\n        {\n          \"reference\": {\n            \"name\": \"<string>\"\n          },\n          \"formula\": \"<string>\"\n        },\n        {\n          \"reference\": {\n            \"name\": \"<string>\"\n          },\n          \"formula\": \"<string>\"\n        }\n      ],\n      \"sheetId\": \"<integer>\"\n    },\n    {\n      \"dataSourceId\": \"<string>\",\n      \"spec\": {\n        \"parameters\": [\n          {\n            \"name\": \"<string>\",\n            \"namedRangeId\": \"<string>\",\n            \"range\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"name\": \"<string>\",\n            \"namedRangeId\": \"<string>\",\n            \"range\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"bigQuery\": {\n          \"projectId\": \"<string>\",\n          \"querySpec\": {\n            \"rawQuery\": \"<string>\"\n          },\n          \"tableSpec\": {\n            \"tableProjectId\": \"<string>\",\n            \"tableId\": \"<string>\",\n            \"datasetId\": \"<string>\"\n          }\n        }\n      },\n      \"calculatedColumns\": [\n        {\n          \"reference\": {\n            \"name\": \"<string>\"\n          },\n          \"formula\": \"<string>\"\n        },\n        {\n          \"reference\": {\n            \"name\": \"<string>\"\n          },\n          \"formula\": \"<string>\"\n        }\n      ],\n      \"sheetId\": \"<integer>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e43d4141-98c0-49d4-8380-0f0c786f73ec",
+              "name": "Successful response containing the newly created spreadsheet.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"spreadsheetId\": \"500123\",\n  \"properties\": {\n    \"title\": \"Example Title\",\n    \"locale\": \"example_value\",\n    \"autoRecalc\": \"ON_CHANGE\",\n    \"timeZone\": \"example_value\",\n    \"importFunctionsExternalUrlAccessAllowed\": \"https://www.example.com\"\n  },\n  \"sheets\": [\n    {\n      \"data\": {},\n      \"merges\": {},\n      \"conditionalFormats\": {},\n      \"filterViews\": {},\n      \"protectedRanges\": {},\n      \"charts\": {},\n      \"bandedRanges\": {},\n      \"slicers\": {}\n    }\n  ],\n  \"namedRanges\": [\n    {\n      \"namedRangeId\": \"500123\",\n      \"name\": \"Example Title\"\n    }\n  ],\n  \"spreadsheetUrl\": \"https://www.example.com\",\n  \"developerMetadata\": [\n    {\n      \"metadataId\": \"500123\",\n      \"metadataKey\": \"example_value\",\n      \"metadataValue\": \"example_value\",\n      \"visibility\": \"DEVELOPER_METADATA_VISIBILITY_UNSPECIFIED\"\n    }\n  ],\n  \"dataSources\": [\n    {\n      \"dataSourceId\": \"500123\",\n      \"calculatedColumns\": {},\n      \"sheetId\": \"500123\"\n    }\n  ],\n  \"dataSourceSchedules\": [\n    {\n      \"enabled\": true,\n      \"refreshScope\": \"DATA_SOURCE_REFRESH_SCOPE_UNSPECIFIED\",\n      \"nextRun\": {},\n      \"dailySchedule\": {},\n      \"weeklySchedule\": {},\n      \"monthlySchedule\": {}\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"spreadsheetId\": \"500123\",\n  \"properties\": {\n    \"title\": \"Example Title\",\n    \"locale\": \"example_value\",\n    \"autoRecalc\": \"ON_CHANGE\",\n    \"timeZone\": \"example_value\",\n    \"importFunctionsExternalUrlAccessAllowed\": \"https://www.example.com\"\n  },\n  \"sheets\": [\n    {\n      \"data\": {},\n      \"merges\": {},\n      \"conditionalFormats\": {},\n      \"filterViews\": {},\n      \"protectedRanges\": {},\n      \"charts\": {},\n      \"bandedRanges\": {},\n      \"slicers\": {}\n    }\n  ],\n  \"namedRanges\": [\n    {\n      \"namedRangeId\": \"500123\",\n      \"name\": \"Example Title\"\n    }\n  ],\n  \"spreadsheetUrl\": \"https://www.example.com\",\n  \"developerMetadata\": [\n    {\n      \"metadataId\": \"500123\",\n      \"metadataKey\": \"example_value\",\n      \"metadataValue\": \"example_value\",\n      \"visibility\": \"DEVELOPER_METADATA_VISIBILITY_UNSPECIFIED\"\n    }\n  ],\n  \"dataSources\": [\n    {\n      \"dataSourceId\": \"500123\",\n      \"calculatedColumns\": {},\n      \"sheetId\": \"500123\"\n    }\n  ],\n  \"dataSourceSchedules\": [\n    {\n      \"enabled\": true,\n      \"refreshScope\": \"DATA_SOURCE_REFRESH_SCOPE_UNSPECIFIED\",\n      \"nextRun\": {},\n      \"dailySchedule\": {},\n      \"weeklySchedule\": {},\n      \"monthlySchedule\": {}\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "797db086-1a7b-4908-8175-3286fd89cdd9",
+              "name": "Authentication credentials are missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"spreadsheetId\": \"500123\",\n  \"properties\": {\n    \"title\": \"Example Title\",\n    \"locale\": \"example_value\",\n    \"autoRecalc\": \"ON_CHANGE\",\n    \"timeZone\": \"example_value\",\n    \"importFunctionsExternalUrlAccessAllowed\": \"https://www.example.com\"\n  },\n  \"sheets\": [\n    {\n      \"data\": {},\n      \"merges\": {},\n      \"conditionalFormats\": {},\n      \"filterViews\": {},\n      \"protectedRanges\": {},\n      \"charts\": {},\n      \"bandedRanges\": {},\n      \"slicers\": {}\n    }\n  ],\n  \"namedRanges\": [\n    {\n      \"namedRangeId\": \"500123\",\n      \"name\": \"Example Title\"\n    }\n  ],\n  \"spreadsheetUrl\": \"https://www.example.com\",\n  \"developerMetadata\": [\n    {\n      \"metadataId\": \"500123\",\n      \"metadataKey\": \"example_value\",\n      \"metadataValue\": \"example_value\",\n      \"visibility\": \"DEVELOPER_METADATA_VISIBILITY_UNSPECIFIED\"\n    }\n  ],\n  \"dataSources\": [\n    {\n      \"dataSourceId\": \"500123\",\n      \"calculatedColumns\": {},\n      \"sheetId\": \"500123\"\n    }\n  ],\n  \"dataSourceSchedules\": [\n    {\n      \"enabled\": true,\n      \"refreshScope\": \"DATA_SOURCE_REFRESH_SCOPE_UNSPECIFIED\",\n      \"nextRun\": {},\n      \"dailySchedule\": {},\n      \"weeklySchedule\": {},\n      \"monthlySchedule\": {}\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 5614,\n    \"message\": \"string\",\n    \"status\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9c2b6dde-f118-449f-b760-bd9706ac79ac",
+              "name": "The caller does not have permission to access the requested resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"spreadsheetId\": \"500123\",\n  \"properties\": {\n    \"title\": \"Example Title\",\n    \"locale\": \"example_value\",\n    \"autoRecalc\": \"ON_CHANGE\",\n    \"timeZone\": \"example_value\",\n    \"importFunctionsExternalUrlAccessAllowed\": \"https://www.example.com\"\n  },\n  \"sheets\": [\n    {\n      \"data\": {},\n      \"merges\": {},\n      \"conditionalFormats\": {},\n      \"filterViews\": {},\n      \"protectedRanges\": {},\n      \"charts\": {},\n      \"bandedRanges\": {},\n      \"slicers\": {}\n    }\n  ],\n  \"namedRanges\": [\n    {\n      \"namedRangeId\": \"500123\",\n      \"name\": \"Example Title\"\n    }\n  ],\n  \"spreadsheetUrl\": \"https://www.example.com\",\n  \"developerMetadata\": [\n    {\n      \"metadataId\": \"500123\",\n      \"metadataKey\": \"example_value\",\n      \"metadataValue\": \"example_value\",\n      \"visibility\": \"DEVELOPER_METADATA_VISIBILITY_UNSPECIFIED\"\n    }\n  ],\n  \"dataSources\": [\n    {\n      \"dataSourceId\": \"500123\",\n      \"calculatedColumns\": {},\n      \"sheetId\": \"500123\"\n    }\n  ],\n  \"dataSourceSchedules\": [\n    {\n      \"enabled\": true,\n      \"refreshScope\": \"DATA_SOURCE_REFRESH_SCOPE_UNSPECIFIED\",\n      \"nextRun\": {},\n      \"dailySchedule\": {},\n      \"weeklySchedule\": {},\n      \"monthlySchedule\": {}\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 5614,\n    \"message\": \"string\",\n    \"status\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e9d7258d-1a94-4b81-b58f-2877092950f6",
+              "name": "Rate limit exceeded. Too many requests in a given amount of time.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"spreadsheetId\": \"500123\",\n  \"properties\": {\n    \"title\": \"Example Title\",\n    \"locale\": \"example_value\",\n    \"autoRecalc\": \"ON_CHANGE\",\n    \"timeZone\": \"example_value\",\n    \"importFunctionsExternalUrlAccessAllowed\": \"https://www.example.com\"\n  },\n  \"sheets\": [\n    {\n      \"data\": {},\n      \"merges\": {},\n      \"conditionalFormats\": {},\n      \"filterViews\": {},\n      \"protectedRanges\": {},\n      \"charts\": {},\n      \"bandedRanges\": {},\n      \"slicers\": {}\n    }\n  ],\n  \"namedRanges\": [\n    {\n      \"namedRangeId\": \"500123\",\n      \"name\": \"Example Title\"\n    }\n  ],\n  \"spreadsheetUrl\": \"https://www.example.com\",\n  \"developerMetadata\": [\n    {\n      \"metadataId\": \"500123\",\n      \"metadataKey\": \"example_value\",\n      \"metadataValue\": \"example_value\",\n      \"visibility\": \"DEVELOPER_METADATA_VISIBILITY_UNSPECIFIED\"\n    }\n  ],\n  \"dataSources\": [\n    {\n      \"dataSourceId\": \"500123\",\n      \"calculatedColumns\": {},\n      \"sheetId\": \"500123\"\n    }\n  ],\n  \"dataSourceSchedules\": [\n    {\n      \"enabled\": true,\n      \"refreshScope\": \"DATA_SOURCE_REFRESH_SCOPE_UNSPECIFIED\",\n      \"nextRun\": {},\n      \"dailySchedule\": {},\n      \"weeklySchedule\": {},\n      \"monthlySchedule\": {}\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 5614,\n    \"message\": \"string\",\n    \"status\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e6988847-2fdf-423a-a7a1-220367f294cd",
+          "name": "Google Sheets Get a Spreadsheet",
+          "request": {
+            "name": "Google Sheets Get a Spreadsheet",
+            "description": {
+              "content": "Returns the spreadsheet at the given ID. The caller must specify the spreadsheet ID. By default, data within grids is not returned. You can include grid data in one of two ways using the fields URL parameter or the includeGridData query parameter.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "spreadsheets",
+                ":spreadsheetId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ranges",
+                  "value": "<string>",
+                  "description": "The ranges to retrieve from the spreadsheet."
+                },
+                {
+                  "disabled": false,
+                  "key": "ranges",
+                  "value": "<string>",
+                  "description": "The ranges to retrieve from the spreadsheet."
+                },
+                {
+                  "disabled": false,
+                  "key": "includeGridData",
+                  "value": "false",
+                  "description": "True if grid data should be returned. This parameter is ignored if a field mask was set in the request."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "spreadsheetId",
+                  "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "84d4fe60-0077-4653-887d-d7c33dec4fa6",
+              "name": "Successful response containing the spreadsheet.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    ":spreadsheetId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "includeGridData",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "spreadsheetId",
+                      "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"spreadsheetId\": \"500123\",\n  \"properties\": {\n    \"title\": \"Example Title\",\n    \"locale\": \"example_value\",\n    \"autoRecalc\": \"ON_CHANGE\",\n    \"timeZone\": \"example_value\",\n    \"importFunctionsExternalUrlAccessAllowed\": \"https://www.example.com\"\n  },\n  \"sheets\": [\n    {\n      \"data\": {},\n      \"merges\": {},\n      \"conditionalFormats\": {},\n      \"filterViews\": {},\n      \"protectedRanges\": {},\n      \"charts\": {},\n      \"bandedRanges\": {},\n      \"slicers\": {}\n    }\n  ],\n  \"namedRanges\": [\n    {\n      \"namedRangeId\": \"500123\",\n      \"name\": \"Example Title\"\n    }\n  ],\n  \"spreadsheetUrl\": \"https://www.example.com\",\n  \"developerMetadata\": [\n    {\n      \"metadataId\": \"500123\",\n      \"metadataKey\": \"example_value\",\n      \"metadataValue\": \"example_value\",\n      \"visibility\": \"DEVELOPER_METADATA_VISIBILITY_UNSPECIFIED\"\n    }\n  ],\n  \"dataSources\": [\n    {\n      \"dataSourceId\": \"500123\",\n      \"calculatedColumns\": {},\n      \"sheetId\": \"500123\"\n    }\n  ],\n  \"dataSourceSchedules\": [\n    {\n      \"enabled\": true,\n      \"refreshScope\": \"DATA_SOURCE_REFRESH_SCOPE_UNSPECIFIED\",\n      \"nextRun\": {},\n      \"dailySchedule\": {},\n      \"weeklySchedule\": {},\n      \"monthlySchedule\": {}\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0ced7810-8651-422f-8419-f6c7a94e26ad",
+              "name": "Authentication credentials are missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    ":spreadsheetId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "includeGridData",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "spreadsheetId",
+                      "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 4821,\n    \"message\": \"string\",\n    \"status\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8ac41c9d-f0f9-49bb-bb19-e276164446b7",
+              "name": "The caller does not have permission to access the requested resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    ":spreadsheetId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "includeGridData",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "spreadsheetId",
+                      "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 4821,\n    \"message\": \"string\",\n    \"status\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d5b1b3f2-be0b-42a8-a51f-f5735984e956",
+              "name": "The requested spreadsheet or range was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    ":spreadsheetId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "includeGridData",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "spreadsheetId",
+                      "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 5614,\n    \"message\": \"string\",\n    \"status\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3aa6ee23-1e70-4384-8273-f67b2801144b",
+              "name": "Rate limit exceeded. Too many requests in a given amount of time.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    ":spreadsheetId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "includeGridData",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "spreadsheetId",
+                      "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 4821,\n    \"message\": \"string\",\n    \"status\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "168b13c4-2ee8-4201-b18c-653b3c8afd91",
+          "name": "Google Sheets Batch Update a Spreadsheet",
+          "request": {
+            "name": "Google Sheets Batch Update a Spreadsheet",
+            "description": {
+              "content": "Applies one or more updates to the spreadsheet. Each request is validated before being applied. If any request is not valid, the entire request will fail and nothing will be applied.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "spreadsheets",
+                "{{spreadsheetId}}:batchUpdate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"requests\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"includeSpreadsheetInResponse\": false,\n  \"responseRanges\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"responseIncludeGridData\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1eace503-f7a1-482f-a55d-5be105cead6e",
+              "name": "Successful response containing the batch update results.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    "{{spreadsheetId}}:batchUpdate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requests\": [\n    {}\n  ],\n  \"includeSpreadsheetInResponse\": true,\n  \"responseRanges\": [\n    \"example_value\"\n  ],\n  \"responseIncludeGridData\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"spreadsheetId\": \"500123\",\n  \"replies\": [\n    {}\n  ],\n  \"updatedSpreadsheet\": {\n    \"spreadsheetId\": \"500123\",\n    \"sheets\": [\n      {}\n    ],\n    \"namedRanges\": [\n      {}\n    ],\n    \"spreadsheetUrl\": \"https://www.example.com\",\n    \"developerMetadata\": [\n      {}\n    ],\n    \"dataSources\": [\n      {}\n    ],\n    \"dataSourceSchedules\": [\n      {}\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "47d5ac49-71ff-46a3-96a2-3e3deb544d81",
+              "name": "Authentication credentials are missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    "{{spreadsheetId}}:batchUpdate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requests\": [\n    {}\n  ],\n  \"includeSpreadsheetInResponse\": true,\n  \"responseRanges\": [\n    \"example_value\"\n  ],\n  \"responseIncludeGridData\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 4821,\n    \"message\": \"string\",\n    \"status\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f273457b-89be-4f12-92ee-6e2619d36e58",
+              "name": "The caller does not have permission to access the requested resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    "{{spreadsheetId}}:batchUpdate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requests\": [\n    {}\n  ],\n  \"includeSpreadsheetInResponse\": true,\n  \"responseRanges\": [\n    \"example_value\"\n  ],\n  \"responseIncludeGridData\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 4821,\n    \"message\": \"string\",\n    \"status\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1f068928-e0ce-479a-a6d3-6a7f5e7d7ac8",
+              "name": "The requested spreadsheet or range was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    "{{spreadsheetId}}:batchUpdate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requests\": [\n    {}\n  ],\n  \"includeSpreadsheetInResponse\": true,\n  \"responseRanges\": [\n    \"example_value\"\n  ],\n  \"responseIncludeGridData\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 4821,\n    \"message\": \"string\",\n    \"status\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5f3c682e-9cc8-4221-8064-6fc3d61fe9e0",
+              "name": "Rate limit exceeded. Too many requests in a given amount of time.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    "{{spreadsheetId}}:batchUpdate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requests\": [\n    {}\n  ],\n  \"includeSpreadsheetInResponse\": true,\n  \"responseRanges\": [\n    \"example_value\"\n  ],\n  \"responseIncludeGridData\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 4821,\n    \"message\": \"string\",\n    \"status\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1cd65b1f-74b1-4d2f-ba5e-f5ac2e7868ae",
+          "name": "Google Sheets Get a Spreadsheet by Data Filter",
+          "request": {
+            "name": "Google Sheets Get a Spreadsheet by Data Filter",
+            "description": {
+              "content": "Returns the spreadsheet at the given ID. The caller must specify the spreadsheet ID. This method differs from getSpreadsheet in that it allows selecting which subsets of spreadsheet data to return by specifying a dataFilters parameter.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "spreadsheets",
+                "{{spreadsheetId}}:getByDataFilter"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dataFilters\": [\n    {\n      \"developerMetadataLookup\": {\n        \"locationType\": \"<string>\",\n        \"metadataLocation\": {\n          \"locationType\": \"<string>\",\n          \"spreadsheet\": \"<boolean>\",\n          \"sheetId\": \"<integer>\",\n          \"dimensionRange\": {\n            \"sheetId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"dimension\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"startIndex\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"endIndex\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"locationMatchingStrategy\": \"<string>\",\n        \"metadataId\": \"<integer>\",\n        \"metadataKey\": \"<string>\",\n        \"metadataValue\": \"<string>\",\n        \"visibility\": \"<string>\"\n      },\n      \"a1Range\": \"<string>\",\n      \"gridRange\": {\n        \"sheetId\": \"<integer>\",\n        \"startRowIndex\": \"<integer>\",\n        \"endRowIndex\": \"<integer>\",\n        \"startColumnIndex\": \"<integer>\",\n        \"endColumnIndex\": \"<integer>\"\n      }\n    },\n    {\n      \"developerMetadataLookup\": {\n        \"locationType\": \"<string>\",\n        \"metadataLocation\": {\n          \"locationType\": \"<string>\",\n          \"spreadsheet\": \"<boolean>\",\n          \"sheetId\": \"<integer>\",\n          \"dimensionRange\": {\n            \"sheetId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"dimension\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"startIndex\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"endIndex\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"locationMatchingStrategy\": \"<string>\",\n        \"metadataId\": \"<integer>\",\n        \"metadataKey\": \"<string>\",\n        \"metadataValue\": \"<string>\",\n        \"visibility\": \"<string>\"\n      },\n      \"a1Range\": \"<string>\",\n      \"gridRange\": {\n        \"sheetId\": \"<integer>\",\n        \"startRowIndex\": \"<integer>\",\n        \"endRowIndex\": \"<integer>\",\n        \"startColumnIndex\": \"<integer>\",\n        \"endColumnIndex\": \"<integer>\"\n      }\n    }\n  ],\n  \"includeGridData\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8db88020-0544-4a06-8721-d0e1906533bb",
+              "name": "Successful response containing the spreadsheet.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    "{{spreadsheetId}}:getByDataFilter"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataFilters\": [\n    {\n      \"a1Range\": \"example_value\"\n    }\n  ],\n  \"includeGridData\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"spreadsheetId\": \"500123\",\n  \"properties\": {\n    \"title\": \"Example Title\",\n    \"locale\": \"example_value\",\n    \"autoRecalc\": \"ON_CHANGE\",\n    \"timeZone\": \"example_value\",\n    \"importFunctionsExternalUrlAccessAllowed\": \"https://www.example.com\"\n  },\n  \"sheets\": [\n    {\n      \"data\": {},\n      \"merges\": {},\n      \"conditionalFormats\": {},\n      \"filterViews\": {},\n      \"protectedRanges\": {},\n      \"charts\": {},\n      \"bandedRanges\": {},\n      \"slicers\": {}\n    }\n  ],\n  \"namedRanges\": [\n    {\n      \"namedRangeId\": \"500123\",\n      \"name\": \"Example Title\"\n    }\n  ],\n  \"spreadsheetUrl\": \"https://www.example.com\",\n  \"developerMetadata\": [\n    {\n      \"metadataId\": \"500123\",\n      \"metadataKey\": \"example_value\",\n      \"metadataValue\": \"example_value\",\n      \"visibility\": \"DEVELOPER_METADATA_VISIBILITY_UNSPECIFIED\"\n    }\n  ],\n  \"dataSources\": [\n    {\n      \"dataSourceId\": \"500123\",\n      \"calculatedColumns\": {},\n      \"sheetId\": \"500123\"\n    }\n  ],\n  \"dataSourceSchedules\": [\n    {\n      \"enabled\": true,\n      \"refreshScope\": \"DATA_SOURCE_REFRESH_SCOPE_UNSPECIFIED\",\n      \"nextRun\": {},\n      \"dailySchedule\": {},\n      \"weeklySchedule\": {},\n      \"monthlySchedule\": {}\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a85ef1a6-fb6b-45df-803b-5dea93aa4098",
+              "name": "Authentication credentials are missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    "{{spreadsheetId}}:getByDataFilter"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataFilters\": [\n    {\n      \"a1Range\": \"example_value\"\n    }\n  ],\n  \"includeGridData\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 4821,\n    \"message\": \"string\",\n    \"status\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c69984d5-fc1b-4473-9ffb-8cef015105dd",
+              "name": "The caller does not have permission to access the requested resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    "{{spreadsheetId}}:getByDataFilter"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataFilters\": [\n    {\n      \"a1Range\": \"example_value\"\n    }\n  ],\n  \"includeGridData\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 4821,\n    \"message\": \"string\",\n    \"status\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fd74bb4c-a1ea-45b5-9f34-a5a685bb48ec",
+              "name": "The requested spreadsheet or range was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    "{{spreadsheetId}}:getByDataFilter"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataFilters\": [\n    {\n      \"a1Range\": \"example_value\"\n    }\n  ],\n  \"includeGridData\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 4821,\n    \"message\": \"string\",\n    \"status\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2b2d28a5-d38e-4d0b-97ba-f832f8e7a915",
+              "name": "Rate limit exceeded. Too many requests in a given amount of time.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    "{{spreadsheetId}}:getByDataFilter"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataFilters\": [\n    {\n      \"a1Range\": \"example_value\"\n    }\n  ],\n  \"includeGridData\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 4821,\n    \"message\": \"string\",\n    \"status\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sheets.googleapis.com/v4",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) The ID of the spreadsheet to retrieve or modify.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "spreadsheetId"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://www.googleapis.com/auth/spreadsheets https://www.googleapis.com/auth/spreadsheets.readonly https://www.googleapis.com/auth/drive https://www.googleapis.com/auth/drive.readonly https://www.googleapis.com/auth/drive.file"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://oauth2.googleapis.com/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://accounts.google.com/o/oauth2/v2/auth"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "8db8626e-23bb-4c0d-b2d4-1593c95bbb33",
+    "name": "Google Sheets developerMetadata Spreadsheets API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Google Sheets API lets you read, write, and format data in Google Sheets. It supports creating spreadsheets, reading and writing cell values, updating formatting, managing sheets within a spreadsheet, and working with developer metadata.\n\nContact Support:\n Name: Google Workspace Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

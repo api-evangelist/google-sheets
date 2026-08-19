@@ -1,0 +1,774 @@
+{
+  "item": [
+    {
+      "id": "9e1e8bb5-f060-4a68-b1de-1e2526a874fe",
+      "name": "developerMetadata",
+      "description": {
+        "content": "Operations on developer metadata",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0300bcb4-c85e-4cdd-afb8-3a2ff7039caf",
+          "name": "Google Sheets Get Developer Metadata",
+          "request": {
+            "name": "Google Sheets Get Developer Metadata",
+            "description": {
+              "content": "Returns the developer metadata with the specified ID. The caller must specify the spreadsheet ID and the developer metadata's unique metadataId.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "spreadsheets",
+                ":spreadsheetId",
+                "developerMetadata",
+                ":metadataId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "spreadsheetId",
+                  "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "metadataId",
+                  "description": "(Required) The ID of the developer metadata to retrieve."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1e949620-9aa8-425f-a9f1-bb06af086721",
+              "name": "Successful response containing the developer metadata.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    ":spreadsheetId",
+                    "developerMetadata",
+                    ":metadataId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "spreadsheetId",
+                      "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "metadataId",
+                      "description": "(Required) The ID of the developer metadata to retrieve."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadataId\": \"500123\",\n  \"metadataKey\": \"example_value\",\n  \"metadataValue\": \"example_value\",\n  \"location\": {\n    \"locationType\": \"DEVELOPER_METADATA_LOCATION_TYPE_UNSPECIFIED\",\n    \"spreadsheet\": true,\n    \"sheetId\": \"500123\"\n  },\n  \"visibility\": \"DEVELOPER_METADATA_VISIBILITY_UNSPECIFIED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "67ad45bf-4242-46ae-94e2-4ae3cff3b10f",
+              "name": "Authentication credentials are missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    ":spreadsheetId",
+                    "developerMetadata",
+                    ":metadataId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "spreadsheetId",
+                      "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "metadataId",
+                      "description": "(Required) The ID of the developer metadata to retrieve."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 2962,\n    \"message\": \"string\",\n    \"status\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "76f3e9d0-50c8-49b5-a236-bdb96ef18fec",
+              "name": "The caller does not have permission to access the requested resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    ":spreadsheetId",
+                    "developerMetadata",
+                    ":metadataId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "spreadsheetId",
+                      "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "metadataId",
+                      "description": "(Required) The ID of the developer metadata to retrieve."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 2962,\n    \"message\": \"string\",\n    \"status\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "52827ae7-cb76-4a01-b0cf-f2f4724b2663",
+              "name": "The requested spreadsheet or range was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    ":spreadsheetId",
+                    "developerMetadata",
+                    ":metadataId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "spreadsheetId",
+                      "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "metadataId",
+                      "description": "(Required) The ID of the developer metadata to retrieve."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 2962,\n    \"message\": \"string\",\n    \"status\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "900cf0a3-0a77-48f3-af82-5d68413a641c",
+              "name": "Rate limit exceeded. Too many requests in a given amount of time.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    ":spreadsheetId",
+                    "developerMetadata",
+                    ":metadataId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "spreadsheetId",
+                      "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "metadataId",
+                      "description": "(Required) The ID of the developer metadata to retrieve."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 2962,\n    \"message\": \"string\",\n    \"status\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ac6bd6ef-eb60-4a6e-b0a2-e99a08afcfc4",
+          "name": "Google Sheets Search Developer Metadata",
+          "request": {
+            "name": "Google Sheets Search Developer Metadata",
+            "description": {
+              "content": "Returns all developer metadata matching the specified DataFilter. If the provided DataFilter represents a DeveloperMetadataLookup object, this will return all DeveloperMetadata entries selected by it.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "spreadsheets",
+                ":spreadsheetId",
+                "developerMetadata:search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "spreadsheetId",
+                  "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dataFilters\": [\n    {\n      \"developerMetadataLookup\": {\n        \"locationType\": \"<string>\",\n        \"metadataLocation\": {\n          \"locationType\": \"<string>\",\n          \"spreadsheet\": \"<boolean>\",\n          \"sheetId\": \"<integer>\",\n          \"dimensionRange\": {\n            \"sheetId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"dimension\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"startIndex\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"endIndex\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"locationMatchingStrategy\": \"<string>\",\n        \"metadataId\": \"<integer>\",\n        \"metadataKey\": \"<string>\",\n        \"metadataValue\": \"<string>\",\n        \"visibility\": \"<string>\"\n      },\n      \"a1Range\": \"<string>\",\n      \"gridRange\": {\n        \"sheetId\": \"<integer>\",\n        \"startRowIndex\": \"<integer>\",\n        \"endRowIndex\": \"<integer>\",\n        \"startColumnIndex\": \"<integer>\",\n        \"endColumnIndex\": \"<integer>\"\n      }\n    },\n    {\n      \"developerMetadataLookup\": {\n        \"locationType\": \"<string>\",\n        \"metadataLocation\": {\n          \"locationType\": \"<string>\",\n          \"spreadsheet\": \"<boolean>\",\n          \"sheetId\": \"<integer>\",\n          \"dimensionRange\": {\n            \"sheetId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"dimension\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"startIndex\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"endIndex\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"locationMatchingStrategy\": \"<string>\",\n        \"metadataId\": \"<integer>\",\n        \"metadataKey\": \"<string>\",\n        \"metadataValue\": \"<string>\",\n        \"visibility\": \"<string>\"\n      },\n      \"a1Range\": \"<string>\",\n      \"gridRange\": {\n        \"sheetId\": \"<integer>\",\n        \"startRowIndex\": \"<integer>\",\n        \"endRowIndex\": \"<integer>\",\n        \"startColumnIndex\": \"<integer>\",\n        \"endColumnIndex\": \"<integer>\"\n      }\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4c2fd778-bddb-44bb-8a1e-b73ec9cbf383",
+              "name": "Successful response containing matching developer metadata.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    ":spreadsheetId",
+                    "developerMetadata:search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "spreadsheetId",
+                      "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataFilters\": [\n    {\n      \"a1Range\": \"example_value\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"matchedDeveloperMetadata\": [\n    {\n      \"developerMetadata\": {\n        \"metadataId\": \"500123\",\n        \"metadataKey\": \"example_value\",\n        \"metadataValue\": \"example_value\",\n        \"visibility\": \"DEVELOPER_METADATA_VISIBILITY_UNSPECIFIED\"\n      },\n      \"dataFilters\": [\n        {}\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "734a2f5b-b993-48fd-ba3a-50392042a559",
+              "name": "Authentication credentials are missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    ":spreadsheetId",
+                    "developerMetadata:search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "spreadsheetId",
+                      "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataFilters\": [\n    {\n      \"a1Range\": \"example_value\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 7413,\n    \"message\": \"string\",\n    \"status\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9341d553-34fb-4fe8-a2f8-461f83fe4896",
+              "name": "The caller does not have permission to access the requested resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    ":spreadsheetId",
+                    "developerMetadata:search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "spreadsheetId",
+                      "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataFilters\": [\n    {\n      \"a1Range\": \"example_value\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 7413,\n    \"message\": \"string\",\n    \"status\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "01fcc10e-8f50-4df1-8d6a-16d803451c84",
+              "name": "The requested spreadsheet or range was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    ":spreadsheetId",
+                    "developerMetadata:search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "spreadsheetId",
+                      "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataFilters\": [\n    {\n      \"a1Range\": \"example_value\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 7413,\n    \"message\": \"string\",\n    \"status\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "14ce830a-f2f5-4370-8e57-b49adb9aedc7",
+              "name": "Rate limit exceeded. Too many requests in a given amount of time.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    ":spreadsheetId",
+                    "developerMetadata:search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "spreadsheetId",
+                      "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataFilters\": [\n    {\n      \"a1Range\": \"example_value\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 7413,\n    \"message\": \"string\",\n    \"status\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sheets.googleapis.com/v4",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://www.googleapis.com/auth/spreadsheets https://www.googleapis.com/auth/spreadsheets.readonly https://www.googleapis.com/auth/drive https://www.googleapis.com/auth/drive.readonly https://www.googleapis.com/auth/drive.file"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://oauth2.googleapis.com/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://accounts.google.com/o/oauth2/v2/auth"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "dd728ab4-3821-477e-817f-8b841cc4c1d2",
+    "name": "Google Sheets developerMetadata API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Google Sheets API lets you read, write, and format data in Google Sheets. It supports creating spreadsheets, reading and writing cell values, updating formatting, managing sheets within a spreadsheet, and working with developer metadata.\n\nContact Support:\n Name: Google Workspace Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,4121 @@
+{
+  "item": [
+    {
+      "id": "4a889f65-9d8c-497b-9772-35c132a2de97",
+      "name": "Values",
+      "description": {
+        "content": "Operations on spreadsheet cell values",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b94e43ae-1f8d-4e1c-aeba-1bc480a46d2f",
+          "name": "Google Sheets Get Values From a Range",
+          "request": {
+            "name": "Google Sheets Get Values From a Range",
+            "description": {
+              "content": "Returns a range of values from a spreadsheet. The caller must specify the spreadsheet ID and a range.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "spreadsheets",
+                ":spreadsheetId",
+                "values",
+                ":range"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "majorDimension",
+                  "value": "<string>",
+                  "description": "The major dimension that results should use."
+                },
+                {
+                  "disabled": false,
+                  "key": "valueRenderOption",
+                  "value": "<string>",
+                  "description": "How values should be represented in the output."
+                },
+                {
+                  "disabled": false,
+                  "key": "dateTimeRenderOption",
+                  "value": "<string>",
+                  "description": "How dates, times, and durations should be represented in the output."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "spreadsheetId",
+                  "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "range",
+                  "description": "(Required) The A1 notation or R1C1 notation of the range to read or modify. For example, Sheet1!A1:D5 or Sheet1!R1C1:R5C4."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ae933d55-6eb1-4fda-9159-02cf6b54d9ee",
+              "name": "Successful response containing the requested values.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    ":spreadsheetId",
+                    "values",
+                    ":range"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "majorDimension",
+                      "value": "ROWS"
+                    },
+                    {
+                      "key": "valueRenderOption",
+                      "value": "UNFORMATTED_VALUE"
+                    },
+                    {
+                      "key": "dateTimeRenderOption",
+                      "value": "SERIAL_NUMBER"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "spreadsheetId",
+                      "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "range",
+                      "description": "(Required) The A1 notation or R1C1 notation of the range to read or modify. For example, Sheet1!A1:D5 or Sheet1!R1C1:R5C4."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"range\": \"example_value\",\n  \"majorDimension\": \"DIMENSION_UNSPECIFIED\",\n  \"values\": [\n    []\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a3391e22-0224-464c-94c8-c5b42bfec490",
+              "name": "Authentication credentials are missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    ":spreadsheetId",
+                    "values",
+                    ":range"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "majorDimension",
+                      "value": "ROWS"
+                    },
+                    {
+                      "key": "valueRenderOption",
+                      "value": "UNFORMATTED_VALUE"
+                    },
+                    {
+                      "key": "dateTimeRenderOption",
+                      "value": "SERIAL_NUMBER"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "spreadsheetId",
+                      "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "range",
+                      "description": "(Required) The A1 notation or R1C1 notation of the range to read or modify. For example, Sheet1!A1:D5 or Sheet1!R1C1:R5C4."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 9014,\n    \"message\": \"string\",\n    \"status\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8da528e6-aad5-468c-ae53-46b0f354e7f8",
+              "name": "The caller does not have permission to access the requested resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    ":spreadsheetId",
+                    "values",
+                    ":range"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "majorDimension",
+                      "value": "ROWS"
+                    },
+                    {
+                      "key": "valueRenderOption",
+                      "value": "UNFORMATTED_VALUE"
+                    },
+                    {
+                      "key": "dateTimeRenderOption",
+                      "value": "SERIAL_NUMBER"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "spreadsheetId",
+                      "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "range",
+                      "description": "(Required) The A1 notation or R1C1 notation of the range to read or modify. For example, Sheet1!A1:D5 or Sheet1!R1C1:R5C4."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 9014,\n    \"message\": \"string\",\n    \"status\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "25525a5a-758b-4554-a001-b00c3f83c0e1",
+              "name": "The requested spreadsheet or range was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    ":spreadsheetId",
+                    "values",
+                    ":range"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "majorDimension",
+                      "value": "ROWS"
+                    },
+                    {
+                      "key": "valueRenderOption",
+                      "value": "UNFORMATTED_VALUE"
+                    },
+                    {
+                      "key": "dateTimeRenderOption",
+                      "value": "SERIAL_NUMBER"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "spreadsheetId",
+                      "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "range",
+                      "description": "(Required) The A1 notation or R1C1 notation of the range to read or modify. For example, Sheet1!A1:D5 or Sheet1!R1C1:R5C4."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 9014,\n    \"message\": \"string\",\n    \"status\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ddb9c405-2551-433a-bb3f-d29fbd1e063d",
+              "name": "Rate limit exceeded. Too many requests in a given amount of time.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    ":spreadsheetId",
+                    "values",
+                    ":range"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "majorDimension",
+                      "value": "ROWS"
+                    },
+                    {
+                      "key": "valueRenderOption",
+                      "value": "UNFORMATTED_VALUE"
+                    },
+                    {
+                      "key": "dateTimeRenderOption",
+                      "value": "SERIAL_NUMBER"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "spreadsheetId",
+                      "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "range",
+                      "description": "(Required) The A1 notation or R1C1 notation of the range to read or modify. For example, Sheet1!A1:D5 or Sheet1!R1C1:R5C4."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 9014,\n    \"message\": \"string\",\n    \"status\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7f9a466b-d7cd-4ab6-b6e6-b072044e9331",
+          "name": "Google Sheets Update Values in a Range",
+          "request": {
+            "name": "Google Sheets Update Values in a Range",
+            "description": {
+              "content": "Sets values in a range of a spreadsheet. The caller must specify the spreadsheet ID, range, and a valueInputOption.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "spreadsheets",
+                ":spreadsheetId",
+                "values",
+                ":range"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "valueInputOption",
+                  "value": "<string>",
+                  "description": "(Required) How the input data should be interpreted."
+                },
+                {
+                  "disabled": false,
+                  "key": "includeValuesInResponse",
+                  "value": "false",
+                  "description": "Determines if the update response should include the values of the cells that were updated."
+                },
+                {
+                  "disabled": false,
+                  "key": "responseValueRenderOption",
+                  "value": "<string>",
+                  "description": "Determines how values in the response should be rendered."
+                },
+                {
+                  "disabled": false,
+                  "key": "responseDateTimeRenderOption",
+                  "value": "<string>",
+                  "description": "Determines how dates, times, and durations in the response should be rendered."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "spreadsheetId",
+                  "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "range",
+                  "description": "(Required) The A1 notation or R1C1 notation of the range to read or modify. For example, Sheet1!A1:D5 or Sheet1!R1C1:R5C4."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"range\": \"<string>\",\n  \"majorDimension\": \"<string>\",\n  \"values\": [\n    [],\n    []\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5718e74c-f421-4683-b760-915ba133227c",
+              "name": "Successful response containing the update result.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    ":spreadsheetId",
+                    "values",
+                    ":range"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "valueInputOption",
+                      "value": "USER_ENTERED"
+                    },
+                    {
+                      "key": "includeValuesInResponse",
+                      "value": "true"
+                    },
+                    {
+                      "key": "responseValueRenderOption",
+                      "value": "UNFORMATTED_VALUE"
+                    },
+                    {
+                      "key": "responseDateTimeRenderOption",
+                      "value": "SERIAL_NUMBER"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "spreadsheetId",
+                      "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "range",
+                      "description": "(Required) The A1 notation or R1C1 notation of the range to read or modify. For example, Sheet1!A1:D5 or Sheet1!R1C1:R5C4."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"range\": \"example_value\",\n  \"majorDimension\": \"DIMENSION_UNSPECIFIED\",\n  \"values\": [\n    []\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"spreadsheetId\": \"500123\",\n  \"updatedRange\": \"example_value\",\n  \"updatedRows\": 10,\n  \"updatedColumns\": 10,\n  \"updatedCells\": 10,\n  \"updatedData\": {\n    \"range\": \"example_value\",\n    \"values\": [\n      {}\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9b337435-8c15-4a3c-b823-8cdb6e74a153",
+              "name": "Authentication credentials are missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    ":spreadsheetId",
+                    "values",
+                    ":range"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "valueInputOption",
+                      "value": "USER_ENTERED"
+                    },
+                    {
+                      "key": "includeValuesInResponse",
+                      "value": "true"
+                    },
+                    {
+                      "key": "responseValueRenderOption",
+                      "value": "UNFORMATTED_VALUE"
+                    },
+                    {
+                      "key": "responseDateTimeRenderOption",
+                      "value": "SERIAL_NUMBER"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "spreadsheetId",
+                      "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "range",
+                      "description": "(Required) The A1 notation or R1C1 notation of the range to read or modify. For example, Sheet1!A1:D5 or Sheet1!R1C1:R5C4."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"range\": \"example_value\",\n  \"majorDimension\": \"DIMENSION_UNSPECIFIED\",\n  \"values\": [\n    []\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 1129,\n    \"message\": \"string\",\n    \"status\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "596c0001-15ff-4797-85a7-e495e6ce86ce",
+              "name": "The caller does not have permission to access the requested resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    ":spreadsheetId",
+                    "values",
+                    ":range"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "valueInputOption",
+                      "value": "USER_ENTERED"
+                    },
+                    {
+                      "key": "includeValuesInResponse",
+                      "value": "true"
+                    },
+                    {
+                      "key": "responseValueRenderOption",
+                      "value": "UNFORMATTED_VALUE"
+                    },
+                    {
+                      "key": "responseDateTimeRenderOption",
+                      "value": "SERIAL_NUMBER"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "spreadsheetId",
+                      "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "range",
+                      "description": "(Required) The A1 notation or R1C1 notation of the range to read or modify. For example, Sheet1!A1:D5 or Sheet1!R1C1:R5C4."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"range\": \"example_value\",\n  \"majorDimension\": \"DIMENSION_UNSPECIFIED\",\n  \"values\": [\n    []\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 1129,\n    \"message\": \"string\",\n    \"status\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ad4fcdfb-fff8-49bd-be57-bb5416f63044",
+              "name": "The requested spreadsheet or range was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    ":spreadsheetId",
+                    "values",
+                    ":range"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "valueInputOption",
+                      "value": "USER_ENTERED"
+                    },
+                    {
+                      "key": "includeValuesInResponse",
+                      "value": "true"
+                    },
+                    {
+                      "key": "responseValueRenderOption",
+                      "value": "UNFORMATTED_VALUE"
+                    },
+                    {
+                      "key": "responseDateTimeRenderOption",
+                      "value": "SERIAL_NUMBER"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "spreadsheetId",
+                      "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "range",
+                      "description": "(Required) The A1 notation or R1C1 notation of the range to read or modify. For example, Sheet1!A1:D5 or Sheet1!R1C1:R5C4."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"range\": \"example_value\",\n  \"majorDimension\": \"DIMENSION_UNSPECIFIED\",\n  \"values\": [\n    []\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 1129,\n    \"message\": \"string\",\n    \"status\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a472d9bd-8c65-45ce-86ba-863b253753b6",
+              "name": "Rate limit exceeded. Too many requests in a given amount of time.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    ":spreadsheetId",
+                    "values",
+                    ":range"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "valueInputOption",
+                      "value": "USER_ENTERED"
+                    },
+                    {
+                      "key": "includeValuesInResponse",
+                      "value": "true"
+                    },
+                    {
+                      "key": "responseValueRenderOption",
+                      "value": "UNFORMATTED_VALUE"
+                    },
+                    {
+                      "key": "responseDateTimeRenderOption",
+                      "value": "SERIAL_NUMBER"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "spreadsheetId",
+                      "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "range",
+                      "description": "(Required) The A1 notation or R1C1 notation of the range to read or modify. For example, Sheet1!A1:D5 or Sheet1!R1C1:R5C4."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"range\": \"example_value\",\n  \"majorDimension\": \"DIMENSION_UNSPECIFIED\",\n  \"values\": [\n    []\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 1129,\n    \"message\": \"string\",\n    \"status\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b9cba2dc-394b-4cba-a484-12483e6fa611",
+          "name": "Google Sheets Append Values to a Range",
+          "request": {
+            "name": "Google Sheets Append Values to a Range",
+            "description": {
+              "content": "Appends values to a spreadsheet. The input range is used to search for existing data and find a table within that range. Values will be appended to the next row of the table, starting with the first column of the table.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "spreadsheets",
+                ":spreadsheetId",
+                "values",
+                "{{range}}:append"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "valueInputOption",
+                  "value": "<string>",
+                  "description": "(Required) How the input data should be interpreted."
+                },
+                {
+                  "disabled": false,
+                  "key": "insertDataOption",
+                  "value": "<string>",
+                  "description": "How the input data should be inserted."
+                },
+                {
+                  "disabled": false,
+                  "key": "includeValuesInResponse",
+                  "value": "false",
+                  "description": "Determines if the update response should include the values of the cells that were appended."
+                },
+                {
+                  "disabled": false,
+                  "key": "responseValueRenderOption",
+                  "value": "<string>",
+                  "description": "Determines how values in the response should be rendered."
+                },
+                {
+                  "disabled": false,
+                  "key": "responseDateTimeRenderOption",
+                  "value": "<string>",
+                  "description": "Determines how dates, times, and durations in the response should be rendered."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "spreadsheetId",
+                  "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"range\": \"<string>\",\n  \"majorDimension\": \"<string>\",\n  \"values\": [\n    [],\n    []\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6e5d6ab3-9e0c-499a-960f-32d4504d88bc",
+              "name": "Successful response containing the append result.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    ":spreadsheetId",
+                    "values",
+                    "{{range}}:append"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "valueInputOption",
+                      "value": "USER_ENTERED"
+                    },
+                    {
+                      "key": "insertDataOption",
+                      "value": "OVERWRITE"
+                    },
+                    {
+                      "key": "includeValuesInResponse",
+                      "value": "true"
+                    },
+                    {
+                      "key": "responseValueRenderOption",
+                      "value": "UNFORMATTED_VALUE"
+                    },
+                    {
+                      "key": "responseDateTimeRenderOption",
+                      "value": "SERIAL_NUMBER"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "spreadsheetId",
+                      "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"range\": \"example_value\",\n  \"majorDimension\": \"DIMENSION_UNSPECIFIED\",\n  \"values\": [\n    []\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"spreadsheetId\": \"500123\",\n  \"tableRange\": \"example_value\",\n  \"updates\": {\n    \"spreadsheetId\": \"500123\",\n    \"updatedRange\": \"example_value\",\n    \"updatedRows\": 10,\n    \"updatedColumns\": 10,\n    \"updatedCells\": 10\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b58504dc-521b-448f-8d10-86ac9df2b4b1",
+              "name": "Authentication credentials are missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    ":spreadsheetId",
+                    "values",
+                    "{{range}}:append"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "valueInputOption",
+                      "value": "USER_ENTERED"
+                    },
+                    {
+                      "key": "insertDataOption",
+                      "value": "OVERWRITE"
+                    },
+                    {
+                      "key": "includeValuesInResponse",
+                      "value": "true"
+                    },
+                    {
+                      "key": "responseValueRenderOption",
+                      "value": "UNFORMATTED_VALUE"
+                    },
+                    {
+                      "key": "responseDateTimeRenderOption",
+                      "value": "SERIAL_NUMBER"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "spreadsheetId",
+                      "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"range\": \"example_value\",\n  \"majorDimension\": \"DIMENSION_UNSPECIFIED\",\n  \"values\": [\n    []\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 1129,\n    \"message\": \"string\",\n    \"status\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0c4411a6-f29a-4e8d-b157-fba3679e1fd5",
+              "name": "The caller does not have permission to access the requested resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    ":spreadsheetId",
+                    "values",
+                    "{{range}}:append"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "valueInputOption",
+                      "value": "USER_ENTERED"
+                    },
+                    {
+                      "key": "insertDataOption",
+                      "value": "OVERWRITE"
+                    },
+                    {
+                      "key": "includeValuesInResponse",
+                      "value": "true"
+                    },
+                    {
+                      "key": "responseValueRenderOption",
+                      "value": "UNFORMATTED_VALUE"
+                    },
+                    {
+                      "key": "responseDateTimeRenderOption",
+                      "value": "SERIAL_NUMBER"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "spreadsheetId",
+                      "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"range\": \"example_value\",\n  \"majorDimension\": \"DIMENSION_UNSPECIFIED\",\n  \"values\": [\n    []\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 1129,\n    \"message\": \"string\",\n    \"status\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "890eff33-d951-44cf-9243-281a7c99a123",
+              "name": "The requested spreadsheet or range was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    ":spreadsheetId",
+                    "values",
+                    "{{range}}:append"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "valueInputOption",
+                      "value": "USER_ENTERED"
+                    },
+                    {
+                      "key": "insertDataOption",
+                      "value": "OVERWRITE"
+                    },
+                    {
+                      "key": "includeValuesInResponse",
+                      "value": "true"
+                    },
+                    {
+                      "key": "responseValueRenderOption",
+                      "value": "UNFORMATTED_VALUE"
+                    },
+                    {
+                      "key": "responseDateTimeRenderOption",
+                      "value": "SERIAL_NUMBER"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "spreadsheetId",
+                      "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"range\": \"example_value\",\n  \"majorDimension\": \"DIMENSION_UNSPECIFIED\",\n  \"values\": [\n    []\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 1129,\n    \"message\": \"string\",\n    \"status\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6defdf08-0771-4c08-a2a4-59e5fd2c6645",
+              "name": "Rate limit exceeded. Too many requests in a given amount of time.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    ":spreadsheetId",
+                    "values",
+                    "{{range}}:append"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "valueInputOption",
+                      "value": "USER_ENTERED"
+                    },
+                    {
+                      "key": "insertDataOption",
+                      "value": "OVERWRITE"
+                    },
+                    {
+                      "key": "includeValuesInResponse",
+                      "value": "true"
+                    },
+                    {
+                      "key": "responseValueRenderOption",
+                      "value": "UNFORMATTED_VALUE"
+                    },
+                    {
+                      "key": "responseDateTimeRenderOption",
+                      "value": "SERIAL_NUMBER"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "spreadsheetId",
+                      "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"range\": \"example_value\",\n  \"majorDimension\": \"DIMENSION_UNSPECIFIED\",\n  \"values\": [\n    []\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 1129,\n    \"message\": \"string\",\n    \"status\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f3d37224-5123-46c8-bcd6-7eaa4bec4c25",
+          "name": "Google Sheets Clear Values From a Range",
+          "request": {
+            "name": "Google Sheets Clear Values From a Range",
+            "description": {
+              "content": "Clears values from a spreadsheet. The caller must specify the spreadsheet ID and range. Only values are cleared; all other properties of the cell (such as formatting and data validation) are kept.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "spreadsheets",
+                ":spreadsheetId",
+                "values",
+                "{{range}}:clear"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "spreadsheetId",
+                  "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cacac75e-fbea-4d64-b747-f68b6a61442d",
+              "name": "Successful response containing the cleared range.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    ":spreadsheetId",
+                    "values",
+                    "{{range}}:clear"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "spreadsheetId",
+                      "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"spreadsheetId\": \"500123\",\n  \"clearedRange\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "322ef312-84c6-4d2d-b604-fd21265fc166",
+              "name": "Authentication credentials are missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    ":spreadsheetId",
+                    "values",
+                    "{{range}}:clear"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "spreadsheetId",
+                      "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 1129,\n    \"message\": \"string\",\n    \"status\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "812468d0-e3f9-4cbe-acb1-2e78734b80a1",
+              "name": "The caller does not have permission to access the requested resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    ":spreadsheetId",
+                    "values",
+                    "{{range}}:clear"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "spreadsheetId",
+                      "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 1129,\n    \"message\": \"string\",\n    \"status\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dc2b04d2-9895-4be8-adbc-6569eab3fad8",
+              "name": "The requested spreadsheet or range was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    ":spreadsheetId",
+                    "values",
+                    "{{range}}:clear"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "spreadsheetId",
+                      "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 1129,\n    \"message\": \"string\",\n    \"status\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e100cfcd-9c2a-4cb9-984f-755438493fb7",
+              "name": "Rate limit exceeded. Too many requests in a given amount of time.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    ":spreadsheetId",
+                    "values",
+                    "{{range}}:clear"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "spreadsheetId",
+                      "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 1129,\n    \"message\": \"string\",\n    \"status\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d71c5c7c-fa43-4966-be91-b06b80aae603",
+          "name": "Google Sheets Get Values From Multiple Ranges",
+          "request": {
+            "name": "Google Sheets Get Values From Multiple Ranges",
+            "description": {
+              "content": "Returns one or more ranges of values from a spreadsheet. The caller must specify the spreadsheet ID and one or more ranges.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "spreadsheets",
+                ":spreadsheetId",
+                "values:batchGet"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ranges",
+                  "value": "<string>",
+                  "description": "(Required) The A1 notation or R1C1 notation of the range to retrieve values from."
+                },
+                {
+                  "disabled": false,
+                  "key": "ranges",
+                  "value": "<string>",
+                  "description": "(Required) The A1 notation or R1C1 notation of the range to retrieve values from."
+                },
+                {
+                  "disabled": false,
+                  "key": "majorDimension",
+                  "value": "<string>",
+                  "description": "The major dimension that results should use."
+                },
+                {
+                  "disabled": false,
+                  "key": "valueRenderOption",
+                  "value": "<string>",
+                  "description": "How values should be represented in the output."
+                },
+                {
+                  "disabled": false,
+                  "key": "dateTimeRenderOption",
+                  "value": "<string>",
+                  "description": "How dates, times, and durations should be represented in the output."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "spreadsheetId",
+                  "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9521032b-b6bf-4689-9066-42cc0b0ec587",
+              "name": "Successful response containing the requested values.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    ":spreadsheetId",
+                    "values:batchGet"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "majorDimension",
+                      "value": "ROWS"
+                    },
+                    {
+                      "key": "valueRenderOption",
+                      "value": "UNFORMATTED_VALUE"
+                    },
+                    {
+                      "key": "dateTimeRenderOption",
+                      "value": "SERIAL_NUMBER"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "spreadsheetId",
+                      "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"spreadsheetId\": \"500123\",\n  \"valueRanges\": [\n    {\n      \"range\": \"example_value\",\n      \"values\": {}\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9d3fa82c-e002-486c-97b0-d17545d9341c",
+              "name": "Authentication credentials are missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    ":spreadsheetId",
+                    "values:batchGet"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "majorDimension",
+                      "value": "ROWS"
+                    },
+                    {
+                      "key": "valueRenderOption",
+                      "value": "UNFORMATTED_VALUE"
+                    },
+                    {
+                      "key": "dateTimeRenderOption",
+                      "value": "SERIAL_NUMBER"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "spreadsheetId",
+                      "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 1129,\n    \"message\": \"string\",\n    \"status\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "34c32de5-0ff3-4cc7-85cd-b3b5a61eb112",
+              "name": "The caller does not have permission to access the requested resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    ":spreadsheetId",
+                    "values:batchGet"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "majorDimension",
+                      "value": "ROWS"
+                    },
+                    {
+                      "key": "valueRenderOption",
+                      "value": "UNFORMATTED_VALUE"
+                    },
+                    {
+                      "key": "dateTimeRenderOption",
+                      "value": "SERIAL_NUMBER"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "spreadsheetId",
+                      "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 1129,\n    \"message\": \"string\",\n    \"status\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8beb7c4a-42e4-4908-b767-af77b45a752f",
+              "name": "The requested spreadsheet or range was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    ":spreadsheetId",
+                    "values:batchGet"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "majorDimension",
+                      "value": "ROWS"
+                    },
+                    {
+                      "key": "valueRenderOption",
+                      "value": "UNFORMATTED_VALUE"
+                    },
+                    {
+                      "key": "dateTimeRenderOption",
+                      "value": "SERIAL_NUMBER"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "spreadsheetId",
+                      "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 1129,\n    \"message\": \"string\",\n    \"status\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "66fa56c3-c889-4d6b-a841-85f3972a14f0",
+              "name": "Rate limit exceeded. Too many requests in a given amount of time.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    ":spreadsheetId",
+                    "values:batchGet"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "majorDimension",
+                      "value": "ROWS"
+                    },
+                    {
+                      "key": "valueRenderOption",
+                      "value": "UNFORMATTED_VALUE"
+                    },
+                    {
+                      "key": "dateTimeRenderOption",
+                      "value": "SERIAL_NUMBER"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "spreadsheetId",
+                      "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 1129,\n    \"message\": \"string\",\n    \"status\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "92049ae8-4fe9-4751-890e-ea1875ac1689",
+          "name": "Google Sheets Update Values in Multiple Ranges",
+          "request": {
+            "name": "Google Sheets Update Values in Multiple Ranges",
+            "description": {
+              "content": "Sets values in one or more ranges of a spreadsheet. The caller must specify the spreadsheet ID, a valueInputOption, and one or more ValueRanges.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "spreadsheets",
+                ":spreadsheetId",
+                "values:batchUpdate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "spreadsheetId",
+                  "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"valueInputOption\": \"<string>\",\n  \"data\": [\n    {\n      \"range\": \"<string>\",\n      \"majorDimension\": \"<string>\",\n      \"values\": [\n        [],\n        []\n      ]\n    },\n    {\n      \"range\": \"<string>\",\n      \"majorDimension\": \"<string>\",\n      \"values\": [\n        [],\n        []\n      ]\n    }\n  ],\n  \"includeValuesInResponse\": false,\n  \"responseValueRenderOption\": \"<string>\",\n  \"responseDateTimeRenderOption\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fb7bbf26-72a2-4fbb-8fe0-1d4673a44d9a",
+              "name": "Successful response containing the batch update results.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    ":spreadsheetId",
+                    "values:batchUpdate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "spreadsheetId",
+                      "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"valueInputOption\": \"INPUT_VALUE_OPTION_UNSPECIFIED\",\n  \"data\": [\n    {\n      \"range\": \"example_value\",\n      \"values\": {}\n    }\n  ],\n  \"includeValuesInResponse\": true,\n  \"responseValueRenderOption\": \"FORMATTED_VALUE\",\n  \"responseDateTimeRenderOption\": \"SERIAL_NUMBER\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"spreadsheetId\": \"500123\",\n  \"totalUpdatedRows\": 10,\n  \"totalUpdatedColumns\": 10,\n  \"totalUpdatedCells\": 10,\n  \"totalUpdatedSheets\": 10,\n  \"responses\": [\n    {\n      \"spreadsheetId\": \"500123\",\n      \"updatedRange\": \"example_value\",\n      \"updatedRows\": 10,\n      \"updatedColumns\": 10,\n      \"updatedCells\": 10\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "58ab0d6b-df19-4d15-bdfb-5677e8914b32",
+              "name": "Authentication credentials are missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    ":spreadsheetId",
+                    "values:batchUpdate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "spreadsheetId",
+                      "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"valueInputOption\": \"INPUT_VALUE_OPTION_UNSPECIFIED\",\n  \"data\": [\n    {\n      \"range\": \"example_value\",\n      \"values\": {}\n    }\n  ],\n  \"includeValuesInResponse\": true,\n  \"responseValueRenderOption\": \"FORMATTED_VALUE\",\n  \"responseDateTimeRenderOption\": \"SERIAL_NUMBER\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 1129,\n    \"message\": \"string\",\n    \"status\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b044d614-71cd-42ee-99b6-d11355960ffa",
+              "name": "The caller does not have permission to access the requested resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    ":spreadsheetId",
+                    "values:batchUpdate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "spreadsheetId",
+                      "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"valueInputOption\": \"INPUT_VALUE_OPTION_UNSPECIFIED\",\n  \"data\": [\n    {\n      \"range\": \"example_value\",\n      \"values\": {}\n    }\n  ],\n  \"includeValuesInResponse\": true,\n  \"responseValueRenderOption\": \"FORMATTED_VALUE\",\n  \"responseDateTimeRenderOption\": \"SERIAL_NUMBER\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 1129,\n    \"message\": \"string\",\n    \"status\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d10b2518-f3bd-44de-bca8-011ff7722a9a",
+              "name": "The requested spreadsheet or range was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    ":spreadsheetId",
+                    "values:batchUpdate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "spreadsheetId",
+                      "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"valueInputOption\": \"INPUT_VALUE_OPTION_UNSPECIFIED\",\n  \"data\": [\n    {\n      \"range\": \"example_value\",\n      \"values\": {}\n    }\n  ],\n  \"includeValuesInResponse\": true,\n  \"responseValueRenderOption\": \"FORMATTED_VALUE\",\n  \"responseDateTimeRenderOption\": \"SERIAL_NUMBER\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 1129,\n    \"message\": \"string\",\n    \"status\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7f01060b-b8c4-416b-9cc4-aee35c975608",
+              "name": "Rate limit exceeded. Too many requests in a given amount of time.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    ":spreadsheetId",
+                    "values:batchUpdate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "spreadsheetId",
+                      "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"valueInputOption\": \"INPUT_VALUE_OPTION_UNSPECIFIED\",\n  \"data\": [\n    {\n      \"range\": \"example_value\",\n      \"values\": {}\n    }\n  ],\n  \"includeValuesInResponse\": true,\n  \"responseValueRenderOption\": \"FORMATTED_VALUE\",\n  \"responseDateTimeRenderOption\": \"SERIAL_NUMBER\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 1129,\n    \"message\": \"string\",\n    \"status\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8a6fd43c-11e9-4d53-8f92-96942e56842d",
+          "name": "Google Sheets Clear Values From Multiple Ranges",
+          "request": {
+            "name": "Google Sheets Clear Values From Multiple Ranges",
+            "description": {
+              "content": "Clears one or more ranges of values from a spreadsheet. The caller must specify the spreadsheet ID and one or more ranges. Only values are cleared; all other properties of the cell are kept.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "spreadsheets",
+                ":spreadsheetId",
+                "values:batchClear"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "spreadsheetId",
+                  "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ranges\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7d385b55-0fdf-405a-b06b-de2d30e81911",
+              "name": "Successful response containing the cleared ranges.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    ":spreadsheetId",
+                    "values:batchClear"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "spreadsheetId",
+                      "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ranges\": [\n    \"example_value\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"spreadsheetId\": \"500123\",\n  \"clearedRanges\": [\n    \"example_value\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6eb7851e-2e31-40dd-b527-fc110795c811",
+              "name": "Authentication credentials are missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    ":spreadsheetId",
+                    "values:batchClear"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "spreadsheetId",
+                      "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ranges\": [\n    \"example_value\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 1129,\n    \"message\": \"string\",\n    \"status\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "25bdcb68-7a47-440c-a685-9112a658990a",
+              "name": "The caller does not have permission to access the requested resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    ":spreadsheetId",
+                    "values:batchClear"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "spreadsheetId",
+                      "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ranges\": [\n    \"example_value\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 1129,\n    \"message\": \"string\",\n    \"status\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "51e631b2-e8ba-4bfc-a770-521b5210f5f7",
+              "name": "The requested spreadsheet or range was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    ":spreadsheetId",
+                    "values:batchClear"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "spreadsheetId",
+                      "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ranges\": [\n    \"example_value\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 1129,\n    \"message\": \"string\",\n    \"status\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bac2106a-4423-47e5-92b8-b744bd84a302",
+              "name": "Rate limit exceeded. Too many requests in a given amount of time.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    ":spreadsheetId",
+                    "values:batchClear"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "spreadsheetId",
+                      "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ranges\": [\n    \"example_value\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 1129,\n    \"message\": \"string\",\n    \"status\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9c274ed9-d840-49f3-a44b-74c7cb6721e7",
+          "name": "Google Sheets Get Values From Ranges Matching Data Filters",
+          "request": {
+            "name": "Google Sheets Get Values From Ranges Matching Data Filters",
+            "description": {
+              "content": "Returns one or more ranges of values that match the specified data filters. The caller must specify the spreadsheet ID and one or more DataFilters. Ranges that match any of the data filters in the request will be returned.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "spreadsheets",
+                ":spreadsheetId",
+                "values:batchGetByDataFilter"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "spreadsheetId",
+                  "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dataFilters\": [\n    {\n      \"developerMetadataLookup\": {\n        \"locationType\": \"<string>\",\n        \"metadataLocation\": {\n          \"locationType\": \"<string>\",\n          \"spreadsheet\": \"<boolean>\",\n          \"sheetId\": \"<integer>\",\n          \"dimensionRange\": {\n            \"sheetId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"dimension\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"startIndex\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"endIndex\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"locationMatchingStrategy\": \"<string>\",\n        \"metadataId\": \"<integer>\",\n        \"metadataKey\": \"<string>\",\n        \"metadataValue\": \"<string>\",\n        \"visibility\": \"<string>\"\n      },\n      \"a1Range\": \"<string>\",\n      \"gridRange\": {\n        \"sheetId\": \"<integer>\",\n        \"startRowIndex\": \"<integer>\",\n        \"endRowIndex\": \"<integer>\",\n        \"startColumnIndex\": \"<integer>\",\n        \"endColumnIndex\": \"<integer>\"\n      }\n    },\n    {\n      \"developerMetadataLookup\": {\n        \"locationType\": \"<string>\",\n        \"metadataLocation\": {\n          \"locationType\": \"<string>\",\n          \"spreadsheet\": \"<boolean>\",\n          \"sheetId\": \"<integer>\",\n          \"dimensionRange\": {\n            \"sheetId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"dimension\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"startIndex\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"endIndex\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"locationMatchingStrategy\": \"<string>\",\n        \"metadataId\": \"<integer>\",\n        \"metadataKey\": \"<string>\",\n        \"metadataValue\": \"<string>\",\n        \"visibility\": \"<string>\"\n      },\n      \"a1Range\": \"<string>\",\n      \"gridRange\": {\n        \"sheetId\": \"<integer>\",\n        \"startRowIndex\": \"<integer>\",\n        \"endRowIndex\": \"<integer>\",\n        \"startColumnIndex\": \"<integer>\",\n        \"endColumnIndex\": \"<integer>\"\n      }\n    }\n  ],\n  \"majorDimension\": \"<string>\",\n  \"valueRenderOption\": \"<string>\",\n  \"dateTimeRenderOption\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6441bf86-7bd4-4928-b203-282dbb4ec66f",
+              "name": "Successful response containing the requested values.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    ":spreadsheetId",
+                    "values:batchGetByDataFilter"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "spreadsheetId",
+                      "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataFilters\": [\n    {\n      \"a1Range\": \"example_value\"\n    }\n  ],\n  \"majorDimension\": \"DIMENSION_UNSPECIFIED\",\n  \"valueRenderOption\": \"FORMATTED_VALUE\",\n  \"dateTimeRenderOption\": \"SERIAL_NUMBER\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"spreadsheetId\": \"500123\",\n  \"valueRanges\": [\n    {\n      \"dataFilters\": [\n        {}\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2fbd491d-612e-4dc1-ae8f-4039217db93e",
+              "name": "Authentication credentials are missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    ":spreadsheetId",
+                    "values:batchGetByDataFilter"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "spreadsheetId",
+                      "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataFilters\": [\n    {\n      \"a1Range\": \"example_value\"\n    }\n  ],\n  \"majorDimension\": \"DIMENSION_UNSPECIFIED\",\n  \"valueRenderOption\": \"FORMATTED_VALUE\",\n  \"dateTimeRenderOption\": \"SERIAL_NUMBER\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 1129,\n    \"message\": \"string\",\n    \"status\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c0fa4b7c-86bd-4f6b-8ba9-9182d30e5f18",
+              "name": "The caller does not have permission to access the requested resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    ":spreadsheetId",
+                    "values:batchGetByDataFilter"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "spreadsheetId",
+                      "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataFilters\": [\n    {\n      \"a1Range\": \"example_value\"\n    }\n  ],\n  \"majorDimension\": \"DIMENSION_UNSPECIFIED\",\n  \"valueRenderOption\": \"FORMATTED_VALUE\",\n  \"dateTimeRenderOption\": \"SERIAL_NUMBER\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 1129,\n    \"message\": \"string\",\n    \"status\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8180fcc8-b204-4854-9c80-97f063471d75",
+              "name": "The requested spreadsheet or range was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    ":spreadsheetId",
+                    "values:batchGetByDataFilter"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "spreadsheetId",
+                      "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataFilters\": [\n    {\n      \"a1Range\": \"example_value\"\n    }\n  ],\n  \"majorDimension\": \"DIMENSION_UNSPECIFIED\",\n  \"valueRenderOption\": \"FORMATTED_VALUE\",\n  \"dateTimeRenderOption\": \"SERIAL_NUMBER\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 1129,\n    \"message\": \"string\",\n    \"status\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "01496e2f-78a6-4153-b08b-8507eb89cf8b",
+              "name": "Rate limit exceeded. Too many requests in a given amount of time.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    ":spreadsheetId",
+                    "values:batchGetByDataFilter"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "spreadsheetId",
+                      "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataFilters\": [\n    {\n      \"a1Range\": \"example_value\"\n    }\n  ],\n  \"majorDimension\": \"DIMENSION_UNSPECIFIED\",\n  \"valueRenderOption\": \"FORMATTED_VALUE\",\n  \"dateTimeRenderOption\": \"SERIAL_NUMBER\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 1129,\n    \"message\": \"string\",\n    \"status\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "359d25c6-6b25-4576-aab6-3e1895db2c68",
+          "name": "Google Sheets Update Values in Ranges Matching Data Filters",
+          "request": {
+            "name": "Google Sheets Update Values in Ranges Matching Data Filters",
+            "description": {
+              "content": "Sets values in one or more ranges of a spreadsheet matching the specified data filters. The caller must specify the spreadsheet ID, a valueInputOption, and one or more DataFilterValueRanges.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "spreadsheets",
+                ":spreadsheetId",
+                "values:batchUpdateByDataFilter"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "spreadsheetId",
+                  "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"valueInputOption\": \"<string>\",\n  \"data\": [\n    {\n      \"dataFilter\": {\n        \"developerMetadataLookup\": {\n          \"locationType\": \"<string>\",\n          \"metadataLocation\": {\n            \"locationType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"spreadsheet\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"sheetId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"dimensionRange\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"locationMatchingStrategy\": \"<string>\",\n          \"metadataId\": \"<integer>\",\n          \"metadataKey\": \"<string>\",\n          \"metadataValue\": \"<string>\",\n          \"visibility\": \"<string>\"\n        },\n        \"a1Range\": \"<string>\",\n        \"gridRange\": {\n          \"sheetId\": \"<integer>\",\n          \"startRowIndex\": \"<integer>\",\n          \"endRowIndex\": \"<integer>\",\n          \"startColumnIndex\": \"<integer>\",\n          \"endColumnIndex\": \"<integer>\"\n        }\n      },\n      \"majorDimension\": \"<string>\",\n      \"values\": [\n        [],\n        []\n      ]\n    },\n    {\n      \"dataFilter\": {\n        \"developerMetadataLookup\": {\n          \"locationType\": \"<string>\",\n          \"metadataLocation\": {\n            \"locationType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"spreadsheet\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"sheetId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"dimensionRange\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"locationMatchingStrategy\": \"<string>\",\n          \"metadataId\": \"<integer>\",\n          \"metadataKey\": \"<string>\",\n          \"metadataValue\": \"<string>\",\n          \"visibility\": \"<string>\"\n        },\n        \"a1Range\": \"<string>\",\n        \"gridRange\": {\n          \"sheetId\": \"<integer>\",\n          \"startRowIndex\": \"<integer>\",\n          \"endRowIndex\": \"<integer>\",\n          \"startColumnIndex\": \"<integer>\",\n          \"endColumnIndex\": \"<integer>\"\n        }\n      },\n      \"majorDimension\": \"<string>\",\n      \"values\": [\n        [],\n        []\n      ]\n    }\n  ],\n  \"includeValuesInResponse\": false,\n  \"responseValueRenderOption\": \"<string>\",\n  \"responseDateTimeRenderOption\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "778c3276-0245-4262-8e12-c86ee40c80db",
+              "name": "Successful response containing the update results.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    ":spreadsheetId",
+                    "values:batchUpdateByDataFilter"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "spreadsheetId",
+                      "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"valueInputOption\": \"INPUT_VALUE_OPTION_UNSPECIFIED\",\n  \"data\": [\n    {\n      \"values\": [\n        {}\n      ]\n    }\n  ],\n  \"includeValuesInResponse\": true,\n  \"responseValueRenderOption\": \"FORMATTED_VALUE\",\n  \"responseDateTimeRenderOption\": \"SERIAL_NUMBER\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"spreadsheetId\": \"500123\",\n  \"totalUpdatedRows\": 10,\n  \"totalUpdatedColumns\": 10,\n  \"totalUpdatedCells\": 10,\n  \"totalUpdatedSheets\": 10,\n  \"responses\": [\n    {\n      \"updatedRange\": \"example_value\",\n      \"updatedRows\": 10,\n      \"updatedColumns\": 10,\n      \"updatedCells\": 10\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d05110a5-00f5-422b-99ff-b03220b52163",
+              "name": "Authentication credentials are missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    ":spreadsheetId",
+                    "values:batchUpdateByDataFilter"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "spreadsheetId",
+                      "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"valueInputOption\": \"INPUT_VALUE_OPTION_UNSPECIFIED\",\n  \"data\": [\n    {\n      \"values\": [\n        {}\n      ]\n    }\n  ],\n  \"includeValuesInResponse\": true,\n  \"responseValueRenderOption\": \"FORMATTED_VALUE\",\n  \"responseDateTimeRenderOption\": \"SERIAL_NUMBER\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 1129,\n    \"message\": \"string\",\n    \"status\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0bac0a81-4f8f-4b91-9979-015a18fd0eb6",
+              "name": "The caller does not have permission to access the requested resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    ":spreadsheetId",
+                    "values:batchUpdateByDataFilter"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "spreadsheetId",
+                      "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"valueInputOption\": \"INPUT_VALUE_OPTION_UNSPECIFIED\",\n  \"data\": [\n    {\n      \"values\": [\n        {}\n      ]\n    }\n  ],\n  \"includeValuesInResponse\": true,\n  \"responseValueRenderOption\": \"FORMATTED_VALUE\",\n  \"responseDateTimeRenderOption\": \"SERIAL_NUMBER\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 1129,\n    \"message\": \"string\",\n    \"status\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "276b4d78-a429-439d-8f70-a00897a8f1e1",
+              "name": "The requested spreadsheet or range was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    ":spreadsheetId",
+                    "values:batchUpdateByDataFilter"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "spreadsheetId",
+                      "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"valueInputOption\": \"INPUT_VALUE_OPTION_UNSPECIFIED\",\n  \"data\": [\n    {\n      \"values\": [\n        {}\n      ]\n    }\n  ],\n  \"includeValuesInResponse\": true,\n  \"responseValueRenderOption\": \"FORMATTED_VALUE\",\n  \"responseDateTimeRenderOption\": \"SERIAL_NUMBER\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 1129,\n    \"message\": \"string\",\n    \"status\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4eb40dc0-473d-4d2f-b67c-a9ea346cf83b",
+              "name": "Rate limit exceeded. Too many requests in a given amount of time.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    ":spreadsheetId",
+                    "values:batchUpdateByDataFilter"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "spreadsheetId",
+                      "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"valueInputOption\": \"INPUT_VALUE_OPTION_UNSPECIFIED\",\n  \"data\": [\n    {\n      \"values\": [\n        {}\n      ]\n    }\n  ],\n  \"includeValuesInResponse\": true,\n  \"responseValueRenderOption\": \"FORMATTED_VALUE\",\n  \"responseDateTimeRenderOption\": \"SERIAL_NUMBER\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 1129,\n    \"message\": \"string\",\n    \"status\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0300598a-50f0-4508-bfbf-668b5557611f",
+          "name": "Google Sheets Clear Values From Ranges Matching Data Filters",
+          "request": {
+            "name": "Google Sheets Clear Values From Ranges Matching Data Filters",
+            "description": {
+              "content": "Clears one or more ranges of values from a spreadsheet matching the specified data filters. The caller must specify the spreadsheet ID and one or more DataFilters.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "spreadsheets",
+                ":spreadsheetId",
+                "values:batchClearByDataFilter"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "spreadsheetId",
+                  "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dataFilters\": [\n    {\n      \"developerMetadataLookup\": {\n        \"locationType\": \"<string>\",\n        \"metadataLocation\": {\n          \"locationType\": \"<string>\",\n          \"spreadsheet\": \"<boolean>\",\n          \"sheetId\": \"<integer>\",\n          \"dimensionRange\": {\n            \"sheetId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"dimension\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"startIndex\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"endIndex\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"locationMatchingStrategy\": \"<string>\",\n        \"metadataId\": \"<integer>\",\n        \"metadataKey\": \"<string>\",\n        \"metadataValue\": \"<string>\",\n        \"visibility\": \"<string>\"\n      },\n      \"a1Range\": \"<string>\",\n      \"gridRange\": {\n        \"sheetId\": \"<integer>\",\n        \"startRowIndex\": \"<integer>\",\n        \"endRowIndex\": \"<integer>\",\n        \"startColumnIndex\": \"<integer>\",\n        \"endColumnIndex\": \"<integer>\"\n      }\n    },\n    {\n      \"developerMetadataLookup\": {\n        \"locationType\": \"<string>\",\n        \"metadataLocation\": {\n          \"locationType\": \"<string>\",\n          \"spreadsheet\": \"<boolean>\",\n          \"sheetId\": \"<integer>\",\n          \"dimensionRange\": {\n            \"sheetId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"dimension\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"startIndex\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"endIndex\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"locationMatchingStrategy\": \"<string>\",\n        \"metadataId\": \"<integer>\",\n        \"metadataKey\": \"<string>\",\n        \"metadataValue\": \"<string>\",\n        \"visibility\": \"<string>\"\n      },\n      \"a1Range\": \"<string>\",\n      \"gridRange\": {\n        \"sheetId\": \"<integer>\",\n        \"startRowIndex\": \"<integer>\",\n        \"endRowIndex\": \"<integer>\",\n        \"startColumnIndex\": \"<integer>\",\n        \"endColumnIndex\": \"<integer>\"\n      }\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c247cc58-5a32-42a5-95b8-fbb6a3a4990d",
+              "name": "Successful response containing the cleared ranges.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    ":spreadsheetId",
+                    "values:batchClearByDataFilter"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "spreadsheetId",
+                      "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataFilters\": [\n    {\n      \"a1Range\": \"example_value\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"spreadsheetId\": \"500123\",\n  \"clearedRanges\": [\n    \"example_value\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0a7d5728-86e4-4324-94eb-c9fd106bb8f1",
+              "name": "Authentication credentials are missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    ":spreadsheetId",
+                    "values:batchClearByDataFilter"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "spreadsheetId",
+                      "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataFilters\": [\n    {\n      \"a1Range\": \"example_value\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 1129,\n    \"message\": \"string\",\n    \"status\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9b340ef8-bda2-424e-b358-768e78fd693f",
+              "name": "The caller does not have permission to access the requested resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    ":spreadsheetId",
+                    "values:batchClearByDataFilter"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "spreadsheetId",
+                      "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataFilters\": [\n    {\n      \"a1Range\": \"example_value\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 1129,\n    \"message\": \"string\",\n    \"status\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c357c73d-2047-4e1e-a58e-cdea388faf05",
+              "name": "The requested spreadsheet or range was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    ":spreadsheetId",
+                    "values:batchClearByDataFilter"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "spreadsheetId",
+                      "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataFilters\": [\n    {\n      \"a1Range\": \"example_value\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 1129,\n    \"message\": \"string\",\n    \"status\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "61fd09ef-7e0e-4811-b7b8-0c0def17bb5d",
+              "name": "Rate limit exceeded. Too many requests in a given amount of time.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    ":spreadsheetId",
+                    "values:batchClearByDataFilter"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "spreadsheetId",
+                      "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dataFilters\": [\n    {\n      \"a1Range\": \"example_value\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 1129,\n    \"message\": \"string\",\n    \"status\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sheets.googleapis.com/v4",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) The A1 notation or R1C1 notation of the range to read or modify. For example, Sheet1!A1:D5 or Sheet1!R1C1:R5C4.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "range"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://www.googleapis.com/auth/spreadsheets https://www.googleapis.com/auth/spreadsheets.readonly https://www.googleapis.com/auth/drive https://www.googleapis.com/auth/drive.readonly https://www.googleapis.com/auth/drive.file"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://oauth2.googleapis.com/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://accounts.google.com/o/oauth2/v2/auth"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "da053a22-2eb3-4d10-9921-be36013c98c4",
+    "name": "Google Sheets developerMetadata Values API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Google Sheets API lets you read, write, and format data in Google Sheets. It supports creating spreadsheets, reading and writing cell values, updating formatting, managing sheets within a spreadsheet, and working with developer metadata.\n\nContact Support:\n Name: Google Workspace Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Google Sheets developerMetadata API",
+    "version": "v4"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://accounts.google.com/o/oauth2/v2/auth",
+      "accessTokenUrl": "https://oauth2.googleapis.com/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "developerMetadata",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google Sheets Get Developer Metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sheets.googleapis.com/v4/spreadsheets/:spreadsheetId/developerMetadata/:metadataId",
+            "params": [
+              {
+                "name": "spreadsheetId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the spreadsheet to retrieve or modify."
+              },
+              {
+                "name": "metadataId",
+                "value": "500123",
+                "type": "path",
+                "description": "The ID of the developer metadata to retrieve."
+              }
+            ]
+          },
+          "docs": "Returns the developer metadata with the specified ID. The caller must specify the spreadsheet ID and the developer metadata's unique metadataId."
+        },
+        {
+          "info": {
+            "name": "Google Sheets Search Developer Metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sheets.googleapis.com/v4/spreadsheets/:spreadsheetId/developerMetadata:search",
+            "params": [
+              {
+                "name": "spreadsheetId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the spreadsheet to retrieve or modify."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns all developer metadata matching the specified DataFilter. If the provided DataFilter represents a DeveloperMetadataLookup object, this will return all DeveloperMetadata entries selected by it."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

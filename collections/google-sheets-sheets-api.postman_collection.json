@@ -1,0 +1,432 @@
+{
+  "item": [
+    {
+      "id": "a31ee8d0-fd13-4ed6-b4d9-7e6e17c2247d",
+      "name": "Sheets",
+      "description": {
+        "content": "Operations on individual sheets within a spreadsheet",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f45d6873-0442-46c2-9bae-c220e03d6bd8",
+          "name": "Google Sheets Copy a Sheet to Another Spreadsheet",
+          "request": {
+            "name": "Google Sheets Copy a Sheet to Another Spreadsheet",
+            "description": {
+              "content": "Copies a single sheet from a spreadsheet to another spreadsheet. Returns the properties of the newly created sheet.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "spreadsheets",
+                ":spreadsheetId",
+                "sheets",
+                "{{sheetId}}:copyTo"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "spreadsheetId",
+                  "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"destinationSpreadsheetId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3c5b99c9-3031-455a-af81-a83355aa264a",
+              "name": "Successful response containing the properties of the copied sheet.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    ":spreadsheetId",
+                    "sheets",
+                    "{{sheetId}}:copyTo"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "spreadsheetId",
+                      "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"destinationSpreadsheetId\": \"500123\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"sheetId\": \"500123\",\n  \"title\": \"Example Title\",\n  \"index\": 10,\n  \"sheetType\": \"GRID\",\n  \"gridProperties\": {\n    \"rowCount\": 10,\n    \"columnCount\": 10,\n    \"frozenRowCount\": 10,\n    \"frozenColumnCount\": 10,\n    \"hideGridlines\": true,\n    \"rowGroupControlAfter\": true,\n    \"columnGroupControlAfter\": true\n  },\n  \"hidden\": true,\n  \"tabColor\": {\n    \"red\": 42.5,\n    \"green\": 42.5,\n    \"blue\": 42.5,\n    \"alpha\": 42.5\n  },\n  \"tabColorStyle\": {\n    \"themeColor\": \"THEME_COLOR_TYPE_UNSPECIFIED\"\n  },\n  \"rightToLeft\": true,\n  \"dataSourceSheetProperties\": {\n    \"dataSourceId\": \"500123\",\n    \"columns\": [\n      {}\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d2601bb9-9ee8-4af5-be0a-150f294ba29e",
+              "name": "Authentication credentials are missing or invalid.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    ":spreadsheetId",
+                    "sheets",
+                    "{{sheetId}}:copyTo"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "spreadsheetId",
+                      "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"destinationSpreadsheetId\": \"500123\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 1182,\n    \"message\": \"string\",\n    \"status\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ebb14692-3426-4bff-90e2-a82d2c3870f8",
+              "name": "The caller does not have permission to access the requested resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    ":spreadsheetId",
+                    "sheets",
+                    "{{sheetId}}:copyTo"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "spreadsheetId",
+                      "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"destinationSpreadsheetId\": \"500123\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 1182,\n    \"message\": \"string\",\n    \"status\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ac9bd585-01c6-419c-a88d-e1da35913e65",
+              "name": "The requested spreadsheet or range was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    ":spreadsheetId",
+                    "sheets",
+                    "{{sheetId}}:copyTo"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "spreadsheetId",
+                      "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"destinationSpreadsheetId\": \"500123\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 1182,\n    \"message\": \"string\",\n    \"status\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3779c4f3-5421-4b56-9188-dd4182a3aacc",
+              "name": "Rate limit exceeded. Too many requests in a given amount of time.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "spreadsheets",
+                    ":spreadsheetId",
+                    "sheets",
+                    "{{sheetId}}:copyTo"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "spreadsheetId",
+                      "description": "(Required) The ID of the spreadsheet to retrieve or modify."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"destinationSpreadsheetId\": \"500123\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": 1182,\n    \"message\": \"string\",\n    \"status\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://sheets.googleapis.com/v4",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) The ID of the sheet to copy.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<integer>",
+      "key": "sheetId"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://www.googleapis.com/auth/spreadsheets https://www.googleapis.com/auth/spreadsheets.readonly https://www.googleapis.com/auth/drive https://www.googleapis.com/auth/drive.readonly https://www.googleapis.com/auth/drive.file"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://oauth2.googleapis.com/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://accounts.google.com/o/oauth2/v2/auth"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "0fb164f6-81b5-43f2-bf1e-c7b33fa752d4",
+    "name": "Google developerMetadata Sheets API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Google Sheets API lets you read, write, and format data in Google Sheets. It supports creating spreadsheets, reading and writing cell values, updating formatting, managing sheets within a spreadsheet, and working with developer metadata.\n\nContact Support:\n Name: Google Workspace Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

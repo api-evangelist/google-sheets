@@ -1,0 +1,122 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Google Sheets developerMetadata Spreadsheets API",
+    "version": "v4"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://accounts.google.com/o/oauth2/v2/auth",
+      "accessTokenUrl": "https://oauth2.googleapis.com/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Spreadsheets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google Sheets Create a Spreadsheet",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sheets.googleapis.com/v4/spreadsheets",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new spreadsheet, optionally with initial properties, sheets, and data."
+        },
+        {
+          "info": {
+            "name": "Google Sheets Get a Spreadsheet",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sheets.googleapis.com/v4/spreadsheets/:spreadsheetId",
+            "params": [
+              {
+                "name": "spreadsheetId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the spreadsheet to retrieve or modify."
+              },
+              {
+                "name": "ranges",
+                "value": "",
+                "type": "query",
+                "description": "The ranges to retrieve from the spreadsheet."
+              },
+              {
+                "name": "includeGridData",
+                "value": "true",
+                "type": "query",
+                "description": "True if grid data should be returned. This parameter is ignored if a field mask was set in the request."
+              }
+            ]
+          },
+          "docs": "Returns the spreadsheet at the given ID. The caller must specify the spreadsheet ID. By default, data within grids is not returned. You can include grid data in one of two ways using the fields URL parameter or the includeGridData query parameter."
+        },
+        {
+          "info": {
+            "name": "Google Sheets Batch Update a Spreadsheet",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sheets.googleapis.com/v4/spreadsheets/:spreadsheetId:batchUpdate",
+            "params": [
+              {
+                "name": "spreadsheetId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the spreadsheet to retrieve or modify."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Applies one or more updates to the spreadsheet. Each request is validated before being applied. If any request is not valid, the entire request will fail and nothing will be applied."
+        },
+        {
+          "info": {
+            "name": "Google Sheets Get a Spreadsheet by Data Filter",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sheets.googleapis.com/v4/spreadsheets/:spreadsheetId:getByDataFilter",
+            "params": [
+              {
+                "name": "spreadsheetId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the spreadsheet to retrieve or modify."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns the spreadsheet at the given ID. The caller must specify the spreadsheet ID. This method differs from getSpreadsheet in that it allows selecting which subsets of spreadsheet data to return by specifying a dataFilters parameter."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
