@@ -52,6 +52,8 @@ apis:
   humanURL: https://developers.google.com/sheets/api
   baseURL: https://sheets.googleapis.com/v4
   tags:
+  - Developer Metadata
+  tags_raw:
   - developerMetadata
   properties:
   - type: OpenAPI
