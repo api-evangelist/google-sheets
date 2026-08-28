@@ -11,8 +11,11 @@ info:
     OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: googleSheetsApi
-  url: ../openapi/google-sheets-openapi.yml
+- name: spreadsheetsApi
+  url: ../openapi/google-sheets-spreadsheets-api-openapi.yml
+  type: openapi
+- name: valuesApi
+  url: ../openapi/google-sheets-values-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: create-with-extra-sheet-and-write

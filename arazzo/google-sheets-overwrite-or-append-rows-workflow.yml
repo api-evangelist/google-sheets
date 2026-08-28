@@ -11,8 +11,8 @@ info:
     without opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: googleSheetsApi
-  url: ../openapi/google-sheets-openapi.yml
+- name: valuesApi
+  url: ../openapi/google-sheets-values-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: overwrite-or-append-rows
