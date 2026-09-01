@@ -63,7 +63,8 @@ apis:
   description: Operations on developer metadata
   humanURL: https://developers.google.com/sheets/api
   baseURL: https://sheets.googleapis.com/v4
-  tags: []
+  tags:
+  - Developer Metadata
   tags_raw:
   - developerMetadata
   properties:
