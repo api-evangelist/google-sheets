@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Google Sheets developerMetadata API
+  title: Google Sheets Developer Metadata API
   description: The Google Sheets API lets you read, write, and format data in Google Sheets. It supports creating spreadsheets, reading and writing cell values, updating formatting, managing sheets within a spreadsheet, and working with developer metadata.
   version: v4
   termsOfService: https://developers.google.com/terms
@@ -140,6 +140,31 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  responses:
+    NotFound:
+      description: The requested spreadsheet or range was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    TooManyRequests:
+      description: Rate limit exceeded. Too many requests in a given amount of time.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Authentication credentials are missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Forbidden:
+      description: The caller does not have permission to access the requested resource.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   schemas:
     DeveloperMetadataLocation:
       type: object
@@ -165,30 +190,13 @@ components:
           example: '500123'
         dimensionRange:
           $ref: '#/components/schemas/DimensionRange'
-    GridRange:
-      type: object
-      description: A range on a sheet. All indexes are zero-based.
-      properties:
-        sheetId:
-          type: integer
-          description: The sheet this range is on.
-          example: '500123'
-        startRowIndex:
-          type: integer
-          description: The start row (inclusive) of the range, or not set if unbounded.
-          example: 10
-        endRowIndex:
-          type: integer
-          description: The end row (exclusive) of the range, or not set if unbounded.
-          example: 10
-        startColumnIndex:
-          type: integer
-          description: The start column (inclusive) of the range, or not set if unbounded.
-          example: 10
-        endColumnIndex:
-          type: integer
-          description: The end column (exclusive) of the range, or not set if unbounded.
-          example: 10
+    Dimension:
+      type: string
+      description: Indicates which dimension an operation should apply to.
+      enum:
+      - DIMENSION_UNSPECIFIED
+      - ROWS
+      - COLUMNS
     ErrorResponse:
       type: object
       description: An error response from the API.
@@ -293,13 +301,6 @@ components:
           - DOCUMENT
           - PROJECT
           example: DEVELOPER_METADATA_VISIBILITY_UNSPECIFIED
-    Dimension:
-      type: string
-      description: Indicates which dimension an operation should apply to.
-      enum:
-      - DIMENSION_UNSPECIFIED
-      - ROWS
-      - COLUMNS
     DimensionRange:
       type: object
       description: A range along a single dimension on a sheet.
@@ -318,6 +319,30 @@ components:
           type: integer
           description: The end (exclusive) of the span.
           example: 10
+    GridRange:
+      type: object
+      description: A range on a sheet. All indexes are zero-based.
+      properties:
+        sheetId:
+          type: integer
+          description: The sheet this range is on.
+          example: '500123'
+        startRowIndex:
+          type: integer
+          description: The start row (inclusive) of the range, or not set if unbounded.
+          example: 10
+        endRowIndex:
+          type: integer
+          description: The end row (exclusive) of the range, or not set if unbounded.
+          example: 10
+        startColumnIndex:
+          type: integer
+          description: The start column (inclusive) of the range, or not set if unbounded.
+          example: 10
+        endColumnIndex:
+          type: integer
+          description: The end column (exclusive) of the range, or not set if unbounded.
+          example: 10
   parameters:
     spreadsheetId:
       name: spreadsheetId
@@ -326,31 +351,6 @@ components:
       required: true
       schema:
         type: string
-  responses:
-    Unauthorized:
-      description: Authentication credentials are missing or invalid.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    TooManyRequests:
-      description: Rate limit exceeded. Too many requests in a given amount of time.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    Forbidden:
-      description: The caller does not have permission to access the requested resource.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: The requested spreadsheet or range was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
   securitySchemes:
     oauth2:
       type: oauth2

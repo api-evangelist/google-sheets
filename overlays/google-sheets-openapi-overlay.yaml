@@ -3,9 +3,9 @@ info:
   title: API Evangelist enhancements for Google Sheets API
   version: 1.0.0
 extends: openapi/google-sheets-openapi.yml
-generated: '2026-06-20'
-method: generated
-source: openapi/google-sheets-openapi.yml
+x-generated: '2026-06-20'
+x-method: generated
+x-source: openapi/google-sheets-openapi.yml
 actions:
   - target: $.info
     update:

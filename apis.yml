@@ -201,6 +201,8 @@ maintainers:
     email: kin@apievangelist.com
     url: https://apievangelist.com
 common:
+  - type: Website
+    url: https://www.google.com/
   - type: AgenticAccess
     url: agentic-access/google-sheets-agentic-access.yml
   - type: VulnerabilityDisclosure
@@ -360,3 +362,5 @@ tags:
   - Google Workspace
   - Productivity
   - Spreadsheets
+x-parent: google
+x-relationship: product

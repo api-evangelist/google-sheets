@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Google developerMetadata Sheets API
   description: The Google Sheets API lets you read, write, and format data in Google Sheets. It supports creating spreadsheets, reading and writing cell values, updating formatting, managing sheets within a spreadsheet, and working with developer metadata.
@@ -105,79 +105,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    DataSourceColumn:
-      type: object
-      description: A column in a data source.
-      properties:
-        reference:
-          $ref: '#/components/schemas/DataSourceColumnReference'
-        formula:
-          type: string
-          description: The formula of the calculated column.
-          example: example_value
-    Color:
-      type: object
-      description: Represents a color in the RGBA color space. Values are in the range [0, 1].
-      properties:
-        red:
-          type: number
-          description: The amount of red in the color as a value in the range [0, 1].
-          example: 42.5
-        green:
-          type: number
-          description: The amount of green in the color as a value in the range [0, 1].
-          example: 42.5
-        blue:
-          type: number
-          description: The amount of blue in the color as a value in the range [0, 1].
-          example: 42.5
-        alpha:
-          type: number
-          description: The fraction of this color that should be applied to the pixel. A value of 1.0 corresponds to a solid color.
-          example: 42.5
-    ColorStyle:
-      type: object
-      description: A color value.
-      properties:
-        rgbColor:
-          $ref: '#/components/schemas/Color'
-        themeColor:
-          type: string
-          description: Theme color type.
-          enum:
-          - THEME_COLOR_TYPE_UNSPECIFIED
-          - TEXT
-          - BACKGROUND
-          - ACCENT1
-          - ACCENT2
-          - ACCENT3
-          - ACCENT4
-          - ACCENT5
-          - ACCENT6
-          - LINK
-          example: THEME_COLOR_TYPE_UNSPECIFIED
-    ErrorResponse:
-      type: object
-      description: An error response from the API.
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: integer
-              description: The HTTP status code.
-            message:
-              type: string
-              description: A human-readable error message.
-            status:
-              type: string
-              description: The status of the error.
-            details:
-              type: array
-              description: Additional error details.
-              items:
-                type: object
-          example: example_value
     SheetProperties:
       type: object
       description: Properties of a sheet.
@@ -218,38 +145,26 @@ components:
           example: true
         dataSourceSheetProperties:
           $ref: '#/components/schemas/DataSourceSheetProperties'
-    GridProperties:
+    Color:
       type: object
-      description: Properties of a grid.
+      description: Represents a color in the RGBA color space. Values are in the range [0, 1].
       properties:
-        rowCount:
-          type: integer
-          description: The number of rows in the grid.
-          example: 10
-        columnCount:
-          type: integer
-          description: The number of columns in the grid.
-          example: 10
-        frozenRowCount:
-          type: integer
-          description: The number of rows that are frozen in the grid.
-          example: 10
-        frozenColumnCount:
-          type: integer
-          description: The number of columns that are frozen in the grid.
-          example: 10
-        hideGridlines:
-          type: boolean
-          description: True if the grid is not showing gridlines in the UI.
-          example: true
-        rowGroupControlAfter:
-          type: boolean
-          description: True if the row grouping control toggle is shown after the group.
-          example: true
-        columnGroupControlAfter:
-          type: boolean
-          description: True if the column grouping control toggle is shown after the group.
-          example: true
+        red:
+          type: number
+          description: The amount of red in the color as a value in the range [0, 1].
+          example: 42.5
+        green:
+          type: number
+          description: The amount of green in the color as a value in the range [0, 1].
+          example: 42.5
+        blue:
+          type: number
+          description: The amount of blue in the color as a value in the range [0, 1].
+          example: 42.5
+        alpha:
+          type: number
+          description: The fraction of this color that should be applied to the pixel. A value of 1.0 corresponds to a solid color.
+          example: 42.5
     DataSourceSheetProperties:
       type: object
       description: Additional properties of a DATA_SOURCE sheet.
@@ -266,14 +181,38 @@ components:
           example: []
         dataExecutionStatus:
           $ref: '#/components/schemas/DataExecutionStatus'
-    DataSourceColumnReference:
+    ErrorResponse:
       type: object
-      description: An unique identifier that references a data source column.
+      description: An error response from the API.
       properties:
-        name:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+              description: The HTTP status code.
+            message:
+              type: string
+              description: A human-readable error message.
+            status:
+              type: string
+              description: The status of the error.
+            details:
+              type: array
+              description: Additional error details.
+              items:
+                type: object
+          example: example_value
+    DataSourceColumn:
+      type: object
+      description: A column in a data source.
+      properties:
+        reference:
+          $ref: '#/components/schemas/DataSourceColumnReference'
+        formula:
           type: string
-          description: The display name of the column.
-          example: Example Title
+          description: The formula of the calculated column.
+          example: example_value
     DataExecutionStatus:
       type: object
       description: The data execution status.
@@ -323,21 +262,68 @@ components:
           format: date-time
           description: Gets the time the data last successfully refreshed.
           example: '2026-01-15T10:30:00Z'
-  parameters:
-    spreadsheetId:
-      name: spreadsheetId
-      in: path
-      description: The ID of the spreadsheet to retrieve or modify.
-      required: true
-      schema:
-        type: string
+    ColorStyle:
+      type: object
+      description: A color value.
+      properties:
+        rgbColor:
+          $ref: '#/components/schemas/Color'
+        themeColor:
+          type: string
+          description: Theme color type.
+          enum:
+          - THEME_COLOR_TYPE_UNSPECIFIED
+          - TEXT
+          - BACKGROUND
+          - ACCENT1
+          - ACCENT2
+          - ACCENT3
+          - ACCENT4
+          - ACCENT5
+          - ACCENT6
+          - LINK
+          example: THEME_COLOR_TYPE_UNSPECIFIED
+    DataSourceColumnReference:
+      type: object
+      description: An unique identifier that references a data source column.
+      properties:
+        name:
+          type: string
+          description: The display name of the column.
+          example: Example Title
+    GridProperties:
+      type: object
+      description: Properties of a grid.
+      properties:
+        rowCount:
+          type: integer
+          description: The number of rows in the grid.
+          example: 10
+        columnCount:
+          type: integer
+          description: The number of columns in the grid.
+          example: 10
+        frozenRowCount:
+          type: integer
+          description: The number of rows that are frozen in the grid.
+          example: 10
+        frozenColumnCount:
+          type: integer
+          description: The number of columns that are frozen in the grid.
+          example: 10
+        hideGridlines:
+          type: boolean
+          description: True if the grid is not showing gridlines in the UI.
+          example: true
+        rowGroupControlAfter:
+          type: boolean
+          description: True if the row grouping control toggle is shown after the group.
+          example: true
+        columnGroupControlAfter:
+          type: boolean
+          description: True if the column grouping control toggle is shown after the group.
+          example: true
   responses:
-    Unauthorized:
-      description: Authentication credentials are missing or invalid.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
     NotFound:
       description: The requested spreadsheet or range was not found.
       content:
@@ -350,12 +336,26 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Authentication credentials are missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
     Forbidden:
       description: The caller does not have permission to access the requested resource.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    spreadsheetId:
+      name: spreadsheetId
+      in: path
+      description: The ID of the spreadsheet to retrieve or modify.
+      required: true
+      schema:
+        type: string
   securitySchemes:
     oauth2:
       type: oauth2
