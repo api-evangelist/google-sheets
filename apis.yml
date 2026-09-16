@@ -29,15 +29,14 @@ accessModel:
 image: https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png
 url: https://developers.google.com/sheets/api
 created: '2024-01-01'
-modified: '2026-06-20'
+modified: '2026-09-16'
 specificationVersion: '0.23'
 type: Index
 apis:
 - name: Google Apps Script Spreadsheet Service
-  description: >-
-    The built-in Google Apps Script Spreadsheet Service allows creation, access, and modification of Google
-    Sheets files directly from Apps Script with performance bundling and numerous classes for formatting,
-    data sources, structure, and content.
+  description: The built-in Google Apps Script Spreadsheet Service allows creation, access, and modification
+    of Google Sheets files directly from Apps Script with performance bundling and numerous classes for
+    formatting, data sources, structure, and content.
   image: https://www.gstatic.com/images/branding/product/2x/apps_script_48dp.png
   humanURL: https://developers.google.com/apps-script/reference/spreadsheet
   properties:
@@ -95,7 +94,7 @@ apis:
   - type: JSONLD
     url: json-ld/google-sheets-context.jsonld
 - aid: google-sheets:google-sheets-sheets-api
-  name: Google Sheets Sheets API
+  name: Google Sheets API
   description: Operations on individual sheets within a spreadsheet
   humanURL: https://developers.google.com/sheets/api
   baseURL: https://sheets.googleapis.com/v4
@@ -197,170 +196,176 @@ apis:
   - type: JSONLD
     url: json-ld/google-sheets-context.jsonld
 maintainers:
-  - name: Kin Lane
-    email: kin@apievangelist.com
-    url: https://apievangelist.com
+- name: Kin Lane
+  email: kin@apievangelist.com
+  url: https://apievangelist.com
 common:
-  - type: Website
-    url: https://www.google.com/
-  - type: AgenticAccess
-    url: agentic-access/google-sheets-agentic-access.yml
-  - type: VulnerabilityDisclosure
-    url: security/google-sheets-vulnerability-disclosure.yml
-  - type: DomainSecurity
-    url: security/google-sheets-domain-security.yml
-  - type: Authentication
-    url: authentication/google-sheets-authentication.yml
-  - type: OAuthScopes
-    url: scopes/google-sheets-scopes.yml
-  - type: Packages
-    url: packages/google-sheets-packages.yml
-  - type: WellKnown
-    url: well-known/google-sheets-well-known.yml
-  - type: X-MCPServerCandidate
-    url: mcp/google-sheets-mcp.yml
-    note: 'Renamed from MCPServer 2026-09-03 (roadmap#247): the manifest self-describes as status: candidate — a tool list derived from the published API contracts, not an existing server. The scorer already read the manifest and reported mcp_server correctly; the MCPServer type was crediting the artifact-type surfaces with a server that does not exist.'
-  - type: LLMsTxt
-    url: llms/google-sheets-llms.txt
-  - type: Overlay
-    url: overlays/google-sheets-openapi-overlay.yaml
-  - type: Conformance
-    url: conformance/google-sheets-conformance.yml
-  - type: ErrorCatalog
-    url: errors/google-sheets-problem-types.yml
-  - type: Lifecycle
-    url: lifecycle/google-sheets-lifecycle.yml
-  - type: Conventions
-    url: conventions/google-sheets-conventions.yml
-  - type: ChangeLog
-    url: changelog/google-sheets-changelog.yml
-  - type: DataModel
-    url: data-model/google-sheets-data-model.yml
-  - type: PostmanWorkspace
-    url: https://www.postman.com/kinlaneapi/google-sheets/overview
-  - type: Arazzo
-    url: arazzo/google-sheets-append-and-format-header-workflow.yml
-    name: Google Sheets Append Rows and Format the Header
-  - type: Arazzo
-    url: arazzo/google-sheets-archive-and-clear-multiple-ranges-workflow.yml
-    name: Google Sheets Archive and Clear Multiple Ranges
-  - type: Arazzo
-    url: arazzo/google-sheets-bulk-load-multiple-ranges-workflow.yml
-    name: Google Sheets Bulk Load Multiple Ranges
-  - type: Arazzo
-    url: arazzo/google-sheets-copy-sheet-between-spreadsheets-workflow.yml
-    name: Google Sheets Copy a Sheet Between Spreadsheets
-  - type: Arazzo
-    url: arazzo/google-sheets-create-and-seed-spreadsheet-workflow.yml
-    name: Google Sheets Create and Seed a Spreadsheet
-  - type: Arazzo
-    url: arazzo/google-sheets-create-with-extra-sheet-and-write-workflow.yml
-    name: Google Sheets Create With an Extra Sheet and Write
-  - type: Arazzo
-    url: arazzo/google-sheets-create-write-and-verify-workflow.yml
-    name: Google Sheets Create, Write, and Verify
-  - type: Arazzo
-    url: arazzo/google-sheets-overwrite-or-append-rows-workflow.yml
-    name: Google Sheets Overwrite or Append Rows
-  - type: Arazzo
-    url: arazzo/google-sheets-refresh-range-workflow.yml
-    name: Google Sheets Refresh a Range
-  - type: Arazzo
-    url: arazzo/google-sheets-seed-if-empty-workflow.yml
-    name: Google Sheets Seed a Range Only If Empty
-  - type: Arazzo
-    url: arazzo/google-sheets-tag-and-find-developer-metadata-workflow.yml
-    name: Google Sheets Tag and Find a Spreadsheet With Developer Metadata
-  - type: Arazzo
-    url: arazzo/google-sheets-update-and-read-by-data-filter-workflow.yml
-    name: Google Sheets Update and Read Values by Data Filter
-  - type: Portal
-    url: https://developers.google.com/workspace/sheets/api
-  - type: Documentation
-    url: https://developers.google.com/workspace/sheets/api/reference/rest
-  - type: Blog
-    url: https://workspace.google.com/blog/developers-practitioners
-  - type: GitHubOrganization
-    url: https://github.com/googleapis
-  - type: Support
-    url: https://developers.google.com/sheets/api/support
-  - type: StatusPage
-    url: https://www.google.com/appsstatus/dashboard/
-  - type: TermsOfService
-    url: https://developers.google.com/terms
-  - type: PrivacyPolicy
-    url: https://policies.google.com/privacy
-  - type: Signup
-    url: https://console.cloud.google.com/
-  - type: Login
-    url: https://console.cloud.google.com/
-  - type: StackOverflow
-    url: https://stackoverflow.com/questions/tagged/google-sheets-api
-  - type: YouTube
-    url: https://developers.google.com/workspace/sheets/api/videos
-  - type: GettingStarted
-    url: https://developers.google.com/workspace/sheets/api/guides/concepts
-  - type: Authentication
-    url: https://developers.google.com/sheets/api/guides/authorizing
-  - type: SDKs
-    url: https://developers.google.com/workspace/sheets/api/guides/libraries
-  - type: ReleaseNotes
-    url: https://developers.google.com/workspace/sheets/release-notes
-  - type: Pricing
-    url: https://developers.google.com/workspace/sheets/api/limits
-  - type: RateLimits
-    url: https://developers.google.com/workspace/sheets/api/limits
-  - type: SpectralRules
-    url: rules/google-sheets-spectral-rules.yml
-  - type: Features
-    data:
-      - name: Spreadsheet Management
-        description: Create, read, update, and delete spreadsheets programmatically with full control over properties and metadata.
-      - name: Cell Value Operations
-        description: Read and write individual cell values, ranges, and batch operations across multiple ranges.
-      - name: Formatting
-        description: Apply rich formatting to cells including fonts, colors, borders, alignment, and number formats.
-      - name: Sheet Management
-        description: Add, remove, copy, and configure individual sheets within a spreadsheet.
-      - name: Developer Metadata
-        description: Attach custom metadata to spreadsheets, sheets, rows, and columns for application-specific data.
-      - name: Data Validation
-        description: Set validation rules on cells to enforce data quality and consistency.
-      - name: Conditional Formatting
-        description: Apply conditional formatting rules based on cell values and formulas.
-      - name: Charts and Graphs
-        description: Create and manage embedded charts within spreadsheets.
-      - name: Named Ranges
-        description: Define and manage named ranges for easier formula references.
-      - name: Batch Operations
-        description: Execute multiple read and write operations in a single API call for efficiency.
-  - type: UseCases
-    data:
-      - name: Data Collection and Reporting
-        description: Collect data from various sources and generate automated reports in Google Sheets.
-      - name: Database Backend
-        description: Use Google Sheets as a lightweight database for web applications and prototypes.
-      - name: Workflow Automation
-        description: Automate data entry, processing, and distribution workflows using the API.
-      - name: Data Integration
-        description: Synchronize data between Google Sheets and other business applications.
-      - name: Dashboard Creation
-        description: Build interactive dashboards and visualizations from spreadsheet data.
-  - type: Integrations
-    data:
-      - name: Google Workspace
-        description: Deep integration with Google Docs, Slides, Forms, and other Workspace applications.
-      - name: Google Apps Script
-        description: Extend Sheets functionality with custom functions, menus, and automation scripts.
-      - name: Google Cloud Platform
-        description: Connect to BigQuery, Cloud Functions, and other GCP services for advanced data processing.
-      - name: Zapier
-        description: Connect Google Sheets to thousands of apps through Zapier automation workflows.
-      - name: Slack
-        description: Send notifications and updates to Slack channels based on spreadsheet changes.
+- type: Website
+  url: https://www.google.com/
+- type: AgenticAccess
+  url: agentic-access/google-sheets-agentic-access.yml
+- type: VulnerabilityDisclosure
+  url: security/google-sheets-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/google-sheets-domain-security.yml
+- type: Authentication
+  url: authentication/google-sheets-authentication.yml
+- type: OAuthScopes
+  url: scopes/google-sheets-scopes.yml
+- type: Packages
+  url: packages/google-sheets-packages.yml
+- type: WellKnown
+  url: well-known/google-sheets-well-known.yml
+- type: X-MCPServerCandidate
+  url: mcp/google-sheets-mcp.yml
+  note: 'Renamed from MCPServer 2026-09-03 (roadmap#247): the manifest self-describes as status: candidate
+    — a tool list derived from the published API contracts, not an existing server. The scorer already
+    read the manifest and reported mcp_server correctly; the MCPServer type was crediting the artifact-type
+    surfaces with a server that does not exist.'
+- type: LLMsTxt
+  url: llms/google-sheets-llms.txt
+- type: Overlay
+  url: overlays/google-sheets-openapi-overlay.yaml
+- type: Conformance
+  url: conformance/google-sheets-conformance.yml
+- type: ErrorCatalog
+  url: errors/google-sheets-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/google-sheets-lifecycle.yml
+- type: Conventions
+  url: conventions/google-sheets-conventions.yml
+- type: ChangeLog
+  url: changelog/google-sheets-changelog.yml
+- type: DataModel
+  url: data-model/google-sheets-data-model.yml
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/google-sheets/overview
+- type: Arazzo
+  url: arazzo/google-sheets-append-and-format-header-workflow.yml
+  name: Google Sheets Append Rows and Format the Header
+- type: Arazzo
+  url: arazzo/google-sheets-archive-and-clear-multiple-ranges-workflow.yml
+  name: Google Sheets Archive and Clear Multiple Ranges
+- type: Arazzo
+  url: arazzo/google-sheets-bulk-load-multiple-ranges-workflow.yml
+  name: Google Sheets Bulk Load Multiple Ranges
+- type: Arazzo
+  url: arazzo/google-sheets-copy-sheet-between-spreadsheets-workflow.yml
+  name: Google Sheets Copy a Sheet Between Spreadsheets
+- type: Arazzo
+  url: arazzo/google-sheets-create-and-seed-spreadsheet-workflow.yml
+  name: Google Sheets Create and Seed a Spreadsheet
+- type: Arazzo
+  url: arazzo/google-sheets-create-with-extra-sheet-and-write-workflow.yml
+  name: Google Sheets Create With an Extra Sheet and Write
+- type: Arazzo
+  url: arazzo/google-sheets-create-write-and-verify-workflow.yml
+  name: Google Sheets Create, Write, and Verify
+- type: Arazzo
+  url: arazzo/google-sheets-overwrite-or-append-rows-workflow.yml
+  name: Google Sheets Overwrite or Append Rows
+- type: Arazzo
+  url: arazzo/google-sheets-refresh-range-workflow.yml
+  name: Google Sheets Refresh a Range
+- type: Arazzo
+  url: arazzo/google-sheets-seed-if-empty-workflow.yml
+  name: Google Sheets Seed a Range Only If Empty
+- type: Arazzo
+  url: arazzo/google-sheets-tag-and-find-developer-metadata-workflow.yml
+  name: Google Sheets Tag and Find a Spreadsheet With Developer Metadata
+- type: Arazzo
+  url: arazzo/google-sheets-update-and-read-by-data-filter-workflow.yml
+  name: Google Sheets Update and Read Values by Data Filter
+- type: Portal
+  url: https://developers.google.com/workspace/sheets/api
+- type: Documentation
+  url: https://developers.google.com/workspace/sheets/api/reference/rest
+- type: Blog
+  url: https://workspace.google.com/blog/developers-practitioners
+- type: GitHubOrganization
+  url: https://github.com/googleapis
+- type: Support
+  url: https://developers.google.com/sheets/api/support
+- type: StatusPage
+  url: https://www.google.com/appsstatus/dashboard/
+- type: TermsOfService
+  url: https://developers.google.com/terms
+- type: PrivacyPolicy
+  url: https://policies.google.com/privacy
+- type: Signup
+  url: https://console.cloud.google.com/
+- type: Login
+  url: https://console.cloud.google.com/
+- type: StackOverflow
+  url: https://stackoverflow.com/questions/tagged/google-sheets-api
+- type: YouTube
+  url: https://developers.google.com/workspace/sheets/api/videos
+- type: GettingStarted
+  url: https://developers.google.com/workspace/sheets/api/guides/concepts
+- type: Authentication
+  url: https://developers.google.com/sheets/api/guides/authorizing
+- type: SDKs
+  url: https://developers.google.com/workspace/sheets/api/guides/libraries
+- type: ReleaseNotes
+  url: https://developers.google.com/workspace/sheets/release-notes
+- type: Pricing
+  url: https://developers.google.com/workspace/sheets/api/limits
+- type: RateLimits
+  url: https://developers.google.com/workspace/sheets/api/limits
+- type: SpectralRules
+  url: rules/google-sheets-spectral-rules.yml
+- type: Features
+  data:
+  - name: Spreadsheet Management
+    description: Create, read, update, and delete spreadsheets programmatically with full control over
+      properties and metadata.
+  - name: Cell Value Operations
+    description: Read and write individual cell values, ranges, and batch operations across multiple ranges.
+  - name: Formatting
+    description: Apply rich formatting to cells including fonts, colors, borders, alignment, and number
+      formats.
+  - name: Sheet Management
+    description: Add, remove, copy, and configure individual sheets within a spreadsheet.
+  - name: Developer Metadata
+    description: Attach custom metadata to spreadsheets, sheets, rows, and columns for application-specific
+      data.
+  - name: Data Validation
+    description: Set validation rules on cells to enforce data quality and consistency.
+  - name: Conditional Formatting
+    description: Apply conditional formatting rules based on cell values and formulas.
+  - name: Charts and Graphs
+    description: Create and manage embedded charts within spreadsheets.
+  - name: Named Ranges
+    description: Define and manage named ranges for easier formula references.
+  - name: Batch Operations
+    description: Execute multiple read and write operations in a single API call for efficiency.
+- type: UseCases
+  data:
+  - name: Data Collection and Reporting
+    description: Collect data from various sources and generate automated reports in Google Sheets.
+  - name: Database Backend
+    description: Use Google Sheets as a lightweight database for web applications and prototypes.
+  - name: Workflow Automation
+    description: Automate data entry, processing, and distribution workflows using the API.
+  - name: Data Integration
+    description: Synchronize data between Google Sheets and other business applications.
+  - name: Dashboard Creation
+    description: Build interactive dashboards and visualizations from spreadsheet data.
+- type: Integrations
+  data:
+  - name: Google Workspace
+    description: Deep integration with Google Docs, Slides, Forms, and other Workspace applications.
+  - name: Google Apps Script
+    description: Extend Sheets functionality with custom functions, menus, and automation scripts.
+  - name: Google Cloud Platform
+    description: Connect to BigQuery, Cloud Functions, and other GCP services for advanced data processing.
+  - name: Zapier
+    description: Connect Google Sheets to thousands of apps through Zapier automation workflows.
+  - name: Slack
+    description: Send notifications and updates to Slack channels based on spreadsheet changes.
 tags:
-  - Google Workspace
-  - Productivity
-  - Spreadsheets
+- Google Workspace
+- Productivity
+- Spreadsheets
 x-parent: google
 x-relationship: product
