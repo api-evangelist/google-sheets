@@ -34,9 +34,10 @@ specificationVersion: '0.23'
 type: Index
 apis:
 - name: Google Apps Script Spreadsheet Service
-  description: The built-in Google Apps Script Spreadsheet Service allows creation, access, and modification
-    of Google Sheets files directly from Apps Script with performance bundling and numerous classes for
-    formatting, data sources, structure, and content.
+  description: >-
+    The built-in Google Apps Script Spreadsheet Service allows creation, access, and modification of Google
+    Sheets files directly from Apps Script with performance bundling and numerous classes for formatting,
+    data sources, structure, and content.
   image: https://www.gstatic.com/images/branding/product/2x/apps_script_48dp.png
   humanURL: https://developers.google.com/apps-script/reference/spreadsheet
   properties:
@@ -57,42 +58,6 @@ apis:
   - Google
   - Scripting
   - Spreadsheets
-- aid: google-sheets:google-sheets-developermetadata-api
-  name: Google Sheets developerMetadata API
-  description: Operations on developer metadata
-  humanURL: https://developers.google.com/sheets/api
-  baseURL: https://sheets.googleapis.com/v4
-  tags:
-  - Developer Metadata
-  tags_raw:
-  - developerMetadata
-  properties:
-  - type: OpenAPI
-    url: openapi/google-sheets-developermetadata-api-openapi.yml
-  - type: Documentation
-    url: https://developers.google.com/sheets/api/reference/rest
-  - type: Authentication
-    url: https://developers.google.com/sheets/api/guides/authorizing
-  - type: GettingStarted
-    url: https://developers.google.com/sheets/api/quickstart/python
-  - type: GettingStarted
-    url: https://developers.google.com/workspace/sheets/api/guides/concepts
-  - type: APIReference
-    url: https://developers.google.com/workspace/sheets/api/reference/rest
-  - type: SDKs
-    url: https://developers.google.com/workspace/sheets/api/guides/libraries
-  - type: ChangeLog
-    url: https://developers.google.com/workspace/sheets/release-notes
-  - type: CodeExamples
-    url: https://developers.google.com/workspace/sheets/api/samples
-  - type: RateLimits
-    url: https://developers.google.com/workspace/sheets/api/limits
-  - type: ErrorCodes
-    url: https://developers.google.com/workspace/sheets/api/troubleshoot-api-errors
-  - type: JSONSchema
-    url: json-schema/google-sheets-spreadsheet-schema.json
-  - type: JSONLD
-    url: json-ld/google-sheets-context.jsonld
 - aid: google-sheets:google-sheets-sheets-api
   name: Google Sheets API
   description: Operations on individual sheets within a spreadsheet
@@ -171,6 +136,40 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/google-sheets-values-api-openapi.yml
+  - type: Documentation
+    url: https://developers.google.com/sheets/api/reference/rest
+  - type: Authentication
+    url: https://developers.google.com/sheets/api/guides/authorizing
+  - type: GettingStarted
+    url: https://developers.google.com/sheets/api/quickstart/python
+  - type: GettingStarted
+    url: https://developers.google.com/workspace/sheets/api/guides/concepts
+  - type: APIReference
+    url: https://developers.google.com/workspace/sheets/api/reference/rest
+  - type: SDKs
+    url: https://developers.google.com/workspace/sheets/api/guides/libraries
+  - type: ChangeLog
+    url: https://developers.google.com/workspace/sheets/release-notes
+  - type: CodeExamples
+    url: https://developers.google.com/workspace/sheets/api/samples
+  - type: RateLimits
+    url: https://developers.google.com/workspace/sheets/api/limits
+  - type: ErrorCodes
+    url: https://developers.google.com/workspace/sheets/api/troubleshoot-api-errors
+  - type: JSONSchema
+    url: json-schema/google-sheets-spreadsheet-schema.json
+  - type: JSONLD
+    url: json-ld/google-sheets-context.jsonld
+- aid: google-sheets:google-sheets-developer-metadata-api
+  name: Google Sheets Developer Metadata API
+  description: Operations on developer metadata
+  humanURL: https://developers.google.com/apps-script/reference/spreadsheet
+  baseURL: https://sheets.googleapis.com/v4
+  tags:
+  - Developer Metadata
+  properties:
+  - type: OpenAPI
+    url: openapi/google-sheets-developer-metadata-api-openapi.yml
   - type: Documentation
     url: https://developers.google.com/sheets/api/reference/rest
   - type: Authentication
