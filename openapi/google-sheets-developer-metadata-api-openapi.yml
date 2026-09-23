@@ -17,7 +17,7 @@ security:
 - oauth2: []
 - apiKey: []
 tags:
-- name: developerMetadata
+- name: Developer Metadata
   description: Operations on developer metadata
 paths:
   /spreadsheets/{spreadsheetId}/developerMetadata/{metadataId}:
@@ -26,7 +26,7 @@ paths:
       summary: Google Sheets Get Developer Metadata
       description: Returns the developer metadata with the specified ID. The caller must specify the spreadsheet ID and the developer metadata's unique metadataId.
       tags:
-      - developerMetadata
+      - Developer Metadata
       parameters:
       - $ref: '#/components/parameters/spreadsheetId'
       - name: metadataId
@@ -73,7 +73,7 @@ paths:
       summary: Google Sheets Search Developer Metadata
       description: Returns all developer metadata matching the specified DataFilter. If the provided DataFilter represents a DeveloperMetadataLookup object, this will return all DeveloperMetadata entries selected by it.
       tags:
-      - developerMetadata
+      - Developer Metadata
       parameters:
       - $ref: '#/components/parameters/spreadsheetId'
       requestBody:
@@ -141,14 +141,8 @@ paths:
         dispatcher: FALLBACK
 components:
   responses:
-    NotFound:
-      description: The requested spreadsheet or range was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    TooManyRequests:
-      description: Rate limit exceeded. Too many requests in a given amount of time.
+    Forbidden:
+      description: The caller does not have permission to access the requested resource.
       content:
         application/json:
           schema:
@@ -159,44 +153,73 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    Forbidden:
-      description: The caller does not have permission to access the requested resource.
+    TooManyRequests:
+      description: Rate limit exceeded. Too many requests in a given amount of time.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: The requested spreadsheet or range was not found.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
   schemas:
-    DeveloperMetadataLocation:
+    GridRange:
       type: object
-      description: A location where metadata may be associated in a spreadsheet.
+      description: A range on a sheet. All indexes are zero-based.
       properties:
-        locationType:
-          type: string
-          description: The type of location this object represents.
-          enum:
-          - DEVELOPER_METADATA_LOCATION_TYPE_UNSPECIFIED
-          - ROW
-          - COLUMN
-          - SHEET
-          - SPREADSHEET
-          example: DEVELOPER_METADATA_LOCATION_TYPE_UNSPECIFIED
-        spreadsheet:
-          type: boolean
-          description: True when metadata is associated with an entire spreadsheet.
-          example: true
         sheetId:
           type: integer
-          description: The ID of the sheet when metadata is associated with an entire sheet.
+          description: The sheet this range is on.
           example: '500123'
-        dimensionRange:
-          $ref: '#/components/schemas/DimensionRange'
-    Dimension:
-      type: string
-      description: Indicates which dimension an operation should apply to.
-      enum:
-      - DIMENSION_UNSPECIFIED
-      - ROWS
-      - COLUMNS
+        startRowIndex:
+          type: integer
+          description: The start row (inclusive) of the range, or not set if unbounded.
+          example: 10
+        endRowIndex:
+          type: integer
+          description: The end row (exclusive) of the range, or not set if unbounded.
+          example: 10
+        startColumnIndex:
+          type: integer
+          description: The start column (inclusive) of the range, or not set if unbounded.
+          example: 10
+        endColumnIndex:
+          type: integer
+          description: The end column (exclusive) of the range, or not set if unbounded.
+          example: 10
+    DimensionRange:
+      type: object
+      description: A range along a single dimension on a sheet.
+      properties:
+        sheetId:
+          type: integer
+          description: The sheet this span is on.
+          example: '500123'
+        dimension:
+          $ref: '#/components/schemas/Dimension'
+        startIndex:
+          type: integer
+          description: The start (inclusive) of the span.
+          example: 10
+        endIndex:
+          type: integer
+          description: The end (exclusive) of the span.
+          example: 10
+    DataFilter:
+      type: object
+      description: Filter that describes what data should be selected or returned from a request.
+      properties:
+        developerMetadataLookup:
+          $ref: '#/components/schemas/DeveloperMetadataLookup'
+        a1Range:
+          type: string
+          description: Selects data that matches the specified A1 range.
+          example: example_value
+        gridRange:
+          $ref: '#/components/schemas/GridRange'
     ErrorResponse:
       type: object
       description: An error response from the API.
@@ -245,18 +268,13 @@ components:
           - DOCUMENT
           - PROJECT
           example: DEVELOPER_METADATA_VISIBILITY_UNSPECIFIED
-    DataFilter:
-      type: object
-      description: Filter that describes what data should be selected or returned from a request.
-      properties:
-        developerMetadataLookup:
-          $ref: '#/components/schemas/DeveloperMetadataLookup'
-        a1Range:
-          type: string
-          description: Selects data that matches the specified A1 range.
-          example: example_value
-        gridRange:
-          $ref: '#/components/schemas/GridRange'
+    Dimension:
+      type: string
+      description: Indicates which dimension an operation should apply to.
+      enum:
+      - DIMENSION_UNSPECIFIED
+      - ROWS
+      - COLUMNS
     DeveloperMetadataLookup:
       type: object
       description: Selects DeveloperMetadata that matches all of the specified fields.
@@ -301,48 +319,30 @@ components:
           - DOCUMENT
           - PROJECT
           example: DEVELOPER_METADATA_VISIBILITY_UNSPECIFIED
-    DimensionRange:
+    DeveloperMetadataLocation:
       type: object
-      description: A range along a single dimension on a sheet.
+      description: A location where metadata may be associated in a spreadsheet.
       properties:
+        locationType:
+          type: string
+          description: The type of location this object represents.
+          enum:
+          - DEVELOPER_METADATA_LOCATION_TYPE_UNSPECIFIED
+          - ROW
+          - COLUMN
+          - SHEET
+          - SPREADSHEET
+          example: DEVELOPER_METADATA_LOCATION_TYPE_UNSPECIFIED
+        spreadsheet:
+          type: boolean
+          description: True when metadata is associated with an entire spreadsheet.
+          example: true
         sheetId:
           type: integer
-          description: The sheet this span is on.
+          description: The ID of the sheet when metadata is associated with an entire sheet.
           example: '500123'
-        dimension:
-          $ref: '#/components/schemas/Dimension'
-        startIndex:
-          type: integer
-          description: The start (inclusive) of the span.
-          example: 10
-        endIndex:
-          type: integer
-          description: The end (exclusive) of the span.
-          example: 10
-    GridRange:
-      type: object
-      description: A range on a sheet. All indexes are zero-based.
-      properties:
-        sheetId:
-          type: integer
-          description: The sheet this range is on.
-          example: '500123'
-        startRowIndex:
-          type: integer
-          description: The start row (inclusive) of the range, or not set if unbounded.
-          example: 10
-        endRowIndex:
-          type: integer
-          description: The end row (exclusive) of the range, or not set if unbounded.
-          example: 10
-        startColumnIndex:
-          type: integer
-          description: The start column (inclusive) of the range, or not set if unbounded.
-          example: 10
-        endColumnIndex:
-          type: integer
-          description: The end column (exclusive) of the range, or not set if unbounded.
-          example: 10
+        dimensionRange:
+          $ref: '#/components/schemas/DimensionRange'
   parameters:
     spreadsheetId:
       name: spreadsheetId

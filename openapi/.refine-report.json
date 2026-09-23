@@ -1,26 +1,29 @@
 {
   "provider": "google-sheets",
   "sources": [
-    "google-sheets-developermetadata-api-openapi.yml",
-    "google-sheets-sheets-api-openapi.yml",
-    "google-sheets-spreadsheets-api-openapi.yml",
-    "google-sheets-values-api-openapi.yml"
+    "_original/google-sheets-openapi.yml"
   ],
   "outputs": [
-    "google-sheets-developermetadata-api-openapi.yml",
     "google-sheets-sheets-api-openapi.yml",
     "google-sheets-spreadsheets-api-openapi.yml",
-    "google-sheets-values-api-openapi.yml"
+    "google-sheets-values-api-openapi.yml",
+    "google-sheets-developermetadata-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "deleted 1 superseded output(s) from the previous generation"
+  ],
   "errors": [],
   "warnings": [],
   "notes": [
-    "google-sheets-developermetadata-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "google-sheets-sheets-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "google-sheets-spreadsheets-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "google-sheets-values-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "apis.yml register: already-registered"
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "google-sheets-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "superseded outputs removed: google-sheets-developer-metadata-api-openapi.yml",
+    "apis.yml register: written (+1 apis, 5 total)"
   ],
-  "skipped": []
+  "skipped": [
+    "google-sheets-developer-metadata-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "google-sheets-sheets-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "google-sheets-spreadsheets-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "google-sheets-values-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
