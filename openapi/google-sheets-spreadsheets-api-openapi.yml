@@ -375,146 +375,172 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  responses:
-    Forbidden:
-      description: The caller does not have permission to access the requested resource.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Authentication credentials are missing or invalid.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: The requested spreadsheet or range was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    TooManyRequests:
-      description: Rate limit exceeded. Too many requests in a given amount of time.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
   schemas:
-    GridRange:
+    ConditionalFormatRule:
       type: object
-      description: A range on a sheet. All indexes are zero-based.
+      description: A rule describing a conditional format.
       properties:
-        sheetId:
-          type: integer
-          description: The sheet this range is on.
-          example: '500123'
-        startRowIndex:
-          type: integer
-          description: The start row (inclusive) of the range, or not set if unbounded.
-          example: 10
-        endRowIndex:
-          type: integer
-          description: The end row (exclusive) of the range, or not set if unbounded.
-          example: 10
-        startColumnIndex:
-          type: integer
-          description: The start column (inclusive) of the range, or not set if unbounded.
-          example: 10
-        endColumnIndex:
-          type: integer
-          description: The end column (exclusive) of the range, or not set if unbounded.
-          example: 10
-    DataSourceTable:
-      type: object
-      description: A data source table, which allows the user to import a static table of data from the DataSource into Sheets.
-      properties:
-        dataSourceId:
-          type: string
-          description: The ID of the data source the data source table is associated with.
-          example: '500123'
-        columnSelectionType:
-          type: string
-          description: The type to select columns for the data source table.
-          enum:
-          - DATA_SOURCE_TABLE_COLUMN_SELECTION_TYPE_UNSPECIFIED
-          - SELECTED
-          - SYNC_ALL
-          example: DATA_SOURCE_TABLE_COLUMN_SELECTION_TYPE_UNSPECIFIED
-        columns:
+        ranges:
           type: array
-          description: Columns selected for the data source table.
+          description: The ranges that are formatted if the condition is true.
           items:
-            $ref: '#/components/schemas/DataSourceColumnReference'
+            $ref: '#/components/schemas/GridRange'
           example: []
-        filterSpecs:
-          type: array
-          description: Filter specifications in the data source table.
-          items:
-            $ref: '#/components/schemas/FilterSpec'
-          example: []
-        sortSpecs:
-          type: array
-          description: Sort specifications in the data source table.
-          items:
-            $ref: '#/components/schemas/SortSpec'
-          example: []
-        rowLimit:
-          type: integer
-          description: The limit of rows to return.
-          example: 10
-        dataExecutionStatus:
-          $ref: '#/components/schemas/DataExecutionStatus'
-    IterativeCalculationSettings:
+        booleanRule:
+          type: object
+          description: The formatting is either on or off according to the rule.
+          properties:
+            condition:
+              $ref: '#/components/schemas/BooleanCondition'
+            format:
+              $ref: '#/components/schemas/CellFormat'
+          example: example_value
+        gradientRule:
+          type: object
+          description: The formatting will vary based on the gradients in the rule.
+          properties:
+            minpoint:
+              $ref: '#/components/schemas/InterpolationPoint'
+            midpoint:
+              $ref: '#/components/schemas/InterpolationPoint'
+            maxpoint:
+              $ref: '#/components/schemas/InterpolationPoint'
+          example: example_value
+    PivotFilterCriteria:
       type: object
-      description: Settings to control how circular dependencies are resolved with iterative calculation.
+      description: Criteria for showing/hiding rows in a pivot table.
       properties:
-        maxIterations:
-          type: integer
-          description: When iterative calculation is enabled, the maximum number of calculation rounds to perform.
-          example: 10
-        convergenceThreshold:
-          type: number
-          description: When iterative calculation is enabled and successive results differ by less than this threshold value, the calculation rounds stop.
-          example: 42.5
-    FilterCriteria:
-      type: object
-      description: Criteria for showing/hiding rows in a filter or filter view.
-      properties:
-        hiddenValues:
+        visibleValues:
           type: array
-          description: Values that should be hidden.
+          description: Values that should be included.
           items:
             type: string
           example: []
         condition:
           $ref: '#/components/schemas/BooleanCondition'
-        visibleBackgroundColor:
-          $ref: '#/components/schemas/Color'
-        visibleBackgroundColorStyle:
-          $ref: '#/components/schemas/ColorStyle'
-        visibleForegroundColor:
-          $ref: '#/components/schemas/Color'
-        visibleForegroundColorStyle:
-          $ref: '#/components/schemas/ColorStyle'
-    DataValidationRule:
+        visibleByDefault:
+          type: boolean
+          description: Whether values are visible by default.
+          example: true
+    PivotGroupSortValueBucket:
       type: object
-      description: A data validation rule.
+      description: Information about which values in a pivot group should be used for sorting.
       properties:
-        condition:
-          $ref: '#/components/schemas/BooleanCondition'
-        inputMessage:
+        valuesIndex:
+          type: integer
+          description: The offset in the PivotTable.values list which the values in this grouping should be sorted by.
+          example: 10
+        buckets:
+          type: array
+          description: Determines the bucket from which values are chosen to sort.
+          items:
+            $ref: '#/components/schemas/ExtendedValue'
+          example: []
+    FilterView:
+      type: object
+      description: A filter view.
+      properties:
+        filterViewId:
+          type: integer
+          description: The ID of the filter view.
+          example: '500123'
+        title:
           type: string
-          description: A message to show the user when adding data to the cell.
+          description: The name of the filter view.
+          example: Example Title
+        range:
+          $ref: '#/components/schemas/GridRange'
+        namedRangeId:
+          type: string
+          description: The named range this filter view is backed by, if any.
+          example: '500123'
+        sortSpecs:
+          type: array
+          description: The sort order per column.
+          items:
+            $ref: '#/components/schemas/SortSpec'
+          example: []
+        criteria:
+          type: object
+          description: The criteria for showing/hiding values per column.
+          additionalProperties:
+            $ref: '#/components/schemas/FilterCriteria'
           example: example_value
-        strict:
-          type: boolean
-          description: True if invalid data should be rejected.
-          example: true
-        showCustomUi:
-          type: boolean
-          description: True if the UI should be customized based on the kind of condition.
-          example: true
+        filterSpecs:
+          type: array
+          description: The filter criteria for showing/hiding values per column.
+          items:
+            $ref: '#/components/schemas/FilterSpec'
+          example: []
+    ColorStyle:
+      type: object
+      description: A color value.
+      properties:
+        rgbColor:
+          $ref: '#/components/schemas/Color'
+        themeColor:
+          type: string
+          description: Theme color type.
+          enum:
+          - THEME_COLOR_TYPE_UNSPECIFIED
+          - TEXT
+          - BACKGROUND
+          - ACCENT1
+          - ACCENT2
+          - ACCENT3
+          - ACCENT4
+          - ACCENT5
+          - ACCENT6
+          - LINK
+          example: THEME_COLOR_TYPE_UNSPECIFIED
+    Slicer:
+      type: object
+      description: A slicer in a sheet.
+      properties:
+        slicerId:
+          type: integer
+          description: The ID of the slicer.
+          example: '500123'
+        spec:
+          type: object
+          description: The specification of the slicer.
+          properties:
+            dataRange:
+              $ref: '#/components/schemas/GridRange'
+            filterCriteria:
+              $ref: '#/components/schemas/FilterCriteria'
+            columnIndex:
+              type: integer
+            applyToPivotTables:
+              type: boolean
+            title:
+              type: string
+            textFormat:
+              $ref: '#/components/schemas/TextFormat'
+            backgroundColor:
+              $ref: '#/components/schemas/Color'
+            backgroundColorStyle:
+              $ref: '#/components/schemas/ColorStyle'
+            horizontalAlignment:
+              type: string
+              enum:
+              - HORIZONTAL_ALIGN_UNSPECIFIED
+              - LEFT
+              - CENTER
+              - RIGHT
+          example: example_value
+        position:
+          $ref: '#/components/schemas/EmbeddedObjectPosition'
+    RowData:
+      type: object
+      description: Data about each cell in a row.
+      properties:
+        values:
+          type: array
+          description: The values in the row, one per column.
+          items:
+            $ref: '#/components/schemas/CellData'
+          example: []
     SheetProperties:
       type: object
       description: Properties of a sheet.
@@ -555,6 +581,24 @@ components:
           example: true
         dataSourceSheetProperties:
           $ref: '#/components/schemas/DataSourceSheetProperties'
+    DataValidationRule:
+      type: object
+      description: A data validation rule.
+      properties:
+        condition:
+          $ref: '#/components/schemas/BooleanCondition'
+        inputMessage:
+          type: string
+          description: A message to show the user when adding data to the cell.
+          example: example_value
+        strict:
+          type: boolean
+          description: True if invalid data should be rejected.
+          example: true
+        showCustomUi:
+          type: boolean
+          description: True if the UI should be customized based on the kind of condition.
+          example: true
     TextFormat:
       type: object
       description: The format of a run of text in a cell.
@@ -589,234 +633,6 @@ components:
           example: true
         link:
           $ref: '#/components/schemas/Link'
-    Padding:
-      type: object
-      description: The amount of padding around the cell, in pixels.
-      properties:
-        top:
-          type: integer
-          description: The top padding of the cell.
-          example: 10
-        right:
-          type: integer
-          description: The right padding of the cell.
-          example: 10
-        bottom:
-          type: integer
-          description: The bottom padding of the cell.
-          example: 10
-        left:
-          type: integer
-          description: The left padding of the cell.
-          example: 10
-    SpreadsheetProperties:
-      type: object
-      description: Properties of a spreadsheet.
-      properties:
-        title:
-          type: string
-          description: The title of the spreadsheet.
-          example: Example Title
-        locale:
-          type: string
-          description: 'The locale of the spreadsheet in one of the following formats: an ISO 639-1 language code, an ISO 639-2 language code, or a combination of the ISO language code and country code (e.g. en, eng, en_US).'
-          example: example_value
-        autoRecalc:
-          type: string
-          description: The amount of time to wait before volatile functions are recalculated.
-          enum:
-          - ON_CHANGE
-          - MINUTE
-          - HOUR
-          example: ON_CHANGE
-        timeZone:
-          type: string
-          description: The time zone of the spreadsheet in CLDR format (e.g. America/New_York).
-          example: example_value
-        defaultFormat:
-          $ref: '#/components/schemas/CellFormat'
-        iterativeCalculationSettings:
-          $ref: '#/components/schemas/IterativeCalculationSettings'
-        spreadsheetTheme:
-          $ref: '#/components/schemas/SpreadsheetTheme'
-        importFunctionsExternalUrlAccessAllowed:
-          type: boolean
-          description: Whether to allow external URL access for image and import functions.
-          example: https://www.example.com
-    BooleanCondition:
-      type: object
-      description: A condition that can evaluate to true or false.
-      properties:
-        type:
-          type: string
-          description: The type of condition.
-          enum:
-          - CONDITION_TYPE_UNSPECIFIED
-          - NUMBER_GREATER
-          - NUMBER_GREATER_THAN_EQ
-          - NUMBER_LESS
-          - NUMBER_LESS_THAN_EQ
-          - NUMBER_EQ
-          - NUMBER_NOT_EQ
-          - NUMBER_BETWEEN
-          - NUMBER_NOT_BETWEEN
-          - TEXT_CONTAINS
-          - TEXT_NOT_CONTAINS
-          - TEXT_STARTS_WITH
-          - TEXT_ENDS_WITH
-          - TEXT_EQ
-          - TEXT_IS_EMAIL
-          - TEXT_IS_URL
-          - DATE_EQ
-          - DATE_BEFORE
-          - DATE_AFTER
-          - DATE_ON_OR_BEFORE
-          - DATE_ON_OR_AFTER
-          - DATE_BETWEEN
-          - DATE_NOT_BETWEEN
-          - DATE_IS_VALID
-          - ONE_OF_RANGE
-          - ONE_OF_LIST
-          - BLANK
-          - NOT_BLANK
-          - CUSTOM_FORMULA
-          - BOOLEAN
-          - TEXT_NOT_EQ
-          - DATE_NOT_EQ
-          - FILTER_EXPRESSION
-          example: CONDITION_TYPE_UNSPECIFIED
-        values:
-          type: array
-          description: The values of the condition. The number of supported values depends on the condition type.
-          items:
-            $ref: '#/components/schemas/ConditionValue'
-          example: []
-    ExtendedValue:
-      type: object
-      description: The kinds of value that a cell in a spreadsheet can have.
-      properties:
-        numberValue:
-          type: number
-          description: Represents a double value.
-          example: 42.5
-        stringValue:
-          type: string
-          description: Represents a string value.
-          example: example_value
-        boolValue:
-          type: boolean
-          description: Represents a boolean value.
-          example: true
-        formulaValue:
-          type: string
-          description: Represents a formula.
-          example: example_value
-        errorValue:
-          $ref: '#/components/schemas/ErrorValue'
-    FilterSpec:
-      type: object
-      description: The filter criteria associated with a specific column.
-      properties:
-        filterCriteria:
-          $ref: '#/components/schemas/FilterCriteria'
-        columnIndex:
-          type: integer
-          description: The zero-based column index.
-          example: 10
-        dataSourceColumnReference:
-          $ref: '#/components/schemas/DataSourceColumnReference'
-    PivotGroupSortValueBucket:
-      type: object
-      description: Information about which values in a pivot group should be used for sorting.
-      properties:
-        valuesIndex:
-          type: integer
-          description: The offset in the PivotTable.values list which the values in this grouping should be sorted by.
-          example: 10
-        buckets:
-          type: array
-          description: Determines the bucket from which values are chosen to sort.
-          items:
-            $ref: '#/components/schemas/ExtendedValue'
-          example: []
-    DataSourceFormula:
-      type: object
-      description: A data source formula.
-      properties:
-        dataSourceId:
-          type: string
-          description: The ID of the data source the formula is associated with.
-          example: '500123'
-        dataExecutionStatus:
-          $ref: '#/components/schemas/DataExecutionStatus'
-    PivotGroup:
-      type: object
-      description: A single grouping (either row or column) in a pivot table.
-      properties:
-        sourceColumnOffset:
-          type: integer
-          description: The column offset of the source range that this grouping is based on.
-          example: 10
-        showTotals:
-          type: boolean
-          description: True if the pivot table should include the totals for this grouping.
-          example: true
-        sortOrder:
-          type: string
-          description: The order the values in this group should be sorted.
-          enum:
-          - SORT_ORDER_UNSPECIFIED
-          - ASCENDING
-          - DESCENDING
-          example: SORT_ORDER_UNSPECIFIED
-        valueBucket:
-          $ref: '#/components/schemas/PivotGroupSortValueBucket'
-        repeatHeadings:
-          type: boolean
-          description: True if the headings in this pivot group should be repeated.
-          example: true
-        label:
-          type: string
-          description: The labels to use for the row/column groups which can be customized.
-          example: Example Title
-        groupRule:
-          $ref: '#/components/schemas/PivotGroupRule'
-        groupLimit:
-          $ref: '#/components/schemas/PivotGroupLimit'
-        dataSourceColumnReference:
-          $ref: '#/components/schemas/DataSourceColumnReference'
-    ConditionValue:
-      type: object
-      description: The value of the condition.
-      properties:
-        relativeDate:
-          type: string
-          description: A relative date.
-          enum:
-          - RELATIVE_DATE_UNSPECIFIED
-          - PAST_YEAR
-          - PAST_MONTH
-          - PAST_WEEK
-          - YESTERDAY
-          - TODAY
-          - TOMORROW
-          example: RELATIVE_DATE_UNSPECIFIED
-        userEnteredValue:
-          type: string
-          description: A value the condition is based on.
-          example: example_value
-    PivotFilterSpec:
-      type: object
-      description: The pivot table filter criteria associated with a specific source column offset.
-      properties:
-        filterCriteria:
-          $ref: '#/components/schemas/PivotFilterCriteria'
-        columnOffsetIndex:
-          type: integer
-          description: The zero-based column offset of the source range.
-          example: 10
-        dataSourceColumnReference:
-          $ref: '#/components/schemas/DataSourceColumnReference'
     PivotGroupLimit:
       type: object
       description: The count limit on rows or columns in the pivot group.
@@ -891,27 +707,171 @@ components:
           example: HYPERLINK_DISPLAY_TYPE_UNSPECIFIED
         textRotation:
           $ref: '#/components/schemas/TextRotation'
-    ColorStyle:
+    Color:
       type: object
-      description: A color value.
+      description: Represents a color in the RGBA color space. Values are in the range [0, 1].
       properties:
-        rgbColor:
+        red:
+          type: number
+          description: The amount of red in the color as a value in the range [0, 1].
+          example: 42.5
+        green:
+          type: number
+          description: The amount of green in the color as a value in the range [0, 1].
+          example: 42.5
+        blue:
+          type: number
+          description: The amount of blue in the color as a value in the range [0, 1].
+          example: 42.5
+        alpha:
+          type: number
+          description: The fraction of this color that should be applied to the pixel. A value of 1.0 corresponds to a solid color.
+          example: 42.5
+    Sheet:
+      type: object
+      description: A sheet in a spreadsheet.
+      properties:
+        properties:
+          $ref: '#/components/schemas/SheetProperties'
+        data:
+          type: array
+          description: Data in the grid, if this is a grid sheet.
+          items:
+            $ref: '#/components/schemas/GridData'
+          example: []
+        merges:
+          type: array
+          description: The ranges that are merged together.
+          items:
+            $ref: '#/components/schemas/GridRange'
+          example: []
+        conditionalFormats:
+          type: array
+          description: The conditional format rules in this sheet.
+          items:
+            $ref: '#/components/schemas/ConditionalFormatRule'
+          example: []
+        filterViews:
+          type: array
+          description: The filter views in this sheet.
+          items:
+            $ref: '#/components/schemas/FilterView'
+          example: []
+        protectedRanges:
+          type: array
+          description: The protected ranges in this sheet.
+          items:
+            $ref: '#/components/schemas/ProtectedRange'
+          example: []
+        basicFilter:
+          $ref: '#/components/schemas/BasicFilter'
+        charts:
+          type: array
+          description: The specifications of every chart on this sheet.
+          items:
+            $ref: '#/components/schemas/EmbeddedChart'
+          example: []
+        bandedRanges:
+          type: array
+          description: The banded (alternating colors) ranges on this sheet.
+          items:
+            $ref: '#/components/schemas/BandedRange'
+          example: []
+        slicers:
+          type: array
+          description: The slicers on this sheet.
+          items:
+            $ref: '#/components/schemas/Slicer'
+          example: []
+    TextFormatRun:
+      type: object
+      description: A run of a text format.
+      properties:
+        startIndex:
+          type: integer
+          description: The character index where this run starts (zero-based).
+          example: 10
+        format:
+          $ref: '#/components/schemas/TextFormat'
+    DimensionProperties:
+      type: object
+      description: Properties about a dimension.
+      properties:
+        hiddenByFilter:
+          type: boolean
+          description: True if this dimension is being filtered.
+          example: true
+        hiddenByUser:
+          type: boolean
+          description: True if this dimension is explicitly hidden.
+          example: true
+        pixelSize:
+          type: integer
+          description: The height (for rows) or width (for columns) of the dimension in pixels.
+          example: 10
+        developerMetadata:
+          type: array
+          description: The developer metadata associated with a single row or column.
+          items:
+            $ref: '#/components/schemas/DeveloperMetadata'
+          example: []
+        dataSourceColumnReference:
+          $ref: '#/components/schemas/DataSourceColumnReference'
+    GridProperties:
+      type: object
+      description: Properties of a grid.
+      properties:
+        rowCount:
+          type: integer
+          description: The number of rows in the grid.
+          example: 10
+        columnCount:
+          type: integer
+          description: The number of columns in the grid.
+          example: 10
+        frozenRowCount:
+          type: integer
+          description: The number of rows that are frozen in the grid.
+          example: 10
+        frozenColumnCount:
+          type: integer
+          description: The number of columns that are frozen in the grid.
+          example: 10
+        hideGridlines:
+          type: boolean
+          description: True if the grid is not showing gridlines in the UI.
+          example: true
+        rowGroupControlAfter:
+          type: boolean
+          description: True if the row grouping control toggle is shown after the group.
+          example: true
+        columnGroupControlAfter:
+          type: boolean
+          description: True if the column grouping control toggle is shown after the group.
+          example: true
+    InterpolationPoint:
+      type: object
+      description: A single interpolation point on a gradient conditional format.
+      properties:
+        color:
           $ref: '#/components/schemas/Color'
-        themeColor:
+        colorStyle:
+          $ref: '#/components/schemas/ColorStyle'
+        type:
           type: string
-          description: Theme color type.
+          description: How the value should be interpreted.
           enum:
-          - THEME_COLOR_TYPE_UNSPECIFIED
-          - TEXT
-          - BACKGROUND
-          - ACCENT1
-          - ACCENT2
-          - ACCENT3
-          - ACCENT4
-          - ACCENT5
-          - ACCENT6
-          - LINK
-          example: THEME_COLOR_TYPE_UNSPECIFIED
+          - INTERPOLATION_POINT_TYPE_UNSPECIFIED
+          - MIN
+          - MAX
+          - NUMBER
+          - PERCENT
+          - PERCENTILE
+          example: INTERPOLATION_POINT_TYPE_UNSPECIFIED
+        value:
+          type: string
+          description: The value this interpolation point uses.
+          example: example_value
     BatchUpdateSpreadsheetRequest:
       type: object
       description: The request for updating any aspect of a spreadsheet.
@@ -939,166 +899,6 @@ components:
           description: True if grid data should be returned.
           default: false
           example: true
-    Dimension:
-      type: string
-      description: Indicates which dimension an operation should apply to.
-      enum:
-      - DIMENSION_UNSPECIFIED
-      - ROWS
-      - COLUMNS
-    PivotFilterCriteria:
-      type: object
-      description: Criteria for showing/hiding rows in a pivot table.
-      properties:
-        visibleValues:
-          type: array
-          description: Values that should be included.
-          items:
-            type: string
-          example: []
-        condition:
-          $ref: '#/components/schemas/BooleanCondition'
-        visibleByDefault:
-          type: boolean
-          description: Whether values are visible by default.
-          example: true
-    CellData:
-      type: object
-      description: Data about a specific cell.
-      properties:
-        userEnteredValue:
-          $ref: '#/components/schemas/ExtendedValue'
-        effectiveValue:
-          $ref: '#/components/schemas/ExtendedValue'
-        formattedValue:
-          type: string
-          description: The formatted value of the cell. This is the value as it is shown to the user.
-          example: example_value
-        userEnteredFormat:
-          $ref: '#/components/schemas/CellFormat'
-        effectiveFormat:
-          $ref: '#/components/schemas/CellFormat'
-        hyperlink:
-          type: string
-          description: A hyperlink this cell points to, if any.
-          example: example_value
-        note:
-          type: string
-          description: Any note on the cell.
-          example: example_value
-        textFormatRuns:
-          type: array
-          description: Runs of rich text applied to subsections of the cell.
-          items:
-            $ref: '#/components/schemas/TextFormatRun'
-          example: []
-        dataValidation:
-          $ref: '#/components/schemas/DataValidationRule'
-        pivotTable:
-          $ref: '#/components/schemas/PivotTable'
-        dataSourceTable:
-          $ref: '#/components/schemas/DataSourceTable'
-        dataSourceFormula:
-          $ref: '#/components/schemas/DataSourceFormula'
-    BandedRange:
-      type: object
-      description: A banded (alternating colors) range in a sheet.
-      properties:
-        bandedRangeId:
-          type: integer
-          description: The ID of the banded range.
-          example: '500123'
-        range:
-          $ref: '#/components/schemas/GridRange'
-        rowProperties:
-          $ref: '#/components/schemas/BandingProperties'
-        columnProperties:
-          $ref: '#/components/schemas/BandingProperties'
-    EmbeddedObjectPosition:
-      type: object
-      description: The position of an embedded object such as a chart.
-      properties:
-        sheetId:
-          type: integer
-          description: The sheet this is on.
-          example: '500123'
-        overlayPosition:
-          type: object
-          description: The position at which the object is overlaid on top of a grid.
-          properties:
-            anchorCell:
-              $ref: '#/components/schemas/GridCoordinate'
-            offsetXPixels:
-              type: integer
-            offsetYPixels:
-              type: integer
-            widthPixels:
-              type: integer
-            heightPixels:
-              type: integer
-          example: example_value
-        newSheet:
-          type: boolean
-          description: If true, the embedded object is put on a new sheet whose ID is chosen for you.
-          example: true
-    InterpolationPoint:
-      type: object
-      description: A single interpolation point on a gradient conditional format.
-      properties:
-        color:
-          $ref: '#/components/schemas/Color'
-        colorStyle:
-          $ref: '#/components/schemas/ColorStyle'
-        type:
-          type: string
-          description: How the value should be interpreted.
-          enum:
-          - INTERPOLATION_POINT_TYPE_UNSPECIFIED
-          - MIN
-          - MAX
-          - NUMBER
-          - PERCENT
-          - PERCENTILE
-          example: INTERPOLATION_POINT_TYPE_UNSPECIFIED
-        value:
-          type: string
-          description: The value this interpolation point uses.
-          example: example_value
-    Borders:
-      type: object
-      description: The borders of the cell.
-      properties:
-        top:
-          $ref: '#/components/schemas/Border'
-        bottom:
-          $ref: '#/components/schemas/Border'
-        left:
-          $ref: '#/components/schemas/Border'
-        right:
-          $ref: '#/components/schemas/Border'
-    ErrorValue:
-      type: object
-      description: An error in a cell.
-      properties:
-        type:
-          type: string
-          description: The type of error.
-          enum:
-          - ERROR_TYPE_UNSPECIFIED
-          - ERROR
-          - NULL_VALUE
-          - DIVIDE_BY_ZERO
-          - VALUE
-          - REF
-          - NAME
-          - NUM
-          - N_A
-          - LOADING
-          example: ERROR_TYPE_UNSPECIFIED
-        message:
-          type: string
-          description: A message with more information about the error.
-          example: example_value
     Link:
       type: object
       description: An external or local reference.
@@ -1107,72 +907,256 @@ components:
           type: string
           description: The link identifier.
           example: example_value
-    SpreadsheetTheme:
+    BooleanCondition:
       type: object
-      description: Represents spreadsheet theme.
+      description: A condition that can evaluate to true or false.
       properties:
-        primaryFontFamily:
+        type:
           type: string
-          description: Name of the primary font family.
-          example: example_value
-        themeColors:
+          description: The type of condition.
+          enum:
+          - CONDITION_TYPE_UNSPECIFIED
+          - NUMBER_GREATER
+          - NUMBER_GREATER_THAN_EQ
+          - NUMBER_LESS
+          - NUMBER_LESS_THAN_EQ
+          - NUMBER_EQ
+          - NUMBER_NOT_EQ
+          - NUMBER_BETWEEN
+          - NUMBER_NOT_BETWEEN
+          - TEXT_CONTAINS
+          - TEXT_NOT_CONTAINS
+          - TEXT_STARTS_WITH
+          - TEXT_ENDS_WITH
+          - TEXT_EQ
+          - TEXT_IS_EMAIL
+          - TEXT_IS_URL
+          - DATE_EQ
+          - DATE_BEFORE
+          - DATE_AFTER
+          - DATE_ON_OR_BEFORE
+          - DATE_ON_OR_AFTER
+          - DATE_BETWEEN
+          - DATE_NOT_BETWEEN
+          - DATE_IS_VALID
+          - ONE_OF_RANGE
+          - ONE_OF_LIST
+          - BLANK
+          - NOT_BLANK
+          - CUSTOM_FORMULA
+          - BOOLEAN
+          - TEXT_NOT_EQ
+          - DATE_NOT_EQ
+          - FILTER_EXPRESSION
+          example: CONDITION_TYPE_UNSPECIFIED
+        values:
           type: array
-          description: The spreadsheet theme color pairs.
+          description: The values of the condition. The number of supported values depends on the condition type.
           items:
-            type: object
-            properties:
-              colorType:
-                type: string
-                enum:
-                - THEME_COLOR_TYPE_UNSPECIFIED
-                - TEXT
-                - BACKGROUND
-                - ACCENT1
-                - ACCENT2
-                - ACCENT3
-                - ACCENT4
-                - ACCENT5
-                - ACCENT6
-                - LINK
-              color:
-                $ref: '#/components/schemas/ColorStyle'
+            $ref: '#/components/schemas/ConditionValue'
           example: []
-    FilterView:
+    ConditionValue:
       type: object
-      description: A filter view.
+      description: The value of the condition.
       properties:
-        filterViewId:
+        relativeDate:
+          type: string
+          description: A relative date.
+          enum:
+          - RELATIVE_DATE_UNSPECIFIED
+          - PAST_YEAR
+          - PAST_MONTH
+          - PAST_WEEK
+          - YESTERDAY
+          - TODAY
+          - TOMORROW
+          example: RELATIVE_DATE_UNSPECIFIED
+        userEnteredValue:
+          type: string
+          description: A value the condition is based on.
+          example: example_value
+    IterativeCalculationSettings:
+      type: object
+      description: Settings to control how circular dependencies are resolved with iterative calculation.
+      properties:
+        maxIterations:
           type: integer
-          description: The ID of the filter view.
-          example: '500123'
-        title:
+          description: When iterative calculation is enabled, the maximum number of calculation rounds to perform.
+          example: 10
+        convergenceThreshold:
+          type: number
+          description: When iterative calculation is enabled and successive results differ by less than this threshold value, the calculation rounds stop.
+          example: 42.5
+    TextRotation:
+      type: object
+      description: The rotation applied to text in a cell.
+      properties:
+        angle:
+          type: integer
+          description: The angle between the standard orientation and the desired orientation. Measured in degrees. Valid values are between -90 and 90.
+          example: 10
+        vertical:
+          type: boolean
+          description: If true, text reads top to bottom, but the orientation of individual characters is unchanged.
+          example: true
+    BigQueryDataSourceSpec:
+      type: object
+      description: The specification of a BigQuery data source that is connected to a sheet.
+      properties:
+        projectId:
           type: string
-          description: The name of the filter view.
-          example: Example Title
-        range:
-          $ref: '#/components/schemas/GridRange'
-        namedRangeId:
-          type: string
-          description: The named range this filter view is backed by, if any.
+          description: The ID of a BigQuery enabled Google Cloud project with a billing account attached.
           example: '500123'
-        sortSpecs:
-          type: array
-          description: The sort order per column.
-          items:
-            $ref: '#/components/schemas/SortSpec'
-          example: []
-        criteria:
+        querySpec:
           type: object
-          description: The criteria for showing/hiding values per column.
-          additionalProperties:
-            $ref: '#/components/schemas/FilterCriteria'
+          description: A BigQueryQuerySpec.
+          properties:
+            rawQuery:
+              type: string
+              description: The raw query string.
           example: example_value
-        filterSpecs:
+        tableSpec:
+          type: object
+          description: A BigQueryTableSpec.
+          properties:
+            tableProjectId:
+              type: string
+              description: The ID of a BigQuery project the table belongs to.
+            tableId:
+              type: string
+              description: The BigQuery table id.
+            datasetId:
+              type: string
+              description: The BigQuery dataset id.
+          example: example_value
+    ExtendedValue:
+      type: object
+      description: The kinds of value that a cell in a spreadsheet can have.
+      properties:
+        numberValue:
+          type: number
+          description: Represents a double value.
+          example: 42.5
+        stringValue:
+          type: string
+          description: Represents a string value.
+          example: example_value
+        boolValue:
+          type: boolean
+          description: Represents a boolean value.
+          example: true
+        formulaValue:
+          type: string
+          description: Represents a formula.
+          example: example_value
+        errorValue:
+          $ref: '#/components/schemas/ErrorValue'
+    DeveloperMetadataLookup:
+      type: object
+      description: Selects DeveloperMetadata that matches all of the specified fields.
+      properties:
+        locationType:
+          type: string
+          description: Limits the selected developer metadata to that which has a matching location type.
+          enum:
+          - DEVELOPER_METADATA_LOCATION_TYPE_UNSPECIFIED
+          - ROW
+          - COLUMN
+          - SHEET
+          - SPREADSHEET
+          example: DEVELOPER_METADATA_LOCATION_TYPE_UNSPECIFIED
+        metadataLocation:
+          $ref: '#/components/schemas/DeveloperMetadataLocation'
+        locationMatchingStrategy:
+          type: string
+          description: Determines how this lookup matches the location.
+          enum:
+          - DEVELOPER_METADATA_LOCATION_MATCHING_STRATEGY_UNSPECIFIED
+          - EXACT_LOCATION
+          - INTERSECTING_LOCATION
+          example: DEVELOPER_METADATA_LOCATION_MATCHING_STRATEGY_UNSPECIFIED
+        metadataId:
+          type: integer
+          description: Limits the selected developer metadata to that which has a matching metadata ID.
+          example: '500123'
+        metadataKey:
+          type: string
+          description: Limits the selected developer metadata to that which has a matching metadata key.
+          example: example_value
+        metadataValue:
+          type: string
+          description: Limits the selected developer metadata to that which has a matching metadata value.
+          example: example_value
+        visibility:
+          type: string
+          description: Limits the selected developer metadata to that which has a matching visibility.
+          enum:
+          - DEVELOPER_METADATA_VISIBILITY_UNSPECIFIED
+          - DOCUMENT
+          - PROJECT
+          example: DEVELOPER_METADATA_VISIBILITY_UNSPECIFIED
+    DataSourceSheetProperties:
+      type: object
+      description: Additional properties of a DATA_SOURCE sheet.
+      properties:
+        dataSourceId:
+          type: string
+          description: ID of the DataSource the sheet is connected to.
+          example: '500123'
+        columns:
           type: array
-          description: The filter criteria for showing/hiding values per column.
+          description: The columns displayed on the sheet.
           items:
-            $ref: '#/components/schemas/FilterSpec'
+            $ref: '#/components/schemas/DataSourceColumn'
           example: []
+        dataExecutionStatus:
+          $ref: '#/components/schemas/DataExecutionStatus'
+    Border:
+      type: object
+      description: A border along a cell.
+      properties:
+        style:
+          type: string
+          description: The style of the border.
+          enum:
+          - STYLE_UNSPECIFIED
+          - DOTTED
+          - DASHED
+          - SOLID
+          - SOLID_MEDIUM
+          - SOLID_THICK
+          - NONE
+          - DOUBLE
+          example: STYLE_UNSPECIFIED
+        width:
+          type: integer
+          description: The width of the border, in pixels. Deprecated; the width is determined by the style.
+          deprecated: true
+          example: 10
+        color:
+          $ref: '#/components/schemas/Color'
+        colorStyle:
+          $ref: '#/components/schemas/ColorStyle'
+    Padding:
+      type: object
+      description: The amount of padding around the cell, in pixels.
+      properties:
+        top:
+          type: integer
+          description: The top padding of the cell.
+          example: 10
+        right:
+          type: integer
+          description: The right padding of the cell.
+          example: 10
+        bottom:
+          type: integer
+          description: The bottom padding of the cell.
+          example: 10
+        left:
+          type: integer
+          description: The left padding of the cell.
+          example: 10
     PivotValue:
       type: object
       description: The definition of how a value in a pivot table should be calculated.
@@ -1220,178 +1204,112 @@ components:
           example: example_value
         dataSourceColumnReference:
           $ref: '#/components/schemas/DataSourceColumnReference'
-    DeveloperMetadata:
+    DeveloperMetadataLocation:
       type: object
-      description: Developer metadata associated with a location or object in a spreadsheet.
+      description: A location where metadata may be associated in a spreadsheet.
       properties:
-        metadataId:
+        locationType:
+          type: string
+          description: The type of location this object represents.
+          enum:
+          - DEVELOPER_METADATA_LOCATION_TYPE_UNSPECIFIED
+          - ROW
+          - COLUMN
+          - SHEET
+          - SPREADSHEET
+          example: DEVELOPER_METADATA_LOCATION_TYPE_UNSPECIFIED
+        spreadsheet:
+          type: boolean
+          description: True when metadata is associated with an entire spreadsheet.
+          example: true
+        sheetId:
           type: integer
-          description: The spreadsheet-scoped unique ID that identifies the metadata.
+          description: The ID of the sheet when metadata is associated with an entire sheet.
           example: '500123'
-        metadataKey:
-          type: string
-          description: The metadata key.
-          example: example_value
-        metadataValue:
-          type: string
-          description: Data associated with the metadata's key.
-          example: example_value
-        location:
-          $ref: '#/components/schemas/DeveloperMetadataLocation'
-        visibility:
-          type: string
-          description: The metadata visibility.
-          enum:
-          - DEVELOPER_METADATA_VISIBILITY_UNSPECIFIED
-          - DOCUMENT
-          - PROJECT
-          example: DEVELOPER_METADATA_VISIBILITY_UNSPECIFIED
-    Border:
+        dimensionRange:
+          $ref: '#/components/schemas/DimensionRange'
+    DataSourceFormula:
       type: object
-      description: A border along a cell.
+      description: A data source formula.
       properties:
-        style:
-          type: string
-          description: The style of the border.
-          enum:
-          - STYLE_UNSPECIFIED
-          - DOTTED
-          - DASHED
-          - SOLID
-          - SOLID_MEDIUM
-          - SOLID_THICK
-          - NONE
-          - DOUBLE
-          example: STYLE_UNSPECIFIED
-        width:
-          type: integer
-          description: The width of the border, in pixels. Deprecated; the width is determined by the style.
-          deprecated: true
-          example: 10
-        color:
-          $ref: '#/components/schemas/Color'
-        colorStyle:
-          $ref: '#/components/schemas/ColorStyle'
-    PivotTable:
-      type: object
-      description: A pivot table.
-      properties:
-        source:
-          $ref: '#/components/schemas/GridRange'
-        rows:
-          type: array
-          description: Each row grouping in the pivot table.
-          items:
-            $ref: '#/components/schemas/PivotGroup'
-          example: []
-        columns:
-          type: array
-          description: Each column grouping in the pivot table.
-          items:
-            $ref: '#/components/schemas/PivotGroup'
-          example: []
-        values:
-          type: array
-          description: A list of values to include in the pivot table.
-          items:
-            $ref: '#/components/schemas/PivotValue'
-          example: []
-        criteria:
-          type: object
-          description: An optional mapping of filters per source column offset.
-          additionalProperties:
-            $ref: '#/components/schemas/PivotFilterCriteria'
-          example: example_value
-        filterSpecs:
-          type: array
-          description: The filters applied to the source columns before aggregating data.
-          items:
-            $ref: '#/components/schemas/PivotFilterSpec'
-          example: []
-        valueLayout:
-          type: string
-          description: Whether values should be listed horizontally or vertically.
-          enum:
-          - HORIZONTAL
-          - VERTICAL
-          example: HORIZONTAL
-        dataExecutionStatus:
-          $ref: '#/components/schemas/DataExecutionStatus'
         dataSourceId:
           type: string
-          description: The ID of the data source the pivot table is reading data from.
+          description: The ID of the data source the formula is associated with.
           example: '500123'
-    BigQueryDataSourceSpec:
+        dataExecutionStatus:
+          $ref: '#/components/schemas/DataExecutionStatus'
+    DataSource:
       type: object
-      description: The specification of a BigQuery data source that is connected to a sheet.
+      description: Information about an external data source in the spreadsheet.
       properties:
-        projectId:
+        dataSourceId:
           type: string
-          description: The ID of a BigQuery enabled Google Cloud project with a billing account attached.
+          description: The spreadsheet-scoped unique ID that identifies the data source.
           example: '500123'
-        querySpec:
-          type: object
-          description: A BigQueryQuerySpec.
-          properties:
-            rawQuery:
-              type: string
-              description: The raw query string.
-          example: example_value
-        tableSpec:
-          type: object
-          description: A BigQueryTableSpec.
-          properties:
-            tableProjectId:
-              type: string
-              description: The ID of a BigQuery project the table belongs to.
-            tableId:
-              type: string
-              description: The BigQuery table id.
-            datasetId:
-              type: string
-              description: The BigQuery dataset id.
-          example: example_value
-    BatchUpdateSpreadsheetResponse:
+        spec:
+          $ref: '#/components/schemas/DataSourceSpec'
+        calculatedColumns:
+          type: array
+          description: All calculated columns in the data source.
+          items:
+            $ref: '#/components/schemas/DataSourceColumn'
+          example: []
+        sheetId:
+          type: integer
+          description: The ID of the Sheet connected with the data source.
+          example: '500123'
+    PivotGroup:
       type: object
-      description: The reply for batch updating a spreadsheet.
+      description: A single grouping (either row or column) in a pivot table.
       properties:
-        spreadsheetId:
+        sourceColumnOffset:
+          type: integer
+          description: The column offset of the source range that this grouping is based on.
+          example: 10
+        showTotals:
+          type: boolean
+          description: True if the pivot table should include the totals for this grouping.
+          example: true
+        sortOrder:
           type: string
-          description: The spreadsheet the updates were applied to.
-          example: '500123'
-        replies:
-          type: array
-          description: The reply of the updates.
-          items:
-            type: object
-            description: A single response from an update.
-          example: []
-        updatedSpreadsheet:
-          $ref: '#/components/schemas/Spreadsheet'
-    BasicFilter:
+          description: The order the values in this group should be sorted.
+          enum:
+          - SORT_ORDER_UNSPECIFIED
+          - ASCENDING
+          - DESCENDING
+          example: SORT_ORDER_UNSPECIFIED
+        valueBucket:
+          $ref: '#/components/schemas/PivotGroupSortValueBucket'
+        repeatHeadings:
+          type: boolean
+          description: True if the headings in this pivot group should be repeated.
+          example: true
+        label:
+          type: string
+          description: The labels to use for the row/column groups which can be customized.
+          example: Example Title
+        groupRule:
+          $ref: '#/components/schemas/PivotGroupRule'
+        groupLimit:
+          $ref: '#/components/schemas/PivotGroupLimit'
+        dataSourceColumnReference:
+          $ref: '#/components/schemas/DataSourceColumnReference'
+    GridCoordinate:
       type: object
-      description: The default filter associated with a sheet.
+      description: A coordinate in a sheet.
       properties:
-        range:
-          $ref: '#/components/schemas/GridRange'
-        sortSpecs:
-          type: array
-          description: The sort order per column.
-          items:
-            $ref: '#/components/schemas/SortSpec'
-          example: []
-        criteria:
-          type: object
-          description: The criteria for showing/hiding values per column.
-          additionalProperties:
-            $ref: '#/components/schemas/FilterCriteria'
-          example: example_value
-        filterSpecs:
-          type: array
-          description: The filter criteria per column.
-          items:
-            $ref: '#/components/schemas/FilterSpec'
-          example: []
+        sheetId:
+          type: integer
+          description: The sheet this coordinate is on.
+          example: '500123'
+        rowIndex:
+          type: integer
+          description: The row index of the coordinate.
+          example: 10
+        columnIndex:
+          type: integer
+          description: The column index of the coordinate.
+          example: 10
     DataSourceRefreshSchedule:
       type: object
       description: Schedule for refreshing a data source.
@@ -1484,66 +1402,153 @@ components:
               items:
                 type: integer
           example: example_value
-    TextFormatRun:
+    Dimension:
+      type: string
+      description: Indicates which dimension an operation should apply to.
+      enum:
+      - DIMENSION_UNSPECIFIED
+      - ROWS
+      - COLUMNS
+    DataSourceColumnReference:
       type: object
-      description: A run of a text format.
-      properties:
-        startIndex:
-          type: integer
-          description: The character index where this run starts (zero-based).
-          example: 10
-        format:
-          $ref: '#/components/schemas/TextFormat'
-    GridCoordinate:
-      type: object
-      description: A coordinate in a sheet.
-      properties:
-        sheetId:
-          type: integer
-          description: The sheet this coordinate is on.
-          example: '500123'
-        rowIndex:
-          type: integer
-          description: The row index of the coordinate.
-          example: 10
-        columnIndex:
-          type: integer
-          description: The column index of the coordinate.
-          example: 10
-    DataSourceParameter:
-      type: object
-      description: A parameter in a data source's query.
+      description: An unique identifier that references a data source column.
       properties:
         name:
           type: string
-          description: Named parameter.
+          description: The display name of the column.
           example: Example Title
-        namedRangeId:
-          type: string
-          description: ID of a NamedRange.
-          example: '500123'
-        range:
-          $ref: '#/components/schemas/GridRange'
-    BandingProperties:
+    Borders:
       type: object
-      description: Properties referring a single dimension (either row or column).
+      description: The borders of the cell.
       properties:
-        headerColor:
-          $ref: '#/components/schemas/Color'
-        headerColorStyle:
-          $ref: '#/components/schemas/ColorStyle'
-        firstBandColor:
-          $ref: '#/components/schemas/Color'
-        firstBandColorStyle:
-          $ref: '#/components/schemas/ColorStyle'
-        secondBandColor:
-          $ref: '#/components/schemas/Color'
-        secondBandColorStyle:
-          $ref: '#/components/schemas/ColorStyle'
-        footerColor:
-          $ref: '#/components/schemas/Color'
-        footerColorStyle:
-          $ref: '#/components/schemas/ColorStyle'
+        top:
+          $ref: '#/components/schemas/Border'
+        bottom:
+          $ref: '#/components/schemas/Border'
+        left:
+          $ref: '#/components/schemas/Border'
+        right:
+          $ref: '#/components/schemas/Border'
+    FilterSpec:
+      type: object
+      description: The filter criteria associated with a specific column.
+      properties:
+        filterCriteria:
+          $ref: '#/components/schemas/FilterCriteria'
+        columnIndex:
+          type: integer
+          description: The zero-based column index.
+          example: 10
+        dataSourceColumnReference:
+          $ref: '#/components/schemas/DataSourceColumnReference'
+    ErrorValue:
+      type: object
+      description: An error in a cell.
+      properties:
+        type:
+          type: string
+          description: The type of error.
+          enum:
+          - ERROR_TYPE_UNSPECIFIED
+          - ERROR
+          - NULL_VALUE
+          - DIVIDE_BY_ZERO
+          - VALUE
+          - REF
+          - NAME
+          - NUM
+          - N_A
+          - LOADING
+          example: ERROR_TYPE_UNSPECIFIED
+        message:
+          type: string
+          description: A message with more information about the error.
+          example: example_value
+    GridRange:
+      type: object
+      description: A range on a sheet. All indexes are zero-based.
+      properties:
+        sheetId:
+          type: integer
+          description: The sheet this range is on.
+          example: '500123'
+        startRowIndex:
+          type: integer
+          description: The start row (inclusive) of the range, or not set if unbounded.
+          example: 10
+        endRowIndex:
+          type: integer
+          description: The end row (exclusive) of the range, or not set if unbounded.
+          example: 10
+        startColumnIndex:
+          type: integer
+          description: The start column (inclusive) of the range, or not set if unbounded.
+          example: 10
+        endColumnIndex:
+          type: integer
+          description: The end column (exclusive) of the range, or not set if unbounded.
+          example: 10
+    DataExecutionStatus:
+      type: object
+      description: The data execution status.
+      properties:
+        state:
+          type: string
+          description: The state of the data execution.
+          enum:
+          - DATA_EXECUTION_STATE_UNSPECIFIED
+          - NOT_STARTED
+          - RUNNING
+          - CANCELLING
+          - SUCCEEDED
+          - FAILED
+          example: DATA_EXECUTION_STATE_UNSPECIFIED
+        errorCode:
+          type: string
+          description: The error code.
+          enum:
+          - DATA_EXECUTION_ERROR_CODE_UNSPECIFIED
+          - TIMED_OUT
+          - TOO_MANY_ROWS
+          - TOO_MANY_COLUMNS
+          - TOO_MANY_CELLS
+          - ENGINE
+          - PARAMETER_INVALID
+          - UNSUPPORTED_DATA_TYPE
+          - DUPLICATE_COLUMN_NAMES
+          - INTERRUPTED
+          - CONCURRENT_QUERY
+          - OTHER
+          - TOO_MANY_CHARS_PER_CELL
+          - DATA_NOT_FOUND
+          - PERMISSION_DENIED
+          - MISSING_COLUMN_ALIAS
+          - OBJECT_NOT_FOUND
+          - OBJECT_IN_ERROR_STATE
+          - OBJECT_SPEC_INVALID
+          - DATA_EXECUTION_CANCELLED
+          example: DATA_EXECUTION_ERROR_CODE_UNSPECIFIED
+        errorMessage:
+          type: string
+          description: The error message, which may be empty.
+          example: example_value
+        lastRefreshTime:
+          type: string
+          format: date-time
+          description: Gets the time the data last successfully refreshed.
+          example: '2026-01-15T10:30:00Z'
+    DataSourceSpec:
+      type: object
+      description: This specifies the details of the data source.
+      properties:
+        parameters:
+          type: array
+          description: The parameters of the data source, used when querying the data source.
+          items:
+            $ref: '#/components/schemas/DataSourceParameter'
+          example: []
+        bigQuery:
+          $ref: '#/components/schemas/BigQueryDataSourceSpec'
     SortSpec:
       type: object
       description: A sort order associated with a specific column or row.
@@ -1570,72 +1575,55 @@ components:
           $ref: '#/components/schemas/ColorStyle'
         dataSourceColumnReference:
           $ref: '#/components/schemas/DataSourceColumnReference'
-    DataSourceColumnReference:
+    PivotTable:
       type: object
-      description: An unique identifier that references a data source column.
+      description: A pivot table.
       properties:
-        name:
-          type: string
-          description: The display name of the column.
-          example: Example Title
-    DataSourceSheetProperties:
-      type: object
-      description: Additional properties of a DATA_SOURCE sheet.
-      properties:
-        dataSourceId:
-          type: string
-          description: ID of the DataSource the sheet is connected to.
-          example: '500123'
+        source:
+          $ref: '#/components/schemas/GridRange'
+        rows:
+          type: array
+          description: Each row grouping in the pivot table.
+          items:
+            $ref: '#/components/schemas/PivotGroup'
+          example: []
         columns:
           type: array
-          description: The columns displayed on the sheet.
+          description: Each column grouping in the pivot table.
           items:
-            $ref: '#/components/schemas/DataSourceColumn'
+            $ref: '#/components/schemas/PivotGroup'
           example: []
+        values:
+          type: array
+          description: A list of values to include in the pivot table.
+          items:
+            $ref: '#/components/schemas/PivotValue'
+          example: []
+        criteria:
+          type: object
+          description: An optional mapping of filters per source column offset.
+          additionalProperties:
+            $ref: '#/components/schemas/PivotFilterCriteria'
+          example: example_value
+        filterSpecs:
+          type: array
+          description: The filters applied to the source columns before aggregating data.
+          items:
+            $ref: '#/components/schemas/PivotFilterSpec'
+          example: []
+        valueLayout:
+          type: string
+          description: Whether values should be listed horizontally or vertically.
+          enum:
+          - HORIZONTAL
+          - VERTICAL
+          example: HORIZONTAL
         dataExecutionStatus:
           $ref: '#/components/schemas/DataExecutionStatus'
-    Color:
-      type: object
-      description: Represents a color in the RGBA color space. Values are in the range [0, 1].
-      properties:
-        red:
-          type: number
-          description: The amount of red in the color as a value in the range [0, 1].
-          example: 42.5
-        green:
-          type: number
-          description: The amount of green in the color as a value in the range [0, 1].
-          example: 42.5
-        blue:
-          type: number
-          description: The amount of blue in the color as a value in the range [0, 1].
-          example: 42.5
-        alpha:
-          type: number
-          description: The fraction of this color that should be applied to the pixel. A value of 1.0 corresponds to a solid color.
-          example: 42.5
-    NumberFormat:
-      type: object
-      description: The number format of a cell.
-      properties:
-        type:
+        dataSourceId:
           type: string
-          description: The type of the number format.
-          enum:
-          - NUMBER_FORMAT_TYPE_UNSPECIFIED
-          - TEXT
-          - NUMBER
-          - PERCENT
-          - CURRENCY
-          - DATE
-          - TIME
-          - DATE_TIME
-          - SCIENTIFIC
-          example: NUMBER_FORMAT_TYPE_UNSPECIFIED
-        pattern:
-          type: string
-          description: Pattern string used for formatting.
-          example: example_value
+          description: The ID of the data source the pivot table is reading data from.
+          example: '500123'
     DimensionRange:
       type: object
       description: A range along a single dimension on a sheet.
@@ -1654,28 +1642,6 @@ components:
           type: integer
           description: The end (exclusive) of the span.
           example: 10
-    TextRotation:
-      type: object
-      description: The rotation applied to text in a cell.
-      properties:
-        angle:
-          type: integer
-          description: The angle between the standard orientation and the desired orientation. Measured in degrees. Valid values are between -90 and 90.
-          example: 10
-        vertical:
-          type: boolean
-          description: If true, text reads top to bottom, but the orientation of individual characters is unchanged.
-          example: true
-    RowData:
-      type: object
-      description: Data about each cell in a row.
-      properties:
-        values:
-          type: array
-          description: The values in the row, one per column.
-          items:
-            $ref: '#/components/schemas/CellData'
-          example: []
     PivotGroupRule:
       type: object
       description: An optional setting on a PivotGroup that defines buckets for the values in the source data column.
@@ -1730,60 +1696,30 @@ components:
               - YEAR_QUARTER
               - YEAR_MONTH_DAY
           example: example_value
-    DataSource:
+    BasicFilter:
       type: object
-      description: Information about an external data source in the spreadsheet.
+      description: The default filter associated with a sheet.
       properties:
-        dataSourceId:
-          type: string
-          description: The spreadsheet-scoped unique ID that identifies the data source.
-          example: '500123'
-        spec:
-          $ref: '#/components/schemas/DataSourceSpec'
-        calculatedColumns:
-          type: array
-          description: All calculated columns in the data source.
-          items:
-            $ref: '#/components/schemas/DataSourceColumn'
-          example: []
-        sheetId:
-          type: integer
-          description: The ID of the Sheet connected with the data source.
-          example: '500123'
-    DataFilter:
-      type: object
-      description: Filter that describes what data should be selected or returned from a request.
-      properties:
-        developerMetadataLookup:
-          $ref: '#/components/schemas/DeveloperMetadataLookup'
-        a1Range:
-          type: string
-          description: Selects data that matches the specified A1 range.
-          example: example_value
-        gridRange:
+        range:
           $ref: '#/components/schemas/GridRange'
-    ErrorResponse:
-      type: object
-      description: An error response from the API.
-      properties:
-        error:
+        sortSpecs:
+          type: array
+          description: The sort order per column.
+          items:
+            $ref: '#/components/schemas/SortSpec'
+          example: []
+        criteria:
           type: object
-          properties:
-            code:
-              type: integer
-              description: The HTTP status code.
-            message:
-              type: string
-              description: A human-readable error message.
-            status:
-              type: string
-              description: The status of the error.
-            details:
-              type: array
-              description: Additional error details.
-              items:
-                type: object
+          description: The criteria for showing/hiding values per column.
+          additionalProperties:
+            $ref: '#/components/schemas/FilterCriteria'
           example: example_value
+        filterSpecs:
+          type: array
+          description: The filter criteria per column.
+          items:
+            $ref: '#/components/schemas/FilterSpec'
+          example: []
     Spreadsheet:
       type: object
       description: A Google Sheets spreadsheet resource.
@@ -1832,150 +1768,6 @@ components:
           items:
             $ref: '#/components/schemas/DataSourceRefreshSchedule'
           example: []
-    DeveloperMetadataLookup:
-      type: object
-      description: Selects DeveloperMetadata that matches all of the specified fields.
-      properties:
-        locationType:
-          type: string
-          description: Limits the selected developer metadata to that which has a matching location type.
-          enum:
-          - DEVELOPER_METADATA_LOCATION_TYPE_UNSPECIFIED
-          - ROW
-          - COLUMN
-          - SHEET
-          - SPREADSHEET
-          example: DEVELOPER_METADATA_LOCATION_TYPE_UNSPECIFIED
-        metadataLocation:
-          $ref: '#/components/schemas/DeveloperMetadataLocation'
-        locationMatchingStrategy:
-          type: string
-          description: Determines how this lookup matches the location.
-          enum:
-          - DEVELOPER_METADATA_LOCATION_MATCHING_STRATEGY_UNSPECIFIED
-          - EXACT_LOCATION
-          - INTERSECTING_LOCATION
-          example: DEVELOPER_METADATA_LOCATION_MATCHING_STRATEGY_UNSPECIFIED
-        metadataId:
-          type: integer
-          description: Limits the selected developer metadata to that which has a matching metadata ID.
-          example: '500123'
-        metadataKey:
-          type: string
-          description: Limits the selected developer metadata to that which has a matching metadata key.
-          example: example_value
-        metadataValue:
-          type: string
-          description: Limits the selected developer metadata to that which has a matching metadata value.
-          example: example_value
-        visibility:
-          type: string
-          description: Limits the selected developer metadata to that which has a matching visibility.
-          enum:
-          - DEVELOPER_METADATA_VISIBILITY_UNSPECIFIED
-          - DOCUMENT
-          - PROJECT
-          example: DEVELOPER_METADATA_VISIBILITY_UNSPECIFIED
-    Sheet:
-      type: object
-      description: A sheet in a spreadsheet.
-      properties:
-        properties:
-          $ref: '#/components/schemas/SheetProperties'
-        data:
-          type: array
-          description: Data in the grid, if this is a grid sheet.
-          items:
-            $ref: '#/components/schemas/GridData'
-          example: []
-        merges:
-          type: array
-          description: The ranges that are merged together.
-          items:
-            $ref: '#/components/schemas/GridRange'
-          example: []
-        conditionalFormats:
-          type: array
-          description: The conditional format rules in this sheet.
-          items:
-            $ref: '#/components/schemas/ConditionalFormatRule'
-          example: []
-        filterViews:
-          type: array
-          description: The filter views in this sheet.
-          items:
-            $ref: '#/components/schemas/FilterView'
-          example: []
-        protectedRanges:
-          type: array
-          description: The protected ranges in this sheet.
-          items:
-            $ref: '#/components/schemas/ProtectedRange'
-          example: []
-        basicFilter:
-          $ref: '#/components/schemas/BasicFilter'
-        charts:
-          type: array
-          description: The specifications of every chart on this sheet.
-          items:
-            $ref: '#/components/schemas/EmbeddedChart'
-          example: []
-        bandedRanges:
-          type: array
-          description: The banded (alternating colors) ranges on this sheet.
-          items:
-            $ref: '#/components/schemas/BandedRange'
-          example: []
-        slicers:
-          type: array
-          description: The slicers on this sheet.
-          items:
-            $ref: '#/components/schemas/Slicer'
-          example: []
-    NamedRange:
-      type: object
-      description: A named range.
-      properties:
-        namedRangeId:
-          type: string
-          description: The ID of the named range.
-          example: '500123'
-        name:
-          type: string
-          description: The name of the named range.
-          example: Example Title
-        range:
-          $ref: '#/components/schemas/GridRange'
-    ConditionalFormatRule:
-      type: object
-      description: A rule describing a conditional format.
-      properties:
-        ranges:
-          type: array
-          description: The ranges that are formatted if the condition is true.
-          items:
-            $ref: '#/components/schemas/GridRange'
-          example: []
-        booleanRule:
-          type: object
-          description: The formatting is either on or off according to the rule.
-          properties:
-            condition:
-              $ref: '#/components/schemas/BooleanCondition'
-            format:
-              $ref: '#/components/schemas/CellFormat'
-          example: example_value
-        gradientRule:
-          type: object
-          description: The formatting will vary based on the gradients in the rule.
-          properties:
-            minpoint:
-              $ref: '#/components/schemas/InterpolationPoint'
-            midpoint:
-              $ref: '#/components/schemas/InterpolationPoint'
-            maxpoint:
-              $ref: '#/components/schemas/InterpolationPoint'
-          example: example_value
     DataSourceColumn:
       type: object
       description: A column in a data source.
@@ -2033,76 +1825,20 @@ components:
             domainUsersCanEdit:
               type: boolean
           example: example_value
-    Slicer:
+    BandedRange:
       type: object
-      description: A slicer in a sheet.
+      description: A banded (alternating colors) range in a sheet.
       properties:
-        slicerId:
+        bandedRangeId:
           type: integer
-          description: The ID of the slicer.
+          description: The ID of the banded range.
           example: '500123'
-        spec:
-          type: object
-          description: The specification of the slicer.
-          properties:
-            dataRange:
-              $ref: '#/components/schemas/GridRange'
-            filterCriteria:
-              $ref: '#/components/schemas/FilterCriteria'
-            columnIndex:
-              type: integer
-            applyToPivotTables:
-              type: boolean
-            title:
-              type: string
-            textFormat:
-              $ref: '#/components/schemas/TextFormat'
-            backgroundColor:
-              $ref: '#/components/schemas/Color'
-            backgroundColorStyle:
-              $ref: '#/components/schemas/ColorStyle'
-            horizontalAlignment:
-              type: string
-              enum:
-              - HORIZONTAL_ALIGN_UNSPECIFIED
-              - LEFT
-              - CENTER
-              - RIGHT
-          example: example_value
-        position:
-          $ref: '#/components/schemas/EmbeddedObjectPosition'
-    GridProperties:
-      type: object
-      description: Properties of a grid.
-      properties:
-        rowCount:
-          type: integer
-          description: The number of rows in the grid.
-          example: 10
-        columnCount:
-          type: integer
-          description: The number of columns in the grid.
-          example: 10
-        frozenRowCount:
-          type: integer
-          description: The number of rows that are frozen in the grid.
-          example: 10
-        frozenColumnCount:
-          type: integer
-          description: The number of columns that are frozen in the grid.
-          example: 10
-        hideGridlines:
-          type: boolean
-          description: True if the grid is not showing gridlines in the UI.
-          example: true
-        rowGroupControlAfter:
-          type: boolean
-          description: True if the row grouping control toggle is shown after the group.
-          example: true
-        columnGroupControlAfter:
-          type: boolean
-          description: True if the column grouping control toggle is shown after the group.
-          example: true
+        range:
+          $ref: '#/components/schemas/GridRange'
+        rowProperties:
+          $ref: '#/components/schemas/BandingProperties'
+        columnProperties:
+          $ref: '#/components/schemas/BandingProperties'
     GridData:
       type: object
       description: Data in the grid, as well as metadata about the dimensions.
@@ -2133,66 +1869,96 @@ components:
           items:
             $ref: '#/components/schemas/DimensionProperties'
           example: []
-    DimensionProperties:
+    SpreadsheetProperties:
       type: object
-      description: Properties about a dimension.
+      description: Properties of a spreadsheet.
       properties:
-        hiddenByFilter:
-          type: boolean
-          description: True if this dimension is being filtered.
-          example: true
-        hiddenByUser:
-          type: boolean
-          description: True if this dimension is explicitly hidden.
-          example: true
-        pixelSize:
-          type: integer
-          description: The height (for rows) or width (for columns) of the dimension in pixels.
-          example: 10
-        developerMetadata:
-          type: array
-          description: The developer metadata associated with a single row or column.
-          items:
-            $ref: '#/components/schemas/DeveloperMetadata'
-          example: []
-        dataSourceColumnReference:
-          $ref: '#/components/schemas/DataSourceColumnReference'
-    DeveloperMetadataLocation:
-      type: object
-      description: A location where metadata may be associated in a spreadsheet.
-      properties:
-        locationType:
+        title:
           type: string
-          description: The type of location this object represents.
+          description: The title of the spreadsheet.
+          example: Example Title
+        locale:
+          type: string
+          description: 'The locale of the spreadsheet in one of the following formats: an ISO 639-1 language code, an ISO 639-2 language code, or a combination of the ISO language code and country code (e.g. en, eng, en_US).'
+          example: example_value
+        autoRecalc:
+          type: string
+          description: The amount of time to wait before volatile functions are recalculated.
           enum:
-          - DEVELOPER_METADATA_LOCATION_TYPE_UNSPECIFIED
-          - ROW
-          - COLUMN
-          - SHEET
-          - SPREADSHEET
-          example: DEVELOPER_METADATA_LOCATION_TYPE_UNSPECIFIED
-        spreadsheet:
+          - ON_CHANGE
+          - MINUTE
+          - HOUR
+          example: ON_CHANGE
+        timeZone:
+          type: string
+          description: The time zone of the spreadsheet in CLDR format (e.g. America/New_York).
+          example: example_value
+        defaultFormat:
+          $ref: '#/components/schemas/CellFormat'
+        iterativeCalculationSettings:
+          $ref: '#/components/schemas/IterativeCalculationSettings'
+        spreadsheetTheme:
+          $ref: '#/components/schemas/SpreadsheetTheme'
+        importFunctionsExternalUrlAccessAllowed:
           type: boolean
-          description: True when metadata is associated with an entire spreadsheet.
-          example: true
-        sheetId:
-          type: integer
-          description: The ID of the sheet when metadata is associated with an entire sheet.
-          example: '500123'
-        dimensionRange:
-          $ref: '#/components/schemas/DimensionRange'
-    DataSourceSpec:
+          description: Whether to allow external URL access for image and import functions.
+          example: https://www.example.com
+    DeveloperMetadata:
       type: object
-      description: This specifies the details of the data source.
+      description: Developer metadata associated with a location or object in a spreadsheet.
       properties:
-        parameters:
+        metadataId:
+          type: integer
+          description: The spreadsheet-scoped unique ID that identifies the metadata.
+          example: '500123'
+        metadataKey:
+          type: string
+          description: The metadata key.
+          example: example_value
+        metadataValue:
+          type: string
+          description: Data associated with the metadata's key.
+          example: example_value
+        location:
+          $ref: '#/components/schemas/DeveloperMetadataLocation'
+        visibility:
+          type: string
+          description: The metadata visibility.
+          enum:
+          - DEVELOPER_METADATA_VISIBILITY_UNSPECIFIED
+          - DOCUMENT
+          - PROJECT
+          example: DEVELOPER_METADATA_VISIBILITY_UNSPECIFIED
+    SpreadsheetTheme:
+      type: object
+      description: Represents spreadsheet theme.
+      properties:
+        primaryFontFamily:
+          type: string
+          description: Name of the primary font family.
+          example: example_value
+        themeColors:
           type: array
-          description: The parameters of the data source, used when querying the data source.
+          description: The spreadsheet theme color pairs.
           items:
-            $ref: '#/components/schemas/DataSourceParameter'
+            type: object
+            properties:
+              colorType:
+                type: string
+                enum:
+                - THEME_COLOR_TYPE_UNSPECIFIED
+                - TEXT
+                - BACKGROUND
+                - ACCENT1
+                - ACCENT2
+                - ACCENT3
+                - ACCENT4
+                - ACCENT5
+                - ACCENT6
+                - LINK
+              color:
+                $ref: '#/components/schemas/ColorStyle'
           example: []
-        bigQuery:
-          $ref: '#/components/schemas/BigQueryDataSourceSpec'
     EmbeddedChart:
       type: object
       description: A chart embedded in a sheet.
@@ -2207,55 +1973,289 @@ components:
           type: object
           description: The specification of the chart.
           example: example_value
-    DataExecutionStatus:
+    ErrorResponse:
       type: object
-      description: The data execution status.
+      description: An error response from the API.
       properties:
-        state:
-          type: string
-          description: The state of the data execution.
-          enum:
-          - DATA_EXECUTION_STATE_UNSPECIFIED
-          - NOT_STARTED
-          - RUNNING
-          - CANCELLING
-          - SUCCEEDED
-          - FAILED
-          example: DATA_EXECUTION_STATE_UNSPECIFIED
-        errorCode:
-          type: string
-          description: The error code.
-          enum:
-          - DATA_EXECUTION_ERROR_CODE_UNSPECIFIED
-          - TIMED_OUT
-          - TOO_MANY_ROWS
-          - TOO_MANY_COLUMNS
-          - TOO_MANY_CELLS
-          - ENGINE
-          - PARAMETER_INVALID
-          - UNSUPPORTED_DATA_TYPE
-          - DUPLICATE_COLUMN_NAMES
-          - INTERRUPTED
-          - CONCURRENT_QUERY
-          - OTHER
-          - TOO_MANY_CHARS_PER_CELL
-          - DATA_NOT_FOUND
-          - PERMISSION_DENIED
-          - MISSING_COLUMN_ALIAS
-          - OBJECT_NOT_FOUND
-          - OBJECT_IN_ERROR_STATE
-          - OBJECT_SPEC_INVALID
-          - DATA_EXECUTION_CANCELLED
-          example: DATA_EXECUTION_ERROR_CODE_UNSPECIFIED
-        errorMessage:
-          type: string
-          description: The error message, which may be empty.
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+              description: The HTTP status code.
+            message:
+              type: string
+              description: A human-readable error message.
+            status:
+              type: string
+              description: The status of the error.
+            details:
+              type: array
+              description: Additional error details.
+              items:
+                type: object
           example: example_value
-        lastRefreshTime:
+    NamedRange:
+      type: object
+      description: A named range.
+      properties:
+        namedRangeId:
           type: string
-          format: date-time
-          description: Gets the time the data last successfully refreshed.
-          example: '2026-01-15T10:30:00Z'
+          description: The ID of the named range.
+          example: '500123'
+        name:
+          type: string
+          description: The name of the named range.
+          example: Example Title
+        range:
+          $ref: '#/components/schemas/GridRange'
+    FilterCriteria:
+      type: object
+      description: Criteria for showing/hiding rows in a filter or filter view.
+      properties:
+        hiddenValues:
+          type: array
+          description: Values that should be hidden.
+          items:
+            type: string
+          example: []
+        condition:
+          $ref: '#/components/schemas/BooleanCondition'
+        visibleBackgroundColor:
+          $ref: '#/components/schemas/Color'
+        visibleBackgroundColorStyle:
+          $ref: '#/components/schemas/ColorStyle'
+        visibleForegroundColor:
+          $ref: '#/components/schemas/Color'
+        visibleForegroundColorStyle:
+          $ref: '#/components/schemas/ColorStyle'
+    NumberFormat:
+      type: object
+      description: The number format of a cell.
+      properties:
+        type:
+          type: string
+          description: The type of the number format.
+          enum:
+          - NUMBER_FORMAT_TYPE_UNSPECIFIED
+          - TEXT
+          - NUMBER
+          - PERCENT
+          - CURRENCY
+          - DATE
+          - TIME
+          - DATE_TIME
+          - SCIENTIFIC
+          example: NUMBER_FORMAT_TYPE_UNSPECIFIED
+        pattern:
+          type: string
+          description: Pattern string used for formatting.
+          example: example_value
+    BandingProperties:
+      type: object
+      description: Properties referring a single dimension (either row or column).
+      properties:
+        headerColor:
+          $ref: '#/components/schemas/Color'
+        headerColorStyle:
+          $ref: '#/components/schemas/ColorStyle'
+        firstBandColor:
+          $ref: '#/components/schemas/Color'
+        firstBandColorStyle:
+          $ref: '#/components/schemas/ColorStyle'
+        secondBandColor:
+          $ref: '#/components/schemas/Color'
+        secondBandColorStyle:
+          $ref: '#/components/schemas/ColorStyle'
+        footerColor:
+          $ref: '#/components/schemas/Color'
+        footerColorStyle:
+          $ref: '#/components/schemas/ColorStyle'
+    PivotFilterSpec:
+      type: object
+      description: The pivot table filter criteria associated with a specific source column offset.
+      properties:
+        filterCriteria:
+          $ref: '#/components/schemas/PivotFilterCriteria'
+        columnOffsetIndex:
+          type: integer
+          description: The zero-based column offset of the source range.
+          example: 10
+        dataSourceColumnReference:
+          $ref: '#/components/schemas/DataSourceColumnReference'
+    DataSourceParameter:
+      type: object
+      description: A parameter in a data source's query.
+      properties:
+        name:
+          type: string
+          description: Named parameter.
+          example: Example Title
+        namedRangeId:
+          type: string
+          description: ID of a NamedRange.
+          example: '500123'
+        range:
+          $ref: '#/components/schemas/GridRange'
+    CellData:
+      type: object
+      description: Data about a specific cell.
+      properties:
+        userEnteredValue:
+          $ref: '#/components/schemas/ExtendedValue'
+        effectiveValue:
+          $ref: '#/components/schemas/ExtendedValue'
+        formattedValue:
+          type: string
+          description: The formatted value of the cell. This is the value as it is shown to the user.
+          example: example_value
+        userEnteredFormat:
+          $ref: '#/components/schemas/CellFormat'
+        effectiveFormat:
+          $ref: '#/components/schemas/CellFormat'
+        hyperlink:
+          type: string
+          description: A hyperlink this cell points to, if any.
+          example: example_value
+        note:
+          type: string
+          description: Any note on the cell.
+          example: example_value
+        textFormatRuns:
+          type: array
+          description: Runs of rich text applied to subsections of the cell.
+          items:
+            $ref: '#/components/schemas/TextFormatRun'
+          example: []
+        dataValidation:
+          $ref: '#/components/schemas/DataValidationRule'
+        pivotTable:
+          $ref: '#/components/schemas/PivotTable'
+        dataSourceTable:
+          $ref: '#/components/schemas/DataSourceTable'
+        dataSourceFormula:
+          $ref: '#/components/schemas/DataSourceFormula'
+    EmbeddedObjectPosition:
+      type: object
+      description: The position of an embedded object such as a chart.
+      properties:
+        sheetId:
+          type: integer
+          description: The sheet this is on.
+          example: '500123'
+        overlayPosition:
+          type: object
+          description: The position at which the object is overlaid on top of a grid.
+          properties:
+            anchorCell:
+              $ref: '#/components/schemas/GridCoordinate'
+            offsetXPixels:
+              type: integer
+            offsetYPixels:
+              type: integer
+            widthPixels:
+              type: integer
+            heightPixels:
+              type: integer
+          example: example_value
+        newSheet:
+          type: boolean
+          description: If true, the embedded object is put on a new sheet whose ID is chosen for you.
+          example: true
+    BatchUpdateSpreadsheetResponse:
+      type: object
+      description: The reply for batch updating a spreadsheet.
+      properties:
+        spreadsheetId:
+          type: string
+          description: The spreadsheet the updates were applied to.
+          example: '500123'
+        replies:
+          type: array
+          description: The reply of the updates.
+          items:
+            type: object
+            description: A single response from an update.
+          example: []
+        updatedSpreadsheet:
+          $ref: '#/components/schemas/Spreadsheet'
+    DataSourceTable:
+      type: object
+      description: A data source table, which allows the user to import a static table of data from the DataSource into Sheets.
+      properties:
+        dataSourceId:
+          type: string
+          description: The ID of the data source the data source table is associated with.
+          example: '500123'
+        columnSelectionType:
+          type: string
+          description: The type to select columns for the data source table.
+          enum:
+          - DATA_SOURCE_TABLE_COLUMN_SELECTION_TYPE_UNSPECIFIED
+          - SELECTED
+          - SYNC_ALL
+          example: DATA_SOURCE_TABLE_COLUMN_SELECTION_TYPE_UNSPECIFIED
+        columns:
+          type: array
+          description: Columns selected for the data source table.
+          items:
+            $ref: '#/components/schemas/DataSourceColumnReference'
+          example: []
+        filterSpecs:
+          type: array
+          description: Filter specifications in the data source table.
+          items:
+            $ref: '#/components/schemas/FilterSpec'
+          example: []
+        sortSpecs:
+          type: array
+          description: Sort specifications in the data source table.
+          items:
+            $ref: '#/components/schemas/SortSpec'
+          example: []
+        rowLimit:
+          type: integer
+          description: The limit of rows to return.
+          example: 10
+        dataExecutionStatus:
+          $ref: '#/components/schemas/DataExecutionStatus'
+    DataFilter:
+      type: object
+      description: Filter that describes what data should be selected or returned from a request.
+      properties:
+        developerMetadataLookup:
+          $ref: '#/components/schemas/DeveloperMetadataLookup'
+        a1Range:
+          type: string
+          description: Selects data that matches the specified A1 range.
+          example: example_value
+        gridRange:
+          $ref: '#/components/schemas/GridRange'
+  responses:
+    NotFound:
+      description: The requested spreadsheet or range was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Forbidden:
+      description: The caller does not have permission to access the requested resource.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Authentication credentials are missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    TooManyRequests:
+      description: Rate limit exceeded. Too many requests in a given amount of time.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   parameters:
     spreadsheetId:
       name: spreadsheetId
