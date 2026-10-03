@@ -148,6 +148,18 @@ components:
       - DIMENSION_UNSPECIFIED
       - ROWS
       - COLUMNS
+    DataFilter:
+      type: object
+      description: Filter that describes what data should be selected or returned from a request.
+      properties:
+        developerMetadataLookup:
+          $ref: '#/components/schemas/DeveloperMetadataLookup'
+        a1Range:
+          type: string
+          description: Selects data that matches the specified A1 range.
+          example: example_value
+        gridRange:
+          $ref: '#/components/schemas/GridRange'
     ErrorResponse:
       type: object
       description: An error response from the API.
@@ -170,6 +182,32 @@ components:
               items:
                 type: object
           example: example_value
+    DeveloperMetadata:
+      type: object
+      description: Developer metadata associated with a location or object in a spreadsheet.
+      properties:
+        metadataId:
+          type: integer
+          description: The spreadsheet-scoped unique ID that identifies the metadata.
+          example: '500123'
+        metadataKey:
+          type: string
+          description: The metadata key.
+          example: example_value
+        metadataValue:
+          type: string
+          description: Data associated with the metadata's key.
+          example: example_value
+        location:
+          $ref: '#/components/schemas/DeveloperMetadataLocation'
+        visibility:
+          type: string
+          description: The metadata visibility.
+          enum:
+          - DEVELOPER_METADATA_VISIBILITY_UNSPECIFIED
+          - DOCUMENT
+          - PROJECT
+          example: DEVELOPER_METADATA_VISIBILITY_UNSPECIFIED
     GridRange:
       type: object
       description: A range on a sheet. All indexes are zero-based.
@@ -193,24 +231,6 @@ components:
         endColumnIndex:
           type: integer
           description: The end column (exclusive) of the range, or not set if unbounded.
-          example: 10
-    DimensionRange:
-      type: object
-      description: A range along a single dimension on a sheet.
-      properties:
-        sheetId:
-          type: integer
-          description: The sheet this span is on.
-          example: '500123'
-        dimension:
-          $ref: '#/components/schemas/Dimension'
-        startIndex:
-          type: integer
-          description: The start (inclusive) of the span.
-          example: 10
-        endIndex:
-          type: integer
-          description: The end (exclusive) of the span.
           example: 10
     DeveloperMetadataLookup:
       type: object
@@ -256,18 +276,24 @@ components:
           - DOCUMENT
           - PROJECT
           example: DEVELOPER_METADATA_VISIBILITY_UNSPECIFIED
-    DataFilter:
+    DimensionRange:
       type: object
-      description: Filter that describes what data should be selected or returned from a request.
+      description: A range along a single dimension on a sheet.
       properties:
-        developerMetadataLookup:
-          $ref: '#/components/schemas/DeveloperMetadataLookup'
-        a1Range:
-          type: string
-          description: Selects data that matches the specified A1 range.
-          example: example_value
-        gridRange:
-          $ref: '#/components/schemas/GridRange'
+        sheetId:
+          type: integer
+          description: The sheet this span is on.
+          example: '500123'
+        dimension:
+          $ref: '#/components/schemas/Dimension'
+        startIndex:
+          type: integer
+          description: The start (inclusive) of the span.
+          example: 10
+        endIndex:
+          type: integer
+          description: The end (exclusive) of the span.
+          example: 10
     DeveloperMetadataLocation:
       type: object
       description: A location where metadata may be associated in a spreadsheet.
@@ -292,41 +318,9 @@ components:
           example: '500123'
         dimensionRange:
           $ref: '#/components/schemas/DimensionRange'
-    DeveloperMetadata:
-      type: object
-      description: Developer metadata associated with a location or object in a spreadsheet.
-      properties:
-        metadataId:
-          type: integer
-          description: The spreadsheet-scoped unique ID that identifies the metadata.
-          example: '500123'
-        metadataKey:
-          type: string
-          description: The metadata key.
-          example: example_value
-        metadataValue:
-          type: string
-          description: Data associated with the metadata's key.
-          example: example_value
-        location:
-          $ref: '#/components/schemas/DeveloperMetadataLocation'
-        visibility:
-          type: string
-          description: The metadata visibility.
-          enum:
-          - DEVELOPER_METADATA_VISIBILITY_UNSPECIFIED
-          - DOCUMENT
-          - PROJECT
-          example: DEVELOPER_METADATA_VISIBILITY_UNSPECIFIED
   responses:
     Unauthorized:
       description: Authentication credentials are missing or invalid.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    Forbidden:
-      description: The caller does not have permission to access the requested resource.
       content:
         application/json:
           schema:
@@ -339,6 +333,12 @@ components:
             $ref: '#/components/schemas/ErrorResponse'
     TooManyRequests:
       description: Rate limit exceeded. Too many requests in a given amount of time.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Forbidden:
+      description: The caller does not have permission to access the requested resource.
       content:
         application/json:
           schema:

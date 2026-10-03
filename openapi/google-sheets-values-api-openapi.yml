@@ -676,13 +676,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    ValueRenderOption:
-      type: string
-      description: Determines how values should be rendered in the output.
-      enum:
-      - FORMATTED_VALUE
-      - UNFORMATTED_VALUE
-      - FORMULA
     BatchClearValuesResponse:
       type: object
       description: The response when clearing a range of values in a spreadsheet.
@@ -697,6 +690,88 @@ components:
           items:
             type: string
           example: []
+    ClearValuesResponse:
+      type: object
+      description: The response when clearing a range of values in a spreadsheet.
+      properties:
+        spreadsheetId:
+          type: string
+          description: The spreadsheet the updates were applied to.
+          example: '500123'
+        clearedRange:
+          type: string
+          description: The range (in A1 notation) that was cleared.
+          example: example_value
+    ValueInputOption:
+      type: string
+      description: Determines how input data should be interpreted.
+      enum:
+      - INPUT_VALUE_OPTION_UNSPECIFIED
+      - RAW
+      - USER_ENTERED
+    ErrorResponse:
+      type: object
+      description: An error response from the API.
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+              description: The HTTP status code.
+            message:
+              type: string
+              description: A human-readable error message.
+            status:
+              type: string
+              description: The status of the error.
+            details:
+              type: array
+              description: Additional error details.
+              items:
+                type: object
+          example: example_value
+    DateTimeRenderOption:
+      type: string
+      description: Determines how dates, times, and durations should be rendered in the output.
+      enum:
+      - SERIAL_NUMBER
+      - FORMATTED_STRING
+    BatchGetValuesByDataFilterResponse:
+      type: object
+      description: The response when retrieving more than one range of values in a spreadsheet selected by DataFilters.
+      properties:
+        spreadsheetId:
+          type: string
+          description: The ID of the spreadsheet the data was retrieved from.
+          example: '500123'
+        valueRanges:
+          type: array
+          description: The requested values with the list of data filters that matched them.
+          items:
+            type: object
+            properties:
+              valueRange:
+                $ref: '#/components/schemas/ValueRange'
+              dataFilters:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DataFilter'
+          example: []
+    AppendValuesResponse:
+      type: object
+      description: The response when updating a range of values by appending.
+      properties:
+        spreadsheetId:
+          type: string
+          description: The spreadsheet the updates were applied to.
+          example: '500123'
+        tableRange:
+          type: string
+          description: The range (in A1 notation) of the table that values are being appended to.
+          example: example_value
+        updates:
+          $ref: '#/components/schemas/UpdateValuesResponse'
     UpdateValuesResponse:
       type: object
       description: The response when updating a range of values in a spreadsheet.
@@ -723,6 +798,154 @@ components:
           example: 10
         updatedData:
           $ref: '#/components/schemas/ValueRange'
+    DimensionRange:
+      type: object
+      description: A range along a single dimension on a sheet.
+      properties:
+        sheetId:
+          type: integer
+          description: The sheet this span is on.
+          example: '500123'
+        dimension:
+          $ref: '#/components/schemas/Dimension'
+        startIndex:
+          type: integer
+          description: The start (inclusive) of the span.
+          example: 10
+        endIndex:
+          type: integer
+          description: The end (exclusive) of the span.
+          example: 10
+    DataFilterValueRange:
+      type: object
+      description: A range of values whose location is specified by a DataFilter.
+      properties:
+        dataFilter:
+          $ref: '#/components/schemas/DataFilter'
+        majorDimension:
+          $ref: '#/components/schemas/Dimension'
+        values:
+          type: array
+          description: The data to be written.
+          items:
+            type: array
+            items: {}
+          example: []
+    Dimension:
+      type: string
+      description: Indicates which dimension an operation should apply to.
+      enum:
+      - DIMENSION_UNSPECIFIED
+      - ROWS
+      - COLUMNS
+    BatchClearValuesByDataFilterResponse:
+      type: object
+      description: The response when clearing a range of values selected by DataFilters in a spreadsheet.
+      properties:
+        spreadsheetId:
+          type: string
+          description: The spreadsheet the updates were applied to.
+          example: '500123'
+        clearedRanges:
+          type: array
+          description: The ranges that were cleared, in A1 notation.
+          items:
+            type: string
+          example: []
+    ValueRenderOption:
+      type: string
+      description: Determines how values should be rendered in the output.
+      enum:
+      - FORMATTED_VALUE
+      - UNFORMATTED_VALUE
+      - FORMULA
+    GridRange:
+      type: object
+      description: A range on a sheet. All indexes are zero-based.
+      properties:
+        sheetId:
+          type: integer
+          description: The sheet this range is on.
+          example: '500123'
+        startRowIndex:
+          type: integer
+          description: The start row (inclusive) of the range, or not set if unbounded.
+          example: 10
+        endRowIndex:
+          type: integer
+          description: The end row (exclusive) of the range, or not set if unbounded.
+          example: 10
+        startColumnIndex:
+          type: integer
+          description: The start column (inclusive) of the range, or not set if unbounded.
+          example: 10
+        endColumnIndex:
+          type: integer
+          description: The end column (exclusive) of the range, or not set if unbounded.
+          example: 10
+    BatchUpdateValuesRequest:
+      type: object
+      description: The request for updating more than one range of values in a spreadsheet.
+      properties:
+        valueInputOption:
+          $ref: '#/components/schemas/ValueInputOption'
+        data:
+          type: array
+          description: The new values to apply to the spreadsheet.
+          items:
+            $ref: '#/components/schemas/ValueRange'
+          example: []
+        includeValuesInResponse:
+          type: boolean
+          description: Determines if the update response should include the values of the cells that were updated.
+          default: false
+          example: true
+        responseValueRenderOption:
+          $ref: '#/components/schemas/ValueRenderOption'
+        responseDateTimeRenderOption:
+          $ref: '#/components/schemas/DateTimeRenderOption'
+    BatchUpdateValuesResponse:
+      type: object
+      description: The response when updating a range of values in a spreadsheet.
+      properties:
+        spreadsheetId:
+          type: string
+          description: The spreadsheet the updates were applied to.
+          example: '500123'
+        totalUpdatedRows:
+          type: integer
+          description: The total number of rows where at least one cell in the row was updated.
+          example: 10
+        totalUpdatedColumns:
+          type: integer
+          description: The total number of columns where at least one cell in the column was updated.
+          example: 10
+        totalUpdatedCells:
+          type: integer
+          description: The total number of cells updated.
+          example: 10
+        totalUpdatedSheets:
+          type: integer
+          description: The total number of sheets where at least one cell in the sheet was updated.
+          example: 10
+        responses:
+          type: array
+          description: One UpdateValuesResponse per requested range, in the same order as the requests appeared.
+          items:
+            $ref: '#/components/schemas/UpdateValuesResponse'
+          example: []
+    DataFilter:
+      type: object
+      description: Filter that describes what data should be selected or returned from a request.
+      properties:
+        developerMetadataLookup:
+          $ref: '#/components/schemas/DeveloperMetadataLookup'
+        a1Range:
+          type: string
+          description: Selects data that matches the specified A1 range.
+          example: example_value
+        gridRange:
+          $ref: '#/components/schemas/GridRange'
     BatchGetValuesResponse:
       type: object
       description: The response when retrieving more than one range of values in a spreadsheet.
@@ -736,6 +959,61 @@ components:
           description: The requested ranges of values.
           items:
             $ref: '#/components/schemas/ValueRange'
+          example: []
+    BatchUpdateValuesByDataFilterResponse:
+      type: object
+      description: The response when updating a range of values in a spreadsheet by data filter.
+      properties:
+        spreadsheetId:
+          type: string
+          description: The spreadsheet the updates were applied to.
+          example: '500123'
+        totalUpdatedRows:
+          type: integer
+          example: 10
+        totalUpdatedColumns:
+          type: integer
+          example: 10
+        totalUpdatedCells:
+          type: integer
+          example: 10
+        totalUpdatedSheets:
+          type: integer
+          example: 10
+        responses:
+          type: array
+          items:
+            type: object
+            properties:
+              updatedRange:
+                type: string
+              updatedRows:
+                type: integer
+              updatedColumns:
+                type: integer
+              updatedCells:
+                type: integer
+              updatedData:
+                $ref: '#/components/schemas/ValueRange'
+              dataFilter:
+                $ref: '#/components/schemas/DataFilter'
+          example: []
+    ValueRange:
+      type: object
+      description: Data within a range of the spreadsheet.
+      properties:
+        range:
+          type: string
+          description: The range the values cover, in A1 notation. For output, this range indicates the entire requested range, even though the values response will include only the non-empty rows and columns.
+          example: example_value
+        majorDimension:
+          $ref: '#/components/schemas/Dimension'
+        values:
+          type: array
+          description: The data that was read or to be written. This is an array of arrays, the outer array representing all the data and each inner array representing a major dimension.
+          items:
+            type: array
+            items: {}
           example: []
     DeveloperMetadataLookup:
       type: object
@@ -805,287 +1083,30 @@ components:
           example: '500123'
         dimensionRange:
           $ref: '#/components/schemas/DimensionRange'
-    AppendValuesResponse:
-      type: object
-      description: The response when updating a range of values by appending.
-      properties:
-        spreadsheetId:
-          type: string
-          description: The spreadsheet the updates were applied to.
-          example: '500123'
-        tableRange:
-          type: string
-          description: The range (in A1 notation) of the table that values are being appended to.
-          example: example_value
-        updates:
-          $ref: '#/components/schemas/UpdateValuesResponse'
-    BatchUpdateValuesRequest:
-      type: object
-      description: The request for updating more than one range of values in a spreadsheet.
-      properties:
-        valueInputOption:
-          $ref: '#/components/schemas/ValueInputOption'
-        data:
-          type: array
-          description: The new values to apply to the spreadsheet.
-          items:
-            $ref: '#/components/schemas/ValueRange'
-          example: []
-        includeValuesInResponse:
-          type: boolean
-          description: Determines if the update response should include the values of the cells that were updated.
-          default: false
-          example: true
-        responseValueRenderOption:
-          $ref: '#/components/schemas/ValueRenderOption'
-        responseDateTimeRenderOption:
-          $ref: '#/components/schemas/DateTimeRenderOption'
-    Dimension:
-      type: string
-      description: Indicates which dimension an operation should apply to.
-      enum:
-      - DIMENSION_UNSPECIFIED
-      - ROWS
-      - COLUMNS
-    ValueInputOption:
-      type: string
-      description: Determines how input data should be interpreted.
-      enum:
-      - INPUT_VALUE_OPTION_UNSPECIFIED
-      - RAW
-      - USER_ENTERED
-    DataFilter:
-      type: object
-      description: Filter that describes what data should be selected or returned from a request.
-      properties:
-        developerMetadataLookup:
-          $ref: '#/components/schemas/DeveloperMetadataLookup'
-        a1Range:
-          type: string
-          description: Selects data that matches the specified A1 range.
-          example: example_value
-        gridRange:
-          $ref: '#/components/schemas/GridRange'
-    GridRange:
-      type: object
-      description: A range on a sheet. All indexes are zero-based.
-      properties:
-        sheetId:
-          type: integer
-          description: The sheet this range is on.
-          example: '500123'
-        startRowIndex:
-          type: integer
-          description: The start row (inclusive) of the range, or not set if unbounded.
-          example: 10
-        endRowIndex:
-          type: integer
-          description: The end row (exclusive) of the range, or not set if unbounded.
-          example: 10
-        startColumnIndex:
-          type: integer
-          description: The start column (inclusive) of the range, or not set if unbounded.
-          example: 10
-        endColumnIndex:
-          type: integer
-          description: The end column (exclusive) of the range, or not set if unbounded.
-          example: 10
-    DimensionRange:
-      type: object
-      description: A range along a single dimension on a sheet.
-      properties:
-        sheetId:
-          type: integer
-          description: The sheet this span is on.
-          example: '500123'
-        dimension:
-          $ref: '#/components/schemas/Dimension'
-        startIndex:
-          type: integer
-          description: The start (inclusive) of the span.
-          example: 10
-        endIndex:
-          type: integer
-          description: The end (exclusive) of the span.
-          example: 10
-    BatchGetValuesByDataFilterResponse:
-      type: object
-      description: The response when retrieving more than one range of values in a spreadsheet selected by DataFilters.
-      properties:
-        spreadsheetId:
-          type: string
-          description: The ID of the spreadsheet the data was retrieved from.
-          example: '500123'
-        valueRanges:
-          type: array
-          description: The requested values with the list of data filters that matched them.
-          items:
-            type: object
-            properties:
-              valueRange:
-                $ref: '#/components/schemas/ValueRange'
-              dataFilters:
-                type: array
-                items:
-                  $ref: '#/components/schemas/DataFilter'
-          example: []
-    ClearValuesResponse:
-      type: object
-      description: The response when clearing a range of values in a spreadsheet.
-      properties:
-        spreadsheetId:
-          type: string
-          description: The spreadsheet the updates were applied to.
-          example: '500123'
-        clearedRange:
-          type: string
-          description: The range (in A1 notation) that was cleared.
-          example: example_value
-    BatchUpdateValuesByDataFilterResponse:
-      type: object
-      description: The response when updating a range of values in a spreadsheet by data filter.
-      properties:
-        spreadsheetId:
-          type: string
-          description: The spreadsheet the updates were applied to.
-          example: '500123'
-        totalUpdatedRows:
-          type: integer
-          example: 10
-        totalUpdatedColumns:
-          type: integer
-          example: 10
-        totalUpdatedCells:
-          type: integer
-          example: 10
-        totalUpdatedSheets:
-          type: integer
-          example: 10
-        responses:
-          type: array
-          items:
-            type: object
-            properties:
-              updatedRange:
-                type: string
-              updatedRows:
-                type: integer
-              updatedColumns:
-                type: integer
-              updatedCells:
-                type: integer
-              updatedData:
-                $ref: '#/components/schemas/ValueRange'
-              dataFilter:
-                $ref: '#/components/schemas/DataFilter'
-          example: []
-    BatchClearValuesByDataFilterResponse:
-      type: object
-      description: The response when clearing a range of values selected by DataFilters in a spreadsheet.
-      properties:
-        spreadsheetId:
-          type: string
-          description: The spreadsheet the updates were applied to.
-          example: '500123'
-        clearedRanges:
-          type: array
-          description: The ranges that were cleared, in A1 notation.
-          items:
-            type: string
-          example: []
-    DataFilterValueRange:
-      type: object
-      description: A range of values whose location is specified by a DataFilter.
-      properties:
-        dataFilter:
-          $ref: '#/components/schemas/DataFilter'
-        majorDimension:
-          $ref: '#/components/schemas/Dimension'
-        values:
-          type: array
-          description: The data to be written.
-          items:
-            type: array
-            items: {}
-          example: []
-    ErrorResponse:
-      type: object
-      description: An error response from the API.
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: integer
-              description: The HTTP status code.
-            message:
-              type: string
-              description: A human-readable error message.
-            status:
-              type: string
-              description: The status of the error.
-            details:
-              type: array
-              description: Additional error details.
-              items:
-                type: object
-          example: example_value
-    ValueRange:
-      type: object
-      description: Data within a range of the spreadsheet.
-      properties:
-        range:
-          type: string
-          description: The range the values cover, in A1 notation. For output, this range indicates the entire requested range, even though the values response will include only the non-empty rows and columns.
-          example: example_value
-        majorDimension:
-          $ref: '#/components/schemas/Dimension'
-        values:
-          type: array
-          description: The data that was read or to be written. This is an array of arrays, the outer array representing all the data and each inner array representing a major dimension.
-          items:
-            type: array
-            items: {}
-          example: []
-    BatchUpdateValuesResponse:
-      type: object
-      description: The response when updating a range of values in a spreadsheet.
-      properties:
-        spreadsheetId:
-          type: string
-          description: The spreadsheet the updates were applied to.
-          example: '500123'
-        totalUpdatedRows:
-          type: integer
-          description: The total number of rows where at least one cell in the row was updated.
-          example: 10
-        totalUpdatedColumns:
-          type: integer
-          description: The total number of columns where at least one cell in the column was updated.
-          example: 10
-        totalUpdatedCells:
-          type: integer
-          description: The total number of cells updated.
-          example: 10
-        totalUpdatedSheets:
-          type: integer
-          description: The total number of sheets where at least one cell in the sheet was updated.
-          example: 10
-        responses:
-          type: array
-          description: One UpdateValuesResponse per requested range, in the same order as the requests appeared.
-          items:
-            $ref: '#/components/schemas/UpdateValuesResponse'
-          example: []
-    DateTimeRenderOption:
-      type: string
-      description: Determines how dates, times, and durations should be rendered in the output.
-      enum:
-      - SERIAL_NUMBER
-      - FORMATTED_STRING
+  parameters:
+    range:
+      name: range
+      in: path
+      description: The A1 notation or R1C1 notation of the range to read or modify. For example, Sheet1!A1:D5 or Sheet1!R1C1:R5C4.
+      required: true
+      schema:
+        type: string
+    spreadsheetId:
+      name: spreadsheetId
+      in: path
+      description: The ID of the spreadsheet to retrieve or modify.
+      required: true
+      schema:
+        type: string
   responses:
     NotFound:
       description: The requested spreadsheet or range was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    TooManyRequests:
+      description: Rate limit exceeded. Too many requests in a given amount of time.
       content:
         application/json:
           schema:
@@ -1102,27 +1123,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    TooManyRequests:
-      description: Rate limit exceeded. Too many requests in a given amount of time.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-  parameters:
-    range:
-      name: range
-      in: path
-      description: The A1 notation or R1C1 notation of the range to read or modify. For example, Sheet1!A1:D5 or Sheet1!R1C1:R5C4.
-      required: true
-      schema:
-        type: string
-    spreadsheetId:
-      name: spreadsheetId
-      in: path
-      description: The ID of the spreadsheet to retrieve or modify.
-      required: true
-      schema:
-        type: string
   securitySchemes:
     oauth2:
       type: oauth2
